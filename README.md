@@ -16,13 +16,29 @@
   <img src="images/fridge-cup.png" alt="Fridge Cup preview" width="320" />
 </p>
 
-A compact, slim-profile cup designed to fit neatly in a fridge door — perfect for saving space.
+A compact, slim-profile cup designed to fit neatly in a fridge door — perfect for saving space. Fully parametric FreeCAD model with variables exposed for every dimension, so you can resize the height, width, depth, wall thickness, and fillets to match your fridge without rebuilding the geometry.
 
 | | |
 |---|---|
 | **Source file** | [`Fridge Cup.FCStd`](Fridge%20Cup/Fridge%20Cup.FCStd) |
 | **Print-ready** | [`Fridge Cup.3mf`](Fridge%20Cup/Fridge%20Cup.3mf) |
 | **License** | [LICENSE](Fridge%20Cup/LICENSE) |
+
+#### Parameters (`VarSet`)
+
+Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometry rebuilds automatically.
+
+| Variable | Default | Unit | Drives |
+|---|---:|---|---|
+| `Length` | 100 | mm | Outer footprint length (sketch constraint) |
+| `Width` | 30 | mm | Outer footprint width (sketch constraint) |
+| `Depth` | 75 | mm | Cup height / pad extrusion depth |
+| `Thickness` | 3 | mm | Wall thickness (shell) |
+| `Fillet` | 5 | mm | Vertical corner fillet radius (top edge uses 2 × `Fillet`) |
+| `MagDiameter` | 6.2 | mm | Magnet pocket diameter |
+| `MagThickness` | 2 | mm | Magnet pocket depth |
+| `MagInset` | 10 | mm | Magnet inset from each corner |
+| `Angle` | 60 | ° | Reserved / unused — available for future features |
 
 ---
 
