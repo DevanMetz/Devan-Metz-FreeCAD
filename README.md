@@ -16,7 +16,7 @@
   <img src="images/fridge-cup.png" alt="Fridge Cup preview" width="320" />
 </p>
 
-A compact, slim-profile cup designed to fit neatly in a fridge door — perfect for saving space. Fully parametric FreeCAD model with variables exposed for every dimension, so you can resize the height, width, depth, wall thickness, and fillets to match your fridge without rebuilding the geometry.
+A magnet-mounted holder that sticks to the side of your fridge like an oversized fridge magnet — drop in pens, utensils, or anything else you want within reach. Press four neodymium magnets into the pockets on the back face and it'll hang flat against any ferrous surface. Fully parametric FreeCAD model with variables exposed for every dimension, so you can resize the height, width, depth, wall thickness, fillets, and trapezoidal base angle without rebuilding the geometry.
 
 | | |
 |---|---|
@@ -45,6 +45,11 @@ Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometr
 | `MagThickness` | 2 | mm | Magnet pocket depth |
 | `MagInset` | 10 | mm | Magnet inset from each corner |
 | `Angle` | 60 | ° | Base angle of the trapezoidal bottom face |
+
+#### Printing Notes
+
+- **Orientation:** print with the bottom (closed) face down. This puts the open top facing up and avoids the need for any supports.
+- **Magnets:** four 6 × 2 mm neodymium discs press-fit into the back-face pockets. In testing, this hold strength was *just barely* enough to support two full-size dry erase markers without slipping — for anything heavier, increase `MagDiameter` / `MagThickness` and use stronger magnets.
 
 ---
 
