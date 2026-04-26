@@ -24,6 +24,12 @@ A compact, slim-profile cup designed to fit neatly in a fridge door — perfect 
 | **Print-ready** | [`Fridge Cup.3mf`](Fridge%20Cup/Fridge%20Cup.3mf) |
 | **License** | [LICENSE](Fridge%20Cup/LICENSE) |
 
+#### Dimensions
+
+<p align="center">
+  <img src="images/fridge-cup-dimensions.svg" alt="Fridge Cup dimensioned drawing" width="640" />
+</p>
+
 #### Parameters (`VarSet`)
 
 Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometry rebuilds automatically.
@@ -38,7 +44,7 @@ Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometr
 | `MagDiameter` | 6.2 | mm | Magnet pocket diameter |
 | `MagThickness` | 2 | mm | Magnet pocket depth |
 | `MagInset` | 10 | mm | Magnet inset from each corner |
-| `Angle` | 60 | ° | Draft angle of the cup's outer edges |
+| `Angle` | 60 | ° | Base angle of the trapezoidal bottom face |
 
 ---
 
@@ -47,7 +53,7 @@ Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometr
 1. Install [FreeCAD](https://www.freecad.org/downloads.php) (free & open source).
 2. Clone this repo:
    ```bash
-   git clone https://github.com/DevanMBio/FreeCAD.git
+   git clone https://github.com/DevanMetz/Devan-Metz-FreeCAD.git
    ```
 3. Open any `.FCStd` file in FreeCAD to view, edit, or remix the design.
 
