@@ -3,7 +3,7 @@
 > A collection of my 3D models designed in [FreeCAD](https://www.freecad.org/) — ready to view, remix, and print.
 
 ![FreeCAD](https://img.shields.io/badge/Made%20with-FreeCAD-red?logo=freecad&logoColor=white)
-![License](https://img.shields.io/badge/License-See%20LICENSE-blue)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue)](https://www.apache.org/licenses/LICENSE-2.0)
 ![3D Printable](https://img.shields.io/badge/3D-Printable-brightgreen)
 
 ---
@@ -43,7 +43,7 @@ A compact, slim-profile cup designed to fit neatly in a fridge door — perfect 
 
 ## 📜 License
 
-Each model includes its own `LICENSE` file — please check before redistributing or selling prints.
+Released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). You're free to use, modify, and distribute these designs — including for commercial purposes — provided you retain the license and attribution notices.
 
 ---
 
