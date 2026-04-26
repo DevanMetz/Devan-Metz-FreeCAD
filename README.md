@@ -38,7 +38,7 @@ Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometr
 | `MagDiameter` | 6.2 | mm | Magnet pocket diameter |
 | `MagThickness` | 2 | mm | Magnet pocket depth |
 | `MagInset` | 10 | mm | Magnet inset from each corner |
-| `Angle` | 60 | ° | Reserved / unused — available for future features |
+| `Angle` | 60 | ° | Draft angle of the cup's outer edges |
 
 ---
 
