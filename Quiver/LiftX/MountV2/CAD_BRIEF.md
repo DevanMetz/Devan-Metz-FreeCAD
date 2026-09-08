@@ -1,0 +1,15 @@
+# LIFT X quiver mounting revision — 2026-09-08
+
+- Modify the existing FreeCAD parametric source; retain its native model and use the text-to-CAD harness on the new neutral STEP exports.
+- Preserve two printed production parts, five shaft positions, a fully open basket top, and a direct spine/basket joint. Keep the chassis below 256 mm in every print axis; target 248 mm height.
+- Repair crossing basket lofts: use corresponding outer/inner stations with a controlled inset, a continuous rim, a closed floor except five shaft ports, and no added belt to join disconnected rim pieces.
+- Keep both spine chords embedded in the rear basket wall. Remove knife-edge rim fragments and maintain finite wall thickness through the taper change.
+- Improve one-time installation by moving the two mounting fasteners onto an exposed integral side flange. One round datum hole and one short vertical slot tolerate small pitch errors while preserving angular location. Verify screw-head and driver access with the chassis installed.
+- Preserve the vertical slide and integral latch as the initial quick-release architecture. Check the complete slide path against rigid dock geometry separately from intentional flexible latch contact. Repair any interference discovered.
+- User confirmed LEFT HAND, Spot-Hogg Eddie sight and QAD MX2 UltraRest. Exact Eddie mount variant and LowPro blocks remain unknown; a mounting-side photo has been requested. Mount pattern is provisionally the ATA sight/accessory pattern: 10-24 UNC, nominal 33.325 mm vertical pitch. This is not evidence that a particular occupied LIFT X interface is available. No proprietary LowPro profile or receiver coordinates will be invented.
+- The step-parts skill/catalog is unavailable in this session; no purchased Mathews parts will be represented with invented CAD dimensions.
+- Coordinate system: +Z along arrows/upright print; X across five arrows. Base RH source uses negative Y toward the bow; confirmed LH version mirrors Y so the bow-contact datum is Y=+30, dock seated at Z=68. New file outputs live under MountV2, leaving the previous package available for comparison.
+- Verify solids, exact STEP round-trip dimensions/volume, manifold meshes, arrow ports, continuous rim sections, chord joints, mounting hole pitch, fastener access, dock motion, and visual snapshots from uncached new artifact paths.
+- Deliver native FCStd, per-part STEP/STL/3MF, assembly STEP, a small fit gauge, revised print/mount notes, and reviewed screenshots. Physical bow fit remains pending the user's configuration/measurements.
+- Follow-up: the user describes a Bridge-Lock-style sight attachment; exact variant and available accessory holes still require a photo or physical gauge check. Do not disturb the sight/rest clamps.
+- Use 24 mm chamfered basket corners to control diagonal-face overhang, not only front/side slope. Rotate the standalone dock about X onto its bow-contact back face for printing; the assembled dock remains in the seated bow coordinate system. Plan removable support beneath the integral latch.

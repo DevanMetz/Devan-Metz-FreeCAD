@@ -1,0 +1,533 @@
+{
+  "hand": "LH",
+  "units": "mm",
+  "bow_fit": "UNVERIFIED: sight attachment and OEM blocks not measured",
+  "parts": {
+    "quiver_chassis_petg": {
+      "bbox_mm": [
+        126.0,
+        66.7,
+        248.00000000000003
+      ],
+      "volume_cm3": 120.47925252696292,
+      "valid_solids": 1,
+      "step_roundtrip_volume_error_mm3": 0.00812234373006504,
+      "stl_closed_manifold": true,
+      "step_sha256": "69568339d5e91319fedefe87d68b6147c1f6236ce48f228aa1c5c71e4316cd1f",
+      "area_below_45deg_excluding_bed_mm2": 542.1912656556815
+    },
+    "bow_dock_petg": {
+      "bbox_mm": [
+        57.0,
+        80.0,
+        24.600000000000012
+      ],
+      "volume_cm3": 37.48288293412905,
+      "valid_solids": 1,
+      "step_roundtrip_volume_error_mm3": 1.4842953532934189e-09,
+      "stl_closed_manifold": true,
+      "step_sha256": "18ad7feecb83ac99179a4b18ae1a30af474e8585e12a480b70cc347f630f7366",
+      "area_below_45deg_excluding_bed_mm2": 1058.268325805664
+    },
+    "mount_pattern_gauge": {
+      "bbox_mm": [
+        32.0,
+        60.0,
+        2.0000000000000124
+      ],
+      "volume_cm3": 3.5759526623606637,
+      "valid_solids": 1,
+      "step_roundtrip_volume_error_mm3": 1.546140993013978e-11,
+      "stl_closed_manifold": true,
+      "step_sha256": "22c366a86e918e16031ebd071fa648ad4e480233914cd72743210b7540ad11fc",
+      "area_below_45deg_excluding_bed_mm2": 0
+    }
+  },
+  "printability_note": "Mesh overhang screen, not a sliced toolpath. Local bridges/ledge supports remain; not support-free.",
+  "main_basket_flare_minimum_angle_above_horizontal_deg": 45.902045825460824,
+  "basket_rim_sections": [
+    {
+      "local_z": 53.9,
+      "one_continuous_annulus": true,
+      "area_mm2": 1283.2519761210235
+    },
+    {
+      "local_z": 54.1,
+      "one_continuous_annulus": true,
+      "area_mm2": 1284.583199999929
+    },
+    {
+      "local_z": 55,
+      "one_continuous_annulus": true,
+      "area_mm2": 1284.5832000003963
+    },
+    {
+      "local_z": 57,
+      "one_continuous_annulus": true,
+      "area_mm2": 1284.58319999992
+    },
+    {
+      "local_z": 58.9,
+      "one_continuous_annulus": true,
+      "area_mm2": 1284.58319999992
+    },
+    {
+      "local_z": 59.1,
+      "one_continuous_annulus": true,
+      "area_mm2": 1281.1212000001426
+    },
+    {
+      "local_z": 59.8,
+      "one_continuous_annulus": true,
+      "area_mm2": 1261.7339999997357
+    }
+  ],
+  "mounting_screw_access": [
+    {
+      "assembly_z": 89.3375,
+      "driver_diameter_mm": 12,
+      "collision_mm3": 0.0
+    },
+    {
+      "assembly_z": 122.6625,
+      "driver_diameter_mm": 12,
+      "collision_mm3": 0.0
+    }
+  ],
+  "mount_pattern": {
+    "pitch_mm": 33.325,
+    "nominal_clearance_diameter_mm": 5.3,
+    "lower_slot_travel_mm": 3.0,
+    "expected_thread_only_if_verified": "10-24 UNC"
+  },
+  "slide_sweep": [
+    {
+      "lift_mm": 0,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 1,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 11.999999999999934
+    },
+    {
+      "lift_mm": 2,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 35.22222222222219
+    },
+    {
+      "lift_mm": 3,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 52.99999999999997
+    },
+    {
+      "lift_mm": 4,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 64.55555555555554
+    },
+    {
+      "lift_mm": 5,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 69.88888888888876
+    },
+    {
+      "lift_mm": 6,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 7,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 8,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 9,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 10,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 11,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 12,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 13,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 14,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 15,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 16,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 17,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 18,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 19,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 20,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 21,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 22,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 23,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 24,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 25,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 26,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 27,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 28,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 29,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 30,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 31,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 32,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 33,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 34,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 35,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 36,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 37,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 38,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 39,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 40,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 41,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 42,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 43,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 44,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 45,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 46,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 47,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 48,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 49,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 50,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 51,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 52,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 53,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 54,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 55,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571445
+    },
+    {
+      "lift_mm": 56,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 57,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 58,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 59,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 60,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 61,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 62,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 70.28571428571428
+    },
+    {
+      "lift_mm": 63,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 67.65053397479697
+    },
+    {
+      "lift_mm": 64,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 51.89283222011895
+    },
+    {
+      "lift_mm": 65,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 32.58229488572385
+    },
+    {
+      "lift_mm": 66,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 17.062406539702646
+    },
+    {
+      "lift_mm": 67,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 5.730158730158764
+    },
+    {
+      "lift_mm": 68,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.39682539682540363
+    },
+    {
+      "lift_mm": 69,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 70,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 71,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 72,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 73,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 74,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 75,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 76,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 77,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 78,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 79,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 80,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 81,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.0
+    },
+    {
+      "lift_mm": 82,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 0.6769607847821884
+    },
+    {
+      "lift_mm": 83,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 7.653685548320574
+    },
+    {
+      "lift_mm": 84,
+      "rigid_collision_mm3": 0.0,
+      "undeformed_latch_contact_mm3": 19.742610747975572
+    }
+  ],
+  "maximum_rigid_slide_interference_mm3": 0.0,
+  "maximum_undeformed_latch_contact_mm3": 70.28571428571445,
+  "slide_note": "Rigid guide sweep only; contact with undeflected spring tooth is intentional. Fatigue and release force not qualified."
+}

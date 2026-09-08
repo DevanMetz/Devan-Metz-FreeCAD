@@ -1,0 +1,7 @@
+__pycache__/
+**/__cadgen__/
+baseline/
+*.FCStd.*
+*.FCBak
+viewer.*.log
+STEP/Quiver/

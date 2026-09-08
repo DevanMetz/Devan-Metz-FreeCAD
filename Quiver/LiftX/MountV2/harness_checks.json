@@ -1,0 +1,905 @@
+{
+  "quiver_chassis_petg": {
+    "facts": {
+      "ok": true,
+      "tokens": [
+        {
+          "line": 1,
+          "token": "#",
+          "cadPath": "Quiver/LiftX/MountV2/STEP/quiver_chassis_petg",
+          "stepPath": "Quiver/LiftX/MountV2/STEP/quiver_chassis_petg.step",
+          "stepHash": "69568339d5e91319fedefe87d68b6147c1f6236ce48f228aa1c5c71e4316cd1f",
+          "summary": {
+            "kind": "assembly",
+            "occurrenceCount": 1,
+            "leafOccurrenceCount": 1,
+            "shapeCount": 1,
+            "faceCount": 262,
+            "edgeCount": 754,
+            "vertexCount": 0,
+            "bounds": {
+              "min": [
+                -63.0,
+                -43.0,
+                0.0
+              ],
+              "max": [
+                63.0,
+                23.7,
+                248.0
+              ]
+            }
+          },
+          "selections": [],
+          "warnings": [],
+          "entryFacts": {
+            "size": [
+              126.0,
+              66.7,
+              248.0
+            ],
+            "extentAxis": "z",
+            "center": [
+              0.0,
+              -9.65,
+              124.0
+            ],
+            "diag": 286.05749422100445,
+            "kind": "assembly"
+          },
+          "planes": [
+            {
+              "axis": "y",
+              "coordinate": -4.0,
+              "normalSign": -1,
+              "faceCount": 1,
+              "totalArea": 2057.632984,
+              "bbox": {
+                "min": [
+                  -19.0,
+                  -4.0,
+                  8.0
+                ],
+                "max": [
+                  19.0,
+                  -4.0,
+                  147.0
+                ]
+              },
+              "selectors": [
+                "f242"
+              ]
+            }
+          ],
+          "entryPositioning": {
+            "kind": "assembly",
+            "bbox": {
+              "min": [
+                -63.0,
+                -43.0,
+                0.0
+              ],
+              "max": [
+                63.0,
+                23.7,
+                248.0
+              ]
+            },
+            "bboxFacts": {
+              "size": [
+                126.0,
+                66.7,
+                248.0
+              ],
+              "extentAxis": "z",
+              "center": [
+                0.0,
+                -9.65,
+                124.0
+              ],
+              "diag": 286.05749422100445
+            },
+            "majorPlanes": [
+              {
+                "axis": "y",
+                "coordinate": -4.0,
+                "normalSign": -1,
+                "faceCount": 1,
+                "totalArea": 2057.632984,
+                "bbox": {
+                  "min": [
+                    -19.0,
+                    -4.0,
+                    8.0
+                  ],
+                  "max": [
+                    19.0,
+                    -4.0,
+                    147.0
+                  ]
+                },
+                "selectors": [
+                  "f242"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "errors": []
+    },
+    "validity": {
+      "ok": true,
+      "entry": "Quiver/LiftX/MountV2/STEP/quiver_chassis_petg",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    },
+    "mesh_export": {
+      "ok": true,
+      "files": [
+        {
+          "format": "3mf",
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\3MF\\quiver_chassis_petg.3mf"
+        }
+      ]
+    }
+  },
+  "bow_dock_petg": {
+    "facts": {
+      "ok": true,
+      "tokens": [
+        {
+          "line": 1,
+          "token": "#",
+          "cadPath": "Quiver/LiftX/MountV2/STEP/bow_dock_petg",
+          "stepPath": "Quiver/LiftX/MountV2/STEP/bow_dock_petg.step",
+          "stepHash": "18ad7feecb83ac99179a4b18ae1a30af474e8585e12a480b70cc347f630f7366",
+          "summary": {
+            "kind": "assembly",
+            "occurrenceCount": 1,
+            "leafOccurrenceCount": 1,
+            "shapeCount": 1,
+            "faceCount": 71,
+            "edgeCount": 207,
+            "vertexCount": 0,
+            "bounds": {
+              "min": [
+                -38.0,
+                -4.0,
+                0.0
+              ],
+              "max": [
+                19.0,
+                76.0,
+                24.6
+              ]
+            }
+          },
+          "selections": [],
+          "warnings": [],
+          "entryFacts": {
+            "size": [
+              57.0,
+              80.0,
+              24.6
+            ],
+            "extentAxis": "y",
+            "center": [
+              -9.5,
+              36.0,
+              12.3
+            ],
+            "diag": 101.26282634807306,
+            "kind": "assembly"
+          },
+          "planes": [
+            {
+              "axis": "z",
+              "coordinate": 0.0,
+              "normalSign": -1,
+              "faceCount": 1,
+              "totalArea": 3546.173309,
+              "bbox": {
+                "min": [
+                  -38.0,
+                  0.0,
+                  0.0
+                ],
+                "max": [
+                  19.0,
+                  76.0,
+                  0.0
+                ]
+              },
+              "selectors": [
+                "f11"
+              ]
+            },
+            {
+              "axis": "z",
+              "coordinate": 6.300000000000001,
+              "normalSign": 1,
+              "faceCount": 1,
+              "totalArea": 1559.10811,
+              "bbox": {
+                "min": [
+                  -13.261751,
+                  0.0,
+                  6.3
+                ],
+                "max": [
+                  13.261751,
+                  76.0,
+                  6.3
+                ]
+              },
+              "selectors": [
+                "f28"
+              ]
+            },
+            {
+              "axis": "z",
+              "coordinate": 6.0,
+              "normalSign": -1,
+              "faceCount": 4,
+              "totalArea": 1525.923309,
+              "bbox": {
+                "min": [
+                  -38.0,
+                  -4.0,
+                  6.0
+                ],
+                "max": [
+                  16.75,
+                  68.0,
+                  6.0
+                ]
+              },
+              "selectors": [
+                "f13",
+                "f2",
+                "f29",
+                "f37"
+              ]
+            },
+            {
+              "axis": "z",
+              "coordinate": 16.5,
+              "normalSign": 1,
+              "faceCount": 2,
+              "totalArea": 1340.895852,
+              "bbox": {
+                "min": [
+                  -19.0,
+                  -4.0,
+                  16.5
+                ],
+                "max": [
+                  19.0,
+                  76.0,
+                  16.5
+                ]
+              },
+              "selectors": [
+                "f67",
+                "f68"
+              ]
+            },
+            {
+              "axis": "x",
+              "coordinate": 19.0,
+              "normalSign": 1,
+              "faceCount": 2,
+              "totalArea": 1140.0,
+              "bbox": {
+                "min": [
+                  19.0,
+                  -4.0,
+                  0.0
+                ],
+                "max": [
+                  19.0,
+                  72.0,
+                  16.5
+                ]
+              },
+              "selectors": [
+                "f65",
+                "f8"
+              ]
+            }
+          ],
+          "entryPositioning": {
+            "kind": "assembly",
+            "bbox": {
+              "min": [
+                -38.0,
+                -4.0,
+                0.0
+              ],
+              "max": [
+                19.0,
+                76.0,
+                24.6
+              ]
+            },
+            "bboxFacts": {
+              "size": [
+                57.0,
+                80.0,
+                24.6
+              ],
+              "extentAxis": "y",
+              "center": [
+                -9.5,
+                36.0,
+                12.3
+              ],
+              "diag": 101.26282634807306
+            },
+            "majorPlanes": [
+              {
+                "axis": "z",
+                "coordinate": 0.0,
+                "normalSign": -1,
+                "faceCount": 1,
+                "totalArea": 3546.173309,
+                "bbox": {
+                  "min": [
+                    -38.0,
+                    0.0,
+                    0.0
+                  ],
+                  "max": [
+                    19.0,
+                    76.0,
+                    0.0
+                  ]
+                },
+                "selectors": [
+                  "f11"
+                ]
+              },
+              {
+                "axis": "z",
+                "coordinate": 6.300000000000001,
+                "normalSign": 1,
+                "faceCount": 1,
+                "totalArea": 1559.10811,
+                "bbox": {
+                  "min": [
+                    -13.261751,
+                    0.0,
+                    6.3
+                  ],
+                  "max": [
+                    13.261751,
+                    76.0,
+                    6.3
+                  ]
+                },
+                "selectors": [
+                  "f28"
+                ]
+              },
+              {
+                "axis": "z",
+                "coordinate": 6.0,
+                "normalSign": -1,
+                "faceCount": 4,
+                "totalArea": 1525.923309,
+                "bbox": {
+                  "min": [
+                    -38.0,
+                    -4.0,
+                    6.0
+                  ],
+                  "max": [
+                    16.75,
+                    68.0,
+                    6.0
+                  ]
+                },
+                "selectors": [
+                  "f13",
+                  "f2",
+                  "f29",
+                  "f37"
+                ]
+              },
+              {
+                "axis": "z",
+                "coordinate": 16.5,
+                "normalSign": 1,
+                "faceCount": 2,
+                "totalArea": 1340.895852,
+                "bbox": {
+                  "min": [
+                    -19.0,
+                    -4.0,
+                    16.5
+                  ],
+                  "max": [
+                    19.0,
+                    76.0,
+                    16.5
+                  ]
+                },
+                "selectors": [
+                  "f67",
+                  "f68"
+                ]
+              },
+              {
+                "axis": "x",
+                "coordinate": 19.0,
+                "normalSign": 1,
+                "faceCount": 2,
+                "totalArea": 1140.0,
+                "bbox": {
+                  "min": [
+                    19.0,
+                    -4.0,
+                    0.0
+                  ],
+                  "max": [
+                    19.0,
+                    72.0,
+                    16.5
+                  ]
+                },
+                "selectors": [
+                  "f65",
+                  "f8"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "errors": []
+    },
+    "validity": {
+      "ok": true,
+      "entry": "Quiver/LiftX/MountV2/STEP/bow_dock_petg",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    },
+    "mesh_export": {
+      "ok": true,
+      "files": [
+        {
+          "format": "3mf",
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\3MF\\bow_dock_petg.3mf"
+        }
+      ]
+    }
+  },
+  "mount_pattern_gauge": {
+    "facts": {
+      "ok": true,
+      "tokens": [
+        {
+          "line": 1,
+          "token": "#",
+          "cadPath": "Quiver/LiftX/MountV2/STEP/mount_pattern_gauge",
+          "stepPath": "Quiver/LiftX/MountV2/STEP/mount_pattern_gauge.step",
+          "stepHash": "22c366a86e918e16031ebd071fa648ad4e480233914cd72743210b7540ad11fc",
+          "summary": {
+            "kind": "assembly",
+            "occurrenceCount": 1,
+            "leafOccurrenceCount": 1,
+            "shapeCount": 1,
+            "faceCount": 15,
+            "edgeCount": 41,
+            "vertexCount": 0,
+            "bounds": {
+              "min": [
+                -38.0,
+                -68.0,
+                -0.0
+              ],
+              "max": [
+                -6.0,
+                -8.0,
+                2.0
+              ]
+            }
+          },
+          "selections": [],
+          "warnings": [],
+          "entryFacts": {
+            "size": [
+              32.0,
+              60.0,
+              2.0
+            ],
+            "extentAxis": "y",
+            "center": [
+              -22.0,
+              -38.0,
+              1.0
+            ],
+            "diag": 68.0294054067798,
+            "kind": "assembly"
+          },
+          "planes": [
+            {
+              "axis": "z",
+              "coordinate": 0.0,
+              "normalSign": -1,
+              "faceCount": 1,
+              "totalArea": 1788.048309,
+              "bbox": {
+                "min": [
+                  -38.0,
+                  -68.0,
+                  -0.0
+                ],
+                "max": [
+                  -6.0,
+                  -8.0,
+                  0.0
+                ]
+              },
+              "selectors": [
+                "f5"
+              ]
+            },
+            {
+              "axis": "z",
+              "coordinate": 2.0,
+              "normalSign": 1,
+              "faceCount": 1,
+              "totalArea": 1788.048309,
+              "bbox": {
+                "min": [
+                  -38.0,
+                  -68.0,
+                  2.0
+                ],
+                "max": [
+                  -6.0,
+                  -8.0,
+                  2.0
+                ]
+              },
+              "selectors": [
+                "f4"
+              ]
+            }
+          ],
+          "entryPositioning": {
+            "kind": "assembly",
+            "bbox": {
+              "min": [
+                -38.0,
+                -68.0,
+                -0.0
+              ],
+              "max": [
+                -6.0,
+                -8.0,
+                2.0
+              ]
+            },
+            "bboxFacts": {
+              "size": [
+                32.0,
+                60.0,
+                2.0
+              ],
+              "extentAxis": "y",
+              "center": [
+                -22.0,
+                -38.0,
+                1.0
+              ],
+              "diag": 68.0294054067798
+            },
+            "majorPlanes": [
+              {
+                "axis": "z",
+                "coordinate": 0.0,
+                "normalSign": -1,
+                "faceCount": 1,
+                "totalArea": 1788.048309,
+                "bbox": {
+                  "min": [
+                    -38.0,
+                    -68.0,
+                    -0.0
+                  ],
+                  "max": [
+                    -6.0,
+                    -8.0,
+                    0.0
+                  ]
+                },
+                "selectors": [
+                  "f5"
+                ]
+              },
+              {
+                "axis": "z",
+                "coordinate": 2.0,
+                "normalSign": 1,
+                "faceCount": 1,
+                "totalArea": 1788.048309,
+                "bbox": {
+                  "min": [
+                    -38.0,
+                    -68.0,
+                    2.0
+                  ],
+                  "max": [
+                    -6.0,
+                    -8.0,
+                    2.0
+                  ]
+                },
+                "selectors": [
+                  "f4"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "errors": []
+    },
+    "validity": {
+      "ok": true,
+      "entry": "Quiver/LiftX/MountV2/STEP/mount_pattern_gauge",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    },
+    "mesh_export": {
+      "ok": true,
+      "files": [
+        {
+          "format": "3mf",
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\3MF\\mount_pattern_gauge.3mf"
+        }
+      ]
+    }
+  },
+  "LiftX_Quiver_Assembly": {
+    "facts": {
+      "ok": true,
+      "tokens": [
+        {
+          "line": 1,
+          "token": "#",
+          "cadPath": "Quiver/LiftX/MountV2/STEP/LiftX_Quiver_Assembly",
+          "stepPath": "Quiver/LiftX/MountV2/STEP/LiftX_Quiver_Assembly.step",
+          "stepHash": "7e19b46b29831da860f99948c6e3478455ab308a933cdeab823c67daf67f55e9",
+          "summary": {
+            "kind": "assembly",
+            "occurrenceCount": 3,
+            "leafOccurrenceCount": 2,
+            "shapeCount": 2,
+            "faceCount": 333,
+            "edgeCount": 961,
+            "vertexCount": 0,
+            "bounds": {
+              "min": [
+                -63.0,
+                -43.0,
+                0.0
+              ],
+              "max": [
+                63.0,
+                30.0,
+                248.0
+              ]
+            }
+          },
+          "selections": [],
+          "warnings": [],
+          "entryFacts": {
+            "size": [
+              126.0,
+              73.0,
+              248.0
+            ],
+            "extentAxis": "z",
+            "center": [
+              0.0,
+              -6.5,
+              124.0
+            ],
+            "diag": 287.5917244984633,
+            "kind": "assembly"
+          },
+          "planes": [
+            {
+              "axis": "y",
+              "coordinate": 30.0,
+              "normalSign": 1,
+              "faceCount": 1,
+              "totalArea": 3546.262081,
+              "bbox": {
+                "min": [
+                  -38.0,
+                  30.0,
+                  68.0
+                ],
+                "max": [
+                  19.0,
+                  30.0,
+                  144.0
+                ]
+              },
+              "selectors": [
+                "o1.2.f11"
+              ]
+            },
+            {
+              "axis": "y",
+              "coordinate": 23.699999999999996,
+              "normalSign": 1,
+              "faceCount": 2,
+              "totalArea": 3171.10811,
+              "bbox": {
+                "min": [
+                  -13.261751,
+                  23.7,
+                  68.0
+                ],
+                "max": [
+                  13.261751,
+                  23.7,
+                  144.0
+                ]
+              },
+              "selectors": [
+                "o1.1.f152",
+                "o1.2.f28"
+              ]
+            },
+            {
+              "axis": "x",
+              "coordinate": 19.0,
+              "normalSign": 1,
+              "faceCount": 3,
+              "totalArea": 2717.0,
+              "bbox": {
+                "min": [
+                  19.0,
+                  -4.0,
+                  8.0
+                ],
+                "max": [
+                  19.0,
+                  30.0,
+                  147.0
+                ]
+              },
+              "selectors": [
+                "o1.1.f239",
+                "o1.2.f65",
+                "o1.2.f8"
+              ]
+            }
+          ],
+          "entryPositioning": {
+            "kind": "assembly",
+            "bbox": {
+              "min": [
+                -63.0,
+                -43.0,
+                0.0
+              ],
+              "max": [
+                63.0,
+                30.0,
+                248.0
+              ]
+            },
+            "bboxFacts": {
+              "size": [
+                126.0,
+                73.0,
+                248.0
+              ],
+              "extentAxis": "z",
+              "center": [
+                0.0,
+                -6.5,
+                124.0
+              ],
+              "diag": 287.5917244984633
+            },
+            "majorPlanes": [
+              {
+                "axis": "y",
+                "coordinate": 30.0,
+                "normalSign": 1,
+                "faceCount": 1,
+                "totalArea": 3546.262081,
+                "bbox": {
+                  "min": [
+                    -38.0,
+                    30.0,
+                    68.0
+                  ],
+                  "max": [
+                    19.0,
+                    30.0,
+                    144.0
+                  ]
+                },
+                "selectors": [
+                  "o1.2.f11"
+                ]
+              },
+              {
+                "axis": "y",
+                "coordinate": 23.699999999999996,
+                "normalSign": 1,
+                "faceCount": 2,
+                "totalArea": 3171.10811,
+                "bbox": {
+                  "min": [
+                    -13.261751,
+                    23.7,
+                    68.0
+                  ],
+                  "max": [
+                    13.261751,
+                    23.7,
+                    144.0
+                  ]
+                },
+                "selectors": [
+                  "o1.1.f152",
+                  "o1.2.f28"
+                ]
+              },
+              {
+                "axis": "x",
+                "coordinate": 19.0,
+                "normalSign": 1,
+                "faceCount": 3,
+                "totalArea": 2717.0,
+                "bbox": {
+                  "min": [
+                    19.0,
+                    -4.0,
+                    8.0
+                  ],
+                  "max": [
+                    19.0,
+                    30.0,
+                    147.0
+                  ]
+                },
+                "selectors": [
+                  "o1.1.f239",
+                  "o1.2.f65",
+                  "o1.2.f8"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "errors": []
+    },
+    "validity": {
+      "ok": true,
+      "entry": "Quiver/LiftX/MountV2/STEP/LiftX_Quiver_Assembly",
+      "occurrenceCount": 2,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  }
+}

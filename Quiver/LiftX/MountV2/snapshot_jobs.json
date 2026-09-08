@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/LiftX_Quiver_Assembly.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/MountV2/Images/assembly_hero.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/MountV2/Images/assembly_opposite.png", "camera": { "direction": [-1, 1, -0.8] } },
+        { "path": "Quiver/LiftX/MountV2/Images/assembly_top.png", "camera": "top" },
+        { "path": "Quiver/LiftX/MountV2/Images/assembly_side.png", "camera": "right" }
+      ],
+      "render": { "padding": 0.12, "sizeProfile": "diagnostic", "viewLabels": true }
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/quiver_chassis_petg.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/MountV2/Images/chassis_hero.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/MountV2/Images/chassis_under.png", "camera": { "direction": [-1, 1, -0.8] } }
+      ],
+      "render": { "padding": 0.12, "sizeProfile": "diagnostic", "viewLabels": true }
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/bow_dock_petg.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/MountV2/Images/dock_hero.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/MountV2/Images/dock_back.png", "camera": { "direction": [-1, 1, -0.8] } }
+      ],
+      "render": { "padding": 0.16, "sizeProfile": "diagnostic", "viewLabels": true }
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/mount_pattern_gauge.step",
+      "mode": "view",
+      "outputs": [ { "path": "Quiver/LiftX/MountV2/Images/gauge.png", "camera": "iso" } ],
+      "render": { "padding": 0.16, "sizeProfile": "diagnostic", "viewLabels": true }
+    }
+  ]
+}

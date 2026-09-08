@@ -1,0 +1,141 @@
+{
+  "ok": true,
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/LiftX_Quiver_Assembly.step",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\assembly_hero_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\assembly_opposite_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\assembly_top_20260908T204852Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\assembly_side_20260908T204852Z.png",
+          "camera": "right",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 12.799999997019768,
+        "renderMs": 726.6000000089407,
+        "meshCount": 2
+      },
+      "warnings": []
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/quiver_chassis_petg.step",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\chassis_hero_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\chassis_under_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 5.799999997019768,
+        "renderMs": 356.8999999910593,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/bow_dock_petg.step",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\dock_hero_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\dock_back_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 5,
+        "renderMs": 347.70000000298023,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "Quiver/LiftX/MountV2/STEP/mount_pattern_gauge.step",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\MountV2\\Images\\gauge_20260908T204852Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 5.299999997019768,
+        "renderMs": 184.29999999701977,
+        "meshCount": 1
+      },
+      "warnings": []
+    }
+  ],
+  "timings": {
+    "jobCount": 4,
+    "totalMs": 2837.0068999938667
+  }
+}
