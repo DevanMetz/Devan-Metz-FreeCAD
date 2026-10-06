@@ -1,0 +1,2285 @@
+{
+  "jobs": [
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\parts_tray.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\parts_tray_iso_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\parts_tray_opposite_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\parts_tray_top_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\parts_tray_front_20260930T001223Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cable_comb.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_comb_iso_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_comb_opposite_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_comb_top_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_comb_front_20260930T001012Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_foot.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_foot_iso_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_foot_opposite_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_foot_top_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_foot_front_20260930T001012Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_fit_coupon.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_fit_coupon_iso_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_fit_coupon_opposite_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_fit_coupon_top_20260930T001223Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_fit_coupon_front_20260930T001223Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\phone_stand.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\phone_stand_iso_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\phone_stand_opposite_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\phone_stand_top_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\phone_stand_front_20260930T001012Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\corner_square.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_square_iso_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_square_opposite_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_square_top_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_square_front_20260930T001012Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\handle_marking_jig.step.py",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\handle_marking_jig_iso_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\handle_marking_jig_opposite_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\handle_marking_jig_top_20260930T001012Z.png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\handle_marking_jig_front_20260930T001012Z.png"
+        }
+      ]
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\tube_squeezer.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_squeezer_iso_20260930T002514Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_squeezer_opposite_20260930T002514Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_squeezer_top_20260930T002514Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_squeezer_front_20260930T002514Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 14.099999904632568,
+        "renderMs": 587.9000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\soap_dish_tray.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_tray_iso_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_tray_opposite_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_tray_top_20260930T001900Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_tray_front_20260930T001900Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.799999952316284,
+        "renderMs": 649.3999998569489,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\soap_dish_insert.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_insert_iso_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_insert_opposite_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_insert_top_20260930T001900Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_insert_front_20260930T001900Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 9.100000143051147,
+        "renderMs": 648.4000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\label_stand.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\label_stand_iso_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\label_stand_opposite_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\label_stand_top_20260930T003528Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\label_stand_front_20260930T003528Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 14.599999904632568,
+        "renderMs": 670.9000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\paint_pyramid.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\paint_pyramid_iso_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\paint_pyramid_opposite_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\paint_pyramid_top_20260930T003528Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\paint_pyramid_front_20260930T003528Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 8.400000095367432,
+        "renderMs": 751,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cable_winder.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_winder_iso_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_winder_opposite_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_winder_top_20260930T003528Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_winder_front_20260930T003528Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 8.799999952316284,
+        "renderMs": 589.9000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\hex_bit_rack.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_rack_iso_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_rack_opposite_20260930T003528Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_rack_top_20260930T003528Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_rack_front_20260930T003528Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 9.800000190734863,
+        "renderMs": 774.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\hex_bit_fit_coupon.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_fit_coupon_iso_20260930T004245Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_fit_coupon_opposite_20260930T004245Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_fit_coupon_top_20260930T004245Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hex_bit_fit_coupon_front_20260930T004245Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 21.600000143051147,
+        "renderMs": 917.2999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sanding_block.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_block_iso_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_block_opposite_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_block_top_20260930T005110Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_block_front_20260930T005110Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 14.900000095367432,
+        "renderMs": 700.5999999046326,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sanding_wedge.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_wedge_iso_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_wedge_opposite_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_wedge_top_20260930T005110Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_wedge_front_20260930T005110Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.400000095367432,
+        "renderMs": 506.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cable_grommet.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_grommet_iso_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_grommet_opposite_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_grommet_top_20260930T005110Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cable_grommet_front_20260930T005110Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 9.5,
+        "renderMs": 711.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\radius_template.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\radius_template_iso_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\radius_template_opposite_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\radius_template_top_20260930T005110Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\radius_template_front_20260930T005110Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.799999952316284,
+        "renderMs": 628,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\center_finder.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\center_finder_iso_20260930T010132Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\center_finder_opposite_20260930T010132Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\center_finder_top_20260930T010132Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\center_finder_front_20260930T010132Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 15.200000047683716,
+        "renderMs": 659.6999998092651,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\brush_rest.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\brush_rest_iso_20260930T010132Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\brush_rest_opposite_20260930T010132Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\brush_rest_top_20260930T010132Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\brush_rest_front_20260930T010132Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 8.899999856948853,
+        "renderMs": 754.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\utility_peg.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\utility_peg_iso_20260930T010302Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\utility_peg_opposite_20260930T010302Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\utility_peg_top_20260930T010302Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\utility_peg_front_20260930T010302Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 15.899999856948853,
+        "renderMs": 747.1000001430511,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sliding_box.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_iso_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_opposite_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_top_20260930T011106Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_front_20260930T011106Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 18.700000047683716,
+        "renderMs": 890.2000000476837,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sliding_lid.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_lid_iso_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_lid_opposite_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_lid_top_20260930T011106Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_lid_front_20260930T011106Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 13.100000143051147,
+        "renderMs": 620.0999999046326,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sliding_fit_channel.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_channel_iso_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_channel_opposite_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_channel_top_20260930T011106Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_channel_front_20260930T011106Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 13.599999904632568,
+        "renderMs": 818.7000000476837,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sliding_fit_slider.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_slider_iso_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_slider_opposite_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_slider_top_20260930T011106Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_fit_slider_front_20260930T011106Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 9.099999904632568,
+        "renderMs": 630.0999999046326,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\round_stock_cradle.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\round_stock_cradle_iso_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\round_stock_cradle_opposite_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\round_stock_cradle_top_20260930T020904Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\round_stock_cradle_front_20260930T020904Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 21,
+        "renderMs": 1104.8999998569489,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\tie_anchor.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tie_anchor_iso_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tie_anchor_opposite_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tie_anchor_top_20260930T020904Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tie_anchor_front_20260930T020904Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.400000095367432,
+        "renderMs": 992,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\workshop_funnel.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_funnel_iso_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_funnel_opposite_20260930T020904Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_funnel_top_20260930T020904Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_funnel_front_20260930T020904Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.700000047683716,
+        "renderMs": 1063.3999998569489,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\fold_clip.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\fold_clip_iso_20260930T023047Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\fold_clip_opposite_20260930T023047Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\fold_clip_top_20260930T023047Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\fold_clip_front_20260930T023047Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 11.400000095367432,
+        "renderMs": 523.7000000476837,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cord_clip.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cord_clip_iso_20260930T023047Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cord_clip_opposite_20260930T023047Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cord_clip_top_20260930T023047Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\cord_clip_front_20260930T023047Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7,
+        "renderMs": 574.4000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\hand_knob.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hand_knob_iso_20260930T023857Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hand_knob_opposite_20260930T023857Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hand_knob_top_20260930T023857Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\hand_knob_front_20260930T023857Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.600000143051147,
+        "renderMs": 708.7000000476837,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\slotted_shim.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\slotted_shim_iso_20260930T023857Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\slotted_shim_opposite_20260930T023857Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\slotted_shim_top_20260930T023857Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\slotted_shim_front_20260930T023857Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.299999952316284,
+        "renderMs": 454.10000014305115,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\marking_saddle.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\marking_saddle_iso_20260930T024628Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\marking_saddle_opposite_20260930T024628Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\marking_saddle_top_20260930T024628Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\marking_saddle_front_20260930T024628Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 12.099999904632568,
+        "renderMs": 577.3000001907349,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\roll_adapter.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\roll_adapter_iso_20260930T024628Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\roll_adapter_opposite_20260930T024628Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\roll_adapter_top_20260930T024628Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\roll_adapter_front_20260930T024628Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.5,
+        "renderMs": 833.3000001907349,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\bookend.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\bookend_iso_20260930T025502Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\bookend_opposite_20260930T025502Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\bookend_top_20260930T025502Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\bookend_front_20260930T025502Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.300000190734863,
+        "renderMs": 432.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\corner_cable_guide.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_cable_guide_iso_20260930T025502Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_cable_guide_opposite_20260930T025502Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_cable_guide_top_20260930T025502Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\corner_cable_guide_front_20260930T025502Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.200000047683716,
+        "renderMs": 486.90000009536743,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\workshop_scoop.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_scoop_iso_20260930T030345Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_scoop_opposite_20260930T030345Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_scoop_top_20260930T030345Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\workshop_scoop_front_20260930T030345Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 12.200000047683716,
+        "renderMs": 522.2999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\plant_marker.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\plant_marker_iso_20260930T030345Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\plant_marker_opposite_20260930T030345Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\plant_marker_top_20260930T030345Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\plant_marker_front_20260930T030345Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.700000047683716,
+        "renderMs": 368.2999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\ruler_stop.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_iso_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_opposite_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_top_20260930T031538Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_front_20260930T031538Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 15.099999904632568,
+        "renderMs": 717.2999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\ruler_wedge.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_wedge_iso_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_wedge_opposite_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_wedge_top_20260930T031538Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_wedge_front_20260930T031538Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 9.5,
+        "renderMs": 583.5,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\tube_reducer.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_reducer_iso_20260930T032754Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_reducer_opposite_20260930T032754Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_reducer_top_20260930T032754Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\tube_reducer_front_20260930T032754Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.099999904632568,
+        "renderMs": 716.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\socket_fit_ring.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\socket_fit_ring_iso_20260930T032754Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\socket_fit_ring_opposite_20260930T032754Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\socket_fit_ring_top_20260930T032754Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\socket_fit_ring_front_20260930T032754Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 5.8999998569488525,
+        "renderMs": 426.7000000476837,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\strap_corner.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_corner_iso_20260930T033741Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_corner_opposite_20260930T033741Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_corner_top_20260930T033741Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_corner_front_20260930T033741Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 11.400000095367432,
+        "renderMs": 531.2999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sorting_sieve.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sorting_sieve_iso_20260930T035006Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sorting_sieve_opposite_20260930T035006Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sorting_sieve_top_20260930T035006Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sorting_sieve_front_20260930T035006Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 11.100000143051147,
+        "renderMs": 932.5,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sieve_aperture_coupon.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sieve_aperture_coupon_iso_20260930T035006Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sieve_aperture_coupon_opposite_20260930T035006Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sieve_aperture_coupon_top_20260930T035006Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sieve_aperture_coupon_front_20260930T035006Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 8,
+        "renderMs": 560.9000000953674,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_joint.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_iso_20261001T005829Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_opposite_20261001T005829Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_top_20261001T005829Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_front_20261001T005829Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 10.100000143051147,
+        "renderMs": 662.7999999523163,
+        "meshCount": 1
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\soap_dish_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_assembly_iso_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_assembly_opposite_20260930T001900Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_assembly_top_20260930T001900Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\soap_dish_assembly_front_20260930T001900Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.199999809265137,
+        "renderMs": 923.7999999523163,
+        "meshCount": 2
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sanding_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_assembly_iso_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_assembly_opposite_20260930T005110Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_assembly_top_20260930T005110Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sanding_assembly_front_20260930T005110Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 7.3999998569488525,
+        "renderMs": 779.9000000953674,
+        "meshCount": 3
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\sliding_box_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_assembly_iso_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_assembly_opposite_20260930T011106Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_assembly_top_20260930T011106Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\sliding_box_assembly_front_20260930T011106Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 14.099999904632568,
+        "renderMs": 842.5,
+        "meshCount": 2
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\ruler_stop_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_assembly_iso_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_assembly_opposite_20260930T031538Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_assembly_top_20260930T031538Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\ruler_stop_assembly_front_20260930T031538Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.099999904632568,
+        "renderMs": 444.5,
+        "meshCount": 3
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\strap_clamp_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_clamp_assembly_iso_20260930T033741Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_clamp_assembly_opposite_20260930T033741Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_clamp_assembly_top_20260930T033741Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\strap_clamp_assembly_front_20260930T033741Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.6000001430511475,
+        "renderMs": 681.6000001430511,
+        "meshCount": 6
+      },
+      "warnings": []
+    },
+    {
+      "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_joint_assembly.step.py",
+      "ok": true,
+      "mode": "view",
+      "displayMode": "solid",
+      "projection": "orthographic",
+      "outputs": [
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_iso_20261001T005829Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_opposite_20261001T005829Z.png",
+          "camera": "iso",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_top_20261001T005829Z.png",
+          "camera": "top",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        },
+        {
+          "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_front_20261001T005829Z.png",
+          "camera": "front",
+          "projection": "orthographic",
+          "width": 1600,
+          "height": 1200,
+          "mimeType": "image/png"
+        }
+      ],
+      "timings": {
+        "sceneBuildMs": 6.200000047683716,
+        "renderMs": 502.59999990463257,
+        "meshCount": 5
+      },
+      "warnings": []
+    }
+  ]
+}

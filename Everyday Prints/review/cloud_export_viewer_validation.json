@@ -1,0 +1,9 @@
+{
+  "model": "review/cloud_export_samples/parts_tray/parts_tray.step",
+  "live_review_verified": false,
+  "startup": "Bundled Python CAD Viewer server; the installed npm launcher is missing.",
+  "access_error": "Earlier local connection checks in this development run were denied in the sandbox or timed out; live access remains unverified.",
+  "fallback": "All 22 exported STEP samples and kit components passed CAD inspection and geometry validation, with matching STEP fingerprints. The fitted tray STEP snapshot was reviewed; canonical geometry is unchanged.",
+  "snapshot": "cloud_cad_export_step_20261002T163357Z.png",
+  "runtime_version": "5e7363a449938588"
+}

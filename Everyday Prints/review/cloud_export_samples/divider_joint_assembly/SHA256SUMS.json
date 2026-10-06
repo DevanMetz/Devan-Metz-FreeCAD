@@ -1,0 +1,21 @@
+{
+  "divider_joint_assembly.step": "de0d4f4d64164d22e837fd1ad84e79030d7a0917201388dbeb25439aa4d146a1",
+  "parts/divider_joint/divider_joint.step": "f2b8874e47c4e35e32be222e03cde5a421b7d1accc038f9b36d413e9e2e06481",
+  "parts/divider_joint/divider_joint.stl": "8aef68b436f36b32ba730e2d3f1e1d8fb304b15cbc5a5d8abd5f521298c1989b",
+  "parts/divider_joint/divider_joint.3mf": "06859093edadc9b85e4abdaad7598d4b102b2d4f37f9a78d081e6ef88e413ef7",
+  "parts/divider_joint/parameters.json": "9fb23d1f3090f10bc496107aa56167d100389de06af39d1daac983f0d6824803",
+  "sources/divider_joint.step.py": "cf279e9144b18360c8e427150fc3b86ced438c42d43840e82ab941d937c3f4fe",
+  "sources/divider_joint_assembly.step.py": "d000bea85f8a5e574e0fc1e89907157dc1ae44ecd5ccf0ca52c181454a955bb0",
+  "sources/divider_joint_common.py": "247a0dc299e0a9c5e5c7df1550b1160c5f446cc1a58a15f28cf5c45de456349b",
+  "sources/ruler_stop_common.py": "32f609a094234e22bf493814b8731b8d38f9755d59ec062e3535aecf157b582c",
+  "sources/sanding_common.py": "70a392bb6df826e189e4c1bffc00175ee781d82cd19c38edd0464ba1c4b073d6",
+  "sources/sliding_box_common.py": "0b69bdb1707aaa6bd3aa09db4e7629473f3ce87116298f6521c28323ef19cf15",
+  "sources/soap_dish_common.py": "4c5e8ac9e9628ad8df235bd4514470c5e99baa4ae8d79a59ff964edc780ac0a1",
+  "sources/strap_corner_common.py": "6f1819499b0ee63e6e42fa82fe3211dcfc3dfaad15e7e17f7b84ebf9f17edb92",
+  "LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+  "NOTICE": "9d6ce01bf089e69a912261a0e309895fe1b31e5b60bf2884f7f4e3febd00808a",
+  "rebuild.py": "52fd0f64c25ba6a0ab16e9a0465c2b8661a0ef9e43d28f1208f0edf741be20db",
+  "requirements.txt": "deb082a45c20743e3013f241ab8522fd637e4b58a00c24d4405cbcfc8955dfcc",
+  "parameters.json": "fe5a76c5fcf2b09c7ffae9c6c5cf4fb4283111d745d812a4a02460fc1fdf37a4",
+  "README.md": "08bdd7394afc498c4e62d3d0d50cb5293d78e3b0906395ef7e11033c5af4789d"
+}

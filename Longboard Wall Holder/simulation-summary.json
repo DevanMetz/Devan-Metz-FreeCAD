@@ -1,0 +1,22 @@
+{
+  "assumptions": {
+    "board_mass_kg": 12,
+    "shock_factor": 3,
+    "bracket_count": 2,
+    "load_per_bracket_N": 176.57999999999998,
+    "material": "printed PETG (isotropic approximation)",
+    "elastic_modulus_MPa": 3000.0,
+    "poisson_ratio": 0.35
+  },
+  "domain_mm": [
+    45.0,
+    90.0,
+    32.0
+  ],
+  "iterations": 22,
+  "material_fraction": 0.43917305705418047,
+  "estimated_mass_g": 72.28437180666168,
+  "stress_99pct_MPa": 1.1866296176118778,
+  "max_displacement_mm": 0.026116218786655807,
+  "note": "Concept-stage 2-D linear-static FEA; validate print orientation, fasteners, wall substrate, and real material before use."
+}

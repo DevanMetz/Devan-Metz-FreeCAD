@@ -1,0 +1,17 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "feedback_preserves_form_and_download_gates",
+    "changed_and_returned_edits_suppress_old_feedback",
+    "revert_reset_and_import_cancel_sharing_feedback",
+    "rapid_copies_write_only_latest_queued_link",
+    "queued_copy_survives_old_writer_denial",
+    "slow_copy_offers_current_url_without_blocking",
+    "model_switch_keeps_latest_requested_clipboard",
+    "copy_during_build_preserves_progress_and_stop",
+    "invalid_drafts_and_missing_clipboard_recover",
+    "mobile_keyboard_copy_and_denial_fallback"
+  ],
+  "failures": [],
+  "transport": "compiled assets with controlled clipboard writes and real CAD fixtures"
+}

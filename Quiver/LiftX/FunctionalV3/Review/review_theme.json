@@ -1,0 +1,14 @@
+{
+  "projection":"orthographic",
+  "materials":{"metalness":0,"roughness":0.8,"contrast":1,"saturation":1,"brightness":1,"emissiveIntensity":0.02},
+  "background":{"type":"solid","solidColor":"#EFF2F3"},
+  "floor":{"enabled":false,"shadowOpacity":0,"grid":{"enabled":false,"opacity":0},"axis":{"enabled":false,"opacity":0}},
+  "environment":{"enabled":false},
+  "lighting":{
+    "toneMappingExposure":1.25,
+    "ambient":{"enabled":true,"color":"#FFFFFF","intensity":2.4},
+    "hemisphere":{"enabled":true,"skyColor":"#FFFFFF","groundColor":"#B3BBC0","intensity":1.8},
+    "directional":{"enabled":true,"color":"#FFFFFF","intensity":2.2,"position":{"x":-210,"y":260,"z":270}},
+    "fill":{"enabled":true,"color":"#FFFFFF","intensity":1.2,"position":{"x":200,"y":100,"z":-250}}
+  }
+}

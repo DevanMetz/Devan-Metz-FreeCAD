@@ -1,0 +1,50 @@
+[
+  {
+    "target": "preview",
+    "content_type": "text/plain; filetype=\"model/stl\"",
+    "message": "Receiving your preview file\u2026",
+    "stats": {
+      "target": "preview",
+      "mode": "pending",
+      "pulls": 2,
+      "cancelled": 0
+    },
+    "waiting": true
+  },
+  {
+    "target": "preview",
+    "content_type": "MoDeL/StL; name=\"preview.stl\"",
+    "message": "The CAD service returned an unreadable preview. Update the preview to try again.",
+    "stats": {
+      "target": "preview",
+      "mode": "chunks",
+      "pulls": 0,
+      "cancelled": 1
+    },
+    "waiting": false
+  },
+  {
+    "target": "cad",
+    "content_type": "text/plain; filetype=\"application/zip\"",
+    "message": "Receiving your CAD download\u2026",
+    "stats": {
+      "target": "cad",
+      "mode": "pending",
+      "pulls": 2,
+      "cancelled": 0
+    },
+    "waiting": true
+  },
+  {
+    "target": "cad",
+    "content_type": "Application/Zip; name=\"download.zip\"",
+    "message": "The CAD service returned an unreadable download. Try again.",
+    "stats": {
+      "target": "cad",
+      "mode": "chunks",
+      "pulls": 0,
+      "cancelled": 1
+    },
+    "waiting": false
+  }
+]

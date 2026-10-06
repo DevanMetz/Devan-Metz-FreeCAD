@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/strap_clamp_assembly/parts/strap_corner/strap_corner",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "a7ea893dbad094f0763d06e8b1ee6fde20ea97c2bc2032c6f7b970b9c68e3cd6"
+}

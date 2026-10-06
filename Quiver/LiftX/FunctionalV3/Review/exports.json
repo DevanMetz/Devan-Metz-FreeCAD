@@ -1,0 +1,145 @@
+[
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\lower_frame.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\lower_frame.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\upper_hood.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\upper_hood.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\provisional_dock.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\provisional_dock.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\axis_sizing_coupon.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\axis_sizing_coupon.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_600.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_600.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_500.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_500.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_400.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_400.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_340.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_340.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_300.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_300.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_260.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_260.3mf"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "files": [
+      {
+        "format": "stl",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\STL\\gripper_axis_200.stl"
+      },
+      {
+        "format": "3mf",
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\3MF\\gripper_axis_200.3mf"
+      }
+    ]
+  }
+]

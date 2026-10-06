@@ -1,0 +1,72 @@
+{
+  "axis_sizing_coupon.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 11355.974069845797
+  },
+  "gripper_axis_200.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14630.668266282975
+  },
+  "gripper_axis_260.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14710.507741596153
+  },
+  "gripper_axis_300.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14776.317146356825
+  },
+  "gripper_axis_340.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14880.241768523221
+  },
+  "gripper_axis_400.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14918.778025555086
+  },
+  "gripper_axis_500.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 14995.136852728374
+  },
+  "gripper_axis_600.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 15058.041396201941
+  },
+  "LiftX_LH_Assembly.step": {
+    "valid": true,
+    "solids": 9,
+    "volume_mm3": 434877.1134759269
+  },
+  "LiftX_LH_Loaded_Clearance_Reference.step": {
+    "valid": true,
+    "solids": 14,
+    "volume_mm3": 823994.447509466
+  },
+  "lower_frame.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 88006.96344398266
+  },
+  "provisional_dock.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 40288.117341920195
+  },
+  "REFERENCE_hood_section_DO_NOT_PRINT.step": {
+    "valid": true,
+    "solids": 3,
+    "volume_mm3": 169449.08070699827
+  },
+  "upper_hood.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 194903.29851960082
+  }
+}

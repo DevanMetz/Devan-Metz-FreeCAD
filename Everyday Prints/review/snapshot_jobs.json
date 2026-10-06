@@ -1,0 +1,70 @@
+[
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_joint.step.py",
+    "mode": "view",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_iso.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_opposite.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_top.png",
+        "camera": "top"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_front.png",
+        "camera": "front"
+      }
+    ],
+    "render": {
+      "width": 1000,
+      "height": 750,
+      "viewLabels": true,
+      "padding": 0.13
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\divider_joint_assembly.step.py",
+    "mode": "view",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_iso.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_opposite.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_top.png",
+        "camera": "top"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\review\\divider_joint_assembly_front.png",
+        "camera": "front"
+      }
+    ],
+    "render": {
+      "width": 1000,
+      "height": 750,
+      "viewLabels": true,
+      "padding": 0.13
+    }
+  }
+]

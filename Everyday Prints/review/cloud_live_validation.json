@@ -1,0 +1,86 @@
+{
+  "endpoint": "https://everyday-prints.metzdevan.workers.dev",
+  "health": {
+    "ok": true,
+    "version": "f9e110b161858a8e",
+    "models": 53
+  },
+  "geometry_checks": [
+    {
+      "model": "parts_tray",
+      "parameters": {
+        "columns": 4,
+        "floor": 2,
+        "height": 30,
+        "length": 180,
+        "outer_radius": 4.4,
+        "pocket_radius": 2,
+        "rows": 3,
+        "wall": 2.4,
+        "width": 100
+      },
+      "bounds_mm": [
+        180,
+        100.00000000000452,
+        30
+      ],
+      "mesh_sha256": "1780d03e9e5f632a061b14e247b67ac8dbf05467cab55c9f8b1ed469f50c76ba",
+      "mesh_bytes": 665484,
+      "triangles": 13308,
+      "seconds": 23.14
+    },
+    {
+      "model": "cable_comb",
+      "parameters": {
+        "cable_diameters": [
+          2,
+          3,
+          5,
+          9
+        ],
+        "clearance": 0.6,
+        "depth": 32,
+        "mounting_hole": 4.5,
+        "slot_depth": 18,
+        "thickness": 4,
+        "web": 5
+      },
+      "bounds_mm": [
+        46.4,
+        32.00000000000068,
+        4
+      ],
+      "mesh_sha256": "c91333729269a2d97cfa4cbbf78dac1eb95375101f795b6a2dccb18724d16723",
+      "mesh_bytes": 255484,
+      "triangles": 5108,
+      "seconds": 10.41
+    },
+    {
+      "model": "divider_joint",
+      "parameters": {
+        "board_thickness": 3,
+        "clearance": 0.4,
+        "floor": 2.4,
+        "height": 18,
+        "insertion_depth": 16,
+        "lead_in": 0.6,
+        "ports": [
+          0,
+          90,
+          180
+        ],
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        40.200000200000005,
+        24.200000100000064,
+        18.0000001
+      ],
+      "mesh_sha256": "c2172e9b7a5aa641254773ef5d2397cf3e472753bb80e385d21db4d9128b3e92",
+      "mesh_bytes": 80684,
+      "triangles": 1612,
+      "seconds": 11.72
+    }
+  ],
+  "rejected_inputs": 5
+}

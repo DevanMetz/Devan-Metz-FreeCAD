@@ -10,6 +10,71 @@
 
 ## 📦 Models
 
+### Everyday Prints
+
+Forty-seven original parametric print files: a divided parts tray,
+desk-edge cable comb, drawer-divider foot and fit coupon, phone stand, corner
+square, handle marking jig, tube squeezer, two-piece draining soap dish,
+leaning label stand, finishing pyramid, cord winder, and hex-bit rack with a
+matching fit coupon, sanding block with wedges, desk cable grommet, and
+corner-radius template, center-finding jig, brush rest, utility peg, and
+sliding-lid parts box with matching fit samples, round-stock cradle,
+cable-tie anchor, workshop funnel, folded-bag clip, cord clip, hex-nut hand knob,
+slotted spacing shim, 90°/45° marking saddle, roll-core adapter, braced bookend,
+corner cable guide, small-parts scoop, plant marker, and adjustable ruler stop
+with a matching wedge, smooth-tube reducer, socket fit ring, and strap-clamp
+corner pad with a four-pad assembly reference, and a sorting sieve with an
+aperture coupon, plus a modular cross/T/corner/straight drawer-divider joint
+and its board-fit reference assembly.
+Includes editable build123d Python source,
+STEP, STL, geometry-only 3MF, and geometry/mesh validation reports.
+
+[Browse the designs and printing instructions](Everyday%20Prints/README.md).
+[Visual model index](Everyday%20Prints/index.html) · [Image index for GitHub](Everyday%20Prints/INDEX.md).
+[Customize and download in your browser](https://everyday-prints.metzdevan.workers.dev) · [Cloudflare app source](Everyday%20Prints/cloud/README.md).
+Physical print testing is pending.
+
+Use the standalone [PrintCAD Brief](CAD%20Print%20Planner/index.html) to plan
+dimensions, fit coupons, corner treatments, and physical print revisions before
+starting a model.
+
+### Bathroom Corner Shelf
+
+<p align="center">
+  <img src="images/bathroom-corner-shelf.png" alt="Three-tier bathroom corner shelf preview" width="420" />
+</p>
+
+A three-tier countertop organizer built around one 8 x 300 mm carbon-fiber
+rod. Each quarter-circle tray reaches 185 mm along both walls and includes
+drain holes, retaining lips, constant-thickness chamfered front corners, and a
+rounded rear corner for caulk or grout clearance.
+
+| | |
+|---|---|
+| **Source file** | [`Bathroom Corner Shelf.FCStd`](Bathroom%20Corner%20Shelf/Bathroom%20Corner%20Shelf.FCStd) |
+| **Build script** | [`make_corner_shelf.py`](Bathroom%20Corner%20Shelf/make_corner_shelf.py) |
+| **Print-ready** | [`shelf.stl`](Bathroom%20Corner%20Shelf/shelf.stl) · [`spacer.stl`](Bathroom%20Corner%20Shelf/spacer.stl) · [`top_cap.stl`](Bathroom%20Corner%20Shelf/top_cap.stl) |
+| **Instructions** | [Printing and assembly](Bathroom%20Corner%20Shelf/README.md) |
+
+#### Dimensions
+
+| Dimension | Value |
+|---|---:|
+| Shelf wall length | 185 mm |
+| Tier spacing | 140 mm |
+| Shelf plate / retaining wall | 4 mm / 3 mm |
+| Retaining lip height | 14 mm |
+| Rod | 8 x 300 mm |
+| Rod hole diameter | 8.1 mm |
+
+#### Print and Assembly
+
+- Print three shelves, four spacers, and one top cap.
+- PETG, four walls, and 20% infill are recommended for normal bathroom items.
+- Slide the parts onto the rod in the order shown in the [assembly instructions](Bathroom%20Corner%20Shelf/README.md).
+
+---
+
 ### 🥤 Fridge Cup
 
 <p align="center">
@@ -64,7 +129,7 @@ Open the `VarSet` in the FreeCAD model tree to edit any of these — the geometr
 
 ## 🖨️ 3D Printing
 
-`.3mf` files are ready to slice in [PrusaSlicer](https://www.prusa3d.com/page/prusaslicer_424/), [Bambu Studio](https://bambulab.com/en/download/studio), [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer), or [Cura](https://ultimaker.com/software/ultimaker-cura/).
+`.3mf` and `.stl` files are ready to slice in [PrusaSlicer](https://www.prusa3d.com/page/prusaslicer_424/), [Bambu Studio](https://bambulab.com/en/download/studio), [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer), or [Cura](https://ultimaker.com/software/ultimaker-cura/).
 
 ---
 

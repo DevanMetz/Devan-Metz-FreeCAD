@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "scalar_revert_reuses_verified_files",
+    "invalid_list_revert_preserves_order",
+    "reset_keeps_original_and_revert_restores_custom",
+    "pending_export_disables_revert_until_stopped",
+    "stopped_preview_reverts_and_rejects_late_mesh",
+    "missing_preview_keeps_revert_hidden",
+    "history_and_shared_url_follow_reverted_parameters",
+    "assembly_revert_reuses_kit_and_shared_dimensions",
+    "mobile_keyboard_revert_restores_focus"
+  ],
+  "failures": [],
+  "fixtures_sha256": {
+    "parts_tray": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+    "cable_comb": "52312bcd6a79e5ebc408beb0b5f4d7709274e87a93e603281c51fa3f06a66e5b",
+    "soap_dish_assembly": "37b8b5e05c8ac15ec4f8de114fc1287a4e4694aaf8b55ae4b6364c4eeb042056"
+  },
+  "transport": "compiled assets and real CAD fixtures with controlled delayed transfers"
+}

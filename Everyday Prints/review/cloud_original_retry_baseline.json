@@ -1,0 +1,22 @@
+{
+  "retry_buttons": 0,
+  "body_cancelled": 0,
+  "body_locked": false,
+  "recovery_jobs": [
+    {
+      "model": "parts_tray",
+      "parameters": {
+        "length": 180.5,
+        "width": 100,
+        "height": 24,
+        "columns": 3,
+        "rows": 2,
+        "wall": 2.4,
+        "floor": 2,
+        "outer_radius": 4.4,
+        "pocket_radius": 2
+      }
+    }
+  ],
+  "draft": "180.5"
+}

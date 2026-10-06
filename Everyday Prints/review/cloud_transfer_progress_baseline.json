@@ -1,0 +1,9 @@
+{
+  "preview_receiving": "Building your CAD model\u2026 This can take a little longer after the service has been idle.",
+  "preview_receiving_after_16_seconds": "Still building. The CAD service may be starting; your request is running.",
+  "cad_receiving": {
+    "message": "Building the CAD download with your preview dimensions\u2026",
+    "button": "Building CAD files\u2026"
+  },
+  "cad_receiving_after_16_seconds": "Still building your CAD files. The service may be starting."
+}

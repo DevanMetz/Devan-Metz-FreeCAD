@@ -1,0 +1,14 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "unavailable_deep_link_explains_and_replaces_the_route",
+    "empty_malformed_and_long_identifiers_use_the_same_recovery",
+    "replacement_model_uses_normal_filtered_library_history",
+    "failed_catalog_waits_for_validation_and_keeps_search_focus",
+    "valid_custom_links_and_plain_library_keep_their_routes",
+    "old_unavailable_history_entry_discards_a_late_build",
+    "mobile_notice_and_keyboard_replacement_fit_the_viewport"
+  ],
+  "failures": [],
+  "transport": "compiled assets, browser history and real STL fixtures"
+}

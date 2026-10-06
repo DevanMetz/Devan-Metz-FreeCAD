@@ -1,0 +1,437 @@
+{
+  "ok": true,
+  "tokens": [
+    {
+      "line": 1,
+      "token": "#",
+      "cadPath": "review/cloud_export_samples/ruler_stop_assembly/parts/ruler_stop/ruler_stop",
+      "stepPath": "review/cloud_export_samples/ruler_stop_assembly/parts/ruler_stop/ruler_stop.step",
+      "stepHash": "ad8182a81e98e20a2dde8cfcdfb65dcbb681df0653ca88a9ab8e75e920b0e755",
+      "summary": {
+        "kind": "assembly",
+        "occurrenceCount": 1,
+        "leafOccurrenceCount": 1,
+        "shapeCount": 1,
+        "faceCount": 14,
+        "edgeCount": 36,
+        "vertexCount": 0,
+        "bounds": {
+          "min": [
+            -14.2,
+            0.0,
+            0.0
+          ],
+          "max": [
+            14.2,
+            10.2,
+            24.0
+          ]
+        }
+      },
+      "selections": [],
+      "warnings": [],
+      "entryFacts": {
+        "size": [
+          28.4,
+          10.2,
+          24.0
+        ],
+        "extentAxis": "x",
+        "center": [
+          0.0,
+          5.1,
+          12.0
+        ],
+        "diag": 38.55645211893854,
+        "kind": "assembly"
+      },
+      "planes": [
+        {
+          "axis": "y",
+          "coordinate": 0.0,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 609.6,
+          "bbox": {
+            "min": [
+              -12.7,
+              0.0,
+              0.0
+            ],
+            "max": [
+              12.7,
+              0.0,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f4"
+          ]
+        },
+        {
+          "axis": "y",
+          "coordinate": 10.2,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 609.6,
+          "bbox": {
+            "min": [
+              -12.7,
+              10.2,
+              0.0
+            ],
+            "max": [
+              12.7,
+              10.2,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f5"
+          ]
+        },
+        {
+          "axis": "y",
+          "coordinate": 3.0000000000000004,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 489.6,
+          "bbox": {
+            "min": [
+              -10.2,
+              3.0,
+              0.0
+            ],
+            "max": [
+              10.2,
+              3.0,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f9"
+          ]
+        },
+        {
+          "axis": "y",
+          "coordinate": 6.2,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 489.6,
+          "bbox": {
+            "min": [
+              -10.2,
+              6.2,
+              0.0
+            ],
+            "max": [
+              10.2,
+              6.2,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f11"
+          ]
+        },
+        {
+          "axis": "z",
+          "coordinate": 0.0,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 222.457234,
+          "bbox": {
+            "min": [
+              -14.2,
+              0.0,
+              0.0
+            ],
+            "max": [
+              14.2,
+              10.2,
+              0.0
+            ]
+          },
+          "selectors": [
+            "f13"
+          ]
+        },
+        {
+          "axis": "z",
+          "coordinate": 24.0,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 222.457234,
+          "bbox": {
+            "min": [
+              -14.2,
+              0.0,
+              24.0
+            ],
+            "max": [
+              14.2,
+              10.2,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f14"
+          ]
+        },
+        {
+          "axis": "x",
+          "coordinate": -14.199999999999998,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 172.799999,
+          "bbox": {
+            "min": [
+              -14.2,
+              1.5,
+              0.0
+            ],
+            "max": [
+              -14.2,
+              8.7,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f1"
+          ]
+        },
+        {
+          "axis": "x",
+          "coordinate": 14.199999999999998,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 172.799999,
+          "bbox": {
+            "min": [
+              14.2,
+              1.5,
+              0.0
+            ],
+            "max": [
+              14.2,
+              8.7,
+              24.0
+            ]
+          },
+          "selectors": [
+            "f8"
+          ]
+        }
+      ],
+      "entryPositioning": {
+        "kind": "assembly",
+        "bbox": {
+          "min": [
+            -14.2,
+            0.0,
+            0.0
+          ],
+          "max": [
+            14.2,
+            10.2,
+            24.0
+          ]
+        },
+        "bboxFacts": {
+          "size": [
+            28.4,
+            10.2,
+            24.0
+          ],
+          "extentAxis": "x",
+          "center": [
+            0.0,
+            5.1,
+            12.0
+          ],
+          "diag": 38.55645211893854
+        },
+        "majorPlanes": [
+          {
+            "axis": "y",
+            "coordinate": 0.0,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 609.6,
+            "bbox": {
+              "min": [
+                -12.7,
+                0.0,
+                0.0
+              ],
+              "max": [
+                12.7,
+                0.0,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f4"
+            ]
+          },
+          {
+            "axis": "y",
+            "coordinate": 10.2,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 609.6,
+            "bbox": {
+              "min": [
+                -12.7,
+                10.2,
+                0.0
+              ],
+              "max": [
+                12.7,
+                10.2,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f5"
+            ]
+          },
+          {
+            "axis": "y",
+            "coordinate": 3.0000000000000004,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 489.6,
+            "bbox": {
+              "min": [
+                -10.2,
+                3.0,
+                0.0
+              ],
+              "max": [
+                10.2,
+                3.0,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f9"
+            ]
+          },
+          {
+            "axis": "y",
+            "coordinate": 6.2,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 489.6,
+            "bbox": {
+              "min": [
+                -10.2,
+                6.2,
+                0.0
+              ],
+              "max": [
+                10.2,
+                6.2,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f11"
+            ]
+          },
+          {
+            "axis": "z",
+            "coordinate": 0.0,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 222.457234,
+            "bbox": {
+              "min": [
+                -14.2,
+                0.0,
+                0.0
+              ],
+              "max": [
+                14.2,
+                10.2,
+                0.0
+              ]
+            },
+            "selectors": [
+              "f13"
+            ]
+          },
+          {
+            "axis": "z",
+            "coordinate": 24.0,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 222.457234,
+            "bbox": {
+              "min": [
+                -14.2,
+                0.0,
+                24.0
+              ],
+              "max": [
+                14.2,
+                10.2,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f14"
+            ]
+          },
+          {
+            "axis": "x",
+            "coordinate": -14.199999999999998,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 172.799999,
+            "bbox": {
+              "min": [
+                -14.2,
+                1.5,
+                0.0
+              ],
+              "max": [
+                -14.2,
+                8.7,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f1"
+            ]
+          },
+          {
+            "axis": "x",
+            "coordinate": 14.199999999999998,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 172.799999,
+            "bbox": {
+              "min": [
+                14.2,
+                1.5,
+                0.0
+              ],
+              "max": [
+                14.2,
+                8.7,
+                24.0
+              ]
+            },
+            "selectors": [
+              "f8"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "verified_step_sha256": "ad8182a81e98e20a2dde8cfcdfb65dcbb681df0653ca88a9ab8e75e920b0e755"
+}

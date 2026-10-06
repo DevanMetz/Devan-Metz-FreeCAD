@@ -1,0 +1,15 @@
+{
+  "input": "Quiver/LiftX/Review/LiftX_Quiver_Baseline.step",
+  "mode": "view",
+  "outputs": [
+    { "path": "Quiver/LiftX/Review/baseline_iso.png", "camera": "iso" },
+    { "path": "Quiver/LiftX/Review/baseline_iso_opposite.png", "camera": { "direction": [-1, 1, -0.8] } },
+    { "path": "Quiver/LiftX/Review/baseline_top.png", "camera": "top" },
+    { "path": "Quiver/LiftX/Review/baseline_front.png", "camera": "front" }
+  ],
+  "render": {
+    "viewLabels": true,
+    "padding": 0.12,
+    "sizeProfile": "diagnostic"
+  }
+}

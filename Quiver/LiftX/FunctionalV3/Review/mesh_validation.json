@@ -1,0 +1,233 @@
+{
+  "lower_frame": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 88006.5034914383,
+    "bounds_mm": [
+      108.0,
+      84.60511779785145,
+      227.9999999
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 338.9399781909553,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      108.0,
+      84.6051178,
+      228.0
+    ],
+    "stl_sha256": "a0b595878c8a48b56b06bf12581d61c56aefb351d3cf956e55fd1516bff03776",
+    "step_sha256": "c2d549544334e7df185d768da815f65fc37204e024ed1ceafa87d5707f49e762"
+  },
+  "upper_hood": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 194705.70306022142,
+    "bounds_mm": [
+      143.98259948659688,
+      102.10511769785157,
+      165.99999989999998
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 63.74478296875593,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      143.9825942,
+      102.10511780000002,
+      166.0
+    ],
+    "stl_sha256": "5447643c4020db19df26d8d2648ee95ba390ce4d72c95ba4ed0b4353ebf16bd9",
+    "step_sha256": "6ef88e301493e0317f0c23b22ad3beee912e2b9f0e600d127516e0150bbcf914"
+  },
+  "provisional_dock": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 40288.55009915151,
+    "bounds_mm": [
+      57.0,
+      80.0,
+      24.600000381469727
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 992.0000010076557,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      57.0,
+      80.00000000000001,
+      24.6
+    ],
+    "stl_sha256": "cbaca467373f57b0a0163ac463e7fdd19be3b20d7aa9e8302e181472a399cfb2",
+    "step_sha256": "6375943bc5f68469ac9a81df9aab1df04cdd034f15231fdc6ab4de09c97b2118"
+  },
+  "axis_sizing_coupon": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 11349.540465505752,
+    "bounds_mm": [
+      119.0,
+      16.681175231933594,
+      9.0
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 0.0,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      119.0,
+      16.68117543,
+      9.0
+    ],
+    "stl_sha256": "019fd5e5d0638f6bcf0fbdfb581bad96e423aa6177ea453c8647f3126be7fc43",
+    "step_sha256": "3730a64d2778cd135814c1a54bd73f6980e4a1c37072e87001e668d6891ca6aa"
+  },
+  "gripper_axis_600": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 15050.161360488264,
+    "bounds_mm": [
+      103.99775327509269,
+      53.82769012451172,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.99774960000002,
+      53.8276889,
+      12.700000000000006
+    ],
+    "stl_sha256": "ce2db3d8fc338681e4eff76a39e08f94e0b176a664f08c79feed9a159376236d",
+    "step_sha256": "2dc3eeebd4ae04b76d8710a8dc958553bf8d58039538104fe0e6f136a65c0f76"
+  },
+  "gripper_axis_500": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14987.403744733143,
+    "bounds_mm": [
+      103.99847296316875,
+      53.81640625,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.9984718,
+      53.8164078,
+      12.700000000000006
+    ],
+    "stl_sha256": "6e8587820f079dc58170e6cf94a56654fd8776d6b08445a30a5fa0fc05098b9b",
+    "step_sha256": "7e39919f91349cc01e21f6380e1241c4ced6f6cd34da92b6f9fe441682e1cd5d"
+  },
+  "gripper_axis_400": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14911.14732181612,
+    "bounds_mm": [
+      103.9991581387003,
+      53.802555084228516,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.9991556,
+      53.8025566,
+      12.700000000000006
+    ],
+    "stl_sha256": "c7ef30b9d42233b7b1ae1494d67edb5627718097b0838714bcd3d31aebdb6474",
+    "step_sha256": "649c3c42799eb3fb0d6c01de6339ce3cf93a5f6130ac47982e3b5baae719cffd"
+  },
+  "gripper_axis_340": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14872.698668124744,
+    "bounds_mm": [
+      103.99942118916078,
+      53.795501708984375,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.9994222,
+      53.795502,
+      12.700000000000006
+    ],
+    "stl_sha256": "fc2089b36f9f357ea1895510888d57f7931cdba6dce7164de29ba8fb7cd9ca57",
+    "step_sha256": "1d65e2c67b354eca505ee4728be961f85ba0ffe2fc67c2281d7fa10e2998aebd"
+  },
+  "gripper_axis_300": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14769.00965864223,
+    "bounds_mm": [
+      103.99989020278736,
+      53.776268005371094,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.99988719999999,
+      53.7762671,
+      12.700000000000006
+    ],
+    "stl_sha256": "cb6cdf42746d9e6e75c6bb0141e3fb0cadc94121f158b3b7f64d956239a46413",
+    "step_sha256": "ac2739b3a1f8ecb572acdf1ba9bdd4b48f10f042c138fae52509e0af1b34e097"
+  },
+  "gripper_axis_260": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14703.34946264509,
+    "bounds_mm": [
+      103.99999754292139,
+      53.76393127441406,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.99999500000001,
+      53.7639316,
+      12.700000000000006
+    ],
+    "stl_sha256": "67d6424857cb49c3cf881f907762ac217c9fa975bf9d0ecdaa9291230c5e1017",
+    "step_sha256": "459a38736f20a7b59a067486de10b302372125488f9c13060cfb88499b0f2a03"
+  },
+  "gripper_axis_200": {
+    "watertight": true,
+    "winding_consistent": true,
+    "bodies": 1,
+    "volume_mm3": 14623.690058503867,
+    "bounds_mm": [
+      103.9999383952927,
+      53.748809814453125,
+      12.699999809265137
+    ],
+    "fits_256_with_3mm_margin": true,
+    "downward_area_steeper_than_45deg_excluding_bed_mm2": 8.644685318769312,
+    "3mf_watertight": true,
+    "3mf_bounds_mm": [
+      103.9999378,
+      53.7488086,
+      12.700000000000006
+    ],
+    "stl_sha256": "c1aa4daa1d3883534e9c416b097b161375fc1d5f5968150bea13ab2712faa6ba",
+    "step_sha256": "40e9d1c5a4fc4e20339d7d08a9e9e7a54af729dbc98d7f57299785b51046660e"
+  }
+}

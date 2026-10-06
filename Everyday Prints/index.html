@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Everyday Prints — visual index</title>
+  <style>
+    :root { color-scheme: light; --ink:#172f36; --muted:#52676d; --line:#cfdcde; --paper:#f1f5f5; --teal:#006c73; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); line-height:1.5; }
+    a { color:var(--teal); text-underline-offset:.18em; }
+    a:hover { color:#003f45; }
+    button,input,select { font:inherit; }
+    :focus-visible { outline:3px solid #bf7900; outline-offset:3px; }
+    header,main,footer,.controls-inner { width:min(1480px,calc(100% - 48px)); margin:auto; }
+    header { padding:42px 0 26px; }
+    .eyebrow { color:var(--teal); font-size:.78rem; font-weight:750; letter-spacing:.13em; text-transform:uppercase; margin:0 0 8px; }
+    h1 { font-size:clamp(2.2rem,5vw,4rem); letter-spacing:-.055em; line-height:1.08; margin:0 0 14px; }
+    .intro { color:var(--muted); margin:0; max-width:780px; }
+    .header-links { display:flex; flex-wrap:wrap; gap:12px 22px; margin-top:18px; font-size:.94rem; }
+    .controls { position:sticky; top:0; z-index:2; background:#f1f5f5f5; border-block:1px solid var(--line); backdrop-filter:blur(8px); }
+    .controls-inner { padding:16px 0; display:grid; grid-template-columns:minmax(200px,1fr) minmax(170px,290px) auto; gap:12px; align-items:end; }
+    label { display:block; color:var(--muted); font-size:.8rem; font-weight:650; margin-bottom:5px; }
+    input,select { width:100%; min-height:44px; border:1px solid #9eb6bc; border-radius:8px; padding:9px 12px; background:white; color:var(--ink); }
+    .types { display:flex; gap:5px; flex-wrap:wrap; }
+    .types button,.reset { cursor:pointer; border:1px solid #9eb6bc; border-radius:8px; padding:10px 13px; background:white; color:var(--ink); min-height:44px; }
+    .types button[aria-pressed="true"] { background:var(--ink); border-color:var(--ink); color:white; }
+    .types button:hover { border-color:var(--teal); }
+    .results { display:flex; justify-content:space-between; gap:16px; margin:22px 0 15px; color:var(--muted); font-size:.9rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:20px; }
+    .card { background:white; border:1px solid var(--line); border-radius:12px; overflow:hidden; align-self:start; scroll-margin-top:160px; }
+    .card:target { outline:3px solid #bf7900; outline-offset:3px; }
+    .thumbnail { display:block; background:#edf3f5; overflow:hidden; }
+    .thumbnail img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; transition:transform .18s ease; }
+    .thumbnail:hover img { transform:scale(1.025); }
+    .content { padding:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:7px; align-items:center; margin-bottom:9px; }
+    .badge { background:#e2f1ef; color:#075c62; border-radius:5px; padding:3px 7px; font-size:.7rem; font-weight:750; letter-spacing:.02em; }
+    .badge.reference { background:#fff0da; color:#775100; }
+    .number { font-size:.75rem; color:var(--muted); }
+    h2 { font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin:0 0 8px; }
+    h2 a { color:var(--ink); text-decoration:none; }
+    h2 a:hover { text-decoration:underline; }
+    .spec { color:var(--muted); font-size:.86rem; margin:0 0 10px; min-height:3em; }
+    .category { color:var(--muted); font-size:.72rem; margin:0 0 14px; }
+    .files { display:flex; flex-wrap:wrap; gap:7px; }
+    .files a { font-size:.8rem; border:1px solid var(--line); padding:5px 9px; border-radius:5px; text-decoration:none; }
+    .files a:hover { background:#edf6f5; border-color:#8eafb4; }
+    details { margin-top:14px; border-top:1px solid var(--line); padding-top:10px; }
+    summary { cursor:pointer; color:var(--teal); font-size:.82rem; }
+    .views { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:10px; }
+    .views img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; background:#edf3f5; }
+    .views a { font-size:.68rem; text-align:center; }
+    .empty { text-align:center; padding:60px 20px; border:1px dashed #9eb6bc; border-radius:12px; }
+    [hidden] { display:none!important; }
+    footer { padding:36px 0; color:var(--muted); font-size:.85rem; }
+    footer p { margin:0 0 8px; }
+    .notice { font-size:.83rem; color:var(--muted); margin-top:16px; }
+    @media (max-width:900px) { .controls-inner { grid-template-columns:1fr 1fr; } .types { grid-column:1/-1; } .card { scroll-margin-top:220px; } }
+    @media (max-width:540px) { header,main,footer,.controls-inner { width:calc(100% - 28px); } header { padding-top:28px; } .controls-inner { grid-template-columns:1fr; gap:9px; } .controls { position:static; } .grid { grid-template-columns:1fr; } .results { flex-direction:column; gap:3px; } .spec { min-height:0; } }
+    @media (prefers-reduced-motion:reduce) { .thumbnail img { transition:none; } }
+    @media print { .controls,.header-links,.files,details,.empty { display:none; } .grid { grid-template-columns:repeat(3,1fr); gap:12px; } .card { break-inside:avoid; } .spec { min-height:0; } header { padding-top:0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Visual model index · open source CAD</p>
+    <h1>Everyday Prints</h1>
+    <p class="intro">47 adjustable print files and 6 assembly references. Browse the actual CAD previews, choose a model, and open its print files or editable source.</p>
+    <nav class="header-links" aria-label="Collection links">
+      <a href="everyday-prints.zip" download>Download the collection</a>
+      <a href="README.md">Printing &amp; customization guide</a>
+      <a href="INDEX.md">Markdown image index</a>
+      <a href="LICENSE">Apache-2.0 license</a>
+    </nav>
+    <p class="notice">Dimensions are in millimeters. Images show CAD geometry; physical print testing is pending.</p>
+  </header>
+  <div class="controls">
+    <div class="controls-inner">
+      <div><label for="search">Find a model</label><input id="search" type="search" placeholder="Try cable, divider, jig…" autocomplete="off"></div>
+      <div><label for="category">Category</label><select id="category"><option value="">All categories</option><option>Organization and displays</option><option>Cable handling, clips, and hardware</option><option>Workshop layout aids</option><option>Household use and labeling</option><option>Workshop handling, finishing, and sorting</option><option>Measured tube adapters</option><option>Reference assemblies</option></select></div>
+      <div class="types" role="group" aria-label="Model type">
+        <button type="button" data-kind="" aria-pressed="true">All · 53</button>
+        <button type="button" data-kind="print" aria-pressed="false">Prints · 47</button>
+        <button type="button" data-kind="assembly" aria-pressed="false">Assemblies · 6</button>
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="results"><span id="count" role="status" aria-live="polite">53 models</span><span>Select an image for the full-size view.</span></div>
+    <noscript><p>All models are shown below. Search and filters need JavaScript; the images and file links work without it.</p></noscript>
+    <div class="grid"><article class="card" id="parts_tray" data-kind="print" data-category="Organization and displays" data-search="parts tray parts_tray divided parts tray 150 × 100 × 24; six pockets organization and displays">
+      <a class="thumbnail" href="review/parts_tray_iso_20260930T001223Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Divided parts tray"><img src="review/parts_tray_iso_20260930T001223Z.png" alt="Divided parts tray" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">01</span></div>
+        <h2><a href="#parts_tray">Divided parts tray</a></h2>
+        <p class="spec">150 × 100 × 24; six pockets</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="parts_tray.stl" download>STL</a><a href="parts_tray.3mf" download>3MF</a><a href="parts_tray.step">STEP</a><a href="parts_tray.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/parts_tray_opposite_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/parts_tray_opposite_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divided parts tray — Underside / opposite">Underside / opposite</a><a href="review/parts_tray_top_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/parts_tray_top_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divided parts tray — Top">Top</a><a href="review/parts_tray_front_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/parts_tray_front_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divided parts tray — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="cable_comb" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="cable comb cable_comb desk-edge cable comb 59 × 32 × 4; five slots cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/cable_comb_iso_20260930T001012Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Desk-edge cable comb"><img src="review/cable_comb_iso_20260930T001012Z.png" alt="Desk-edge cable comb" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">02</span></div>
+        <h2><a href="#cable_comb">Desk-edge cable comb</a></h2>
+        <p class="spec">59 × 32 × 4; five slots</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="cable_comb.stl" download>STL</a><a href="cable_comb.3mf" download>3MF</a><a href="cable_comb.step">STEP</a><a href="cable_comb.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/cable_comb_opposite_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/cable_comb_opposite_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Desk-edge cable comb — Underside / opposite">Underside / opposite</a><a href="review/cable_comb_top_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/cable_comb_top_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Desk-edge cable comb — Top">Top</a><a href="review/cable_comb_front_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/cable_comb_front_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Desk-edge cable comb — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="divider_foot" data-kind="print" data-category="Organization and displays" data-search="divider foot divider_foot drawer-divider foot 34 × 24 × 20; 3.4 slot organization and displays">
+      <a class="thumbnail" href="review/divider_foot_iso_20260930T001012Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Drawer-divider foot"><img src="review/divider_foot_iso_20260930T001012Z.png" alt="Drawer-divider foot" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">03</span></div>
+        <h2><a href="#divider_foot">Drawer-divider foot</a></h2>
+        <p class="spec">34 × 24 × 20; 3.4 slot</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="divider_foot.stl" download>STL</a><a href="divider_foot.3mf" download>3MF</a><a href="divider_foot.step">STEP</a><a href="divider_foot.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/divider_foot_opposite_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/divider_foot_opposite_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Drawer-divider foot — Underside / opposite">Underside / opposite</a><a href="review/divider_foot_top_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/divider_foot_top_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Drawer-divider foot — Top">Top</a><a href="review/divider_foot_front_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/divider_foot_front_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Drawer-divider foot — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="divider_fit_coupon" data-kind="print" data-category="Organization and displays" data-search="divider fit coupon divider_fit_coupon divider fit coupon 26 × 20 × 8; four slots organization and displays">
+      <a class="thumbnail" href="review/divider_fit_coupon_iso_20260930T001223Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Divider fit coupon"><img src="review/divider_fit_coupon_iso_20260930T001223Z.png" alt="Divider fit coupon" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">04</span></div>
+        <h2><a href="#divider_fit_coupon">Divider fit coupon</a></h2>
+        <p class="spec">26 × 20 × 8; four slots</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="divider_fit_coupon.stl" download>STL</a><a href="divider_fit_coupon.3mf" download>3MF</a><a href="divider_fit_coupon.step">STEP</a><a href="divider_fit_coupon.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/divider_fit_coupon_opposite_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/divider_fit_coupon_opposite_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divider fit coupon — Underside / opposite">Underside / opposite</a><a href="review/divider_fit_coupon_top_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/divider_fit_coupon_top_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divider fit coupon — Top">Top</a><a href="review/divider_fit_coupon_front_20260930T001223Z.png" target="_blank" rel="noopener"><img src="review/divider_fit_coupon_front_20260930T001223Z.png" width="1000" height="750" loading="lazy" alt="Divider fit coupon — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="phone_stand" data-kind="print" data-category="Organization and displays" data-search="phone stand phone_stand phone stand 85 × 96 × 65; prints on its side organization and displays">
+      <a class="thumbnail" href="review/phone_stand_iso_20260930T001012Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Phone stand"><img src="review/phone_stand_iso_20260930T001012Z.png" alt="Phone stand" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">05</span></div>
+        <h2><a href="#phone_stand">Phone stand</a></h2>
+        <p class="spec">85 × 96 × 65; prints on its side</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="phone_stand.stl" download>STL</a><a href="phone_stand.3mf" download>3MF</a><a href="phone_stand.step">STEP</a><a href="phone_stand.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/phone_stand_opposite_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/phone_stand_opposite_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Phone stand — Underside / opposite">Underside / opposite</a><a href="review/phone_stand_top_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/phone_stand_top_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Phone stand — Top">Top</a><a href="review/phone_stand_front_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/phone_stand_front_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Phone stand — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="corner_square" data-kind="print" data-category="Workshop layout aids" data-search="corner square corner_square corner square 80 × 80 × 8; 18 wide legs workshop layout aids">
+      <a class="thumbnail" href="review/corner_square_iso_20260930T001012Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Corner square"><img src="review/corner_square_iso_20260930T001012Z.png" alt="Corner square" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">06</span></div>
+        <h2><a href="#corner_square">Corner square</a></h2>
+        <p class="spec">80 × 80 × 8; 18 wide legs</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="corner_square.stl" download>STL</a><a href="corner_square.3mf" download>3MF</a><a href="corner_square.step">STEP</a><a href="corner_square.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/corner_square_opposite_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/corner_square_opposite_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Corner square — Underside / opposite">Underside / opposite</a><a href="review/corner_square_top_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/corner_square_top_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Corner square — Top">Top</a><a href="review/corner_square_front_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/corner_square_front_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Corner square — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="handle_marking_jig" data-kind="print" data-category="Workshop layout aids" data-search="handle marking jig handle_marking_jig handle marking jig 160 × 40 × 18; 128 hole pitch workshop layout aids">
+      <a class="thumbnail" href="review/handle_marking_jig_iso_20260930T001012Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Handle marking jig"><img src="review/handle_marking_jig_iso_20260930T001012Z.png" alt="Handle marking jig" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">07</span></div>
+        <h2><a href="#handle_marking_jig">Handle marking jig</a></h2>
+        <p class="spec">160 × 40 × 18; 128 hole pitch</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="handle_marking_jig.stl" download>STL</a><a href="handle_marking_jig.3mf" download>3MF</a><a href="handle_marking_jig.step">STEP</a><a href="handle_marking_jig.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/handle_marking_jig_opposite_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/handle_marking_jig_opposite_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Handle marking jig — Underside / opposite">Underside / opposite</a><a href="review/handle_marking_jig_top_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/handle_marking_jig_top_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Handle marking jig — Top">Top</a><a href="review/handle_marking_jig_front_20260930T001012Z.png" target="_blank" rel="noopener"><img src="review/handle_marking_jig_front_20260930T001012Z.png" width="1000" height="750" loading="lazy" alt="Handle marking jig — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="tube_squeezer" data-kind="print" data-category="Household use and labeling" data-search="tube squeezer tube_squeezer tube squeezer 90 × 26 × 6; 64 × 2 working slot household use and labeling">
+      <a class="thumbnail" href="review/tube_squeezer_iso_20260930T002514Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Tube squeezer"><img src="review/tube_squeezer_iso_20260930T002514Z.png" alt="Tube squeezer" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">08</span></div>
+        <h2><a href="#tube_squeezer">Tube squeezer</a></h2>
+        <p class="spec">90 × 26 × 6; 64 × 2 working slot</p>
+        <p class="category">Household use and labeling</p>
+        <div class="files"><a href="tube_squeezer.stl" download>STL</a><a href="tube_squeezer.3mf" download>3MF</a><a href="tube_squeezer.step">STEP</a><a href="tube_squeezer.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/tube_squeezer_opposite_20260930T002514Z.png" target="_blank" rel="noopener"><img src="review/tube_squeezer_opposite_20260930T002514Z.png" width="1000" height="750" loading="lazy" alt="Tube squeezer — Underside / opposite">Underside / opposite</a><a href="review/tube_squeezer_top_20260930T002514Z.png" target="_blank" rel="noopener"><img src="review/tube_squeezer_top_20260930T002514Z.png" width="1000" height="750" loading="lazy" alt="Tube squeezer — Top">Top</a><a href="review/tube_squeezer_front_20260930T002514Z.png" target="_blank" rel="noopener"><img src="review/tube_squeezer_front_20260930T002514Z.png" width="1000" height="750" loading="lazy" alt="Tube squeezer — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="soap_dish_tray" data-kind="print" data-category="Household use and labeling" data-search="soap dish tray soap_dish_tray soap-dish catch tray 120 × 84 × 14 household use and labeling">
+      <a class="thumbnail" href="review/soap_dish_tray_iso_20260930T001900Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Soap-dish catch tray"><img src="review/soap_dish_tray_iso_20260930T001900Z.png" alt="Soap-dish catch tray" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">09</span></div>
+        <h2><a href="#soap_dish_tray">Soap-dish catch tray</a></h2>
+        <p class="spec">120 × 84 × 14</p>
+        <p class="category">Household use and labeling</p>
+        <div class="files"><a href="soap_dish_tray.stl" download>STL</a><a href="soap_dish_tray.3mf" download>3MF</a><a href="soap_dish_tray.step">STEP</a><a href="soap_dish_tray.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/soap_dish_tray_opposite_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_tray_opposite_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish catch tray — Underside / opposite">Underside / opposite</a><a href="review/soap_dish_tray_top_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_tray_top_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish catch tray — Top">Top</a><a href="review/soap_dish_tray_front_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_tray_front_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish catch tray — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="soap_dish_insert" data-kind="print" data-category="Household use and labeling" data-search="soap dish insert soap_dish_insert soap-dish draining insert 113.2 × 77.2 × 11; feet print upward household use and labeling">
+      <a class="thumbnail" href="review/soap_dish_insert_iso_20260930T001900Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Soap-dish draining insert"><img src="review/soap_dish_insert_iso_20260930T001900Z.png" alt="Soap-dish draining insert" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">10</span></div>
+        <h2><a href="#soap_dish_insert">Soap-dish draining insert</a></h2>
+        <p class="spec">113.2 × 77.2 × 11; feet print upward</p>
+        <p class="category">Household use and labeling</p>
+        <div class="files"><a href="soap_dish_insert.stl" download>STL</a><a href="soap_dish_insert.3mf" download>3MF</a><a href="soap_dish_insert.step">STEP</a><a href="soap_dish_insert.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/soap_dish_insert_opposite_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_insert_opposite_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish draining insert — Underside / opposite">Underside / opposite</a><a href="review/soap_dish_insert_top_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_insert_top_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish draining insert — Top">Top</a><a href="review/soap_dish_insert_front_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_insert_front_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap-dish draining insert — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="label_stand" data-kind="print" data-category="Organization and displays" data-search="label stand label_stand leaning label stand 50 × 24 × 12; 0.8 slot, 12° lean organization and displays">
+      <a class="thumbnail" href="review/label_stand_iso_20260930T003528Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Leaning label stand"><img src="review/label_stand_iso_20260930T003528Z.png" alt="Leaning label stand" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">11</span></div>
+        <h2><a href="#label_stand">Leaning label stand</a></h2>
+        <p class="spec">50 × 24 × 12; 0.8 slot, 12° lean</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="label_stand.stl" download>STL</a><a href="label_stand.3mf" download>3MF</a><a href="label_stand.step">STEP</a><a href="label_stand.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/label_stand_opposite_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/label_stand_opposite_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Leaning label stand — Underside / opposite">Underside / opposite</a><a href="review/label_stand_top_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/label_stand_top_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Leaning label stand — Top">Top</a><a href="review/label_stand_front_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/label_stand_front_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Leaning label stand — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="paint_pyramid" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="paint pyramid paint_pyramid finishing pyramid 50 × 50 × 26; 2.4 square contact tip workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/paint_pyramid_iso_20260930T003528Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Finishing pyramid"><img src="review/paint_pyramid_iso_20260930T003528Z.png" alt="Finishing pyramid" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">12</span></div>
+        <h2><a href="#paint_pyramid">Finishing pyramid</a></h2>
+        <p class="spec">50 × 50 × 26; 2.4 square contact tip</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="paint_pyramid.stl" download>STL</a><a href="paint_pyramid.3mf" download>3MF</a><a href="paint_pyramid.step">STEP</a><a href="paint_pyramid.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/paint_pyramid_opposite_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/paint_pyramid_opposite_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Finishing pyramid — Underside / opposite">Underside / opposite</a><a href="review/paint_pyramid_top_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/paint_pyramid_top_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Finishing pyramid — Top">Top</a><a href="review/paint_pyramid_front_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/paint_pyramid_front_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Finishing pyramid — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="cable_winder" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="cable winder cable_winder cord winder 95 × 44 × 4; 22 wide waist cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/cable_winder_iso_20260930T003528Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Cord winder"><img src="review/cable_winder_iso_20260930T003528Z.png" alt="Cord winder" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">13</span></div>
+        <h2><a href="#cable_winder">Cord winder</a></h2>
+        <p class="spec">95 × 44 × 4; 22 wide waist</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="cable_winder.stl" download>STL</a><a href="cable_winder.3mf" download>3MF</a><a href="cable_winder.step">STEP</a><a href="cable_winder.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/cable_winder_opposite_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/cable_winder_opposite_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Cord winder — Underside / opposite">Underside / opposite</a><a href="review/cable_winder_top_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/cable_winder_top_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Cord winder — Top">Top</a><a href="review/cable_winder_front_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/cable_winder_front_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Cord winder — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="hex_bit_rack" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="hex bit rack hex_bit_rack hex-bit rack 80 × 44 × 14; eighteen 6.7 hex sockets workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/hex_bit_rack_iso_20260930T003528Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Hex-bit rack"><img src="review/hex_bit_rack_iso_20260930T003528Z.png" alt="Hex-bit rack" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">14</span></div>
+        <h2><a href="#hex_bit_rack">Hex-bit rack</a></h2>
+        <p class="spec">80 × 44 × 14; eighteen 6.7 hex sockets</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="hex_bit_rack.stl" download>STL</a><a href="hex_bit_rack.3mf" download>3MF</a><a href="hex_bit_rack.step">STEP</a><a href="hex_bit_rack.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/hex_bit_rack_opposite_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_rack_opposite_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit rack — Underside / opposite">Underside / opposite</a><a href="review/hex_bit_rack_top_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_rack_top_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit rack — Top">Top</a><a href="review/hex_bit_rack_front_20260930T003528Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_rack_front_20260930T003528Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit rack — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="hex_bit_fit_coupon" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="hex bit fit coupon hex_bit_fit_coupon hex-bit fit coupon 40 × 20 × 14; three trial sockets workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/hex_bit_fit_coupon_iso_20260930T004245Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Hex-bit fit coupon"><img src="review/hex_bit_fit_coupon_iso_20260930T004245Z.png" alt="Hex-bit fit coupon" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">15</span></div>
+        <h2><a href="#hex_bit_fit_coupon">Hex-bit fit coupon</a></h2>
+        <p class="spec">40 × 20 × 14; three trial sockets</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="hex_bit_fit_coupon.stl" download>STL</a><a href="hex_bit_fit_coupon.3mf" download>3MF</a><a href="hex_bit_fit_coupon.step">STEP</a><a href="hex_bit_fit_coupon.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/hex_bit_fit_coupon_opposite_20260930T004245Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_fit_coupon_opposite_20260930T004245Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit fit coupon — Underside / opposite">Underside / opposite</a><a href="review/hex_bit_fit_coupon_top_20260930T004245Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_fit_coupon_top_20260930T004245Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit fit coupon — Top">Top</a><a href="review/hex_bit_fit_coupon_front_20260930T004245Z.png" target="_blank" rel="noopener"><img src="review/hex_bit_fit_coupon_front_20260930T004245Z.png" width="1000" height="750" loading="lazy" alt="Hex-bit fit coupon — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sanding_block" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="sanding block sanding_block hand sanding block 100 × 50 × 25; two paper-clamp slots workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/sanding_block_iso_20260930T005110Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Hand sanding block"><img src="review/sanding_block_iso_20260930T005110Z.png" alt="Hand sanding block" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">16</span></div>
+        <h2><a href="#sanding_block">Hand sanding block</a></h2>
+        <p class="spec">100 × 50 × 25; two paper-clamp slots</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="sanding_block.stl" download>STL</a><a href="sanding_block.3mf" download>3MF</a><a href="sanding_block.step">STEP</a><a href="sanding_block.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sanding_block_opposite_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_block_opposite_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Hand sanding block — Underside / opposite">Underside / opposite</a><a href="review/sanding_block_top_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_block_top_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Hand sanding block — Top">Top</a><a href="review/sanding_block_front_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_block_front_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Hand sanding block — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sanding_wedge" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="sanding wedge sanding_wedge sanding wedge — print two 8 × 36 × 20; narrow tip down workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/sanding_wedge_iso_20260930T005110Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sanding wedge — print two"><img src="review/sanding_wedge_iso_20260930T005110Z.png" alt="Sanding wedge — print two" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">17</span></div>
+        <h2><a href="#sanding_wedge">Sanding wedge — print two</a></h2>
+        <p class="spec">8 × 36 × 20; narrow tip down</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="sanding_wedge.stl" download>STL</a><a href="sanding_wedge.3mf" download>3MF</a><a href="sanding_wedge.step">STEP</a><a href="sanding_wedge.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sanding_wedge_opposite_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_wedge_opposite_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding wedge — print two — Underside / opposite">Underside / opposite</a><a href="review/sanding_wedge_top_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_wedge_top_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding wedge — print two — Top">Top</a><a href="review/sanding_wedge_front_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_wedge_front_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding wedge — print two — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="cable_grommet" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="cable grommet cable_grommet desk cable grommet 68 flange diameter × 18.4 high; 60 nominal opening cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/cable_grommet_iso_20260930T005110Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Desk cable grommet"><img src="review/cable_grommet_iso_20260930T005110Z.png" alt="Desk cable grommet" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">18</span></div>
+        <h2><a href="#cable_grommet">Desk cable grommet</a></h2>
+        <p class="spec">68 flange diameter × 18.4 high; 60 nominal opening</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="cable_grommet.stl" download>STL</a><a href="cable_grommet.3mf" download>3MF</a><a href="cable_grommet.step">STEP</a><a href="cable_grommet.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/cable_grommet_opposite_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/cable_grommet_opposite_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Desk cable grommet — Underside / opposite">Underside / opposite</a><a href="review/cable_grommet_top_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/cable_grommet_top_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Desk cable grommet — Top">Top</a><a href="review/cable_grommet_front_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/cable_grommet_front_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Desk cable grommet — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="radius_template" data-kind="print" data-category="Workshop layout aids" data-search="radius template radius_template corner-radius template 80 × 80 × 3; radii 5, 10, 15, 20 workshop layout aids">
+      <a class="thumbnail" href="review/radius_template_iso_20260930T005110Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Corner-radius template"><img src="review/radius_template_iso_20260930T005110Z.png" alt="Corner-radius template" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">19</span></div>
+        <h2><a href="#radius_template">Corner-radius template</a></h2>
+        <p class="spec">80 × 80 × 3; radii 5, 10, 15, 20</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="radius_template.stl" download>STL</a><a href="radius_template.3mf" download>3MF</a><a href="radius_template.step">STEP</a><a href="radius_template.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/radius_template_opposite_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/radius_template_opposite_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Corner-radius template — Underside / opposite">Underside / opposite</a><a href="review/radius_template_top_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/radius_template_top_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Corner-radius template — Top">Top</a><a href="review/radius_template_front_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/radius_template_front_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Corner-radius template — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="center_finder" data-kind="print" data-category="Workshop layout aids" data-search="center finder center_finder center-finding jig 100 × 24 × 16; 72 maximum stock width workshop layout aids">
+      <a class="thumbnail" href="review/center_finder_iso_20260930T010132Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Center-finding jig"><img src="review/center_finder_iso_20260930T010132Z.png" alt="Center-finding jig" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">20</span></div>
+        <h2><a href="#center_finder">Center-finding jig</a></h2>
+        <p class="spec">100 × 24 × 16; 72 maximum stock width</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="center_finder.stl" download>STL</a><a href="center_finder.3mf" download>3MF</a><a href="center_finder.step">STEP</a><a href="center_finder.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/center_finder_opposite_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/center_finder_opposite_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Center-finding jig — Underside / opposite">Underside / opposite</a><a href="review/center_finder_top_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/center_finder_top_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Center-finding jig — Top">Top</a><a href="review/center_finder_front_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/center_finder_front_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Center-finding jig — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="brush_rest" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="brush rest brush_rest brush rest and catch tray 100 × 150 × 20; three paired cradles workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/brush_rest_iso_20260930T010132Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Brush rest and catch tray"><img src="review/brush_rest_iso_20260930T010132Z.png" alt="Brush rest and catch tray" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">21</span></div>
+        <h2><a href="#brush_rest">Brush rest and catch tray</a></h2>
+        <p class="spec">100 × 150 × 20; three paired cradles</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="brush_rest.stl" download>STL</a><a href="brush_rest.3mf" download>3MF</a><a href="brush_rest.step">STEP</a><a href="brush_rest.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/brush_rest_opposite_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/brush_rest_opposite_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Brush rest and catch tray — Underside / opposite">Underside / opposite</a><a href="review/brush_rest_top_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/brush_rest_top_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Brush rest and catch tray — Top">Top</a><a href="review/brush_rest_front_20260930T010132Z.png" target="_blank" rel="noopener"><img src="review/brush_rest_front_20260930T010132Z.png" width="1000" height="750" loading="lazy" alt="Brush rest and catch tray — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="utility_peg" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="utility peg utility_peg utility peg 60 × 24 × 31; 10 stem, 16 retaining head cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/utility_peg_iso_20260930T010302Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Utility peg"><img src="review/utility_peg_iso_20260930T010302Z.png" alt="Utility peg" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">22</span></div>
+        <h2><a href="#utility_peg">Utility peg</a></h2>
+        <p class="spec">60 × 24 × 31; 10 stem, 16 retaining head</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="utility_peg.stl" download>STL</a><a href="utility_peg.3mf" download>3MF</a><a href="utility_peg.step">STEP</a><a href="utility_peg.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/utility_peg_opposite_20260930T010302Z.png" target="_blank" rel="noopener"><img src="review/utility_peg_opposite_20260930T010302Z.png" width="1000" height="750" loading="lazy" alt="Utility peg — Underside / opposite">Underside / opposite</a><a href="review/utility_peg_top_20260930T010302Z.png" target="_blank" rel="noopener"><img src="review/utility_peg_top_20260930T010302Z.png" width="1000" height="750" loading="lazy" alt="Utility peg — Top">Top</a><a href="review/utility_peg_front_20260930T010302Z.png" target="_blank" rel="noopener"><img src="review/utility_peg_front_20260930T010302Z.png" width="1000" height="750" loading="lazy" alt="Utility peg — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sliding_box" data-kind="print" data-category="Organization and displays" data-search="sliding box sliding_box sliding-lid box 120 × 80 × 32; 2.4 floor and walls organization and displays">
+      <a class="thumbnail" href="review/sliding_box_iso_20260930T011106Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sliding-lid box"><img src="review/sliding_box_iso_20260930T011106Z.png" alt="Sliding-lid box" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">23</span></div>
+        <h2><a href="#sliding_box">Sliding-lid box</a></h2>
+        <p class="spec">120 × 80 × 32; 2.4 floor and walls</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="sliding_box.stl" download>STL</a><a href="sliding_box.3mf" download>3MF</a><a href="sliding_box.step">STEP</a><a href="sliding_box.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sliding_box_opposite_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_opposite_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding-lid box — Underside / opposite">Underside / opposite</a><a href="review/sliding_box_top_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_top_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding-lid box — Top">Top</a><a href="review/sliding_box_front_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_front_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding-lid box — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sliding_lid" data-kind="print" data-category="Organization and displays" data-search="sliding lid sliding_lid sliding lid 123.2 × 74.6 × 5.4 including pull grip organization and displays">
+      <a class="thumbnail" href="review/sliding_lid_iso_20260930T011106Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sliding lid"><img src="review/sliding_lid_iso_20260930T011106Z.png" alt="Sliding lid" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">24</span></div>
+        <h2><a href="#sliding_lid">Sliding lid</a></h2>
+        <p class="spec">123.2 × 74.6 × 5.4 including pull grip</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="sliding_lid.stl" download>STL</a><a href="sliding_lid.3mf" download>3MF</a><a href="sliding_lid.step">STEP</a><a href="sliding_lid.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sliding_lid_opposite_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_lid_opposite_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding lid — Underside / opposite">Underside / opposite</a><a href="review/sliding_lid_top_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_lid_top_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding lid — Top">Top</a><a href="review/sliding_lid_front_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_lid_front_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding lid — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sliding_fit_channel" data-kind="print" data-category="Organization and displays" data-search="sliding fit channel sliding_fit_channel sliding fit channel 30 × 80 × 16; short rail sample organization and displays">
+      <a class="thumbnail" href="review/sliding_fit_channel_iso_20260930T011106Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sliding fit channel"><img src="review/sliding_fit_channel_iso_20260930T011106Z.png" alt="Sliding fit channel" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">25</span></div>
+        <h2><a href="#sliding_fit_channel">Sliding fit channel</a></h2>
+        <p class="spec">30 × 80 × 16; short rail sample</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="sliding_fit_channel.stl" download>STL</a><a href="sliding_fit_channel.3mf" download>3MF</a><a href="sliding_fit_channel.step">STEP</a><a href="sliding_fit_channel.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sliding_fit_channel_opposite_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_channel_opposite_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit channel — Underside / opposite">Underside / opposite</a><a href="review/sliding_fit_channel_top_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_channel_top_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit channel — Top">Top</a><a href="review/sliding_fit_channel_front_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_channel_front_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit channel — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sliding_fit_slider" data-kind="print" data-category="Organization and displays" data-search="sliding fit slider sliding_fit_slider sliding fit slider 36 × 74.6 × 5.4; matching sample organization and displays">
+      <a class="thumbnail" href="review/sliding_fit_slider_iso_20260930T011106Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sliding fit slider"><img src="review/sliding_fit_slider_iso_20260930T011106Z.png" alt="Sliding fit slider" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">26</span></div>
+        <h2><a href="#sliding_fit_slider">Sliding fit slider</a></h2>
+        <p class="spec">36 × 74.6 × 5.4; matching sample</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="sliding_fit_slider.stl" download>STL</a><a href="sliding_fit_slider.3mf" download>3MF</a><a href="sliding_fit_slider.step">STEP</a><a href="sliding_fit_slider.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sliding_fit_slider_opposite_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_slider_opposite_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit slider — Underside / opposite">Underside / opposite</a><a href="review/sliding_fit_slider_top_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_slider_top_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit slider — Top">Top</a><a href="review/sliding_fit_slider_front_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_fit_slider_front_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding fit slider — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="round_stock_cradle" data-kind="print" data-category="Workshop layout aids" data-search="round stock cradle round_stock_cradle round-stock cradle 80 × 60 × 30; 90° v groove workshop layout aids">
+      <a class="thumbnail" href="review/round_stock_cradle_iso_20260930T020904Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Round-stock cradle"><img src="review/round_stock_cradle_iso_20260930T020904Z.png" alt="Round-stock cradle" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">27</span></div>
+        <h2><a href="#round_stock_cradle">Round-stock cradle</a></h2>
+        <p class="spec">80 × 60 × 30; 90° V groove</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="round_stock_cradle.stl" download>STL</a><a href="round_stock_cradle.3mf" download>3MF</a><a href="round_stock_cradle.step">STEP</a><a href="round_stock_cradle.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/round_stock_cradle_opposite_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/round_stock_cradle_opposite_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Round-stock cradle — Underside / opposite">Underside / opposite</a><a href="review/round_stock_cradle_top_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/round_stock_cradle_top_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Round-stock cradle — Top">Top</a><a href="review/round_stock_cradle_front_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/round_stock_cradle_front_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Round-stock cradle — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="tie_anchor" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="tie anchor tie_anchor cable-tie anchor 26 × 26 × 8.6; two threading directions cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/tie_anchor_iso_20260930T020904Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Cable-tie anchor"><img src="review/tie_anchor_iso_20260930T020904Z.png" alt="Cable-tie anchor" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">28</span></div>
+        <h2><a href="#tie_anchor">Cable-tie anchor</a></h2>
+        <p class="spec">26 × 26 × 8.6; two threading directions</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="tie_anchor.stl" download>STL</a><a href="tie_anchor.3mf" download>3MF</a><a href="tie_anchor.step">STEP</a><a href="tie_anchor.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/tie_anchor_opposite_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/tie_anchor_opposite_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Cable-tie anchor — Underside / opposite">Underside / opposite</a><a href="review/tie_anchor_top_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/tie_anchor_top_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Cable-tie anchor — Top">Top</a><a href="review/tie_anchor_front_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/tie_anchor_front_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Cable-tie anchor — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="workshop_funnel" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="workshop funnel workshop_funnel workshop funnel 70 mouth, 10 spout bore; 60 high workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/workshop_funnel_iso_20260930T020904Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Workshop funnel"><img src="review/workshop_funnel_iso_20260930T020904Z.png" alt="Workshop funnel" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">29</span></div>
+        <h2><a href="#workshop_funnel">Workshop funnel</a></h2>
+        <p class="spec">70 mouth, 10 spout bore; 60 high</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="workshop_funnel.stl" download>STL</a><a href="workshop_funnel.3mf" download>3MF</a><a href="workshop_funnel.step">STEP</a><a href="workshop_funnel.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/workshop_funnel_opposite_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/workshop_funnel_opposite_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Workshop funnel — Underside / opposite">Underside / opposite</a><a href="review/workshop_funnel_top_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/workshop_funnel_top_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Workshop funnel — Top">Top</a><a href="review/workshop_funnel_front_20260930T020904Z.png" target="_blank" rel="noopener"><img src="review/workshop_funnel_front_20260930T020904Z.png" width="1000" height="750" loading="lazy" alt="Workshop funnel — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="fold_clip" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="fold clip fold_clip folded-bag clip — flexure trial 50.4 × 10.8 × 12; 0.609 rounded throat cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/fold_clip_iso_20260930T023047Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Folded-bag clip — flexure trial"><img src="review/fold_clip_iso_20260930T023047Z.png" alt="Folded-bag clip — flexure trial" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">30</span></div>
+        <h2><a href="#fold_clip">Folded-bag clip — flexure trial</a></h2>
+        <p class="spec">50.4 × 10.8 × 12; 0.609 rounded throat</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="fold_clip.stl" download>STL</a><a href="fold_clip.3mf" download>3MF</a><a href="fold_clip.step">STEP</a><a href="fold_clip.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/fold_clip_opposite_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/fold_clip_opposite_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Folded-bag clip — flexure trial — Underside / opposite">Underside / opposite</a><a href="review/fold_clip_top_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/fold_clip_top_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Folded-bag clip — flexure trial — Top">Top</a><a href="review/fold_clip_front_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/fold_clip_front_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Folded-bag clip — flexure trial — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="cord_clip" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="cord clip cord_clip cord clip — flexure trial 20 × 9.495 × 12; 6.6 cavity, 5.2 entry cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/cord_clip_iso_20260930T023047Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Cord clip — flexure trial"><img src="review/cord_clip_iso_20260930T023047Z.png" alt="Cord clip — flexure trial" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">31</span></div>
+        <h2><a href="#cord_clip">Cord clip — flexure trial</a></h2>
+        <p class="spec">20 × 9.495 × 12; 6.6 cavity, 5.2 entry</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="cord_clip.stl" download>STL</a><a href="cord_clip.3mf" download>3MF</a><a href="cord_clip.step">STEP</a><a href="cord_clip.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/cord_clip_opposite_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/cord_clip_opposite_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Cord clip — flexure trial — Underside / opposite">Underside / opposite</a><a href="review/cord_clip_top_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/cord_clip_top_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Cord clip — flexure trial — Top">Top</a><a href="review/cord_clip_front_20260930T023047Z.png" target="_blank" rel="noopener"><img src="review/cord_clip_front_20260930T023047Z.png" width="1000" height="750" loading="lazy" alt="Cord clip — flexure trial — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="hand_knob" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="hand knob hand_knob hex-nut hand knob 40 × 36.249 × 14; six rounded lobes cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/hand_knob_iso_20260930T023857Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Hex-nut hand knob"><img src="review/hand_knob_iso_20260930T023857Z.png" alt="Hex-nut hand knob" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">32</span></div>
+        <h2><a href="#hand_knob">Hex-nut hand knob</a></h2>
+        <p class="spec">40 × 36.249 × 14; six rounded lobes</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="hand_knob.stl" download>STL</a><a href="hand_knob.3mf" download>3MF</a><a href="hand_knob.step">STEP</a><a href="hand_knob.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/hand_knob_opposite_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/hand_knob_opposite_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Hex-nut hand knob — Underside / opposite">Underside / opposite</a><a href="review/hand_knob_top_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/hand_knob_top_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Hex-nut hand knob — Top">Top</a><a href="review/hand_knob_front_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/hand_knob_front_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Hex-nut hand knob — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="slotted_shim" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="slotted shim slotted_shim slotted spacing shim 40 × 24 × 2; 6.6 wide open slot cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/slotted_shim_iso_20260930T023857Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Slotted spacing shim"><img src="review/slotted_shim_iso_20260930T023857Z.png" alt="Slotted spacing shim" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">33</span></div>
+        <h2><a href="#slotted_shim">Slotted spacing shim</a></h2>
+        <p class="spec">40 × 24 × 2; 6.6 wide open slot</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="slotted_shim.stl" download>STL</a><a href="slotted_shim.3mf" download>3MF</a><a href="slotted_shim.step">STEP</a><a href="slotted_shim.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/slotted_shim_opposite_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/slotted_shim_opposite_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Slotted spacing shim — Underside / opposite">Underside / opposite</a><a href="review/slotted_shim_top_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/slotted_shim_top_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Slotted spacing shim — Top">Top</a><a href="review/slotted_shim_front_20260930T023857Z.png" target="_blank" rel="noopener"><img src="review/slotted_shim_front_20260930T023857Z.png" width="1000" height="750" loading="lazy" alt="Slotted spacing shim — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="marking_saddle" data-kind="print" data-category="Workshop layout aids" data-search="marking saddle marking_saddle 90°/45° marking saddle 90 × 44.5 × 23; for a measured 38 wide board workshop layout aids">
+      <a class="thumbnail" href="review/marking_saddle_iso_20260930T024628Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of 90°/45° marking saddle"><img src="review/marking_saddle_iso_20260930T024628Z.png" alt="90°/45° marking saddle" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">34</span></div>
+        <h2><a href="#marking_saddle">90°/45° marking saddle</a></h2>
+        <p class="spec">90 × 44.5 × 23; for a measured 38 wide board</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="marking_saddle.stl" download>STL</a><a href="marking_saddle.3mf" download>3MF</a><a href="marking_saddle.step">STEP</a><a href="marking_saddle.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/marking_saddle_opposite_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/marking_saddle_opposite_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="90°/45° marking saddle — Underside / opposite">Underside / opposite</a><a href="review/marking_saddle_top_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/marking_saddle_top_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="90°/45° marking saddle — Top">Top</a><a href="review/marking_saddle_front_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/marking_saddle_front_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="90°/45° marking saddle — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="roll_adapter" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="roll adapter roll_adapter roll-core adapter — print two 60 flange diameter × 17.4 high; 8.6 axle bore cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/roll_adapter_iso_20260930T024628Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Roll-core adapter — print two"><img src="review/roll_adapter_iso_20260930T024628Z.png" alt="Roll-core adapter — print two" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">35</span></div>
+        <h2><a href="#roll_adapter">Roll-core adapter — print two</a></h2>
+        <p class="spec">60 flange diameter × 17.4 high; 8.6 axle bore</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="roll_adapter.stl" download>STL</a><a href="roll_adapter.3mf" download>3MF</a><a href="roll_adapter.step">STEP</a><a href="roll_adapter.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/roll_adapter_opposite_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/roll_adapter_opposite_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="Roll-core adapter — print two — Underside / opposite">Underside / opposite</a><a href="review/roll_adapter_top_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/roll_adapter_top_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="Roll-core adapter — print two — Top">Top</a><a href="review/roll_adapter_front_20260930T024628Z.png" target="_blank" rel="noopener"><img src="review/roll_adapter_front_20260930T024628Z.png" width="1000" height="750" loading="lazy" alt="Roll-core adapter — print two — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="bookend" data-kind="print" data-category="Organization and displays" data-search="bookend bookend braced bookend 130 × 80 × 130; flat face and broad foot organization and displays">
+      <a class="thumbnail" href="review/bookend_iso_20260930T025502Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Braced bookend"><img src="review/bookend_iso_20260930T025502Z.png" alt="Braced bookend" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">36</span></div>
+        <h2><a href="#bookend">Braced bookend</a></h2>
+        <p class="spec">130 × 80 × 130; flat face and broad foot</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="bookend.stl" download>STL</a><a href="bookend.3mf" download>3MF</a><a href="bookend.step">STEP</a><a href="bookend.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/bookend_opposite_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/bookend_opposite_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Braced bookend — Underside / opposite">Underside / opposite</a><a href="review/bookend_top_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/bookend_top_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Braced bookend — Top">Top</a><a href="review/bookend_front_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/bookend_front_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Braced bookend — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="corner_cable_guide" data-kind="print" data-category="Cable handling, clips, and hardware" data-search="corner cable guide corner_cable_guide corner cable guide 41.507 × 41.507 × 10.4; 10 wide curved channel cable handling, clips, and hardware">
+      <a class="thumbnail" href="review/corner_cable_guide_iso_20260930T025502Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Corner cable guide"><img src="review/corner_cable_guide_iso_20260930T025502Z.png" alt="Corner cable guide" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">37</span></div>
+        <h2><a href="#corner_cable_guide">Corner cable guide</a></h2>
+        <p class="spec">41.507 × 41.507 × 10.4; 10 wide curved channel</p>
+        <p class="category">Cable handling, clips, and hardware</p>
+        <div class="files"><a href="corner_cable_guide.stl" download>STL</a><a href="corner_cable_guide.3mf" download>3MF</a><a href="corner_cable_guide.step">STEP</a><a href="corner_cable_guide.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/corner_cable_guide_opposite_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/corner_cable_guide_opposite_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Corner cable guide — Underside / opposite">Underside / opposite</a><a href="review/corner_cable_guide_top_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/corner_cable_guide_top_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Corner cable guide — Top">Top</a><a href="review/corner_cable_guide_front_20260930T025502Z.png" target="_blank" rel="noopener"><img src="review/corner_cable_guide_front_20260930T025502Z.png" width="1000" height="750" loading="lazy" alt="Corner cable guide — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="workshop_scoop" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="workshop scoop workshop_scoop small-parts scoop 110 × 45 × 20; nominal 30.03 ml to pouring lip workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/workshop_scoop_iso_20260930T030345Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Small-parts scoop"><img src="review/workshop_scoop_iso_20260930T030345Z.png" alt="Small-parts scoop" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">38</span></div>
+        <h2><a href="#workshop_scoop">Small-parts scoop</a></h2>
+        <p class="spec">110 × 45 × 20; nominal 30.03 mL to pouring lip</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="workshop_scoop.stl" download>STL</a><a href="workshop_scoop.3mf" download>3MF</a><a href="workshop_scoop.step">STEP</a><a href="workshop_scoop.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/workshop_scoop_opposite_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/workshop_scoop_opposite_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Small-parts scoop — Underside / opposite">Underside / opposite</a><a href="review/workshop_scoop_top_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/workshop_scoop_top_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Small-parts scoop — Top">Top</a><a href="review/workshop_scoop_front_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/workshop_scoop_front_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Small-parts scoop — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="plant_marker" data-kind="print" data-category="Household use and labeling" data-search="plant marker plant_marker blank plant marker 26 × 115 × 2.4; 70 long stake household use and labeling">
+      <a class="thumbnail" href="review/plant_marker_iso_20260930T030345Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Blank plant marker"><img src="review/plant_marker_iso_20260930T030345Z.png" alt="Blank plant marker" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">39</span></div>
+        <h2><a href="#plant_marker">Blank plant marker</a></h2>
+        <p class="spec">26 × 115 × 2.4; 70 long stake</p>
+        <p class="category">Household use and labeling</p>
+        <div class="files"><a href="plant_marker.stl" download>STL</a><a href="plant_marker.3mf" download>3MF</a><a href="plant_marker.step">STEP</a><a href="plant_marker.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/plant_marker_opposite_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/plant_marker_opposite_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Blank plant marker — Underside / opposite">Underside / opposite</a><a href="review/plant_marker_top_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/plant_marker_top_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Blank plant marker — Top">Top</a><a href="review/plant_marker_front_20260930T030345Z.png" target="_blank" rel="noopener"><img src="review/plant_marker_front_20260930T030345Z.png" width="1000" height="750" loading="lazy" alt="Blank plant marker — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="ruler_stop" data-kind="print" data-category="Workshop layout aids" data-search="ruler stop ruler_stop adjustable ruler-stop body 34.4 × 10.2 × 24; prints on an end profile workshop layout aids">
+      <a class="thumbnail" href="review/ruler_stop_iso_20260930T031538Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Adjustable ruler-stop body"><img src="review/ruler_stop_iso_20260930T031538Z.png" alt="Adjustable ruler-stop body" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">40</span></div>
+        <h2><a href="#ruler_stop">Adjustable ruler-stop body</a></h2>
+        <p class="spec">34.4 × 10.2 × 24; prints on an end profile</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="ruler_stop.stl" download>STL</a><a href="ruler_stop.3mf" download>3MF</a><a href="ruler_stop.step">STEP</a><a href="ruler_stop.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/ruler_stop_opposite_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_opposite_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Adjustable ruler-stop body — Underside / opposite">Underside / opposite</a><a href="review/ruler_stop_top_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_top_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Adjustable ruler-stop body — Top">Top</a><a href="review/ruler_stop_front_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_front_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Adjustable ruler-stop body — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="ruler_wedge" data-kind="print" data-category="Workshop layout aids" data-search="ruler wedge ruler_wedge ruler-stop wedge 35 × 24 × 7 including pull grip workshop layout aids">
+      <a class="thumbnail" href="review/ruler_wedge_iso_20260930T031538Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Ruler-stop wedge"><img src="review/ruler_wedge_iso_20260930T031538Z.png" alt="Ruler-stop wedge" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">41</span></div>
+        <h2><a href="#ruler_wedge">Ruler-stop wedge</a></h2>
+        <p class="spec">35 × 24 × 7 including pull grip</p>
+        <p class="category">Workshop layout aids</p>
+        <div class="files"><a href="ruler_wedge.stl" download>STL</a><a href="ruler_wedge.3mf" download>3MF</a><a href="ruler_wedge.step">STEP</a><a href="ruler_wedge.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/ruler_wedge_opposite_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_wedge_opposite_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler-stop wedge — Underside / opposite">Underside / opposite</a><a href="review/ruler_wedge_top_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_wedge_top_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler-stop wedge — Top">Top</a><a href="review/ruler_wedge_front_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_wedge_front_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler-stop wedge — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="tube_reducer" data-kind="print" data-category="Measured tube adapters" data-search="tube reducer tube_reducer smooth-tube reducer 55.2 outside diameter × 72 high; 50.4/32.4 sockets measured tube adapters">
+      <a class="thumbnail" href="review/tube_reducer_iso_20260930T032754Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Smooth-tube reducer"><img src="review/tube_reducer_iso_20260930T032754Z.png" alt="Smooth-tube reducer" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">42</span></div>
+        <h2><a href="#tube_reducer">Smooth-tube reducer</a></h2>
+        <p class="spec">55.2 outside diameter × 72 high; 50.4/32.4 sockets</p>
+        <p class="category">Measured tube adapters</p>
+        <div class="files"><a href="tube_reducer.stl" download>STL</a><a href="tube_reducer.3mf" download>3MF</a><a href="tube_reducer.step">STEP</a><a href="tube_reducer.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/tube_reducer_opposite_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/tube_reducer_opposite_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Smooth-tube reducer — Underside / opposite">Underside / opposite</a><a href="review/tube_reducer_top_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/tube_reducer_top_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Smooth-tube reducer — Top">Top</a><a href="review/tube_reducer_front_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/tube_reducer_front_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Smooth-tube reducer — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="socket_fit_ring" data-kind="print" data-category="Measured tube adapters" data-search="socket fit ring socket_fit_ring socket fit ring 55.2 outside diameter × 8 high; 50.4 working bore measured tube adapters">
+      <a class="thumbnail" href="review/socket_fit_ring_iso_20260930T032754Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Socket fit ring"><img src="review/socket_fit_ring_iso_20260930T032754Z.png" alt="Socket fit ring" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">43</span></div>
+        <h2><a href="#socket_fit_ring">Socket fit ring</a></h2>
+        <p class="spec">55.2 outside diameter × 8 high; 50.4 working bore</p>
+        <p class="category">Measured tube adapters</p>
+        <div class="files"><a href="socket_fit_ring.stl" download>STL</a><a href="socket_fit_ring.3mf" download>3MF</a><a href="socket_fit_ring.step">STEP</a><a href="socket_fit_ring.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/socket_fit_ring_opposite_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/socket_fit_ring_opposite_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Socket fit ring — Underside / opposite">Underside / opposite</a><a href="review/socket_fit_ring_top_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/socket_fit_ring_top_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Socket fit ring — Top">Top</a><a href="review/socket_fit_ring_front_20260930T032754Z.png" target="_blank" rel="noopener"><img src="review/socket_fit_ring_front_20260930T032754Z.png" width="1000" height="750" loading="lazy" alt="Socket fit ring — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="strap_corner" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="strap corner strap_corner strap-clamp corner pad — print four 38 × 38 × 33.5; for 25-wide webbing workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/strap_corner_iso_20260930T033741Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Strap-clamp corner pad — print four"><img src="review/strap_corner_iso_20260930T033741Z.png" alt="Strap-clamp corner pad — print four" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">44</span></div>
+        <h2><a href="#strap_corner">Strap-clamp corner pad — print four</a></h2>
+        <p class="spec">38 × 38 × 33.5; for 25-wide webbing</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="strap_corner.stl" download>STL</a><a href="strap_corner.3mf" download>3MF</a><a href="strap_corner.step">STEP</a><a href="strap_corner.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/strap_corner_opposite_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_corner_opposite_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap-clamp corner pad — print four — Underside / opposite">Underside / opposite</a><a href="review/strap_corner_top_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_corner_top_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap-clamp corner pad — print four — Top">Top</a><a href="review/strap_corner_front_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_corner_front_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap-clamp corner pad — print four — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sorting_sieve" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="sorting sieve sorting_sieve small-parts sorting sieve 135 × 90 × 18; 97 holes, each 4 diameter workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/sorting_sieve_iso_20260930T035006Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Small-parts sorting sieve"><img src="review/sorting_sieve_iso_20260930T035006Z.png" alt="Small-parts sorting sieve" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">45</span></div>
+        <h2><a href="#sorting_sieve">Small-parts sorting sieve</a></h2>
+        <p class="spec">135 × 90 × 18; 97 holes, each 4 diameter</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="sorting_sieve.stl" download>STL</a><a href="sorting_sieve.3mf" download>3MF</a><a href="sorting_sieve.step">STEP</a><a href="sorting_sieve.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sorting_sieve_opposite_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sorting_sieve_opposite_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Small-parts sorting sieve — Underside / opposite">Underside / opposite</a><a href="review/sorting_sieve_top_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sorting_sieve_top_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Small-parts sorting sieve — Top">Top</a><a href="review/sorting_sieve_front_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sorting_sieve_front_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Small-parts sorting sieve — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sieve_aperture_coupon" data-kind="print" data-category="Workshop handling, finishing, and sorting" data-search="sieve aperture coupon sieve_aperture_coupon sieve aperture coupon 40 × 18 × 2.4; 3.8 / 4 / 4.2 holes workshop handling, finishing, and sorting">
+      <a class="thumbnail" href="review/sieve_aperture_coupon_iso_20260930T035006Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sieve aperture coupon"><img src="review/sieve_aperture_coupon_iso_20260930T035006Z.png" alt="Sieve aperture coupon" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">46</span></div>
+        <h2><a href="#sieve_aperture_coupon">Sieve aperture coupon</a></h2>
+        <p class="spec">40 × 18 × 2.4; 3.8 / 4 / 4.2 holes</p>
+        <p class="category">Workshop handling, finishing, and sorting</p>
+        <div class="files"><a href="sieve_aperture_coupon.stl" download>STL</a><a href="sieve_aperture_coupon.3mf" download>3MF</a><a href="sieve_aperture_coupon.step">STEP</a><a href="sieve_aperture_coupon.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sieve_aperture_coupon_opposite_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sieve_aperture_coupon_opposite_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Sieve aperture coupon — Underside / opposite">Underside / opposite</a><a href="review/sieve_aperture_coupon_top_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sieve_aperture_coupon_top_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Sieve aperture coupon — Top">Top</a><a href="review/sieve_aperture_coupon_front_20260930T035006Z.png" target="_blank" rel="noopener"><img src="review/sieve_aperture_coupon_front_20260930T035006Z.png" width="1000" height="750" loading="lazy" alt="Sieve aperture coupon — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="divider_joint" data-kind="print" data-category="Organization and displays" data-search="divider joint divider_joint modular divider joint 40.2 × 40.2 × 18; selectable cross, t, corner, straight organization and displays">
+      <a class="thumbnail" href="review/divider_joint_iso_20261001T005829Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Modular divider joint"><img src="review/divider_joint_iso_20261001T005829Z.png" alt="Modular divider joint" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge">Print file</span><span class="number">47</span></div>
+        <h2><a href="#divider_joint">Modular divider joint</a></h2>
+        <p class="spec">40.2 × 40.2 × 18; selectable cross, T, corner, straight</p>
+        <p class="category">Organization and displays</p>
+        <div class="files"><a href="divider_joint.stl" download>STL</a><a href="divider_joint.3mf" download>3MF</a><a href="divider_joint.step">STEP</a><a href="divider_joint.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/divider_joint_opposite_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_opposite_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Modular divider joint — Underside / opposite">Underside / opposite</a><a href="review/divider_joint_top_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_top_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Modular divider joint — Top">Top</a><a href="review/divider_joint_front_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_front_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Modular divider joint — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="soap_dish_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="soap dish assembly soap_dish_assembly soap dish assembly 120 × 84 × 14 mm. tray and draining insert. print the two components separately. reference assemblies">
+      <a class="thumbnail" href="review/soap_dish_assembly_iso_20260930T001900Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Soap dish assembly"><img src="review/soap_dish_assembly_iso_20260930T001900Z.png" alt="Soap dish assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">48</span></div>
+        <h2><a href="#soap_dish_assembly">Soap dish assembly</a></h2>
+        <p class="spec">120 × 84 × 14 mm. Tray and draining insert. Print the two components separately.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="soap_dish_assembly.step">STEP</a><a href="soap_dish_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/soap_dish_assembly_opposite_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_assembly_opposite_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap dish assembly — Underside / opposite">Underside / opposite</a><a href="review/soap_dish_assembly_top_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_assembly_top_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap dish assembly — Top">Top</a><a href="review/soap_dish_assembly_front_20260930T001900Z.png" target="_blank" rel="noopener"><img src="review/soap_dish_assembly_front_20260930T001900Z.png" width="1000" height="750" loading="lazy" alt="Soap dish assembly — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sanding_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="sanding assembly sanding_assembly sanding block assembly 100 × 50 × 34.58 mm. block with two seated wedges. flexible sandpaper is omitted. reference assemblies">
+      <a class="thumbnail" href="review/sanding_assembly_iso_20260930T005110Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sanding block assembly"><img src="review/sanding_assembly_iso_20260930T005110Z.png" alt="Sanding block assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">49</span></div>
+        <h2><a href="#sanding_assembly">Sanding block assembly</a></h2>
+        <p class="spec">100 × 50 × 34.58 mm. Block with two seated wedges. Flexible sandpaper is omitted.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="sanding_assembly.step">STEP</a><a href="sanding_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sanding_assembly_opposite_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_assembly_opposite_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding block assembly — Underside / opposite">Underside / opposite</a><a href="review/sanding_assembly_top_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_assembly_top_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding block assembly — Top">Top</a><a href="review/sanding_assembly_front_20260930T005110Z.png" target="_blank" rel="noopener"><img src="review/sanding_assembly_front_20260930T005110Z.png" width="1000" height="750" loading="lazy" alt="Sanding block assembly — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="sliding_box_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="sliding box assembly sliding_box_assembly sliding box assembly 156 × 80 × 33.1 mm. box with its captured lid 30 mm open. print box and lid separately. reference assemblies">
+      <a class="thumbnail" href="review/sliding_box_assembly_iso_20260930T011106Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Sliding box assembly"><img src="review/sliding_box_assembly_iso_20260930T011106Z.png" alt="Sliding box assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">50</span></div>
+        <h2><a href="#sliding_box_assembly">Sliding box assembly</a></h2>
+        <p class="spec">156 × 80 × 33.1 mm. Box with its captured lid 30 mm open. Print box and lid separately.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="sliding_box_assembly.step">STEP</a><a href="sliding_box_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/sliding_box_assembly_opposite_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_assembly_opposite_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding box assembly — Underside / opposite">Underside / opposite</a><a href="review/sliding_box_assembly_top_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_assembly_top_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding box assembly — Top">Top</a><a href="review/sliding_box_assembly_front_20260930T011106Z.png" target="_blank" rel="noopener"><img src="review/sliding_box_assembly_front_20260930T011106Z.png" width="1000" height="750" loading="lazy" alt="Sliding box assembly — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="ruler_stop_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="ruler stop assembly ruler_stop_assembly ruler stop assembly 180 × 34.4 × 11 mm. stop and wedge around an illustrative gray ruler; the ruler is not a print. reference assemblies">
+      <a class="thumbnail" href="review/ruler_stop_assembly_iso_20260930T031538Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Ruler stop assembly"><img src="review/ruler_stop_assembly_iso_20260930T031538Z.png" alt="Ruler stop assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">51</span></div>
+        <h2><a href="#ruler_stop_assembly">Ruler stop assembly</a></h2>
+        <p class="spec">180 × 34.4 × 11 mm. Stop and wedge around an illustrative gray ruler; the ruler is not a print.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="ruler_stop_assembly.step">STEP</a><a href="ruler_stop_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/ruler_stop_assembly_opposite_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_assembly_opposite_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler stop assembly — Underside / opposite">Underside / opposite</a><a href="review/ruler_stop_assembly_top_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_assembly_top_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler stop assembly — Top">Top</a><a href="review/ruler_stop_assembly_front_20260930T031538Z.png" target="_blank" rel="noopener"><img src="review/ruler_stop_assembly_front_20260930T031538Z.png" width="1000" height="750" loading="lazy" alt="Ruler stop assembly — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="strap_clamp_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="strap clamp assembly strap_clamp_assembly strap clamp assembly 196 × 146 × 33.5 mm. four corner pads around a reference frame and strap. frame and strap are not prints. reference assemblies">
+      <a class="thumbnail" href="review/strap_clamp_assembly_iso_20260930T033741Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Strap clamp assembly"><img src="review/strap_clamp_assembly_iso_20260930T033741Z.png" alt="Strap clamp assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">52</span></div>
+        <h2><a href="#strap_clamp_assembly">Strap clamp assembly</a></h2>
+        <p class="spec">196 × 146 × 33.5 mm. Four corner pads around a reference frame and strap. Frame and strap are not prints.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="strap_clamp_assembly.step">STEP</a><a href="strap_clamp_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/strap_clamp_assembly_opposite_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_clamp_assembly_opposite_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap clamp assembly — Underside / opposite">Underside / opposite</a><a href="review/strap_clamp_assembly_top_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_clamp_assembly_top_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap clamp assembly — Top">Top</a><a href="review/strap_clamp_assembly_front_20260930T033741Z.png" target="_blank" rel="noopener"><img src="review/strap_clamp_assembly_front_20260930T033741Z.png" width="1000" height="750" loading="lazy" alt="Strap clamp assembly — Front">Front</a></div></details>
+      </div>
+    </article>
+<article class="card" id="divider_joint_assembly" data-kind="assembly" data-category="Reference assemblies" data-search="divider joint assembly divider_joint_assembly divider joint assembly 168.2 × 168.2 × 52.4 mm. cross connector with four separate reference boards. only the connector is printed. reference assemblies">
+      <a class="thumbnail" href="review/divider_joint_assembly_iso_20261001T005829Z.png" target="_blank" rel="noopener" aria-label="Full-size CAD view of Divider joint assembly"><img src="review/divider_joint_assembly_iso_20261001T005829Z.png" alt="Divider joint assembly" width="1000" height="750" loading="lazy"></a>
+      <div class="content">
+        <div class="meta"><span class="badge reference">Assembly · view only</span><span class="number">53</span></div>
+        <h2><a href="#divider_joint_assembly">Divider joint assembly</a></h2>
+        <p class="spec">168.2 × 168.2 × 52.4 mm. Cross connector with four separate reference boards. Only the connector is printed.</p>
+        <p class="category">Reference assemblies</p>
+        <div class="files"><a href="divider_joint_assembly.step">STEP</a><a href="divider_joint_assembly.step.py">Source</a></div>
+        <details><summary>Three more CAD views</summary><div class="views"><a href="review/divider_joint_assembly_opposite_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_assembly_opposite_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Divider joint assembly — Underside / opposite">Underside / opposite</a><a href="review/divider_joint_assembly_top_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_assembly_top_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Divider joint assembly — Top">Top</a><a href="review/divider_joint_assembly_front_20261001T005829Z.png" target="_blank" rel="noopener"><img src="review/divider_joint_assembly_front_20261001T005829Z.png" width="1000" height="750" loading="lazy" alt="Divider joint assembly — Front">Front</a></div></details>
+      </div>
+    </article></div>
+    <div class="empty" hidden><p>No models match those filters.</p><button type="button" class="reset">Clear filters</button></div>
+  </main>
+  <footer>
+    <p>Assembly references show how parts fit together. Print their separate components; gray reference hardware and the strap loop are not print files.</p>
+    <p>Sources are parametric Python. STEP is exchange geometry; STL and 3MF are print meshes. 3MF files contain geometry and units.</p>
+    <p><a href="THREAD_SUMMARY.md">Complete design inventory and verification summary</a> · <a href="README.md">Use instructions</a></p>
+  </footer>
+  <script>
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const search = document.querySelector('#search');
+    const category = document.querySelector('#category');
+    const buttons = Array.from(document.querySelectorAll('.types button'));
+    let kind = '';
+    function filter() {
+      const terms = search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+      let visible = 0;
+      cards.forEach(card => {
+        const matches = (!kind || card.dataset.kind === kind)
+          && (!category.value || card.dataset.category === category.value)
+          && terms.every(term => card.dataset.search.includes(term));
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+      document.querySelector('#count').textContent = `${visible} of ${cards.length} models`;
+      document.querySelector('.empty').hidden = visible !== 0;
+    }
+    search.addEventListener('input', filter);
+    category.addEventListener('change', filter);
+    buttons.forEach(button => button.addEventListener('click', () => {
+      kind = button.dataset.kind;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      filter();
+    }));
+    document.querySelector('.reset').addEventListener('click', () => {
+      search.value = ''; category.value = ''; kind = '';
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.kind === '')));
+      filter(); search.focus();
+    });
+  </script>
+</body>
+</html>

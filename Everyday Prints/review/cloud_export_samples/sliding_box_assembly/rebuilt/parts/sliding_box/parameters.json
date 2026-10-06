@@ -1,0 +1,32 @@
+{
+  "model": "sliding_box",
+  "parameters": {
+    "length": 160,
+    "width": 80.0,
+    "height": 32.0,
+    "wall": 2.4,
+    "floor": 2.4,
+    "lid_thickness": 2.4,
+    "side_clearance": 0.3,
+    "vertical_clearance": 0.3,
+    "roof": 1.6,
+    "ledge_inset": 3.2,
+    "end_clearance": 0.4,
+    "pull_extension": 6.0,
+    "grip_height": 3.0,
+    "sample_length": 30.0,
+    "sample_height": 16.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    160.0,
+    80.0000000000077,
+    32.0
+  ],
+  "volume_mm3": 67197.94475025935,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

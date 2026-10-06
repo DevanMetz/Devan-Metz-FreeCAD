@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "mobile_save_exposes_the_offscreen_invalid_field",
+    "copy_link_focuses_invalid_field_without_copying",
+    "numeric_list_errors_participate_in_native_validation",
+    "correcting_resetting_and_reverting_clear_field_errors",
+    "failed_imports_describe_the_file_and_keep_valid_inputs",
+    "new_actions_dismiss_obsolete_file_errors",
+    "long_import_errors_stay_bounded_and_fit_mobile_layout",
+    "stale_file_reads_cannot_restore_dismissed_errors",
+    "invalid_copy_during_build_preserves_progress_and_recovery",
+    "history_restores_invalid_drafts_and_their_associated_errors",
+    "keyboard_save_and_copy_recover_without_rebuilding"
+  ],
+  "failures": [],
+  "mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "transport": "compiled assets with real CAD fixture and controlled local file reads"
+}

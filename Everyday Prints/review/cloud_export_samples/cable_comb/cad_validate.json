@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/cable_comb/cable_comb",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "e4832c1e8917a949b7da9494ba99a61e077623cd7bd320015ad2222d4cdedc2a"
+}

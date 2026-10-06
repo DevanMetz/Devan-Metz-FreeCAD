@@ -1,0 +1,14 @@
+{
+  "out_of_range_draft": {
+    "message": "Your edits are ready. Update the preview to build this version.",
+    "valid_form": false
+  },
+  "out_of_range_saved": 251,
+  "out_of_range_shared": 251,
+  "over_service_cap_draft": "Your edits are ready. Update the preview to build this version.",
+  "over_service_cap_shared": 1001,
+  "numeric_string_link": {
+    "value": "180.55",
+    "message": "Shared dimensions loaded. Update the preview to build this version."
+  }
+}

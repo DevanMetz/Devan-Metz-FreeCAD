@@ -1,0 +1,22 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "failed_original_keeps_file_confirmation_and_mobile_focus",
+    "corrupt_original_keeps_accepted_dimensions",
+    "delayed_headers_confirm_before_preview_and_save_exact_values",
+    "delayed_matching_body_enables_only_verified_original",
+    "unavailable_original_builds_and_downloads_exact_saved_model",
+    "late_original_failure_keeps_new_field_error",
+    "late_verified_original_keeps_rejected_file_error",
+    "newer_matching_file_reflects_late_verified_preview",
+    "reset_reflects_late_verified_original_without_old_file_feedback",
+    "building_saved_model_supersedes_late_original_failure",
+    "switching_models_discards_late_original_failure",
+    "second_model_file_keeps_its_values_and_focus"
+  ],
+  "failures": [],
+  "fixtures_sha256": {
+    "cable_comb": "52312bcd6a79e5ebc408beb0b5f4d7709274e87a93e603281c51fa3f06a66e5b"
+  },
+  "transport": "compiled assets and real CAD fixtures with controlled original-preview transfers"
+}

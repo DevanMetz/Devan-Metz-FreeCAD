@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/sliding_box_assembly/parts/sliding_fit_slider/sliding_fit_slider",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "bb882af16e3966144760c3f9617491b8a9df1875859cd9b00258a962b3428c03"
+}

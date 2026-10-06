@@ -1,0 +1,19 @@
+[
+  {
+    "input":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/lower_frame.step.py",
+    "mode":"view",
+    "theme":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/review_theme.json",
+    "outputs":[{"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/lower_back_full.png","camera":{"direction":[-1,1,-0.8],"zoom":0.65}}],
+    "render":{"sizeProfile":"diagnostic","viewLabels":true}
+  },
+  {
+    "input":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/provisional_dock.step.py",
+    "mode":"view",
+    "theme":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/review_theme.json",
+    "outputs":[
+      {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/dock_full.png","camera":{"preset":"iso","zoom":0.65}},
+      {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/dock_back_full.png","camera":{"direction":[-1,1,-0.8],"zoom":0.65}}
+    ],
+    "render":{"sizeProfile":"diagnostic","viewLabels":true}
+  }
+]

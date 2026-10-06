@@ -1,0 +1,25 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "failure_retries_static_asset_and_preserves_history",
+    "html_response_is_cancelled_without_reading",
+    "mixed_case_html_is_cancelled_without_reading",
+    "failed_retry_keeps_draft_and_allows_another_retry",
+    "corrupted_original_recovers_with_verified_mesh",
+    "oversized_original_recovers_without_cad",
+    "pending_reader_cancels_and_late_bytes_are_ignored",
+    "stale_headers_cancel_unused_response",
+    "invalid_raw_draft_and_field_feedback_survive",
+    "accepted_file_confirmation_and_exact_values_survive",
+    "rejected_file_feedback_is_not_dismissed",
+    "different_model_file_keeps_confirmation_through_retry",
+    "rejected_shared_link_explanation_returns_after_retry",
+    "edited_shared_link_keeps_newer_feedback_and_focus",
+    "rapid_retries_keep_only_latest_response",
+    "custom_build_supersedes_pending_retry",
+    "model_switch_discards_pending_retry",
+    "reference_assembly_recovers_without_printable_stl",
+    "mobile_keyboard_retry_restores_reachable_focus"
+  ],
+  "failures": []
+}

@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/sanding_assembly/parts/sanding_block/sanding_block",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "278ffe26217df34a926ff6f1db8408b16a229fdf80f224c4a223474eab2bf353"
+}

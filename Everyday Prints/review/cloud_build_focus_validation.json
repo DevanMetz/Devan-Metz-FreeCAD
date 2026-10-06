@@ -1,0 +1,17 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "preview_keyboard_completion_returns_to_update_and_exact_stl",
+    "stop_preview_returns_to_update_before_late_reply",
+    "input_submission_keeps_field_and_stop_returns_to_it",
+    "custom_cad_returns_to_download_and_reuses_verified_zip",
+    "original_cad_refresh_keeps_focus_through_both_requests",
+    "failed_requests_restore_keyboard_retry_controls",
+    "completion_preserves_focus_moved_to_a_field",
+    "deadlines_restore_keyboard_focus",
+    "mobile_stop_is_visible_and_navigation_keeps_library_focus"
+  ],
+  "failures": [],
+  "wait_deadline_ms": 900000,
+  "transport": "compiled assets, keyboard events and real CAD fixtures"
+}

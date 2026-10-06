@@ -1,0 +1,29 @@
+{
+  "model": "sanding_block",
+  "parameters": {
+    "length": 120,
+    "width": 50.0,
+    "height": 25.0,
+    "end_margin": 7.0,
+    "slot_width": 6.0,
+    "slot_span": 40.0,
+    "slot_depth": 14.0,
+    "paper_thickness": 0.3,
+    "wedge_tip": 3.2,
+    "wedge_top": 8.0,
+    "wedge_height": 20.0,
+    "wedge_end_clearance": 2.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    120.0,
+    50.0,
+    25.0
+  ],
+  "volume_mm3": 119745.95578202786,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

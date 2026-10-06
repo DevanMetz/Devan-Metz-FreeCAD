@@ -1,0 +1,1319 @@
+{
+  "endpoint": "--native",
+  "passed": 54,
+  "rejected": 7,
+  "models": [
+    {
+      "model": "parts_tray",
+      "parameters": {
+        "columns": 3,
+        "floor": 2.0,
+        "height": 24.0,
+        "length": 150.0,
+        "outer_radius": 4.4,
+        "pocket_radius": 2.0,
+        "rows": 2,
+        "wall": 2.4,
+        "width": 100.0
+      },
+      "bounds_mm": [
+        150.0,
+        100.00000000000452,
+        24.0
+      ],
+      "mesh_sha256": "94dc0404e464d4d8503395b648a9940a6e6866024f3e2ad9171b7f1c263e3531",
+      "mesh_bytes": 358284,
+      "triangles": 7164,
+      "seconds": 5.15
+    },
+    {
+      "model": "cable_comb",
+      "parameters": {
+        "cable_diameters": [
+          3.0,
+          4.0,
+          5.0,
+          6.0,
+          8.0
+        ],
+        "clearance": 0.6,
+        "depth": 32.0,
+        "mounting_hole": 4.5,
+        "slot_depth": 18.0,
+        "thickness": 4.0,
+        "web": 5.0
+      },
+      "bounds_mm": [
+        59.0,
+        32.00000000000068,
+        4.0
+      ],
+      "mesh_sha256": "b908e10c0073bafb4fbce2a3deb9a038b3fdd3a68196baba0e29d5088dde5a23",
+      "mesh_bytes": 281284,
+      "triangles": 5624,
+      "seconds": 5.02
+    },
+    {
+      "model": "divider_foot",
+      "parameters": {
+        "base_width": 34.0,
+        "board_thickness": 3.0,
+        "clearance": 0.4,
+        "floor": 2.4,
+        "height": 20.0,
+        "jaw": 3.0,
+        "lead_in": 1.0,
+        "length": 24.0
+      },
+      "bounds_mm": [
+        34.0,
+        24.0000000000001,
+        20.0
+      ],
+      "mesh_sha256": "eb053337e0e8f9e60818ab5bb855840e43b5d21aae2e8f8045b03393346bc74b",
+      "mesh_bytes": 53084,
+      "triangles": 1060,
+      "seconds": 5.43
+    },
+    {
+      "model": "divider_fit_coupon",
+      "parameters": {
+        "board_thickness": 3.0,
+        "clearances": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "floor": 1.6,
+        "height": 8.0,
+        "length": 20.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        26.0,
+        20.000000000000284,
+        8.0
+      ],
+      "mesh_sha256": "dc52436e5ea67e8238aca79113c56ff45ee873c4d27a30ae4b45e29c4396b82a",
+      "mesh_bytes": 62284,
+      "triangles": 1244,
+      "seconds": 5.42
+    },
+    {
+      "model": "phone_stand",
+      "parameters": {
+        "angle": 68.0,
+        "base": 6.0,
+        "depth": 85.0,
+        "frame": 6.0,
+        "height": 96.0,
+        "lip": 4.0,
+        "lip_height": 10.0,
+        "seat_depth": 15.0,
+        "seat_height": 14.0,
+        "width": 65.0
+      },
+      "bounds_mm": [
+        85.0,
+        96.0,
+        65.0
+      ],
+      "mesh_sha256": "9658400bd2efff879618f4e12937539d36f55d85c5592b999ed27946f2a6f7b2",
+      "mesh_bytes": 2484,
+      "triangles": 48,
+      "seconds": 5.05
+    },
+    {
+      "model": "corner_square",
+      "parameters": {
+        "corner_relief": 3.0,
+        "hanging_hole": 5.0,
+        "leg": 80.0,
+        "leg_width": 18.0,
+        "thickness": 8.0,
+        "tip_chamfer": 2.0
+      },
+      "bounds_mm": [
+        80.0,
+        80.0,
+        8.0
+      ],
+      "mesh_sha256": "ee927632f5abd77c3c0e5a6836d22c114f3456ec70bcfb291ad115266dfebe2f",
+      "mesh_bytes": 90284,
+      "triangles": 1804,
+      "seconds": 5.11
+    },
+    {
+      "model": "handle_marking_jig",
+      "parameters": {
+        "end_margin": 16.0,
+        "fence": 3.0,
+        "fence_height": 18.0,
+        "front_margin": 12.0,
+        "hole_pitch": 128.0,
+        "marking_hole": 3.2,
+        "plate": 4.0,
+        "setback": 25.0
+      },
+      "bounds_mm": [
+        160.0,
+        40.000000000000014,
+        18.0
+      ],
+      "mesh_sha256": "85f125595489bd371c8da8ea0990f06812cc2467a97739548eb38cb1e865b968",
+      "mesh_bytes": 153484,
+      "triangles": 3068,
+      "seconds": 5.34
+    },
+    {
+      "model": "tube_squeezer",
+      "parameters": {
+        "corner_radius": 8.0,
+        "lead_in": 0.6,
+        "length": 90.0,
+        "slot_gap": 2.0,
+        "slot_length": 64.0,
+        "thickness": 6.0,
+        "width": 26.0
+      },
+      "bounds_mm": [
+        90.0,
+        26.000000000000007,
+        6.000000200000001
+      ],
+      "mesh_sha256": "c78ba0aad333b218645e5c555fa80e479977403063b91da81c85ac4971ee0070",
+      "mesh_bytes": 276884,
+      "triangles": 5536,
+      "seconds": 5.87
+    },
+    {
+      "model": "soap_dish_tray",
+      "parameters": {
+        "drain_margin": 12.0,
+        "floor": 2.4,
+        "foot_diameter": 8.0,
+        "foot_height": 8.0,
+        "height": 14.0,
+        "length": 120.0,
+        "outer_radius": 6.0,
+        "plate": 3.0,
+        "side_clearance": 1.0,
+        "slot_width": 5.0,
+        "wall": 2.4,
+        "web": 3.0,
+        "width": 84.0
+      },
+      "bounds_mm": [
+        120.0,
+        84.00000000000132,
+        14.0
+      ],
+      "mesh_sha256": "9c5e05897d744b9b2158ff9fcba919c11de3ed6172e28a43a1ae13bcad821ba3",
+      "mesh_bytes": 103084,
+      "triangles": 2060,
+      "seconds": 5.26
+    },
+    {
+      "model": "soap_dish_insert",
+      "parameters": {
+        "drain_margin": 12.0,
+        "floor": 2.4,
+        "foot_diameter": 8.0,
+        "foot_height": 8.0,
+        "height": 14.0,
+        "length": 120.0,
+        "outer_radius": 6.0,
+        "plate": 3.0,
+        "side_clearance": 1.0,
+        "slot_width": 5.0,
+        "wall": 2.4,
+        "web": 3.0,
+        "width": 84.0
+      },
+      "bounds_mm": [
+        113.20000000000002,
+        77.20000000000604,
+        11.0
+      ],
+      "mesh_sha256": "b53115efedaf52a54d95c33f18a6e2e8d9ec84eb10a1ac473a92f7a454c7bd5f",
+      "mesh_bytes": 839084,
+      "triangles": 16780,
+      "seconds": 5.37
+    },
+    {
+      "model": "label_stand",
+      "parameters": {
+        "corner_radius": 4.0,
+        "height": 12.0,
+        "lean_angle": 12.0,
+        "length": 50.0,
+        "slot_depth": 8.0,
+        "slot_gap": 0.8,
+        "width": 24.0
+      },
+      "bounds_mm": [
+        50.00000000000001,
+        24.000000000000043,
+        12.000000000000002
+      ],
+      "mesh_sha256": "29a43c0894778a14df6910d1ae895c241518c4aa1c660f906f3c1ace0d3eedeb",
+      "mesh_bytes": 51884,
+      "triangles": 1036,
+      "seconds": 4.74
+    },
+    {
+      "model": "paint_pyramid",
+      "parameters": {
+        "base_size": 50.0,
+        "base_thickness": 2.0,
+        "height": 26.0,
+        "skirt": 3.0,
+        "tip_size": 2.4
+      },
+      "bounds_mm": [
+        50.0,
+        50.000000000001165,
+        26.0000001
+      ],
+      "mesh_sha256": "62121c3fbc0f5a9b817f0a7535bcb3ea1343d8eb6428f3d67bc1fd20c3584169",
+      "mesh_bytes": 65884,
+      "triangles": 1316,
+      "seconds": 5.71
+    },
+    {
+      "model": "cable_winder",
+      "parameters": {
+        "end_width": 14.0,
+        "length": 95.0,
+        "neck_width": 22.0,
+        "notch_depth": 7.0,
+        "notch_gap": 3.6,
+        "thickness": 4.0,
+        "width": 44.0
+      },
+      "bounds_mm": [
+        95.0,
+        44.0,
+        4.0
+      ],
+      "mesh_sha256": "f1831f724b0602306c198ad241526e7ae754a37a55764a2842dd0b8916212395",
+      "mesh_bytes": 216884,
+      "triangles": 4336,
+      "seconds": 7.25
+    },
+    {
+      "model": "hex_bit_rack",
+      "parameters": {
+        "clearance": 0.35,
+        "columns": 6,
+        "floor": 2.4,
+        "height": 14.0,
+        "lead_in": 0.6,
+        "margin": 10.0,
+        "pitch": 12.0,
+        "rows": 3,
+        "shank_af": 6.35
+      },
+      "bounds_mm": [
+        80.0000002,
+        44.000000200000784,
+        14.000000100000001
+      ],
+      "mesh_sha256": "5ca507bf27fa686cfcf5dabfd817127c136f36de1ce46a4c7c90b2284bfd9075",
+      "mesh_bytes": 83484,
+      "triangles": 1668,
+      "seconds": 7.01
+    },
+    {
+      "model": "hex_bit_fit_coupon",
+      "parameters": {
+        "clearances": [
+          0.15,
+          0.35,
+          0.55
+        ],
+        "depth": 20.0,
+        "floor": 2.4,
+        "height": 14.0,
+        "lead_in": 0.6,
+        "margin": 8.0,
+        "pitch": 12.0,
+        "shank_af": 6.35
+      },
+      "bounds_mm": [
+        40.0000002,
+        20.000000200000052,
+        14.000000100000001
+      ],
+      "mesh_sha256": "52739241bebf06339bc7699a8b1545e7c41818fa87cc2d97b13d142a33fda586",
+      "mesh_bytes": 61284,
+      "triangles": 1224,
+      "seconds": 5.53
+    },
+    {
+      "model": "sanding_block",
+      "parameters": {
+        "end_margin": 7.0,
+        "height": 25.0,
+        "length": 100.0,
+        "paper_thickness": 0.3,
+        "slot_depth": 14.0,
+        "slot_span": 40.0,
+        "slot_width": 6.0,
+        "wedge_end_clearance": 2.0,
+        "wedge_height": 20.0,
+        "wedge_tip": 3.2,
+        "wedge_top": 8.0,
+        "width": 50.0
+      },
+      "bounds_mm": [
+        100.0,
+        50.0,
+        25.0
+      ],
+      "mesh_sha256": "c3faf6d3ca86d25c0e04de243f8d6a466a62f30c81f5acc262f041c1b6d47f65",
+      "mesh_bytes": 155084,
+      "triangles": 3100,
+      "seconds": 5.61
+    },
+    {
+      "model": "sanding_wedge",
+      "parameters": {
+        "end_margin": 7.0,
+        "height": 25.0,
+        "length": 100.0,
+        "paper_thickness": 0.3,
+        "slot_depth": 14.0,
+        "slot_span": 40.0,
+        "slot_width": 6.0,
+        "wedge_end_clearance": 2.0,
+        "wedge_height": 20.0,
+        "wedge_tip": 3.2,
+        "wedge_top": 8.0,
+        "width": 50.0
+      },
+      "bounds_mm": [
+        8.0,
+        36.0,
+        20.0
+      ],
+      "mesh_sha256": "0710f9b6017bb6a81edc3d6c8ffb468e745320cf2068b79f548b4d752ff07662",
+      "mesh_bytes": 684,
+      "triangles": 12,
+      "seconds": 5.33
+    },
+    {
+      "model": "cable_grommet",
+      "parameters": {
+        "clearance": 0.4,
+        "flange_thickness": 2.4,
+        "flange_width": 4.0,
+        "hole_diameter": 60.0,
+        "insertion_depth": 16.0,
+        "lead_in": 0.6,
+        "opening": 10.0,
+        "wall": 2.0
+      },
+      "bounds_mm": [
+        67.63034344160047,
+        68.0,
+        18.4
+      ],
+      "mesh_sha256": "0fce5a92e22ece424333a7a16cd1ffc1c077cbae500d5c6251e2e325a48bc3d1",
+      "mesh_bytes": 192084,
+      "triangles": 3840,
+      "seconds": 5.28
+    },
+    {
+      "model": "radius_template",
+      "parameters": {
+        "finger_hole": 20.0,
+        "radii": [
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ],
+        "side": 80.0,
+        "thickness": 3.0
+      },
+      "bounds_mm": [
+        80.0,
+        80.0,
+        3.0
+      ],
+      "mesh_sha256": "280e0cb1b182b752ec32710d06c9a2a65a2eccd765392cfe414e0f6e7a8e9ea7",
+      "mesh_bytes": 109684,
+      "triangles": 2192,
+      "seconds": 5.28
+    },
+    {
+      "model": "center_finder",
+      "parameters": {
+        "end_margin": 10.0,
+        "mark_hole": 3.2,
+        "pin_diameter": 8.0,
+        "pin_height": 12.0,
+        "pin_spacing": 80.0,
+        "plate_thickness": 4.0,
+        "plate_width": 24.0
+      },
+      "bounds_mm": [
+        100.0,
+        24.0,
+        16.000000200000002
+      ],
+      "mesh_sha256": "54e54256054a237441e1bf3a7ef2cb35e87569baa103a57ae8e76a3af1adfe68",
+      "mesh_bytes": 416284,
+      "triangles": 8324,
+      "seconds": 5.43
+    },
+    {
+      "model": "brush_rest",
+      "parameters": {
+        "clearance": 0.6,
+        "floor": 2.4,
+        "groove_diameters": [
+          8.0,
+          12.0,
+          16.0
+        ],
+        "groove_pitch": 30.0,
+        "length": 150.0,
+        "rail_height": 20.0,
+        "rail_spacing": 40.0,
+        "rail_thickness": 4.0,
+        "rear_inset": 30.0,
+        "rim_height": 12.0,
+        "wall": 2.4,
+        "width": 100.0
+      },
+      "bounds_mm": [
+        100.00000000000239,
+        150.0,
+        20.000000000000004
+      ],
+      "mesh_sha256": "3b4df9f2f13889bd17af782c82bf1d6212946ebe279cc415e8bded1688f744c7",
+      "mesh_bytes": 265084,
+      "triangles": 5300,
+      "seconds": 5.83
+    },
+    {
+      "model": "utility_peg",
+      "parameters": {
+        "end_margin": 8.0,
+        "head_diameter": 16.0,
+        "head_thickness": 2.4,
+        "mount_hole": 4.4,
+        "mount_spacing": 44.0,
+        "peg_diameter": 10.0,
+        "peg_length": 28.0,
+        "plate_thickness": 3.0,
+        "plate_width": 24.0
+      },
+      "bounds_mm": [
+        60.0,
+        24.000000000000043,
+        31.0
+      ],
+      "mesh_sha256": "3f228d4b3a1514969c36a55c91c55cc14baed3af9f6d33b76d2b8a1a006a2c2f",
+      "mesh_bytes": 404284,
+      "triangles": 8084,
+      "seconds": 6.25
+    },
+    {
+      "model": "sliding_box",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 120.0,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        120.0,
+        80.0000000000077,
+        32.0
+      ],
+      "mesh_sha256": "84a5ffca0b853d5f8e5f6ff6094bdfcc8021e5b2758c67cda55c5f5a7db9f079",
+      "mesh_bytes": 53784,
+      "triangles": 1074,
+      "seconds": 5.95
+    },
+    {
+      "model": "sliding_lid",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 120.0,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        123.20000019999999,
+        74.60000020000001,
+        5.400000100000001
+      ],
+      "mesh_sha256": "3118e21d4b8450552e3d78ba538acf8746e682177753e60e592108c7c826f9cf",
+      "mesh_bytes": 1684,
+      "triangles": 32,
+      "seconds": 5.41
+    },
+    {
+      "model": "sliding_fit_channel",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 120.0,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        30.0,
+        80.0,
+        16.0
+      ],
+      "mesh_sha256": "0bc56b4f57f9ff2f54d53f8e6fd37de6709674b80e0dce91693cb5d2a5e49215",
+      "mesh_bytes": 3084,
+      "triangles": 60,
+      "seconds": 5.71
+    },
+    {
+      "model": "sliding_fit_slider",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 120.0,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        36.0000002,
+        74.60000020000001,
+        5.400000100000001
+      ],
+      "mesh_sha256": "74d63f88b749c5f56f6d5b6a97ad766a8dd7f2e0ecddeadfa76fbd09bfa5f6fe",
+      "mesh_bytes": 1684,
+      "triangles": 32,
+      "seconds": 5.93
+    },
+    {
+      "model": "round_stock_cradle",
+      "parameters": {
+        "apex_height": 8.0,
+        "end_margin": 10.0,
+        "height": 30.0,
+        "length": 80.0,
+        "mount_hole": 4.0,
+        "width": 60.0
+      },
+      "bounds_mm": [
+        80.0,
+        60.00000000000205,
+        30.000000000000004
+      ],
+      "mesh_sha256": "b4eeb83b82aec4a48bb1e6183a7c856bc0c3ddba7e364e31730b036452d67c67",
+      "mesh_bytes": 254084,
+      "triangles": 5080,
+      "seconds": 6.18
+    },
+    {
+      "model": "tie_anchor",
+      "parameters": {
+        "floor": 1.6,
+        "mount_hole": 3.5,
+        "mount_inset": 5.0,
+        "roof": 2.4,
+        "side": 26.0,
+        "straight_height": 1.6,
+        "tunnel_width": 4.8
+      },
+      "bounds_mm": [
+        26.0,
+        26.00000000000013,
+        8.6
+      ],
+      "mesh_sha256": "19190cbb4c0234c1dbdef898ed485c2d0a6e3f742b59236f30f1aa8dfc71900c",
+      "mesh_bytes": 155784,
+      "triangles": 3114,
+      "seconds": 5.16
+    },
+    {
+      "model": "workshop_funnel",
+      "parameters": {
+        "cone_height": 40.0,
+        "hanger_hole": 4.5,
+        "mouth_diameter": 70.0,
+        "rim_extra": 2.0,
+        "rim_height": 3.0,
+        "spout_diameter": 10.0,
+        "spout_length": 20.0,
+        "wall": 2.0
+      },
+      "bounds_mm": [
+        89.0,
+        78.0,
+        60.0000001
+      ],
+      "mesh_sha256": "56e68d8622e348a7e8b496937fc2810d3844aebddde44dc087edbb8780fd7fa5",
+      "mesh_bytes": 527484,
+      "triangles": 10548,
+      "seconds": 5.22
+    },
+    {
+      "model": "fold_clip",
+      "parameters": {
+        "arm_length": 45.0,
+        "arm_thickness": 2.4,
+        "depth": 12.0,
+        "entry_flare": 2.0,
+        "jaw_gap": 0.6,
+        "nose_length": 6.0,
+        "nose_radius": 0.4,
+        "root_radius": 3.0
+      },
+      "bounds_mm": [
+        50.4,
+        10.8,
+        12.0
+      ],
+      "mesh_sha256": "634fbf9ad384e1e89a0ac090b62da7f56c5632bf1b4111592d8115e087340f05",
+      "mesh_bytes": 115484,
+      "triangles": 2308,
+      "seconds": 5.42
+    },
+    {
+      "model": "cord_clip",
+      "parameters": {
+        "arm_thickness": 1.0,
+        "base_thickness": 3.0,
+        "base_width": 20.0,
+        "cable_diameter": 6.0,
+        "capture": 0.8,
+        "clearance": 0.6,
+        "depth": 12.0,
+        "tip_radius": 0.2
+      },
+      "bounds_mm": [
+        20.0,
+        9.494995833411092,
+        12.0
+      ],
+      "mesh_sha256": "c88b252b3eb240e5864fdccc9c83994701bd765cd4fff7637c9ddea2a06eb290",
+      "mesh_bytes": 162084,
+      "triangles": 3240,
+      "seconds": 5.32
+    },
+    {
+      "model": "hand_knob",
+      "parameters": {
+        "bolt_clearance": 0.6,
+        "bolt_diameter": 6.0,
+        "grip_diameter": 40.0,
+        "height": 14.0,
+        "lead_in": 0.4,
+        "lobe_radius": 6.0,
+        "nut_af": 10.0,
+        "nut_clearance": 0.3,
+        "nut_thickness": 5.0,
+        "pocket_extra_depth": 0.4,
+        "valley_radius": 0.8
+      },
+      "bounds_mm": [
+        40.0000002,
+        36.24871150596429,
+        14.0000002
+      ],
+      "mesh_sha256": "4e20800f53702df41c069155e7285854989198aac144071c301af2aa4e4420d8",
+      "mesh_bytes": 363084,
+      "triangles": 7260,
+      "seconds": 5.81
+    },
+    {
+      "model": "slotted_shim",
+      "parameters": {
+        "bolt_diameter": 6.0,
+        "clearance": 0.6,
+        "corner_radius": 3.0,
+        "hanging_hole": 4.5,
+        "length": 40.0,
+        "slot_depth": 28.0,
+        "thickness": 2.0,
+        "width": 24.0
+      },
+      "bounds_mm": [
+        40.0,
+        24.0000000000001,
+        2.0
+      ],
+      "mesh_sha256": "3a4be65baf5f827ce69ba48a9d8f0ca265930d8f7e30623c4fc4380e72233311",
+      "mesh_bytes": 127484,
+      "triangles": 2548,
+      "seconds": 5.13
+    },
+    {
+      "model": "marking_saddle",
+      "parameters": {
+        "board_width": 38.0,
+        "clearance": 0.5,
+        "fence_height": 20.0,
+        "length": 90.0,
+        "mark_width": 1.0,
+        "plate": 3.0,
+        "wall": 3.0
+      },
+      "bounds_mm": [
+        90.0,
+        44.50000000000341,
+        23.0
+      ],
+      "mesh_sha256": "87bc12ef9d808cf7c20723e9a9ac1105687e0bd305f111756741e6c89bcbed7f",
+      "mesh_bytes": 53884,
+      "triangles": 1076,
+      "seconds": 4.92
+    },
+    {
+      "model": "roll_adapter",
+      "parameters": {
+        "axle_clearance": 0.6,
+        "axle_diameter": 8.0,
+        "flange_extra": 4.0,
+        "flange_thickness": 2.4,
+        "hub_wall": 3.0,
+        "insertion_depth": 15.0,
+        "lead_in": 0.6,
+        "outer_clearance": 0.4,
+        "roll_bore": 52.0,
+        "spoke_count": 6,
+        "spoke_thickness": 3.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        60.0,
+        60.0,
+        17.4000001
+      ],
+      "mesh_sha256": "52981176589492817df4291409277cb17fc3b713df365bc0e7b6a2885063100c",
+      "mesh_bytes": 306084,
+      "triangles": 6120,
+      "seconds": 5.51
+    },
+    {
+      "model": "bookend",
+      "parameters": {
+        "back_depth": 30.0,
+        "brace_height": 90.0,
+        "brace_width": 4.0,
+        "corner_radius": 3.0,
+        "floor": 4.0,
+        "front_depth": 100.0,
+        "height": 130.0,
+        "wall": 4.0,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        130.0,
+        80.000000000005,
+        130.0
+      ],
+      "mesh_sha256": "87b41cac75a3d0be3718d48fcefe382b0b3bc9a2b70dd6da4f53f3fff452da67",
+      "mesh_bytes": 56784,
+      "triangles": 1134,
+      "seconds": 4.95
+    },
+    {
+      "model": "corner_cable_guide",
+      "parameters": {
+        "channel_depth": 8.0,
+        "channel_width": 10.0,
+        "floor": 2.4,
+        "inside_radius": 25.0,
+        "mount_hole": 3.5,
+        "tab_diameter": 12.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        41.507041555162,
+        41.50704155516198,
+        10.4
+      ],
+      "mesh_sha256": "0ed3ef81793f192e60076c725ffa75295951e0fa6085c285e5728289734db2fa",
+      "mesh_bytes": 225384,
+      "triangles": 4506,
+      "seconds": 4.86
+    },
+    {
+      "model": "workshop_scoop",
+      "parameters": {
+        "bowl_length": 60.0,
+        "bowl_width": 45.0,
+        "corner_radius": 6.0,
+        "floor": 2.4,
+        "handle_length": 50.0,
+        "handle_thickness": 4.0,
+        "handle_width": 18.0,
+        "hanging_hole": 4.5,
+        "height": 20.0,
+        "pour_drop": 4.0,
+        "pour_width": 18.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        110.0,
+        45.000000000000156,
+        20.0
+      ],
+      "mesh_sha256": "441765ec7c4f9d1e25302d49435666a4e51106bb5d4b65b9ab19c2e9b1f3cd25",
+      "mesh_bytes": 217684,
+      "triangles": 4352,
+      "seconds": 5.11
+    },
+    {
+      "model": "plant_marker",
+      "parameters": {
+        "corner_radius": 3.0,
+        "hanging_hole": 3.5,
+        "label_height": 45.0,
+        "label_width": 26.0,
+        "neck_radius": 2.0,
+        "stake_length": 70.0,
+        "stake_width": 8.0,
+        "thickness": 2.4,
+        "tip_length": 15.0,
+        "tip_width": 1.2
+      },
+      "bounds_mm": [
+        26.000000000000128,
+        115.0,
+        2.4
+      ],
+      "mesh_sha256": "34724159353ac1ac84917fec50edc0535fd1923fc5dfbb5d14a02c3bb23c4e9d",
+      "mesh_bytes": 128084,
+      "triangles": 2560,
+      "seconds": 4.77
+    },
+    {
+      "model": "ruler_stop",
+      "parameters": {
+        "body_length": 24.0,
+        "clamp_gap": 2.2,
+        "floor": 3.0,
+        "grip_height": 4.0,
+        "grip_length": 3.0,
+        "roof": 4.0,
+        "ruler_thickness": 1.0,
+        "ruler_width": 26.0,
+        "side_clearance": 0.4,
+        "side_wall": 4.0,
+        "wedge_back": 3.0,
+        "wedge_length": 35.0,
+        "wedge_side_clearance": 1.2,
+        "wedge_tip": 0.8
+      },
+      "bounds_mm": [
+        34.4,
+        10.200000000000024,
+        24.0
+      ],
+      "mesh_sha256": "d1d5db4200c02b01dc57a33a4658e95c452459fbb77e0ad77866def47ef46f20",
+      "mesh_bytes": 52084,
+      "triangles": 1040,
+      "seconds": 4.64
+    },
+    {
+      "model": "ruler_wedge",
+      "parameters": {
+        "body_length": 24.0,
+        "clamp_gap": 2.2,
+        "floor": 3.0,
+        "grip_height": 4.0,
+        "grip_length": 3.0,
+        "roof": 4.0,
+        "ruler_thickness": 1.0,
+        "ruler_width": 26.0,
+        "side_clearance": 0.4,
+        "side_wall": 4.0,
+        "wedge_back": 3.0,
+        "wedge_length": 35.0,
+        "wedge_side_clearance": 1.2,
+        "wedge_tip": 0.8
+      },
+      "bounds_mm": [
+        35.0,
+        24.0,
+        7.0
+      ],
+      "mesh_sha256": "8b8530d3e355bcf3ef1bcbb408ff891f95f0cf5a5a8454aef2b4274319a9c2d2",
+      "mesh_bytes": 1084,
+      "triangles": 20,
+      "seconds": 4.79
+    },
+    {
+      "model": "tube_reducer",
+      "parameters": {
+        "large_clearance": 0.4,
+        "large_depth": 22.0,
+        "large_diameter": 50.0,
+        "lead_in": 0.6,
+        "small_clearance": 0.4,
+        "small_depth": 20.0,
+        "small_diameter": 32.0,
+        "stop_inset": 2.0,
+        "transition_length": 30.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        55.199999999999996,
+        55.199999999999996,
+        72.0
+      ],
+      "mesh_sha256": "4ee4e5ed1faaa81100223a80c9ea31a33f4087de61a1086f57a5fcd29d031bf0",
+      "mesh_bytes": 516684,
+      "triangles": 10332,
+      "seconds": 4.77
+    },
+    {
+      "model": "socket_fit_ring",
+      "parameters": {
+        "clearance": 0.4,
+        "height": 8.0,
+        "lead_in": 0.6,
+        "tube_diameter": 50.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        55.199999999999996,
+        55.199999999999996,
+        8.0
+      ],
+      "mesh_sha256": "0d3d47bc3d44acf852de8ad9c34cbbc326e638f08b742a57f89652e96ec55537",
+      "mesh_bytes": 151284,
+      "triangles": 3024,
+      "seconds": 5.37
+    },
+    {
+      "model": "strap_corner",
+      "parameters": {
+        "corner_relief": 3.0,
+        "leg_length": 30.0,
+        "lip_projection": 2.0,
+        "lip_thickness": 2.0,
+        "strap_thickness": 1.2,
+        "strap_width": 25.0,
+        "wall": 6.0,
+        "width_clearance": 2.0
+      },
+      "bounds_mm": [
+        38.0000002,
+        38.0000002,
+        33.5000002
+      ],
+      "mesh_sha256": "7ffc76eb6784c46f9d0d4bbec7de7a352c1e1462001c7efcb5c46bdb383020e3",
+      "mesh_bytes": 90284,
+      "triangles": 1804,
+      "seconds": 8.6
+    },
+    {
+      "model": "sorting_sieve",
+      "parameters": {
+        "bowl_diameter": 90.0,
+        "floor": 2.4,
+        "handle_length": 45.0,
+        "handle_thickness": 4.0,
+        "handle_width": 18.0,
+        "hanging_hole": 4.5,
+        "height": 18.0,
+        "hole_diameter": 4.0,
+        "hole_margin": 4.0,
+        "pitch": 7.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        135.0,
+        90.0,
+        18.0
+      ],
+      "mesh_sha256": "25624148a9b87613f62e546e0edcb5f776ced68c9ba73f7b9af61c34c56fed0d",
+      "mesh_bytes": 5085984,
+      "triangles": 101718,
+      "seconds": 9.44
+    },
+    {
+      "model": "sieve_aperture_coupon",
+      "parameters": {
+        "floor": 2.4,
+        "hole_diameter": 4.0,
+        "offsets": [
+          -0.2,
+          0,
+          0.2
+        ]
+      },
+      "bounds_mm": [
+        40.0,
+        18.000000000000036,
+        2.4
+      ],
+      "mesh_sha256": "96e66c86155d497f55ee654230eac1e539e2e8b3862c161172f1e2081ae13bda",
+      "mesh_bytes": 207684,
+      "triangles": 4152,
+      "seconds": 4.71
+    },
+    {
+      "model": "divider_joint",
+      "parameters": {
+        "board_thickness": 3.0,
+        "clearance": 0.4,
+        "floor": 2.4,
+        "height": 18.0,
+        "insertion_depth": 16.0,
+        "lead_in": 0.6,
+        "ports": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        40.200000200000005,
+        40.200000200000005,
+        18.0000001
+      ],
+      "mesh_sha256": "4fa4ead921d26c6f23cd6e9a3b5b9ccd6cee12ceff024589233fb5814425586d",
+      "mesh_bytes": 107884,
+      "triangles": 2156,
+      "seconds": 4.83
+    },
+    {
+      "model": "parts_tray",
+      "parameters": {
+        "columns": 4,
+        "floor": 2.0,
+        "height": 30,
+        "length": 180,
+        "outer_radius": 4.4,
+        "pocket_radius": 2.0,
+        "rows": 3,
+        "wall": 2.4,
+        "width": 100.0
+      },
+      "bounds_mm": [
+        180.0,
+        100.00000000000452,
+        30.0
+      ],
+      "mesh_sha256": "bde59b18ddeab26740ee2f4cd75ead0384ac851036d2a6c6c795799cb5230104",
+      "mesh_bytes": 665484,
+      "triangles": 13308,
+      "seconds": 5.01
+    },
+    {
+      "model": "cable_comb",
+      "parameters": {
+        "cable_diameters": [
+          2,
+          3,
+          5,
+          9
+        ],
+        "clearance": 0.6,
+        "depth": 32.0,
+        "mounting_hole": 4.5,
+        "slot_depth": 18.0,
+        "thickness": 4.0,
+        "web": 5.0
+      },
+      "bounds_mm": [
+        46.4,
+        32.00000000000068,
+        4.0
+      ],
+      "mesh_sha256": "82a709894fa19fcb6654f2d0500d149e9ed78df5c3b1aff504066b4df3ef2129",
+      "mesh_bytes": 255484,
+      "triangles": 5108,
+      "seconds": 4.8
+    },
+    {
+      "model": "divider_joint",
+      "parameters": {
+        "board_thickness": 3.0,
+        "clearance": 0.4,
+        "floor": 2.4,
+        "height": 18.0,
+        "insertion_depth": 16.0,
+        "lead_in": 0.6,
+        "ports": [
+          0,
+          90,
+          180
+        ],
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        40.200000200000005,
+        24.200000100000064,
+        18.0000001
+      ],
+      "mesh_sha256": "8aef68b436f36b32ba730e2d3f1e1d8fb304b15cbc5a5d8abd5f521298c1989b",
+      "mesh_bytes": 80684,
+      "triangles": 1612,
+      "seconds": 4.79
+    },
+    {
+      "model": "sliding_box",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 160,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        160.0,
+        80.0000000000077,
+        32.0
+      ],
+      "mesh_sha256": "aa22476e6bdcef532a25dffb4857bb39067180745910d00e847e77662420a986",
+      "mesh_bytes": 53784,
+      "triangles": 1074,
+      "seconds": 4.85
+    },
+    {
+      "model": "sliding_lid",
+      "parameters": {
+        "end_clearance": 0.4,
+        "floor": 2.4,
+        "grip_height": 3.0,
+        "height": 32.0,
+        "ledge_inset": 3.2,
+        "length": 160,
+        "lid_thickness": 2.4,
+        "pull_extension": 6.0,
+        "roof": 1.6,
+        "sample_height": 16.0,
+        "sample_length": 30.0,
+        "side_clearance": 0.3,
+        "vertical_clearance": 0.3,
+        "wall": 2.4,
+        "width": 80.0
+      },
+      "bounds_mm": [
+        163.20000019999998,
+        74.60000020000001,
+        5.400000100000001
+      ],
+      "mesh_sha256": "1edef38fa2e72321cc5aa630486524a5b7e7746a81e2001cdbd58aa3c7e21d46",
+      "mesh_bytes": 1684,
+      "triangles": 32,
+      "seconds": 4.97
+    },
+    {
+      "model": "soap_dish_assembly",
+      "parameters": {
+        "drain_margin": 12.0,
+        "floor": 2.4,
+        "foot_diameter": 8.0,
+        "foot_height": 8.0,
+        "height": 14.0,
+        "length": 120.0,
+        "outer_radius": 6.0,
+        "plate": 3.0,
+        "side_clearance": 1.0,
+        "slot_width": 5.0,
+        "wall": 2.4,
+        "web": 3.0,
+        "width": 84.0
+      },
+      "bounds_mm": [
+        120.0,
+        84.00000000000132,
+        14.0
+      ],
+      "mesh_sha256": "cbd523f6db407fdff2eb80b6ef137652f8d2618d9c52f620ca1d7cc769a95889",
+      "mesh_bytes": 942084,
+      "triangles": 18840,
+      "seconds": 5.81
+    },
+    {
+      "model": "divider_joint_assembly",
+      "parameters": {
+        "board_thickness": 3.0,
+        "clearance": 0.4,
+        "floor": 2.4,
+        "height": 18.0,
+        "insertion_depth": 16.0,
+        "lead_in": 0.6,
+        "ports": [
+          0,
+          90,
+          180
+        ],
+        "reference_height": 50.0,
+        "reference_length": 80.0,
+        "wall": 2.4
+      },
+      "bounds_mm": [
+        168.2,
+        88.20000000000006,
+        52.4
+      ],
+      "mesh_sha256": "606bcfc6e013b6809d1595e4c9a7f5f284f7d5d7b4cf02f778533a21ef02badb",
+      "mesh_bytes": 82484,
+      "triangles": 1648,
+      "seconds": 5.07
+    }
+  ]
+}

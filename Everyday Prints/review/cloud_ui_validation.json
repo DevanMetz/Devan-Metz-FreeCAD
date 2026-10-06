@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "model_count": 53,
+  "images_loaded": 53,
+  "search": "fuzzy organizer + assembly filter",
+  "parameter_rebuilds": [
+    "parts_tray",
+    "divider_joint"
+  ],
+  "matching_download_sha256": "bde59b18ddeab26740ee2f4cd75ead0384ac851036d2a6c6c795799cb5230104",
+  "rejected_invalid_geometry": true,
+  "shared_link": "https://everyday-prints.test/?model=soap_dish_tray&p=%7B%22length%22%3A140%2C%22width%22%3A84%2C%22height%22%3A14%2C%22wall%22%3A2.4%2C%22floor%22%3A2.4%2C%22outer_radius%22%3A6%2C%22side_clearance%22%3A1%2C%22plate%22%3A3%2C%22foot_height%22%3A8%2C%22foot_diameter%22%3A8%2C%22slot_width%22%3A5%2C%22web%22%3A3%2C%22drain_margin%22%3A12%7D",
+  "mobile_width": 390,
+  "browser_errors": [],
+  "transport": "compiled assets and native jobs through Playwright routes"
+}

@@ -1,0 +1,21 @@
+{
+  "strap_clamp_assembly.step": "bfe4b3317ec29fe7fb83c743268d7734d1fb6d2b54c45a066c4365c9730254ae",
+  "parts/strap_corner/strap_corner.step": "a7ea893dbad094f0763d06e8b1ee6fde20ea97c2bc2032c6f7b970b9c68e3cd6",
+  "parts/strap_corner/strap_corner.stl": "7b7712ea0003372fb97ec3c83d95d36ce78061dbdf78c30967b46b0df344b4db",
+  "parts/strap_corner/strap_corner.3mf": "cdc2dd83e202d109d9c2e31fd909a2ac942fec0f5c39a3def54f56ab50dbfb6b",
+  "parts/strap_corner/parameters.json": "9f7a49058fa9bcfd0641cf7ccf9014d0bd301c5026836b32b49142d4acd07b2f",
+  "sources/divider_joint_common.py": "247a0dc299e0a9c5e5c7df1550b1160c5f446cc1a58a15f28cf5c45de456349b",
+  "sources/ruler_stop_common.py": "32f609a094234e22bf493814b8731b8d38f9755d59ec062e3535aecf157b582c",
+  "sources/sanding_common.py": "70a392bb6df826e189e4c1bffc00175ee781d82cd19c38edd0464ba1c4b073d6",
+  "sources/sliding_box_common.py": "0b69bdb1707aaa6bd3aa09db4e7629473f3ce87116298f6521c28323ef19cf15",
+  "sources/soap_dish_common.py": "4c5e8ac9e9628ad8df235bd4514470c5e99baa4ae8d79a59ff964edc780ac0a1",
+  "sources/strap_clamp_assembly.step.py": "3dfddaf3e0df0d3a277287a495f69a27e8c3071b901a3110e808db650eb68f19",
+  "sources/strap_corner.step.py": "bdc2b119e6e19931c6217ce89f0305868788c94febd35128f7d127215329ced8",
+  "sources/strap_corner_common.py": "6f1819499b0ee63e6e42fa82fe3211dcfc3dfaad15e7e17f7b84ebf9f17edb92",
+  "LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+  "NOTICE": "9d6ce01bf089e69a912261a0e309895fe1b31e5b60bf2884f7f4e3febd00808a",
+  "rebuild.py": "52fd0f64c25ba6a0ab16e9a0465c2b8661a0ef9e43d28f1208f0edf741be20db",
+  "requirements.txt": "deb082a45c20743e3013f241ab8522fd637e4b58a00c24d4405cbcfc8955dfcc",
+  "parameters.json": "f1b9d4e6fec192bb9480af59ac5d806d9b557f8d5a1b7c0f77833f3a440cf521",
+  "README.md": "d57406d22e6d78286e7dc36877d5996b5bacf6088a97328f53075cf0528b3c37"
+}

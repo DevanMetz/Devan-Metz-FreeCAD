@@ -1,0 +1,23 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "save_unbuilt_decimal_dimensions",
+    "real_cad_metadata_loads_then_builds_exact_files",
+    "matching_file_repairs_edits_and_keeps_cached_cad",
+    "list_file_opens_model_and_preserves_history",
+    "assembly_dimensions_keep_canonical_kit",
+    "rejected_files_preserve_edits_preview_and_cad",
+    "oversized_and_unreadable_files_allow_recovery",
+    "late_file_reads_respect_edits_selections_and_navigation",
+    "busy_controls_ignore_forced_file_changes",
+    "returned_edits_and_reset_discard_pending_files",
+    "mobile_keyboard_file_chooser_and_save"
+  ],
+  "failures": [],
+  "fixtures_sha256": {
+    "parts_tray": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+    "cable_comb": "52312bcd6a79e5ebc408beb0b5f4d7709274e87a93e603281c51fa3f06a66e5b",
+    "soap_dish_assembly": "37b8b5e05c8ac15ec4f8de114fc1287a4e4694aaf8b55ae4b6364c4eeb042056"
+  },
+  "transport": "compiled assets and real CAD fixtures with controlled local file reads"
+}

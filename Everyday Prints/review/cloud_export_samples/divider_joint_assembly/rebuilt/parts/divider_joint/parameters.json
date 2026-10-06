@@ -1,0 +1,29 @@
+{
+  "model": "divider_joint",
+  "parameters": {
+    "board_thickness": 3.0,
+    "clearance": 0.4,
+    "wall": 2.4,
+    "insertion_depth": 16.0,
+    "height": 18.0,
+    "floor": 2.4,
+    "lead_in": 0.6,
+    "ports": [
+      0,
+      90,
+      180
+    ]
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    40.200000200000005,
+    24.200000100000064,
+    18.0000001
+  ],
+  "volume_mm3": 5719.256229286442,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

@@ -1,0 +1,27 @@
+{
+  "model": "parts_tray",
+  "parameters": {
+    "columns": 3,
+    "floor": 2.0,
+    "height": 24.0,
+    "length": 180.5,
+    "outer_radius": 4.4,
+    "pocket_radius": 2.0,
+    "rows": 2,
+    "wall": 2.4,
+    "width": 100.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    180.5,
+    100.00000000000452,
+    24.0
+  ],
+  "volume_mm3": 84344.94868271601,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "format": "cad",
+  "kit": []
+}

@@ -1,0 +1,46 @@
+{
+  "basis": {
+    "solver": "CalculiX linear static / Gmsh C3D4 mesh",
+    "material": "Bambu PETG-HF",
+    "elastic_modulus_MPa": 2050.0,
+    "poisson_ratio_assumed": 0.38,
+    "warning": "Screening model only; printed-part allowables and boundary conditions require physical correlation."
+  },
+  "designs": {
+    "compact_fdm": {
+      "mesh_nodes": 5760,
+      "mesh_tetrahedra": 16107,
+      "fixed_nodes": 167,
+      "cases": {
+        "upper_lateral_250N": {
+          "max_loaded_displacement_mm": 3.4578630936467105,
+          "max_von_mises_MPa": 27.00847215537932,
+          "p99_von_mises_MPa": 16.912960785999474,
+          "p95_von_mises_MPa": 8.167353063057936,
+          "result_nodes": 5760
+        },
+        "upper_fore_aft_250N": {
+          "max_loaded_displacement_mm": 20.975445163459586,
+          "max_von_mises_MPa": 120.77341160928923,
+          "p99_von_mises_MPa": 53.95455676945113,
+          "p95_von_mises_MPa": 25.79126678930145,
+          "result_nodes": 5760
+        },
+        "lower_lateral_150N": {
+          "max_loaded_displacement_mm": 2.3932908202063534,
+          "max_von_mises_MPa": 14.959768809126029,
+          "p99_von_mises_MPa": 7.140783599074373,
+          "p95_von_mises_MPa": 3.7838737666067535,
+          "result_nodes": 5760
+        },
+        "mount_moment_12Nm": {
+          "max_loaded_displacement_mm": 4.052015116095584,
+          "max_von_mises_MPa": 23.005015359451512,
+          "p99_von_mises_MPa": 10.530839709020263,
+          "p95_von_mises_MPa": 5.24490458728249,
+          "result_nodes": 5760
+        }
+      }
+    }
+  }
+}

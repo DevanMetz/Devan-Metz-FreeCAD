@@ -1,1 +1,5 @@
 .claude/
+.venv-cad/
+.cad-cache/
+__cadgen__/
+__pycache__/

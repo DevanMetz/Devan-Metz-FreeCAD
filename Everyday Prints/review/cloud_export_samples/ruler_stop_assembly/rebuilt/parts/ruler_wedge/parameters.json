@@ -1,0 +1,31 @@
+{
+  "model": "ruler_wedge",
+  "parameters": {
+    "ruler_width": 20,
+    "ruler_thickness": 1.0,
+    "side_clearance": 0.4,
+    "body_length": 24.0,
+    "floor": 3.0,
+    "roof": 4.0,
+    "side_wall": 4.0,
+    "clamp_gap": 2.2,
+    "wedge_length": 35.0,
+    "wedge_tip": 0.8,
+    "wedge_back": 3.0,
+    "wedge_side_clearance": 1.2,
+    "grip_length": 3.0,
+    "grip_height": 4.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    35.0,
+    18.0,
+    7.0
+  ],
+  "volume_mm3": 1418.091428571429,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

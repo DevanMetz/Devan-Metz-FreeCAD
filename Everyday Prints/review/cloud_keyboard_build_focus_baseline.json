@@ -1,0 +1,74 @@
+[
+  {
+    "trigger": "rebuild",
+    "stage": "pending",
+    "focus": {
+      "id": "",
+      "tag": "BODY"
+    }
+  },
+  {
+    "trigger": "rebuild",
+    "stage": "stopped",
+    "focus": {
+      "id": "",
+      "tag": "BODY"
+    }
+  },
+  {
+    "trigger": "rebuild",
+    "stage": "next-tab",
+    "focus": {
+      "id": "share",
+      "tag": "BUTTON"
+    }
+  },
+  {
+    "trigger": "param-length",
+    "stage": "pending",
+    "focus": {
+      "id": "param-length",
+      "tag": "INPUT"
+    }
+  },
+  {
+    "trigger": "param-length",
+    "stage": "stopped",
+    "focus": {
+      "id": "",
+      "tag": "BODY"
+    }
+  },
+  {
+    "trigger": "param-length",
+    "stage": "next-tab",
+    "focus": {
+      "id": "share",
+      "tag": "BUTTON"
+    }
+  },
+  {
+    "trigger": "download-cad",
+    "stage": "pending",
+    "focus": {
+      "id": "",
+      "tag": "BODY"
+    }
+  },
+  {
+    "trigger": "download-cad",
+    "stage": "stopped",
+    "focus": {
+      "id": "",
+      "tag": "BODY"
+    }
+  },
+  {
+    "trigger": "download-cad",
+    "stage": "next-tab",
+    "focus": {
+      "id": "download",
+      "tag": "BUTTON"
+    }
+  }
+]

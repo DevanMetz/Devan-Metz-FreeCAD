@@ -1,0 +1,7 @@
+{
+  "input":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/REFERENCE_hood_section_DO_NOT_PRINT.step.py",
+  "mode":"view",
+  "theme":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/review_theme.json",
+  "outputs":[{"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/hood_center_section.png","camera":{"direction":[1,-1,0.7],"zoom":0.8}}],
+  "render":{"sizeProfile":"diagnostic","viewLabels":true}
+}

@@ -1,0 +1,23 @@
+# CAD brief — LIFT X compact quiver comprehensive refinement
+
+- Model: two-piece compound-bow quiver with a one-piece five-arrow chassis and one integral-latch bow dock; foam and arrows remain non-production references.
+- Task type: comprehensive source modification and release rebuild after a failed basket-floor design review.
+- Units: millimetres.
+- Coordinate convention: XY is the Bambu Lab A1 bed and +Z is the upright print direction. Every production export must sit on Z = 0.
+- Protected architecture: two printed production parts only; open basket top; five arrows; direct spine-to-basket connection; quick-detach chassis/dock; no carbon rods, inserts, or separate basket hardware.
+- Printer envelope: chassis no larger than 252 mm on any axis, targeting approximately 130 × 69 × 248 mm inside the nominal 256 mm cube.
+- Basket redesign: replace the tall hollow wedge floor with one shallow multi-station faceted boat shell. Its narrow rear keel must overlap the two spine chords directly, expand at self-supporting angles into the full basket footprint, provide an uninterrupted exterior and open rim, and leave only five intentional tapered shaft ports.
+- Basket load path: twin spine chords fuse directly into the rear keel. Short internal ribs may spread load into the shell but must stop below the rim and must not appear as separate angled connectors or exterior tabs.
+- Lower gripper redesign: one chamfered crossbar, five tapered C-clips, and two straight roots aligned to the spine chords. Remove the four crossing wishbone links and incidental projections.
+- Spine refinement: retain two continuous printable chords and two deep X-braced bays, maintain ≥4 mm brace width and ≥6 mm chord width, preserve a continuous path through the mount zone, and keep all openings accessible to the nozzle without trapped support.
+- Chassis mount refinement: coherent chamfered plate/windows; male dovetail and latch notch remain calibration-controlled.
+- Dock refinement: one chamfered outer plate with intentional side windows and central screw land, a chamfered bottom stop, printable full-height flexure, and unchanged functional screw/dovetail clearances unless fit evidence justifies a change.
+- Foam reference: revise the tapered cartridge envelope to seat inside the new floor with zero shell overlap and load through the open top.
+- Manufacturing assumptions: dried PETG-HF, 0.4 mm nozzle, 0.20 mm layers, upright chassis, separate dock, 5 walls. Avoid broad horizontal ceilings, trapped support, knife edges, isolated slivers, tangent-only fusions, and members thinner than two extrusion widths.
+- Style: Mathews-inspired skeletal/chamfered geometry with clean continuous surfaces and purposeful symmetry. Avoid ornamental cuts that weaken the print or reproduce proprietary Mathews receiver geometry.
+- Positioning/mating: dock remains at `MOUNT_Z`; female and male rails require zero hard interference at the nominal `DOCK_CLEARANCE`. Bow pattern remains the generic 10-24 / 33.325 mm accessory-hole pattern pending real LIFT X receiver measurements.
+- Canonical source: `Quiver/LiftX/lift_x_quiver_generator.py`.
+- Primary outputs: per-part STEP plus neutral assembly STEP; FCStd assembly.
+- Secondary outputs: per-part STL and 3MF; mandatory diagnostic snapshots including bottom, opposed isometric, top, side, and section; refreshed product renders and print-pack ZIP.
+- Validation targets: exactly one valid closed positive-volume solid per printed part; chassis within guarded envelope; five open tapered ports; five clips; one uninterrupted open rim; material connectivity at both spine/basket chord locations; zero dock/chassis hard interference; zero foam/shell overlap; watertight meshes; CAD/mesh volume agreement; overhang screen; exact-release CalculiX comparison after geometry stabilizes.
+- Release limitation: print-ready geometry is not proof of bow fit, structural certification, heat/fatigue life, or production readiness. Physical fit, latch cycling, arrow retention, hot-car, impact, vibration, and bow-clearance tests remain mandatory before a 10,000-unit run.

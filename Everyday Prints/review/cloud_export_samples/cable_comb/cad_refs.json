@@ -1,0 +1,217 @@
+{
+  "ok": true,
+  "tokens": [
+    {
+      "line": 1,
+      "token": "#",
+      "cadPath": "review/cloud_export_samples/cable_comb/cable_comb",
+      "stepPath": "review/cloud_export_samples/cable_comb/cable_comb.step",
+      "stepHash": "e4832c1e8917a949b7da9494ba99a61e077623cd7bd320015ad2222d4cdedc2a",
+      "summary": {
+        "kind": "assembly",
+        "occurrenceCount": 1,
+        "leafOccurrenceCount": 1,
+        "shapeCount": 1,
+        "faceCount": 24,
+        "edgeCount": 66,
+        "vertexCount": 0,
+        "bounds": {
+          "min": [
+            -18.15,
+            -16.0,
+            0.0
+          ],
+          "max": [
+            18.15,
+            16.0,
+            4.0
+          ]
+        }
+      },
+      "selections": [],
+      "warnings": [],
+      "entryFacts": {
+        "size": [
+          36.3,
+          32.0,
+          4.0
+        ],
+        "extentAxis": "x",
+        "center": [
+          0.0,
+          0.0,
+          2.0
+        ],
+        "diag": 48.556050086472226,
+        "kind": "assembly"
+      },
+      "planes": [
+        {
+          "axis": "z",
+          "coordinate": 0.0,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 845.481179,
+          "bbox": {
+            "min": [
+              -18.15,
+              -16.0,
+              0.0
+            ],
+            "max": [
+              18.15,
+              16.0,
+              0.0
+            ]
+          },
+          "selectors": [
+            "f4"
+          ]
+        },
+        {
+          "axis": "z",
+          "coordinate": 4.0,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 845.481179,
+          "bbox": {
+            "min": [
+              -18.15,
+              -16.0,
+              4.0
+            ],
+            "max": [
+              18.15,
+              16.0,
+              4.0
+            ]
+          },
+          "selectors": [
+            "f5"
+          ]
+        },
+        {
+          "axis": "y",
+          "coordinate": -16.0,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 129.2,
+          "bbox": {
+            "min": [
+              -16.15,
+              -16.0,
+              0.0
+            ],
+            "max": [
+              16.15,
+              -16.0,
+              4.0
+            ]
+          },
+          "selectors": [
+            "f6"
+          ]
+        }
+      ],
+      "entryPositioning": {
+        "kind": "assembly",
+        "bbox": {
+          "min": [
+            -18.15,
+            -16.0,
+            0.0
+          ],
+          "max": [
+            18.15,
+            16.0,
+            4.0
+          ]
+        },
+        "bboxFacts": {
+          "size": [
+            36.3,
+            32.0,
+            4.0
+          ],
+          "extentAxis": "x",
+          "center": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "diag": 48.556050086472226
+        },
+        "majorPlanes": [
+          {
+            "axis": "z",
+            "coordinate": 0.0,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 845.481179,
+            "bbox": {
+              "min": [
+                -18.15,
+                -16.0,
+                0.0
+              ],
+              "max": [
+                18.15,
+                16.0,
+                0.0
+              ]
+            },
+            "selectors": [
+              "f4"
+            ]
+          },
+          {
+            "axis": "z",
+            "coordinate": 4.0,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 845.481179,
+            "bbox": {
+              "min": [
+                -18.15,
+                -16.0,
+                4.0
+              ],
+              "max": [
+                18.15,
+                16.0,
+                4.0
+              ]
+            },
+            "selectors": [
+              "f5"
+            ]
+          },
+          {
+            "axis": "y",
+            "coordinate": -16.0,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 129.2,
+            "bbox": {
+              "min": [
+                -16.15,
+                -16.0,
+                0.0
+              ],
+              "max": [
+                16.15,
+                -16.0,
+                4.0
+              ]
+            },
+            "selectors": [
+              "f6"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "verified_step_sha256": "e4832c1e8917a949b7da9494ba99a61e077623cd7bd320015ad2222d4cdedc2a"
+}

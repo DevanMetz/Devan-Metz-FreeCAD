@@ -1,0 +1,55 @@
+{
+  "model": "sliding_box_assembly",
+  "parameters": {
+    "end_clearance": 0.4,
+    "floor": 2.4,
+    "grip_height": 3.0,
+    "height": 32.0,
+    "ledge_inset": 3.2,
+    "length": 160,
+    "lid_thickness": 2.4,
+    "open_distance": 30.0,
+    "pull_extension": 6.0,
+    "roof": 1.6,
+    "sample_height": 16.0,
+    "sample_length": 30.0,
+    "side_clearance": 0.3,
+    "vertical_clearance": 0.3,
+    "wall": 2.4,
+    "width": 80.0
+  },
+  "units": "mm",
+  "printable": false,
+  "bounds_mm": [
+    196.0000001,
+    80.0000000000077,
+    33.099999999999994
+  ],
+  "volume_mm3": 95939.87675025925,
+  "solid_count": 2,
+  "physical_print_tested": false,
+  "mesh_sha256": "5f54b91f5ff731618c580822597da8af080fb27926ad87f8aef973d47da3d5ec",
+  "format": "cad",
+  "kit": [
+    {
+      "model": "sliding_box",
+      "quantity": 1,
+      "role": "component"
+    },
+    {
+      "model": "sliding_lid",
+      "quantity": 1,
+      "role": "component"
+    },
+    {
+      "model": "sliding_fit_channel",
+      "quantity": 1,
+      "role": "fit_coupon"
+    },
+    {
+      "model": "sliding_fit_slider",
+      "quantity": 1,
+      "role": "fit_coupon"
+    }
+  ]
+}

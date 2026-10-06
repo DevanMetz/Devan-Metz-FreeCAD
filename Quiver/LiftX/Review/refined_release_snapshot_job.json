@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/Review/refined_release_chassis.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refined_release_chassis_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refined_release_chassis_iso_opposite.png", "camera": { "direction": [-1, 1, -0.8] } },
+        { "path": "Quiver/LiftX/Review/refined_release_chassis_bottom.png", "camera": "bottom" },
+        { "path": "Quiver/LiftX/Review/refined_release_chassis_top.png", "camera": "top" },
+        { "path": "Quiver/LiftX/Review/refined_release_chassis_side.png", "camera": "right" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.10, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "Quiver/LiftX/Review/refined_release_basket.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refined_release_basket_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refined_release_basket_under.png", "camera": { "direction": [1, -1, 0.8] } },
+        { "path": "Quiver/LiftX/Review/refined_release_basket_bottom.png", "camera": "bottom" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "Quiver/LiftX/Review/refined_release_dock.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refined_release_dock_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refined_release_dock_front.png", "camera": "front" },
+        { "path": "Quiver/LiftX/Review/refined_release_dock_back.png", "camera": "back" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.14, "sizeProfile": "diagnostic" }
+    }
+  ]
+}

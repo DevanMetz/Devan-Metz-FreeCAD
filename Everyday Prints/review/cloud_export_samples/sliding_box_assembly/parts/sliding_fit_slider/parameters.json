@@ -1,0 +1,35 @@
+{
+  "model": "sliding_fit_slider",
+  "parameters": {
+    "end_clearance": 0.4,
+    "floor": 2.4,
+    "grip_height": 3.0,
+    "height": 32.0,
+    "ledge_inset": 3.2,
+    "length": 160,
+    "lid_thickness": 2.4,
+    "pull_extension": 6.0,
+    "roof": 1.6,
+    "sample_height": 16.0,
+    "sample_length": 30.0,
+    "side_clearance": 0.3,
+    "vertical_clearance": 0.3,
+    "wall": 2.4,
+    "width": 80.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    36.0000002,
+    74.60000020000001,
+    5.400000100000001
+  ],
+  "volume_mm3": 6554.181599999998,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "mesh_sha256": "74d63f88b749c5f56f6d5b6a97ad766a8dd7f2e0ecddeadfa76fbd09bfa5f6fe",
+  "format": "stl",
+  "file_sha256": "74d63f88b749c5f56f6d5b6a97ad766a8dd7f2e0ecddeadfa76fbd09bfa5f6fe",
+  "quantity": 1,
+  "role": "fit_coupon"
+}

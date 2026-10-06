@@ -1,0 +1,38 @@
+{
+  "model": "divider_joint_assembly",
+  "parameters": {
+    "board_thickness": 3.0,
+    "clearance": 0.4,
+    "floor": 2.4,
+    "height": 18.0,
+    "insertion_depth": 16.0,
+    "lead_in": 0.6,
+    "ports": [
+      0,
+      90,
+      180
+    ],
+    "reference_height": 50.0,
+    "reference_length": 80.0,
+    "wall": 2.4
+  },
+  "units": "mm",
+  "printable": false,
+  "bounds_mm": [
+    168.2,
+    88.20000000000006,
+    52.4
+  ],
+  "volume_mm3": 41719.25622928644,
+  "solid_count": 4,
+  "physical_print_tested": false,
+  "mesh_sha256": "606bcfc6e013b6809d1595e4c9a7f5f284f7d5d7b4cf02f778533a21ef02badb",
+  "format": "cad",
+  "kit": [
+    {
+      "model": "divider_joint",
+      "quantity": 1,
+      "role": "component"
+    }
+  ]
+}

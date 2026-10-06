@@ -1,0 +1,64 @@
+{
+  "model": {
+    "method": "2D plane-stress SIMP compliance minimization",
+    "grid": [
+      32,
+      94
+    ],
+    "domain_mm": [
+      64.0,
+      10.0,
+      188.0
+    ],
+    "material": {
+      "name": "Bambu PETG-HF",
+      "elastic_modulus_MPa": 2050.0,
+      "poisson_ratio_assumed": 0.38
+    },
+    "penalty": 3.0,
+    "filter_radius_elements": 2.4,
+    "iterations": 88,
+    "load_cases": [
+      "250 N upper transverse",
+      "150 N lower transverse",
+      "12 N-m couple",
+      "100 N axial shock"
+    ]
+  },
+  "baseline": {
+    "label": "baseline",
+    "volume_fraction": 0.2494215425531915,
+    "estimated_spine_volume_cm3": 30.0104,
+    "compliance_N_mm": {
+      "250 N upper transverse": 109.12276867020678,
+      "150 N lower transverse": 236.22639734777582,
+      "12 N-m couple": 49.888745046308735,
+      "100 N axial shock": 6.652885765122822
+    },
+    "max_displacement_mm": {
+      "250 N upper transverse": 0.4694546759403347,
+      "150 N lower transverse": 1.7332129565144216,
+      "12 N-m couple": 0.7375383772652497,
+      "100 N axial shock": 0.0888910841265004
+    }
+  },
+  "optimized": {
+    "label": "optimized",
+    "volume_fraction": 0.2494215425531915,
+    "estimated_spine_volume_cm3": 30.0104,
+    "compliance_N_mm": {
+      "250 N upper transverse": 109.12276867020678,
+      "150 N lower transverse": 236.22639734777582,
+      "12 N-m couple": 49.888745046308735,
+      "100 N axial shock": 6.652885765122822
+    },
+    "max_displacement_mm": {
+      "250 N upper transverse": 0.4694546759403347,
+      "150 N lower transverse": 1.7332129565144216,
+      "12 N-m couple": 0.7375383772652497,
+      "100 N axial shock": 0.0888910841265004
+    },
+    "weighted_compliance_change_percent": 0.0
+  },
+  "interpretation": "The printable two-bay diamond was the best same-volume field encountered, so it was retained and verified in the 3D CAD."
+}

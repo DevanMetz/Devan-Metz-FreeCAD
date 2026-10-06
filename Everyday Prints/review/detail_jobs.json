@@ -1,0 +1,16 @@
+[
+  {
+    "input": "soap_dish_assembly.step.py",
+    "mode": "view",
+    "display": { "mode": "transparent" },
+    "outputs": [{ "path": "review/soap_dish_contact_detail.png", "camera": "iso" }],
+    "render": { "sizeProfile": "diagnostic", "viewLabels": true }
+  },
+  {
+    "input": "tube_squeezer.step.py",
+    "mode": "view",
+    "display": { "mode": "transparent" },
+    "outputs": [{ "path": "review/tube_squeezer_slot_detail.png", "camera": "right" }],
+    "render": { "sizeProfile": "diagnostic", "viewLabels": true }
+  }
+]

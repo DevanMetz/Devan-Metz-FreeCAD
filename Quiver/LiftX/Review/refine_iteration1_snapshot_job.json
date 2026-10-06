@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/Review/refine_iteration1_chassis.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_iteration1_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_iso_opposite.png", "camera": { "direction": [-1, 1, -0.8] } },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_bottom_iso.png", "camera": { "direction": [1, -1, 0.8] } },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_bottom.png", "camera": "bottom" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_top.png", "camera": "top" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_side.png", "camera": "right" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.10, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "Quiver/LiftX/Review/refine_iteration1_section.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_iteration1_section_iso.png", "camera": { "direction": [-1, 1, -0.5] } },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_section_side.png", "camera": "right" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.10, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "Quiver/LiftX/Review/refine_iteration1_dock.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_iteration1_dock_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_dock_front.png", "camera": "front" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_dock_back.png", "camera": "back" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.14, "sizeProfile": "diagnostic" }
+    }
+  ]
+}

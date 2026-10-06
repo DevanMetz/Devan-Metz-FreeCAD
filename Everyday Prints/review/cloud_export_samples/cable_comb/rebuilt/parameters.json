@@ -1,0 +1,27 @@
+{
+  "model": "cable_comb",
+  "parameters": {
+    "cable_diameters": [
+      2,
+      3.5,
+      9
+    ],
+    "clearance": 0.6,
+    "depth": 32.0,
+    "mounting_hole": 4.5,
+    "slot_depth": 18.0,
+    "thickness": 4.0,
+    "web": 5.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    36.3,
+    32.00000000000068,
+    4.0
+  ],
+  "volume_mm3": 3381.5027207638736,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "kit": []
+}

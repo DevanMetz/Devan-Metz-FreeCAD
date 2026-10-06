@@ -1,5 +1,7 @@
 # LIFT X quiver — left-hand mounting revision
 
+**REJECTED — DO NOT PRINT THIS QUIVER.** The upward-opening basket and closed shaft ports prevent normal loading/removal of complete broadheaded/fletched arrows. Earlier geometric checks below did not establish function. Use [FunctionalV3](../FunctionalV3/README.md) for the corrected loading-path prototype; its bow mount still requires measured fit verification. Everything below is historical, not a current recommendation.
+
 September 8, 2026. **Fit-check prototype, not a production-qualified bow accessory.** Use this folder instead of the earlier LiftX print pack.
 
 Configured for the user's left-hand Mathews LIFT X, Spot-Hogg Eddie sight described as Bridge-Lock-style, and QAD MX2 UltraRest. The exact sight variant, riser attachment geometry, and installed quiver blocks have not been measured. This model does **not** copy or fit the proprietary LowPro receiver.

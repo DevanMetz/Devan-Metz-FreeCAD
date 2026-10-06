@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "static_integrity",
+    "clipboard_denial",
+    "original_arrives_after_custom",
+    "switch_during_viewer_load",
+    "edits_during_build",
+    "stale_clipboard_completion",
+    "custom_integrity",
+    "catalog_image_fallback",
+    "mismatched_model_details"
+  ],
+  "failures": [],
+  "browser_errors": [],
+  "fixture": "Real parts_tray CAD build with length=180; responses replayed locally",
+  "mesh_sha256": "68ac44493de4070eb55c271f719cf6df1acfc0bd8b20addd9880fd0e419415de",
+  "transport": "compiled assets and native jobs through Playwright routes"
+}

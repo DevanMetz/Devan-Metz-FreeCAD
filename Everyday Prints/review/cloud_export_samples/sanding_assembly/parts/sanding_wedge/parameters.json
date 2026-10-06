@@ -1,0 +1,32 @@
+{
+  "model": "sanding_wedge",
+  "parameters": {
+    "end_margin": 7.0,
+    "height": 25.0,
+    "length": 120,
+    "paper_thickness": 0.3,
+    "slot_depth": 14.0,
+    "slot_span": 40.0,
+    "slot_width": 6.0,
+    "wedge_end_clearance": 2.0,
+    "wedge_height": 20.0,
+    "wedge_tip": 3.2,
+    "wedge_top": 8.0,
+    "width": 50.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    8.0,
+    36.0,
+    20.0
+  ],
+  "volume_mm3": 4032.0,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "mesh_sha256": "0710f9b6017bb6a81edc3d6c8ffb468e745320cf2068b79f548b4d752ff07662",
+  "format": "stl",
+  "file_sha256": "0710f9b6017bb6a81edc3d6c8ffb468e745320cf2068b79f548b4d752ff07662",
+  "quantity": 2,
+  "role": "component"
+}

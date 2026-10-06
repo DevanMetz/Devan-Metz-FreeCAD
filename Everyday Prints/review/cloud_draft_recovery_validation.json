@@ -1,0 +1,19 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "refresh_restores_unbuilt_decimal_draft_on_mobile",
+    "refresh_keeps_blank_number_and_validation_gates",
+    "refresh_preserves_numeric_list_text_and_order",
+    "refresh_keeps_edits_made_during_pending_build",
+    "recovered_draft_builds_exact_stl_and_cad",
+    "reset_and_revert_replace_the_saved_draft",
+    "imported_dimensions_survive_refresh_and_model_switch",
+    "history_traversal_saves_the_current_view_before_refresh",
+    "fresh_views_and_shared_links_ignore_another_draft",
+    "corrupt_or_incompatible_drafts_keep_the_route_working",
+    "unavailable_storage_keeps_editing_and_files_working",
+    "oversized_or_failed_writes_clear_older_snapshots"
+  ],
+  "failures": [],
+  "transport": "compiled assets, actual tab storage and real CAD fixtures"
+}

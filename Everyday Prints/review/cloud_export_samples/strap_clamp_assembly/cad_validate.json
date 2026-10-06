@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/strap_clamp_assembly/strap_clamp_assembly",
+  "occurrenceCount": 6,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "bfe4b3317ec29fe7fb83c743268d7734d1fb6d2b54c45a066c4365c9730254ae"
+}

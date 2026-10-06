@@ -1,0 +1,17 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "delayed_search",
+    "retry_retains_filters",
+    "interrupted_connection",
+    "malformed_responses",
+    "shared_link_recovery",
+    "mobile_failure_and_recovery",
+    "dynamic_counts",
+    "stalled_request_timeout"
+  ],
+  "failures": [],
+  "catalog_models": 53,
+  "category_options": 8,
+  "transport": "compiled assets through Playwright routes"
+}

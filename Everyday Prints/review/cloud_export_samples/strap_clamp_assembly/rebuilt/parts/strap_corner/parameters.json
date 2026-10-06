@@ -1,0 +1,25 @@
+{
+  "model": "strap_corner",
+  "parameters": {
+    "leg_length": 25,
+    "wall": 6.0,
+    "corner_relief": 3.0,
+    "strap_width": 20,
+    "strap_thickness": 1.2,
+    "width_clearance": 2.0,
+    "lip_projection": 2.0,
+    "lip_thickness": 2.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    33.0000002,
+    33.0000002,
+    28.500000200000002
+  ],
+  "volume_mm3": 9390.599161991875,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 4,
+  "role": "component"
+}

@@ -1,0 +1,236 @@
+{
+  "copied_sources_only": true,
+  "cad_skill_invoked": false,
+  "cases": [
+    {
+      "model": "label_stand",
+      "overrides": [
+        "slot_gap=1.2",
+        "lean_angle=20"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "cable_grommet",
+      "overrides": [
+        "hole_diameter=50",
+        "opening=0"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "radius_template",
+      "overrides": [
+        "radii=[4,8,12,16]"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "sanding_assembly",
+      "overrides": [],
+      "formats": [
+        "step"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": false
+    },
+    {
+      "model": "sliding_lid",
+      "overrides": [
+        "width=70",
+        "side_clearance=0.4"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "sliding_box_assembly",
+      "overrides": [
+        "open_distance=0"
+      ],
+      "formats": [
+        "step"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": false
+    },
+    {
+      "model": "ruler_stop",
+      "overrides": [
+        "ruler_width=20",
+        "ruler_thickness=0.8"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "ruler_wedge",
+      "overrides": [
+        "ruler_width=20",
+        "ruler_thickness=0.8"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "ruler_stop_assembly",
+      "overrides": [
+        "ruler_width=20",
+        "ruler_thickness=0.8",
+        "reference_length=160"
+      ],
+      "formats": [
+        "step"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": false
+    },
+    {
+      "model": "tube_reducer",
+      "overrides": [
+        "large_diameter=40",
+        "small_diameter=25",
+        "large_clearance=0.6"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "socket_fit_ring",
+      "overrides": [
+        "tube_diameter=25",
+        "clearance=0.6"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "strap_corner",
+      "overrides": [
+        "strap_width=20",
+        "leg_length=25"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "strap_clamp_assembly",
+      "overrides": [
+        "strap_width=20",
+        "leg_length=25",
+        "frame_width=140",
+        "frame_depth=100",
+        "frame_height=25"
+      ],
+      "formats": [
+        "step"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": false
+    },
+    {
+      "model": "sorting_sieve",
+      "overrides": [
+        "hole_diameter=5",
+        "pitch=8"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "sieve_aperture_coupon",
+      "overrides": [
+        "hole_diameter=5",
+        "offsets=[-0.3,0,0.3]"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "divider_joint",
+      "overrides": [
+        "ports=[0,90,180]"
+      ],
+      "formats": [
+        "step",
+        "stl",
+        "3mf"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": true
+    },
+    {
+      "model": "divider_joint_assembly",
+      "overrides": [
+        "ports=[0,90]",
+        "reference_length=60",
+        "reference_height=35"
+      ],
+      "formats": [
+        "step"
+      ],
+      "step_round_trip": true,
+      "mesh_checks_passed": false
+    }
+  ],
+  "unknown_parameter_rejected": true,
+  "physical_print_tested": false
+}

@@ -1,0 +1,8 @@
+{
+  "model": "cable_comb",
+  "depth": "40",
+  "message": "The model preview could not be loaded.",
+  "focused": "load-dimensions",
+  "download_disabled": true,
+  "file_error_visible": false
+}

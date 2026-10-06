@@ -1,6 +1,6 @@
 # Historical LIFT X quiver revision
 
-**Superseded:** use [the left-hand MountV2 revision](MountV2/README.md) for the current model and [its print pack](MountV2/LiftX_LH_MountV2_Print_Pack.zip). The generator now writes to `MountV2/`. Everything below and the older STEP/STL/ZIP files are historical; their fit, rim and simulation claims do not qualify the current model. The earlier basket had crossing taper surfaces, and the old dock placed screw access behind its latch. Do not print the historical package as the current design.
+**Superseded and not functional:** use [FunctionalV3](FunctionalV3/README.md) for the corrected Easton AXIS loading-path prototype. MountV2's closed shaft ports trap complete arrows; do not print its quiver or the older print packs. The legacy generator still writes MountV2, not V3; use `FunctionalV3/build_delivery.py`. Everything below and the earlier STEP/STL/ZIP files is historical, and previous fit, printability or simulation claims do not qualify V3. Its bow mount still needs measured verification.
 
 ![Unloaded quiver](../../images/liftx/no-arrows-hero.png)
 

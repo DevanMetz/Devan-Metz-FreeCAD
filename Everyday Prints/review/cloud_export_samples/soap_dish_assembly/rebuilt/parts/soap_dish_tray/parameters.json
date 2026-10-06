@@ -1,0 +1,30 @@
+{
+  "model": "soap_dish_tray",
+  "parameters": {
+    "length": 170,
+    "width": 84.0,
+    "height": 14.0,
+    "wall": 2.4,
+    "floor": 2.4,
+    "outer_radius": 6.0,
+    "side_clearance": 1.0,
+    "plate": 3.0,
+    "foot_height": 8.0,
+    "foot_diameter": 8.0,
+    "slot_width": 5.0,
+    "web": 3.0,
+    "drain_margin": 12.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    170.0,
+    84.00000000000132,
+    14.0
+  ],
+  "volume_mm3": 47728.66822563886,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

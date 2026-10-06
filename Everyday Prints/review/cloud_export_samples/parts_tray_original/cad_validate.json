@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/parts_tray_original/parts_tray",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "373999f2df9a458dcd79407db7c471b00fc7c0c31f631d18c77d79751964c1d6"
+}

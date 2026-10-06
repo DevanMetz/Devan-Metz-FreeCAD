@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/ruler_stop_assembly/parts/ruler_wedge/ruler_wedge",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "ba23666450e31a2511359016d0ce521fae517b1714dc84e84e0d304f20e7371f"
+}

@@ -1,0 +1,8 @@
+Everyday Prints
+Copyright 2026 Everyday Prints contributors
+
+The original design sources, documentation, and their generated geometry in
+this directory are provided under the Apache License, Version 2.0.
+
+build123d, Open CASCADE, cadgen, and other build dependencies retain their own
+licenses. Their program code is not included in this design collection.

@@ -1,0 +1,22 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "original_receipt_keeps_saved_confirmation",
+    "preview_receipt_counts_bytes_and_retains_exact_mesh",
+    "cad_receipt_and_cache_keep_verified_files",
+    "valid_headers_show_zero_bytes_before_first_chunk",
+    "preview_verification_blocks_download_until_hash_matches",
+    "cad_verification_blocks_delivery_until_hash_matches",
+    "original_verification_preserves_rejected_file_feedback",
+    "stopped_old_bytes_cannot_hide_new_transfer",
+    "model_switch_discards_old_progress",
+    "original_retry_keeps_only_current_progress",
+    "build_reminders_cannot_overwrite_receiving_phases",
+    "deadline_clears_progress_and_allows_retry",
+    "failed_service_details_never_become_file_progress",
+    "edits_during_receipt_stay_gated_after_verification",
+    "mobile_progress_is_accessible_and_stop_clears_it"
+  ],
+  "failures": [],
+  "transport": "compiled assets, real CAD payloads, deliberately delayed readers and hashes"
+}

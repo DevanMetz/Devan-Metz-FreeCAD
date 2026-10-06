@@ -1,0 +1,61 @@
+{
+  "transport": "compiled assets and actual rendered field descriptions",
+  "fields": [
+    {
+      "key": "length",
+      "min": "30",
+      "max": "250",
+      "description": "",
+      "visible_help": false,
+      "model": "parts_tray"
+    },
+    {
+      "key": "wall",
+      "min": "1.6",
+      "max": "5",
+      "description": "",
+      "visible_help": false,
+      "model": "parts_tray"
+    },
+    {
+      "key": "columns",
+      "min": "1",
+      "max": "8",
+      "description": "",
+      "visible_help": false,
+      "model": "parts_tray"
+    },
+    {
+      "key": "outer_radius",
+      "min": "-1000",
+      "max": "1000",
+      "description": "",
+      "visible_help": false,
+      "model": "parts_tray"
+    },
+    {
+      "key": "angle",
+      "min": "60",
+      "max": "78",
+      "description": "",
+      "visible_help": false,
+      "model": "phone_stand"
+    },
+    {
+      "key": "cable_diameters",
+      "min": "",
+      "max": "",
+      "description": "Numbers separated by commas; order matters.",
+      "visible_help": true,
+      "model": "cable_comb"
+    },
+    {
+      "key": "ports",
+      "min": "",
+      "max": "",
+      "description": "Numbers separated by commas; order matters.",
+      "visible_help": true,
+      "model": "divider_joint"
+    }
+  ]
+}

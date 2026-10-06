@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/soap_dish_assembly/soap_dish_assembly",
+  "occurrenceCount": 2,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "ddf1c5aeb4be9161147478d8f63a2afe73a917984ee7cc0818f795023ed9f5f8"
+}

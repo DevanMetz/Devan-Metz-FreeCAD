@@ -1,0 +1,24 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "real_custom_download",
+    "integer_counts_remain_whole",
+    "original_refreshes_once",
+    "dirty_and_invalid",
+    "edits_during_export",
+    "navigation_during_export",
+    "transfer_and_metadata_failures",
+    "service_failure_and_retry",
+    "reference_assembly",
+    "mobile_and_no_webgl",
+    "kit_quantities_and_fit_coupons",
+    "mismatched_kit_inventory",
+    "malformed_kit_catalog",
+    "scrolled_editor_close_control"
+  ],
+  "failures": [],
+  "custom_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "custom_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "real_cad_download": true,
+  "transport": "compiled assets and native jobs through Playwright routes"
+}

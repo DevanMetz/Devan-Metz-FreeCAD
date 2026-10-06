@@ -1,0 +1,30 @@
+{
+  "model": "soap_dish_insert",
+  "parameters": {
+    "length": 170,
+    "width": 84.0,
+    "height": 14.0,
+    "wall": 2.4,
+    "floor": 2.4,
+    "outer_radius": 6.0,
+    "side_clearance": 1.0,
+    "plate": 3.0,
+    "foot_height": 8.0,
+    "foot_diameter": 8.0,
+    "slot_width": 5.0,
+    "web": 3.0,
+    "drain_margin": 12.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    163.2,
+    77.20000000000604,
+    11.0
+  ],
+  "volume_mm3": 25864.917214591853,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "quantity": 1,
+  "role": "component"
+}

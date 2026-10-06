@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/Review/refine_iteration1_basket.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_iteration1_basket_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_basket_under.png", "camera": { "direction": [1, -1, 0.8] } },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_basket_bottom.png", "camera": "bottom" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_basket_top.png", "camera": "top" },
+        { "path": "Quiver/LiftX/Review/refine_iteration1_basket_side.png", "camera": "right" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic" }
+    }
+  ]
+}

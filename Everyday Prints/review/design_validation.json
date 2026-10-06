@@ -1,0 +1,4845 @@
+{
+  "physical_print_tested": false,
+  "models": {
+    "divider_joint": {
+      "bounds_mm": [
+        40.2,
+        40.2,
+        18
+      ],
+      "volume_mm3": 7222.2349818977045,
+      "feature_checks": {
+        "port_angles_degrees": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "slot_width_mm": 3.4,
+        "hub_width_mm": 8.2,
+        "insertion_depth_mm": 16.0,
+        "board_floor_height_mm": 2.4,
+        "top_lead_slope": 0.8,
+        "all_slots_and_leads_probed": true,
+        "analytic_volume_mm3": 7222.235040790523
+      },
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "board_thickness": 2,
+            "clearance": 0.3,
+            "wall": 2,
+            "insertion_depth": 12,
+            "height": 14,
+            "floor": 2,
+            "lead_in": 0.3,
+            "ports": [
+              0,
+              90,
+              180
+            ]
+          },
+          "bounds_mm": [
+            30.300000200000003,
+            18.30000010000004,
+            14.000000100000001
+          ],
+          "volume_mm3": 2728.7033401607964,
+          "feature_checks": {
+            "port_angles_degrees": [
+              0,
+              90,
+              180
+            ],
+            "slot_width_mm": 2.3,
+            "hub_width_mm": 6.3,
+            "insertion_depth_mm": 12,
+            "board_floor_height_mm": 2,
+            "top_lead_slope": 0.8,
+            "all_slots_and_leads_probed": true,
+            "analytic_volume_mm3": 2728.703361431347
+          }
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "board_thickness": 6,
+            "clearance": 0.8,
+            "wall": 3,
+            "insertion_depth": 24,
+            "height": 26,
+            "floor": 3,
+            "lead_in": 0.8,
+            "ports": [
+              0,
+              90
+            ]
+          },
+          "bounds_mm": [
+            36.8000001,
+            36.800000100000254,
+            26.0000001
+          ],
+          "volume_mm3": 12678.596632592675,
+          "feature_checks": {
+            "port_angles_degrees": [
+              0,
+              90
+            ],
+            "slot_width_mm": 6.8,
+            "hub_width_mm": 12.8,
+            "insertion_depth_mm": 24,
+            "board_floor_height_mm": 3,
+            "top_lead_slope": 0.8,
+            "all_slots_and_leads_probed": true,
+            "analytic_volume_mm3": 12678.596634047002
+          }
+        },
+        {
+          "case": "straight",
+          "overrides": {
+            "ports": [
+              0,
+              180
+            ]
+          },
+          "bounds_mm": [
+            40.200000200000005,
+            8.200000000000124,
+            18.0000001
+          ],
+          "volume_mm3": 4216.277476940197,
+          "feature_checks": {
+            "port_angles_degrees": [
+              0,
+              180
+            ],
+            "slot_width_mm": 3.4,
+            "hub_width_mm": 8.2,
+            "insertion_depth_mm": 16.0,
+            "board_floor_height_mm": 2.4,
+            "top_lead_slope": 0.8,
+            "all_slots_and_leads_probed": true,
+            "analytic_volume_mm3": 4216.2775203952615
+          }
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "ports": [
+          0,
+          90,
+          90
+        ]
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.20000076293945,
+            40.20000076293945,
+            18.0
+          ],
+          "volume_mm3": 7222.230616094296,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.2,
+            40.2,
+            18.0
+          ],
+          "volume_mm3": 7222.230785928804,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sorting_sieve": {
+      "bounds_mm": [
+        135,
+        90,
+        18
+      ],
+      "volume_mm3": 25765.292259519698,
+      "feature_checks": {
+        "hole_count": 97,
+        "aperture_diameter_mm": 4.0,
+        "floor_thickness_mm": 2.4,
+        "triangular_pitch_mm": 7.0,
+        "minimum_web_mm": 2.999999999999999,
+        "minimum_actual_wall_margin_mm": 4.226933041053577,
+        "opening_area_mm2": 1218.9379495928397,
+        "percent_of_circular_floor_open": 21.380237607176703,
+        "smaller_sphere_passes_mm": 3.8,
+        "larger_sphere_stops_mm": 4.2,
+        "sphere_test_positions": 3,
+        "analytic_volume_mm3": 25765.29225951958
+      },
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "bowl_diameter": 60,
+            "height": 12,
+            "wall": 2,
+            "floor": 2,
+            "hole_diameter": 2.4,
+            "pitch": 5,
+            "hole_margin": 3,
+            "handle_length": 35,
+            "handle_width": 14,
+            "handle_thickness": 3,
+            "hanging_hole": 3.2
+          },
+          "bounds_mm": [
+            95.0,
+            60.0,
+            12.0
+          ],
+          "volume_mm3": 9948.238076211348,
+          "feature_checks": {
+            "hole_count": 85,
+            "aperture_diameter_mm": 2.4,
+            "floor_thickness_mm": 2,
+            "triangular_pitch_mm": 5,
+            "minimum_web_mm": 2.5999999999999983,
+            "minimum_actual_wall_margin_mm": 3.8871215252208016,
+            "opening_area_mm2": 384.5309407993907,
+            "percent_of_circular_floor_open": 15.612244897959185,
+            "smaller_sphere_passes_mm": 2.1999999999999997,
+            "larger_sphere_stops_mm": 2.6,
+            "sphere_test_positions": 3,
+            "analytic_volume_mm3": 9948.238076211457
+          }
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "bowl_diameter": 120,
+            "height": 24,
+            "wall": 3,
+            "floor": 3,
+            "hole_diameter": 8,
+            "pitch": 12,
+            "hole_margin": 5,
+            "handle_length": 60,
+            "handle_width": 24,
+            "handle_thickness": 5,
+            "hanging_hole": 6
+          },
+          "bounds_mm": [
+            180.0,
+            120.0,
+            24.0
+          ],
+          "volume_mm3": 54808.843636922094,
+          "feature_checks": {
+            "hole_count": 61,
+            "aperture_diameter_mm": 8,
+            "floor_thickness_mm": 3,
+            "triangular_pitch_mm": 12,
+            "minimum_web_mm": 4.0,
+            "minimum_actual_wall_margin_mm": 5.0,
+            "opening_area_mm2": 3066.194429903638,
+            "percent_of_circular_floor_open": 30.040012311480456,
+            "smaller_sphere_passes_mm": 7.8,
+            "larger_sphere_stops_mm": 8.2,
+            "sphere_test_positions": 3,
+            "analytic_volume_mm3": 54808.84363692278
+          }
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "hole_diameter": 6
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            135.0,
+            90.0,
+            18.0
+          ],
+          "volume_mm3": 25761.92029081541,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            135.0,
+            90.0,
+            18.0
+          ],
+          "volume_mm3": 25761.92028990772,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sieve_aperture_coupon": {
+      "bounds_mm": [
+        40,
+        18,
+        2.4
+      ],
+      "volume_mm3": 1616.1417330550864,
+      "feature_checks": {
+        "aperture_diameters_mm": [
+          3.8,
+          4.0,
+          4.2
+        ],
+        "floor_thickness_mm": 2.4,
+        "identifying_tick_counts": [
+          1,
+          2,
+          3
+        ],
+        "recess_depth_mm": 0.4,
+        "open_both_ends": true,
+        "analytic_volume_mm3": 1616.1417364467811
+      },
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "hole_diameter": 2.4,
+            "floor": 2
+          },
+          "bounds_mm": [
+            40.0,
+            18.000000000000036,
+            2.0
+          ],
+          "volume_mm3": 1394.5916407050445,
+          "feature_checks": {
+            "aperture_diameters_mm": [
+              2.1999999999999997,
+              2.4,
+              2.6
+            ],
+            "floor_thickness_mm": 2,
+            "identifying_tick_counts": [
+              1,
+              2,
+              3
+            ],
+            "recess_depth_mm": 0.4,
+            "open_both_ends": true,
+            "analytic_volume_mm3": 1394.5916435314568
+          }
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "hole_diameter": 8,
+            "floor": 3,
+            "offsets": [
+              -0.4,
+              -0.2,
+              0,
+              0.2,
+              0.4
+            ]
+          },
+          "bounds_mm": [
+            66.0,
+            18.000000000000036,
+            3.0
+          ],
+          "volume_mm3": 2779.178280186188,
+          "feature_checks": {
+            "aperture_diameters_mm": [
+              7.6,
+              7.8,
+              8,
+              8.2,
+              8.4
+            ],
+            "floor_thickness_mm": 3,
+            "identifying_tick_counts": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "recess_depth_mm": 0.4,
+            "open_both_ends": true,
+            "analytic_volume_mm3": 2779.1782869892972
+          }
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "offsets": [
+          0.2,
+          0,
+          -0.2
+        ]
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            18.0,
+            2.4000000953674316
+          ],
+          "volume_mm3": 1616.1441609806764,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            17.99999998,
+            2.4
+          ],
+          "volume_mm3": 1616.144093128815,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "strap_corner": {
+      "bounds_mm": [
+        38,
+        38,
+        33.5
+      ],
+      "volume_mm3": 13040.942079344755,
+      "feature_checks": "Perpendicular planar contact faces with 27 mm usable length, 3 mm open corner relief, 6 mm rounded strap-bearing radius, 27 mm straight groove height, 2 mm projecting lips, supported upper ramp, flat bed lip, and independent integrated volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "leg_length": 22,
+            "wall": 5,
+            "corner_relief": 2.4,
+            "strap_width": 12,
+            "strap_thickness": 1,
+            "width_clearance": 1.6,
+            "lip_projection": 1.6,
+            "lip_thickness": 1.6
+          },
+          "bounds_mm": [
+            28.6000002,
+            28.6000002,
+            18.800000200000003
+          ],
+          "volume_mm3": 4606.2226990432455
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "leg_length": 45,
+            "wall": 8,
+            "corner_relief": 4,
+            "strap_width": 38,
+            "strap_thickness": 1.8,
+            "width_clearance": 3,
+            "lip_projection": 2.8,
+            "lip_thickness": 2.8
+          },
+          "bounds_mm": [
+            55.8000002,
+            55.8000002,
+            50.1000002
+          ],
+          "volume_mm3": 38854.05697118991
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "strap_thickness": 2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            38.0,
+            38.0,
+            33.5
+          ],
+          "volume_mm3": 13040.884087798811,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            38.0,
+            38.0,
+            33.5
+          ],
+          "volume_mm3": 13040.88408865838,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "tube_reducer": {
+      "bounds_mm": [
+        55.2,
+        55.2,
+        72
+      ],
+      "volume_mm3": 27347.658297278722,
+      "feature_checks": "50.4/32.4 mm socket bores, 22/20 mm straight sockets, 30 mm conical transition, 28.4 mm minimum flow bore, small-end annular stop, two 0.6 mm radial entry leads; continuous opening and independent cylinder/frustum volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "large_diameter": 30,
+            "small_diameter": 18,
+            "large_clearance": 0.3,
+            "small_clearance": 0.2,
+            "wall": 2,
+            "large_depth": 12,
+            "small_depth": 10,
+            "transition_length": 16,
+            "stop_inset": 1.4,
+            "lead_in": 0.4
+          },
+          "bounds_mm": [
+            34.3,
+            34.3,
+            38.0
+          ],
+          "volume_mm3": 7077.5579535907855
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "large_diameter": 80,
+            "small_diameter": 50,
+            "large_clearance": 0.8,
+            "small_clearance": 0.6,
+            "wall": 3.2,
+            "large_depth": 32,
+            "small_depth": 28,
+            "transition_length": 45,
+            "stop_inset": 2.8,
+            "lead_in": 0.8
+          },
+          "bounds_mm": [
+            87.2,
+            87.2,
+            105.0
+          ],
+          "volume_mm3": 84807.58689897081
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "transition_length": 12
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            55.20000076293945,
+            55.20000076293945,
+            72.0
+          ],
+          "volume_mm3": 27341.258533324657,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            55.2,
+            55.2,
+            72.0
+          ],
+          "volume_mm3": 27341.259671507596,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "socket_fit_ring": {
+      "bounds_mm": [
+        55.2,
+        55.2,
+        8
+      ],
+      "volume_mm3": 3113.0041604421217,
+      "feature_checks": "50.4 mm working bore, 55.2 mm outside diameter, 8 mm height, two 0.6 mm entry leads, 6.5 mm straight bore, open both ends; independent analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "tube_diameter": 18,
+            "clearance": 0.2,
+            "wall": 2,
+            "height": 6,
+            "lead_in": 0.4
+          },
+          "bounds_mm": [
+            22.2,
+            22.2,
+            6.0
+          ],
+          "volume_mm3": 749.9191103629076
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "tube_diameter": 80,
+            "clearance": 0.8,
+            "wall": 3.2,
+            "height": 12,
+            "lead_in": 0.8
+          },
+          "bounds_mm": [
+            87.2,
+            87.2,
+            12.0
+          ],
+          "volume_mm3": 9929.108301425671
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "wall": 2,
+        "lead_in": 1.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            55.20000076293945,
+            55.20000076293945,
+            8.0
+          ],
+          "volume_mm3": 3112.6813767218555,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            55.2,
+            55.2,
+            8.0
+          ],
+          "volume_mm3": 3112.681626269652,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "ruler_stop": {
+      "bounds_mm": [
+        34.4,
+        10.2,
+        24
+      ],
+      "volume_mm3": 6347.245982948549,
+      "feature_checks": "26.4 x 3.2 mm open ruler/wedge passage, 3 mm lower floor, 4 mm roof and side walls, 24 mm reference length; analytic volume; prints end profile down.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "ruler_width": 20,
+            "ruler_thickness": 0.8,
+            "side_clearance": 0.3,
+            "body_length": 20,
+            "floor": 2.4,
+            "roof": 3,
+            "side_wall": 3,
+            "clamp_gap": 1.8,
+            "wedge_length": 30,
+            "wedge_tip": 0.6,
+            "wedge_back": 2.6,
+            "wedge_side_clearance": 0.9,
+            "grip_length": 3,
+            "grip_height": 3
+          },
+          "bounds_mm": [
+            26.3,
+            8.00000000000001,
+            20.0
+          ],
+          "volume_mm3": 3113.7716631387207
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "ruler_width": 35,
+            "ruler_thickness": 1.5,
+            "side_clearance": 0.6,
+            "body_length": 30,
+            "floor": 4,
+            "roof": 5,
+            "side_wall": 5,
+            "clamp_gap": 3,
+            "wedge_length": 45,
+            "wedge_tip": 1.2,
+            "wedge_back": 4,
+            "wedge_side_clearance": 1.4,
+            "grip_length": 5,
+            "grip_height": 5
+          },
+          "bounds_mm": [
+            45.6,
+            13.500000000000075,
+            30.0
+          ],
+          "volume_mm3": 13604.057435826995
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "clamp_gap": 2.6
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            34.400001525878906,
+            10.199999809265137,
+            24.0
+          ],
+          "volume_mm3": 6347.22870293094,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            34.4,
+            10.2,
+            24.0
+          ],
+          "volume_mm3": 6347.228424188423,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "ruler_wedge": {
+      "bounds_mm": [
+        35,
+        24,
+        7
+      ],
+      "volume_mm3": 1890.7885714285717,
+      "feature_checks": "35 mm linear taper from 0.8 to 3 mm, 24 mm span, flat lower contact face, 3 mm-long raised pull grip reaching 7 mm total height; analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "ruler_width": 20,
+            "ruler_thickness": 0.8,
+            "side_clearance": 0.3,
+            "body_length": 20,
+            "floor": 2.4,
+            "roof": 3,
+            "side_wall": 3,
+            "clamp_gap": 1.8,
+            "wedge_length": 30,
+            "wedge_tip": 0.6,
+            "wedge_back": 2.6,
+            "wedge_side_clearance": 0.9,
+            "grip_length": 3,
+            "grip_height": 3
+          },
+          "bounds_mm": [
+            30.0,
+            18.5,
+            5.6
+          ],
+          "volume_mm3": 1060.05
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "ruler_width": 35,
+            "ruler_thickness": 1.5,
+            "side_clearance": 0.6,
+            "body_length": 30,
+            "floor": 4,
+            "roof": 5,
+            "side_wall": 5,
+            "clamp_gap": 3,
+            "wedge_length": 45,
+            "wedge_tip": 1.2,
+            "wedge_back": 4,
+            "wedge_side_clearance": 1.4,
+            "grip_length": 5,
+            "grip_height": 5
+          },
+          "bounds_mm": [
+            45.0,
+            32.800000000000004,
+            9.0
+          ],
+          "volume_mm3": 4683.111111111112
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "clamp_gap": 2.6
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            35.0,
+            24.0,
+            7.0
+          ],
+          "volume_mm3": 1890.7885665893555,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            35.0,
+            24.0,
+            7.0
+          ],
+          "volume_mm3": 1890.788570880001,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "workshop_scoop": {
+      "bounds_mm": [
+        110,
+        45,
+        20
+      ],
+      "volume_mm3": 17854.895100078655,
+      "feature_checks": "2.4 mm floor/walls and preserved rounded-corner wall; 16 mm spill lip with rounded notch; continuous low handle and hanging hole; virtual fill seats without overlap, nominal capacity 30.027645 mL. Uncalibrated.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "bowl_length": 45,
+            "bowl_width": 32,
+            "height": 14,
+            "wall": 2,
+            "floor": 2,
+            "corner_radius": 4.5,
+            "handle_length": 35,
+            "handle_width": 14,
+            "handle_thickness": 3,
+            "pour_width": 12,
+            "pour_drop": 3,
+            "hanging_hole": 3.5
+          },
+          "bounds_mm": [
+            80.0,
+            32.0000000000001,
+            14.0
+          ],
+          "volume_mm3": 7549.509287367011
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "bowl_length": 85,
+            "bowl_width": 65,
+            "height": 30,
+            "wall": 3,
+            "floor": 3.2,
+            "corner_radius": 8,
+            "handle_length": 65,
+            "handle_width": 24,
+            "handle_thickness": 5,
+            "pour_width": 24,
+            "pour_drop": 5,
+            "hanging_hole": 6
+          },
+          "bounds_mm": [
+            150.0,
+            65.00000000000027,
+            30.0
+          ],
+          "volume_mm3": 47024.67504396968
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "pour_width": 30
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            110.0,
+            45.0,
+            20.0
+          ],
+          "volume_mm3": 17854.726953990903,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            110.0,
+            45.0,
+            20.0
+          ],
+          "volume_mm3": 17854.727865249777,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "plant_marker": {
+      "bounds_mm": [
+        26,
+        115,
+        2.4
+      ],
+      "volume_mm3": 3992.088050517332,
+      "feature_checks": "Blank rounded label, 8 mm stake, 15 mm taper to 1.2 mm flat tip, 2 mm neck blends, 3.5 mm hanging hole; one 2.4 mm extrusion on Z=0 and analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "label_width": 20,
+            "label_height": 32,
+            "stake_length": 40,
+            "stake_width": 6,
+            "thickness": 1.8,
+            "tip_length": 10,
+            "tip_width": 1,
+            "corner_radius": 2,
+            "neck_radius": 1.2,
+            "hanging_hole": 3
+          },
+          "bounds_mm": [
+            20.00000000000015,
+            72.0,
+            1.8
+          ],
+          "volume_mm3": 1521.2085127508074
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "label_width": 42,
+            "label_height": 65,
+            "stake_length": 105,
+            "stake_width": 12,
+            "thickness": 3.2,
+            "tip_length": 22,
+            "tip_width": 1.6,
+            "corner_radius": 4,
+            "neck_radius": 3,
+            "hanging_hole": 0
+          },
+          "bounds_mm": [
+            42.00000000000035,
+            170.0,
+            3.2
+          ],
+          "volume_mm3": 12370.330609419718
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "label_width": 20,
+        "stake_width": 12,
+        "corner_radius": 4,
+        "neck_radius": 3
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            115.0,
+            2.4000000953674316
+          ],
+          "volume_mm3": 3992.085134622666,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            115.0,
+            2.4
+          ],
+          "volume_mm3": 3992.084974186279,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "bookend": {
+      "bounds_mm": [
+        130,
+        80,
+        130
+      ],
+      "volume_mm3": 83960.7672721518,
+      "feature_checks": "Flat X=0 book face, 4 mm floor/wall, two rear braces, two pointed windows, 1.2 mm front tip and analytic volume including rounded-corner bevel integral. Stability/load untested.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "front_depth": 70,
+            "back_depth": 22,
+            "width": 60,
+            "height": 90,
+            "floor": 3,
+            "wall": 3,
+            "brace_height": 60,
+            "brace_width": 3.2,
+            "corner_radius": 2.5
+          },
+          "bounds_mm": [
+            92.0,
+            60.00000000000301,
+            90.0
+          ],
+          "volume_mm3": 32985.16400437132
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "front_depth": 140,
+            "back_depth": 40,
+            "width": 120,
+            "height": 170,
+            "floor": 5,
+            "wall": 6,
+            "brace_height": 125,
+            "brace_width": 6,
+            "corner_radius": 4
+          },
+          "bounds_mm": [
+            180.0,
+            120.00000000000958,
+            170.0
+          ],
+          "volume_mm3": 231293.49136065747
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "brace_height": 125
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            130.0,
+            80.0,
+            130.0
+          ],
+          "volume_mm3": 83960.75945049572,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            130.0,
+            80.0,
+            130.0
+          ],
+          "volume_mm3": 83960.75958647426,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "corner_cable_guide": {
+      "bounds_mm": [
+        41.50704155516198,
+        41.50704155516198,
+        10.4
+      ],
+      "volume_mm3": 3907.2076846161663,
+      "feature_checks": "25/35 mm channel radii, 2.4 mm floor and walls, 8 mm clear depth, two open ports and 3.5 mm mounting holes; virtual 8 mm cable on 30 mm centerline radius seats and lifts without overlap.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "inside_radius": 12,
+            "channel_width": 6,
+            "channel_depth": 6,
+            "floor": 2,
+            "wall": 2,
+            "tab_diameter": 10,
+            "mount_hole": 3.2
+          },
+          "bounds_mm": [
+            24.918584287042094,
+            24.918584287042087,
+            8.0
+          ],
+          "volume_mm3": 1277.8284246280377
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "inside_radius": 60,
+            "channel_width": 22,
+            "channel_depth": 16,
+            "floor": 3.2,
+            "wall": 3,
+            "tab_diameter": 18,
+            "mount_hole": 5
+          },
+          "bounds_mm": [
+            87.808311744384,
+            87.80831174438391,
+            19.2
+          ],
+          "volume_mm3": 22031.047120538104
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "tab_diameter": 10,
+        "wall": 4
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            41.50703811645508,
+            41.50703811645508,
+            10.399999618530273
+          ],
+          "volume_mm3": 3907.0825486385693,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            41.5070371,
+            41.5070371,
+            10.4
+          ],
+          "volume_mm3": 3907.0825322916767,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "marking_saddle": {
+      "bounds_mm": [
+        90,
+        44.5,
+        23
+      ],
+      "volume_mm3": 22491.735741945024,
+      "feature_checks": "38.5 mm fence gap; virtual 38 mm board seats without overlap; 1 mm normal-width 90/45-degree slots; 3 mm plate, 20 mm fences; analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 60,
+            "board_width": 20,
+            "clearance": 0.3,
+            "wall": 2.4,
+            "plate": 2.4,
+            "fence_height": 12,
+            "mark_width": 0.8
+          },
+          "bounds_mm": [
+            60.0,
+            25.10000000000096,
+            14.4
+          ],
+          "volume_mm3": 6958.503675622204
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 170,
+            "board_width": 85,
+            "clearance": 0.8,
+            "wall": 4,
+            "plate": 4,
+            "fence_height": 35,
+            "mark_width": 1.3
+          },
+          "bounds_mm": [
+            170.0,
+            93.80000000001728,
+            39.0
+          ],
+          "volume_mm3": 110172.96285645556
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "board_width": 90
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            90.0,
+            44.5,
+            23.0
+          ],
+          "volume_mm3": 22491.7188369449,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            90.0,
+            44.5,
+            23.0
+          ],
+          "volume_mm3": 22491.718905979986,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "roll_adapter": {
+      "bounds_mm": [
+        60,
+        60,
+        17.4
+      ],
+      "volume_mm3": 15135.158391901308,
+      "feature_checks": "51.6 mm sleeve, tapered tip, six 3 mm spokes and open sectors, 60 mm flange, 8.6 mm bore; two copies seat on a 50 mm virtual roll with 20 mm separation and no overlap; 8 mm rod clears by 0.3 mm radially.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "roll_bore": 30,
+            "axle_diameter": 4,
+            "axle_clearance": 0.4,
+            "insertion_depth": 8,
+            "hub_wall": 2.4,
+            "flange_extra": 3,
+            "flange_thickness": 2,
+            "spoke_count": 4,
+            "spoke_thickness": 2.4,
+            "lead_in": 0.4
+          },
+          "bounds_mm": [
+            36.0,
+            36.0,
+            10.0000001
+          ],
+          "volume_mm3": 3964.341746233641
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "roll_bore": 80,
+            "outer_clearance": 0.8,
+            "axle_diameter": 12,
+            "axle_clearance": 0.8,
+            "insertion_depth": 25,
+            "wall": 3,
+            "hub_wall": 4,
+            "flange_extra": 6,
+            "flange_thickness": 3.2,
+            "spoke_count": 8,
+            "spoke_thickness": 4,
+            "lead_in": 0.8
+          },
+          "bounds_mm": [
+            92.0,
+            92.0,
+            28.2000001
+          ],
+          "volume_mm3": 55282.26822119531
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "roll_bore": 25,
+        "axle_diameter": 20
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            60.0,
+            60.0,
+            17.399999618530273
+          ],
+          "volume_mm3": 15133.848312707589,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            60.0,
+            60.0,
+            17.4
+          ],
+          "volume_mm3": 15133.84881706468,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "hand_knob": {
+      "bounds_mm": [
+        40,
+        36.24871130596428,
+        14
+      ],
+      "volume_mm3": 13022.085769634461,
+      "feature_checks": "Six rounded lobes, 6.6 mm bore, 10.3 mm across-flat pocket with 8.6 mm floor and entry bevel; virtual 10 AF x 5 nut seats without overlap, 0.4 mm below top. Torque untested.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "grip_diameter": 34,
+            "lobe_radius": 5,
+            "height": 10,
+            "nut_af": 7,
+            "nut_thickness": 3.2,
+            "nut_clearance": 0.2,
+            "pocket_extra_depth": 0.3,
+            "bolt_diameter": 4,
+            "bolt_clearance": 0.4,
+            "lead_in": 0.3,
+            "valley_radius": 0.6
+          },
+          "bounds_mm": [
+            34.0000002,
+            30.784609890826527,
+            10.000000200000004
+          ],
+          "volume_mm3": 6836.704957514117
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "grip_diameter": 64,
+            "lobe_radius": 8,
+            "height": 24,
+            "nut_af": 17,
+            "nut_thickness": 8,
+            "nut_clearance": 0.6,
+            "pocket_extra_depth": 0.7,
+            "bolt_diameter": 10,
+            "bolt_clearance": 0.8,
+            "lead_in": 0.6,
+            "valley_radius": 1.2
+          },
+          "bounds_mm": [
+            64.0000002,
+            57.56921958165306,
+            24.000000200000002
+          ],
+          "volume_mm3": 55232.056926218655
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "nut_af": 20
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            36.24870681762695,
+            14.0
+          ],
+          "volume_mm3": 13021.537784753009,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            36.2487076,
+            14.0
+          ],
+          "volume_mm3": 13021.537743437599,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "slotted_shim": {
+      "bounds_mm": [
+        40,
+        24,
+        2
+      ],
+      "volume_mm3": 1512.4880980884325,
+      "feature_checks": "2 mm constant thickness, open 6.6 mm slot with 28 mm full depth and semicircular end, 12 mm closed back, 4.5 mm hanging hole; analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 30,
+            "width": 18,
+            "thickness": 1,
+            "bolt_diameter": 4,
+            "clearance": 0.4,
+            "slot_depth": 20,
+            "corner_radius": 2,
+            "hanging_hole": 3.2
+          },
+          "bounds_mm": [
+            30.0,
+            18.000000000000103,
+            1.0
+          ],
+          "volume_mm3": 442.6012371374012
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 70,
+            "width": 42,
+            "thickness": 8,
+            "bolt_diameter": 12,
+            "clearance": 1,
+            "slot_depth": 46,
+            "corner_radius": 4,
+            "hanging_hole": 6
+          },
+          "bounds_mm": [
+            70.0,
+            42.00000000000033,
+            8.0
+          ],
+          "volume_mm3": 18545.00002908281
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_depth": 35
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            24.0,
+            2.0
+          ],
+          "volume_mm3": 1512.4890826458357,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            24.0,
+            2.0
+          ],
+          "volume_mm3": 1512.489079209791,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "fold_clip": {
+      "bounds_mm": [
+        50.4,
+        10.8,
+        12
+      ],
+      "volume_mm3": 2969.9434744630826,
+      "feature_checks": "U root with 3 mm inner radius, tapered arms, open flared mouth; actual rounded throat 0.609028 mm. No flexure or force simulation.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "arm_length": 30,
+            "depth": 8,
+            "arm_thickness": 1.8,
+            "root_radius": 2.5,
+            "jaw_gap": 0.4,
+            "entry_flare": 1.6,
+            "nose_length": 4,
+            "nose_radius": 0.3
+          },
+          "bounds_mm": [
+            34.3,
+            8.6,
+            8.0
+          ],
+          "volume_mm3": 1016.9724681014314
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "arm_length": 65,
+            "depth": 18,
+            "arm_thickness": 3.2,
+            "root_radius": 4,
+            "jaw_gap": 1,
+            "entry_flare": 3,
+            "nose_length": 8,
+            "nose_radius": 0.4
+          },
+          "bounds_mm": [
+            72.2,
+            14.4,
+            18.0
+          ],
+          "volume_mm3": 8498.096547791007
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "entry_flare": 3
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.40000009536743,
+            10.800000190734863,
+            12.0
+          ],
+          "volume_mm3": 2969.9034212457786,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.4,
+            10.8,
+            12.0
+          ],
+          "volume_mm3": 2969.90347523827,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "cord_clip": {
+      "bounds_mm": [
+        20,
+        9.494995826374387,
+        12
+      ],
+      "volume_mm3": 880.9894078193445,
+      "feature_checks": "6.6 mm cavity, 5.2 mm entry, seated 6 mm cord clears by 0.3 mm radially; insertion needs flex; 216 mm2 flat adhesive face. No deflection/retention simulation.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "cable_diameter": 4,
+            "clearance": 0.3,
+            "capture": 0.5,
+            "arm_thickness": 0.8,
+            "base_width": 16,
+            "base_thickness": 2.4,
+            "depth": 8,
+            "tip_radius": 0.15
+          },
+          "bounds_mm": [
+            16.0,
+            6.756696382370992,
+            8.0
+          ],
+          "volume_mm3": 359.92393387537635
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "cable_diameter": 10,
+            "clearance": 0.8,
+            "capture": 1,
+            "arm_thickness": 1.4,
+            "base_width": 28,
+            "base_thickness": 4,
+            "depth": 18,
+            "tip_radius": 0.3
+          },
+          "bounds_mm": [
+            28.0,
+            14.082921418934664,
+            18.0
+          ],
+          "volume_mm3": 2564.2836490227287
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "cable_diameter": 4,
+        "capture": 1.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            20.0,
+            9.4949951171875,
+            12.0
+          ],
+          "volume_mm3": 880.9763413756732,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            20.0,
+            9.49499518,
+            12.0
+          ],
+          "volume_mm3": 880.9763396634827,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "round_stock_cradle": {
+      "bounds_mm": [
+        80,
+        60,
+        30
+      ],
+      "volume_mm3": 103540.26553081746,
+      "feature_checks": "90-degree V with 8 mm apex; two-sided tangency for 6/25/50 mm stock; four 4 mm holes and analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 50,
+            "width": 44,
+            "height": 20,
+            "apex_height": 6,
+            "mount_hole": 3
+          },
+          "bounds_mm": [
+            50.00000000000001,
+            44.00000000000078,
+            20.000000000000004
+          ],
+          "volume_mm3": 33479.99999716011
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 130,
+            "width": 90,
+            "height": 45,
+            "apex_height": 12,
+            "mount_hole": 5
+          },
+          "bounds_mm": [
+            130.0,
+            90.00000000000715,
+            45.00000000000001
+          ],
+          "volume_mm3": 381048.0532225704
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "width": 50
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            60.0,
+            30.0
+          ],
+          "volume_mm3": 103540.33394030208,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            60.0,
+            30.0
+          ],
+          "volume_mm3": 103540.33389932889,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "tie_anchor": {
+      "bounds_mm": [
+        26,
+        26,
+        8.6
+      ],
+      "volume_mm3": 4867.819878073944,
+      "feature_checks": "Two crossed 4.8 \u00d7 1.6 minimum passages, peaked roofs, closed floor/top, diagonal mounting holes, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "side": 22,
+            "tunnel_width": 3.6,
+            "straight_height": 1.2,
+            "roof": 2,
+            "mount_hole": 3.2,
+            "mount_inset": 4.5
+          },
+          "bounds_mm": [
+            22.0,
+            22.00000000000007,
+            7.050000000000001
+          ],
+          "volume_mm3": 2901.3271117636896
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "side": 40,
+            "tunnel_width": 8,
+            "straight_height": 3,
+            "floor": 3,
+            "roof": 4,
+            "mount_hole": 5,
+            "mount_inset": 7
+          },
+          "bounds_mm": [
+            40.0,
+            40.00000000000056,
+            15.0
+          ],
+          "volume_mm3": 20073.733050487543
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "side": 20
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            26.0,
+            8.600000381469727
+          ],
+          "volume_mm3": 4867.812061318913,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            26.0,
+            8.6
+          ],
+          "volume_mm3": 4867.811828652135,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "workshop_funnel": {
+      "bounds_mm": [
+        89,
+        78,
+        60
+      ],
+      "volume_mm3": 14607.247346385699,
+      "feature_checks": "70 mm mouth, continuous cone-to-spout passage, 10 mm spout bore/14 mm outside, 2 mm radial wall, external hanging hole.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "mouth_diameter": 40,
+            "spout_diameter": 8,
+            "cone_height": 24,
+            "spout_length": 12,
+            "wall": 1.6,
+            "rim_extra": 1.5,
+            "rim_height": 2.4
+          },
+          "bounds_mm": [
+            57.2,
+            46.2,
+            36.0000001
+          ],
+          "volume_mm3": 4703.9739252213085
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "mouth_diameter": 100,
+            "spout_diameter": 24,
+            "cone_height": 60,
+            "spout_length": 30,
+            "wall": 3,
+            "rim_extra": 3,
+            "rim_height": 4,
+            "hanger_hole": 6
+          },
+          "bounds_mm": [
+            123.0,
+            112.0,
+            90.0000001
+          ],
+          "volume_mm3": 50564.87243547703
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "cone_height": 25
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            88.99695205688477,
+            77.9971923828125,
+            60.0
+          ],
+          "volume_mm3": 14606.138244098858,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            88.9969539,
+            77.99719,
+            60.0
+          ],
+          "volume_mm3": 14606.13884893604,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sliding_box": {
+      "bounds_mm": [
+        120,
+        80,
+        32
+      ],
+      "volume_mm3": 52812.98475213883,
+      "feature_checks": "Closed floor, bottom support ledges, both sloped guide faces and retaining lips; correct entry/end geometry.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 55,
+            "height": 24,
+            "wall": 2,
+            "floor": 2,
+            "lid_thickness": 2,
+            "side_clearance": 0.25,
+            "vertical_clearance": 0.25,
+            "roof": 1.4,
+            "ledge_inset": 3,
+            "end_clearance": 0.3,
+            "pull_extension": 4,
+            "sample_length": 22,
+            "sample_height": 12
+          },
+          "bounds_mm": [
+            80.0,
+            55.000000000003666,
+            24.0
+          ],
+          "volume_mm3": 21437.31288477695
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 170,
+            "width": 120,
+            "height": 55,
+            "wall": 3,
+            "floor": 3,
+            "lid_thickness": 3.2,
+            "side_clearance": 0.5,
+            "vertical_clearance": 0.4,
+            "roof": 2.4,
+            "ledge_inset": 4,
+            "end_clearance": 0.6,
+            "pull_extension": 8,
+            "sample_length": 36,
+            "sample_height": 20
+          },
+          "bounds_mm": [
+            170.0,
+            120.00000000001653,
+            55.0
+          ],
+          "volume_mm3": 154651.1523550966
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "side_clearance": 1,
+        "lid_thickness": 1.8,
+        "vertical_clearance": 0.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            120.0,
+            80.0,
+            32.0
+          ],
+          "volume_mm3": 52812.94079882735,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            120.0,
+            80.0,
+            32.0
+          ],
+          "volume_mm3": 52812.92476242201,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sliding_lid": {
+      "bounds_mm": [
+        123.2,
+        74.6,
+        5.4
+      ],
+      "volume_mm3": 21764.651999999955,
+      "feature_checks": "Matching 0.8-slope side profile, rear entry chamfer, flat sliding bottom, raised front pull grip.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 55,
+            "height": 24,
+            "wall": 2,
+            "floor": 2,
+            "lid_thickness": 2,
+            "side_clearance": 0.25,
+            "vertical_clearance": 0.25,
+            "roof": 1.4,
+            "ledge_inset": 3,
+            "end_clearance": 0.3,
+            "pull_extension": 4,
+            "sample_length": 22,
+            "sample_height": 12
+          },
+          "bounds_mm": [
+            81.7000002,
+            50.5000002,
+            5.0000001
+          ],
+          "volume_mm3": 8125.227599999989
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 170,
+            "width": 120,
+            "height": 55,
+            "wall": 3,
+            "floor": 3,
+            "lid_thickness": 3.2,
+            "side_clearance": 0.5,
+            "vertical_clearance": 0.4,
+            "roof": 2.4,
+            "ledge_inset": 4,
+            "end_clearance": 0.6,
+            "pull_extension": 8,
+            "sample_length": 36,
+            "sample_height": 20
+          },
+          "bounds_mm": [
+            174.4000002,
+            113.00000020000002,
+            6.200000100000011
+          ],
+          "volume_mm3": 62046.072799999856
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "side_clearance": 1,
+        "lid_thickness": 1.8,
+        "vertical_clearance": 0.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            123.19999694824219,
+            74.5999984741211,
+            5.400000095367432
+          ],
+          "volume_mm3": 21764.652445538024,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            123.2,
+            74.6,
+            5.4
+          ],
+          "volume_mm3": 21764.652000000002,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sliding_fit_channel": {
+      "bounds_mm": [
+        30,
+        80,
+        16
+      ],
+      "volume_mm3": 8484.719999999996,
+      "feature_checks": "Closed floor, bottom support ledges, both sloped guide faces and retaining lips; correct entry/end geometry.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 55,
+            "height": 24,
+            "wall": 2,
+            "floor": 2,
+            "lid_thickness": 2,
+            "side_clearance": 0.25,
+            "vertical_clearance": 0.25,
+            "roof": 1.4,
+            "ledge_inset": 3,
+            "end_clearance": 0.3,
+            "pull_extension": 4,
+            "sample_length": 22,
+            "sample_height": 12
+          },
+          "bounds_mm": [
+            22.0,
+            55.0,
+            12.0
+          ],
+          "volume_mm3": 3747.4800000000005
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 170,
+            "width": 120,
+            "height": 55,
+            "wall": 3,
+            "floor": 3,
+            "lid_thickness": 3.2,
+            "side_clearance": 0.5,
+            "vertical_clearance": 0.4,
+            "roof": 2.4,
+            "ledge_inset": 4,
+            "end_clearance": 0.6,
+            "pull_extension": 8,
+            "sample_length": 36,
+            "sample_height": 20
+          },
+          "bounds_mm": [
+            36.0,
+            120.0,
+            20.0
+          ],
+          "volume_mm3": 18222.911999999997
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "side_clearance": 1,
+        "lid_thickness": 1.8,
+        "vertical_clearance": 0.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            30.0,
+            80.0,
+            16.0
+          ],
+          "volume_mm3": 8484.721104125965,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            30.0,
+            80.0,
+            16.0
+          ],
+          "volume_mm3": 8484.72,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sliding_fit_slider": {
+      "bounds_mm": [
+        36,
+        74.6,
+        5.4
+      ],
+      "volume_mm3": 6554.181599999998,
+      "feature_checks": "Matching 0.8-slope side profile, rear entry chamfer, flat sliding bottom, raised front pull grip.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 55,
+            "height": 24,
+            "wall": 2,
+            "floor": 2,
+            "lid_thickness": 2,
+            "side_clearance": 0.25,
+            "vertical_clearance": 0.25,
+            "roof": 1.4,
+            "ledge_inset": 3,
+            "end_clearance": 0.3,
+            "pull_extension": 4,
+            "sample_length": 22,
+            "sample_height": 12
+          },
+          "bounds_mm": [
+            26.0000002,
+            50.5000002,
+            5.0000001
+          ],
+          "volume_mm3": 2677.7675999999983
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 170,
+            "width": 120,
+            "height": 55,
+            "wall": 3,
+            "floor": 3,
+            "lid_thickness": 3.2,
+            "side_clearance": 0.5,
+            "vertical_clearance": 0.4,
+            "roof": 2.4,
+            "ledge_inset": 4,
+            "end_clearance": 0.6,
+            "pull_extension": 8,
+            "sample_length": 36,
+            "sample_height": 20
+          },
+          "bounds_mm": [
+            44.0000002,
+            113.00000020000002,
+            6.200000100000009
+          ],
+          "volume_mm3": 15961.669599999996
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "side_clearance": 1,
+        "lid_thickness": 1.8,
+        "vertical_clearance": 0.2
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            36.0,
+            74.5999984741211,
+            5.400000095367432
+          ],
+          "volume_mm3": 6554.181867081929,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            36.0,
+            74.6,
+            5.4
+          ],
+          "volume_mm3": 6554.181600000001,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "parts_tray": {
+      "bounds_mm": [
+        150,
+        100,
+        24
+      ],
+      "volume_mm3": 73413.74869131682,
+      "feature_checks": "Six open pockets, closed 2 mm floor, center divider, outer wall, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 50,
+            "width": 35,
+            "height": 8,
+            "rows": 1,
+            "columns": 1
+          },
+          "bounds_mm": [
+            50.0,
+            35.00000000000014,
+            8.0
+          ],
+          "volume_mm3": 5697.4116465906445
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 240,
+            "width": 180,
+            "height": 60,
+            "rows": 4,
+            "columns": 6
+          },
+          "bounds_mm": [
+            240.0,
+            180.0000000000259,
+            60.0
+          ],
+          "volume_mm3": 420921.6862198755
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "columns": 1.5
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            150.0,
+            100.0,
+            24.0
+          ],
+          "volume_mm3": 73414.08159746924,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            150.0,
+            100.0,
+            24.0
+          ],
+          "volume_mm3": 73414.06825998041,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "cable_comb": {
+      "bounds_mm": [
+        59,
+        32,
+        4
+      ],
+      "volume_mm3": 5401.575251668817,
+      "feature_checks": "All five slot widths, solid rear strip, two mounting holes, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "cable_diameters": [
+              1.5,
+              2
+            ],
+            "clearance": 0.2,
+            "web": 3,
+            "mounting_hole": 2
+          },
+          "bounds_mm": [
+            12.90000000000003,
+            32.0,
+            4.0
+          ],
+          "volume_mm3": 1334.8504834527248
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "cable_diameters": [
+              10,
+              12,
+              14
+            ],
+            "clearance": 1.5,
+            "slot_depth": 25,
+            "depth": 40
+          },
+          "bounds_mm": [
+            60.5,
+            40.0000000000014,
+            4.0
+          ],
+          "volume_mm3": 5727.131716899026
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_depth": 30
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            59.0,
+            32.0,
+            4.0
+          ],
+          "volume_mm3": 5402.166901731692,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            59.0,
+            32.0,
+            4.0
+          ],
+          "volume_mm3": 5402.16691033249,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "divider_foot": {
+      "bounds_mm": [
+        34,
+        24,
+        20
+      ],
+      "volume_mm3": 4450.258401214373,
+      "feature_checks": "3.4 mm parallel slot, widened top entry, connected floor, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "board_thickness": 1,
+            "clearance": 0.1,
+            "height": 10,
+            "jaw": 2,
+            "lead_in": 0.4
+          },
+          "bounds_mm": [
+            34.0,
+            24.0000000000001,
+            10.0
+          ],
+          "volume_mm3": 2665.618401241002
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "board_thickness": 10,
+            "clearance": 1.2,
+            "base_width": 50,
+            "height": 45,
+            "jaw": 6,
+            "lead_in": 3
+          },
+          "bounds_mm": [
+            50.0,
+            24.0000000000001,
+            45.0
+          ],
+          "volume_mm3": 14914.25840105427
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "base_width": 20,
+        "board_thickness": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            34.0,
+            24.0,
+            20.0
+          ],
+          "volume_mm3": 4450.149311936202,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            34.0,
+            24.0,
+            20.0
+          ],
+          "volume_mm3": 4450.149447251594,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "divider_fit_coupon": {
+      "bounds_mm": [
+        26,
+        20,
+        8
+      ],
+      "volume_mm3": 2347.50866753982,
+      "feature_checks": "All four clearance widths, both open ends for a full-length board, and closed floor.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "board_thickness": 1,
+            "clearances": [
+              0.1,
+              0.2
+            ],
+            "height": 6
+          },
+          "bounds_mm": [
+            9.500000000000021,
+            20.0,
+            6.0
+          ],
+          "volume_mm3": 924.4994993183421
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "board_thickness": 10,
+            "clearances": [
+              0.2,
+              0.4,
+              0.6,
+              0.8,
+              1,
+              1.2
+            ],
+            "height": 15
+          },
+          "bounds_mm": [
+            81.0,
+            20.000000000000284,
+            15.0
+          ],
+          "volume_mm3": 7054.8447507770525
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "clearances": [
+          -0.1,
+          0.2
+        ]
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            20.0,
+            8.0
+          ],
+          "volume_mm3": 2347.417809036146,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            26.0,
+            20.0,
+            8.0
+          ],
+          "volume_mm3": 2347.417872536985,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "phone_stand": {
+      "bounds_mm": [
+        85,
+        96,
+        65
+      ],
+      "volume_mm3": 159247.5572915578,
+      "feature_checks": "Base, phone seat, retaining lip, clear phone gap, and open triangular frame.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "depth": 70,
+            "height": 65,
+            "width": 40,
+            "angle": 78
+          },
+          "bounds_mm": [
+            70.0,
+            65.0,
+            40.0
+          ],
+          "volume_mm3": 68945.6973896637
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "depth": 130,
+            "height": 140,
+            "width": 100,
+            "angle": 60
+          },
+          "bounds_mm": [
+            130.0,
+            140.0,
+            100.0
+          ],
+          "volume_mm3": 388888.8056488687
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "depth": 60,
+        "angle": 60
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            85.0,
+            96.0,
+            65.0
+          ],
+          "volume_mm3": 159247.5591597394,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            85.0,
+            96.0,
+            65.0
+          ],
+          "volume_mm3": 159247.5572621146,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "corner_square": {
+      "bounds_mm": [
+        80,
+        80,
+        8
+      ],
+      "volume_mm3": 20057.274364026664,
+      "feature_checks": "Perpendicular inside datums, glue relief, hanging hole, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "leg": 40,
+            "leg_width": 12,
+            "thickness": 4,
+            "corner_relief": 1
+          },
+          "bounds_mm": [
+            40.0,
+            40.0,
+            4.0
+          ],
+          "volume_mm3": 3144.0354056994856
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "leg": 160,
+            "leg_width": 30,
+            "thickness": 15
+          },
+          "bounds_mm": [
+            160.0,
+            160.0,
+            15.0
+          ],
+          "volume_mm3": 129767.38943254997
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "leg": 40,
+        "leg_width": 30
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            80.0,
+            8.0
+          ],
+          "volume_mm3": 20057.80701501851,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            80.0,
+            8.0
+          ],
+          "volume_mm3": 20057.807024696533,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "handle_marking_jig": {
+      "bounds_mm": [
+        160,
+        40,
+        18
+      ],
+      "volume_mm3": 32212.823607015052,
+      "feature_checks": "128 mm outer hole pitch, 25 mm hole setback from fence, 3.2 mm holes, center notch.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "hole_pitch": 16,
+            "setback": 10,
+            "end_margin": 8
+          },
+          "bounds_mm": [
+            32.0,
+            25.0,
+            18.0
+          ],
+          "volume_mm3": 4436.823607015057
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "hole_pitch": 192,
+            "setback": 70,
+            "fence_height": 35
+          },
+          "bounds_mm": [
+            224.0,
+            85.00000000000001,
+            35.0
+          ],
+          "volume_mm3": 96884.82360701502
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "fence_height": 7
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            160.0,
+            40.0,
+            18.0
+          ],
+          "volume_mm3": 32212.983498840185,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            160.0,
+            40.0,
+            18.0
+          ],
+          "volume_mm3": 32212.983519045327,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "tube_squeezer": {
+      "bounds_mm": [
+        90,
+        26,
+        6
+      ],
+      "volume_mm3": 12888.3291024695,
+      "feature_checks": "64 \u00d7 2 mm throat, both 38.7-degree lead-ins, positive end webs, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 45,
+            "width": 18,
+            "thickness": 4,
+            "slot_length": 25,
+            "slot_gap": 0.8,
+            "lead_in": 0.2
+          },
+          "bounds_mm": [
+            45.0,
+            18.000000021096632,
+            4.000000200000001
+          ],
+          "volume_mm3": 2938.2304869088343
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 140,
+            "width": 40,
+            "thickness": 10,
+            "slot_length": 115,
+            "slot_gap": 4,
+            "lead_in": 1.2
+          },
+          "bounds_mm": [
+            140.0,
+            40.00000000000004,
+            10.000000199999999
+          ],
+          "volume_mm3": 50458.21216052291
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_length": 88
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            90.0,
+            26.0,
+            6.0
+          ],
+          "volume_mm3": 12886.450258873012,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            90.0,
+            26.0,
+            6.0
+          ],
+          "volume_mm3": 12886.450284130542,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "soap_dish_tray": {
+      "bounds_mm": [
+        120,
+        84,
+        14
+      ],
+      "volume_mm3": 34864.668225078174,
+      "feature_checks": "Closed 2.4 mm floor, open cavity, intact walls, lowered pour lip, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 60,
+            "height": 12,
+            "foot_height": 6
+          },
+          "bounds_mm": [
+            80.0,
+            60.000000000000426,
+            12.0
+          ],
+          "volume_mm3": 17370.783634921525
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 200,
+            "width": 140,
+            "height": 24,
+            "foot_height": 16
+          },
+          "bounds_mm": [
+            200.0,
+            140.00000000000665,
+            24.0
+          ],
+          "volume_mm3": 101336.97111864109
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "height": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            120.0,
+            84.0,
+            14.0
+          ],
+          "volume_mm3": 34862.89147324899,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            120.0,
+            84.0,
+            14.0
+          ],
+          "volume_mm3": 34862.88429273046,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "soap_dish_insert": {
+      "bounds_mm": [
+        113.2,
+        77.2,
+        11
+      ],
+      "volume_mm3": 18976.346389535087,
+      "feature_checks": "Eleven open drain slots, continuous webs, four connected feet, front lift notch.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 80,
+            "width": 60,
+            "height": 12,
+            "foot_height": 6
+          },
+          "bounds_mm": [
+            73.20000000000002,
+            53.20000000000191,
+            9.0
+          ],
+          "volume_mm3": 10109.34684344057
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 200,
+            "width": 140,
+            "height": 24,
+            "foot_height": 16
+          },
+          "bounds_mm": [
+            193.2,
+            133.20000000002887,
+            19.0
+          ],
+          "volume_mm3": 46111.393201702325
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "drain_margin": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            113.19999694824219,
+            77.19999694824219,
+            11.0
+          ],
+          "volume_mm3": 18974.988268915444,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            113.2,
+            77.2,
+            11.0
+          ],
+          "volume_mm3": 18974.989993265568,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "label_stand": {
+      "bounds_mm": [
+        50,
+        24,
+        12
+      ],
+      "volume_mm3": 13908.036770736855,
+      "feature_checks": "0.8 mm normal slot width, 12 degree lean, 4 mm floor, both open ends, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 30,
+            "width": 16,
+            "height": 7,
+            "slot_depth": 4,
+            "slot_gap": 0.4,
+            "lean_angle": 0,
+            "corner_radius": 2
+          },
+          "bounds_mm": [
+            30.0,
+            16.000000000000064,
+            7.0
+          ],
+          "volume_mm3": 3287.964583472726
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 90,
+            "width": 40,
+            "height": 24,
+            "slot_depth": 18,
+            "slot_gap": 2,
+            "lean_angle": 25
+          },
+          "bounds_mm": [
+            90.0,
+            40.000000000000284,
+            24.000000000000004
+          ],
+          "volume_mm3": 82495.42711791175
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_depth": 11
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.0,
+            24.0,
+            12.0
+          ],
+          "volume_mm3": 13907.068338298399,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.0,
+            24.0,
+            12.0
+          ],
+          "volume_mm3": 13907.0683114482,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "paint_pyramid": {
+      "bounds_mm": [
+        50,
+        50,
+        26
+      ],
+      "volume_mm3": 21363.428667296423,
+      "feature_checks": "Broad connected foot, 2.4 \u00d7 2.4 flat contact tip, analytic frustum volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "base_size": 30,
+            "height": 12,
+            "base_thickness": 1.6,
+            "tip_size": 1.2,
+            "skirt": 2
+          },
+          "bounds_mm": [
+            30.0,
+            30.00000000000021,
+            12.0000001
+          ],
+          "volume_mm3": 3884.2576007944017
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "base_size": 80,
+            "height": 45,
+            "base_thickness": 4,
+            "tip_size": 5,
+            "skirt": 5
+          },
+          "bounds_mm": [
+            80.0,
+            80.000000000005,
+            45.0000001
+          ],
+          "volume_mm3": 97660.76399861093
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "base_size": 25,
+        "skirt": 8,
+        "tip_size": 6
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.0,
+            50.0,
+            26.0
+          ],
+          "volume_mm3": 21363.337589813364,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            50.0,
+            50.0,
+            26.0
+          ],
+          "volume_mm3": 21363.337872588698,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "cable_winder": {
+      "bounds_mm": [
+        95,
+        44,
+        4
+      ],
+      "volume_mm3": 10434.540951877078,
+      "feature_checks": "Connected winding waist, both end caps, opposing 3.6 mm parking notches, center tie slot.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 60,
+            "width": 32,
+            "neck_width": 14,
+            "end_width": 12,
+            "thickness": 2.4,
+            "notch_gap": 2.6,
+            "notch_depth": 5
+          },
+          "bounds_mm": [
+            60.0,
+            32.0,
+            2.4000000000000004
+          ],
+          "volume_mm3": 2874.491305165765
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 140,
+            "width": 60,
+            "neck_width": 32,
+            "end_width": 20,
+            "thickness": 6,
+            "notch_gap": 5,
+            "notch_depth": 10
+          },
+          "bounds_mm": [
+            140.00000000000006,
+            60.0,
+            6.0
+          ],
+          "volume_mm3": 32733.714272823574
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "length": 55,
+        "end_width": 20
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            95.0,
+            44.0,
+            4.0
+          ],
+          "volume_mm3": 10434.259116947529,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            95.0,
+            44.0,
+            4.0
+          ],
+          "volume_mm3": 10434.259133808426,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "hex_bit_rack": {
+      "bounds_mm": [
+        80,
+        44,
+        14
+      ],
+      "volume_mm3": 40974.8686552,
+      "feature_checks": "All eighteen blind sockets, 6.7 mm across flats, 2.4 mm floors, analytic volume including entry bevels.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "columns": 2,
+            "rows": 1,
+            "pitch": 8,
+            "margin": 6,
+            "height": 8,
+            "floor": 1.6,
+            "shank_af": 3,
+            "clearance": 0.2,
+            "lead_in": 0.3
+          },
+          "bounds_mm": [
+            20.0000002,
+            12.000000200000004,
+            8.0000001
+          ],
+          "volume_mm3": 1743.6229729429483
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "columns": 8,
+            "rows": 4,
+            "pitch": 18,
+            "margin": 12,
+            "height": 24,
+            "floor": 3,
+            "shank_af": 10,
+            "clearance": 0.5,
+            "lead_in": 1
+          },
+          "bounds_mm": [
+            150.0000002,
+            78.00000020000466,
+            24.000000100000005
+          ],
+          "volume_mm3": 215833.5743796445
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "pitch": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            44.0,
+            14.0
+          ],
+          "volume_mm3": 40973.52357303997,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            44.0,
+            14.0
+          ],
+          "volume_mm3": 40973.52472060543,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "hex_bit_fit_coupon": {
+      "bounds_mm": [
+        40,
+        20,
+        14
+      ],
+      "volume_mm3": 9721.346973202044,
+      "feature_checks": "6.5 / 6.7 / 6.9 mm across-flat sockets, intact 2.4 mm floors, matching rack insertion depth.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "shank_af": 3,
+            "clearances": [
+              0.1,
+              0.3
+            ],
+            "pitch": 8,
+            "margin": 6,
+            "depth": 16,
+            "height": 8,
+            "floor": 1.6,
+            "lead_in": 0.3
+          },
+          "bounds_mm": [
+            20.0000002,
+            16.000000200000017,
+            8.0000001
+          ],
+          "volume_mm3": 2381.7481188359197
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "shank_af": 10,
+            "clearances": [
+              0.1,
+              0.3,
+              0.5,
+              0.7,
+              1
+            ],
+            "pitch": 18,
+            "margin": 12,
+            "depth": 26,
+            "height": 20,
+            "floor": 3,
+            "lead_in": 1
+          },
+          "bounds_mm": [
+            96.0000002,
+            26.00000020000013,
+            20.0000001
+          ],
+          "volume_mm3": 41505.91563702189
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "pitch": 8
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            20.0,
+            14.0
+          ],
+          "volume_mm3": 9720.711389188195,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            40.0,
+            19.999999969999998,
+            14.0
+          ],
+          "volume_mm3": 9720.711416088103,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sanding_block": {
+      "bounds_mm": [
+        100,
+        50,
+        25
+      ],
+      "volume_mm3": 100185.95578185207,
+      "feature_checks": "Two 6 \u00d7 40 \u00d7 14 blind slots, 11 mm slot floors, grip recess, wrap-edge chamfers, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 75,
+            "width": 38,
+            "height": 22,
+            "end_margin": 6,
+            "slot_width": 5,
+            "slot_span": 30,
+            "slot_depth": 13,
+            "paper_thickness": 0.2,
+            "wedge_tip": 2.8,
+            "wedge_top": 6.6,
+            "wedge_height": 18,
+            "wedge_end_clearance": 1.6
+          },
+          "bounds_mm": [
+            75.0,
+            38.0,
+            22.0
+          ],
+          "volume_mm3": 50746.092973305036
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 160,
+            "width": 80,
+            "height": 38,
+            "end_margin": 10,
+            "slot_width": 8,
+            "slot_span": 68,
+            "slot_depth": 23,
+            "paper_thickness": 0.5,
+            "wedge_tip": 4,
+            "wedge_top": 11,
+            "wedge_height": 28,
+            "wedge_end_clearance": 3
+          },
+          "bounds_mm": [
+            160.0,
+            80.0,
+            38.0
+          ],
+          "volume_mm3": 401846.7213238789
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_depth": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            50.0,
+            25.0
+          ],
+          "volume_mm3": 100186.9192742012,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            50.0,
+            25.0
+          ],
+          "volume_mm3": 100186.91924311116,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "sanding_wedge": {
+      "bounds_mm": [
+        8,
+        36,
+        20
+      ],
+      "volume_mm3": 4032.0,
+      "feature_checks": "3.2-to-8 mm symmetric taper, 36 mm span, 20 mm height, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "length": 75,
+            "width": 38,
+            "height": 22,
+            "end_margin": 6,
+            "slot_width": 5,
+            "slot_span": 30,
+            "slot_depth": 13,
+            "paper_thickness": 0.2,
+            "wedge_tip": 2.8,
+            "wedge_top": 6.6,
+            "wedge_height": 18,
+            "wedge_end_clearance": 1.6
+          },
+          "bounds_mm": [
+            6.6,
+            26.8,
+            18.0
+          ],
+          "volume_mm3": 2267.2799999999997
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "length": 160,
+            "width": 80,
+            "height": 38,
+            "end_margin": 10,
+            "slot_width": 8,
+            "slot_span": 68,
+            "slot_depth": 23,
+            "paper_thickness": 0.5,
+            "wedge_tip": 4,
+            "wedge_top": 11,
+            "wedge_height": 28,
+            "wedge_end_clearance": 3
+          },
+          "bounds_mm": [
+            11.0,
+            62.0,
+            28.000000000000007
+          ],
+          "volume_mm3": 13020.0
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "slot_depth": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            8.0,
+            36.0,
+            20.0
+          ],
+          "volume_mm3": 4032.0000171661377,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            8.0,
+            36.0,
+            20.0
+          ],
+          "volume_mm3": 4032.0,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "cable_grommet": {
+      "bounds_mm": [
+        67.63034344160047,
+        68,
+        18.4
+      ],
+      "volume_mm3": 8131.539076795492,
+      "feature_checks": "59.6 mm sleeve OD, 55.6 mm bore, 68 mm flange, open 10 mm cable entry, flange lead-in, tapered sleeve tip.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "hole_diameter": 30,
+            "flange_width": 3,
+            "insertion_depth": 6,
+            "opening": 0,
+            "lead_in": 0.3
+          },
+          "bounds_mm": [
+            36.0,
+            36.0,
+            8.4000002
+          ],
+          "volume_mm3": 2238.3187922370016
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "hole_diameter": 90,
+            "clearance": 0.8,
+            "wall": 3,
+            "flange_width": 6,
+            "flange_thickness": 3,
+            "insertion_depth": 25,
+            "opening": 20,
+            "lead_in": 1
+          },
+          "bounds_mm": [
+            101.00999900019995,
+            102.0,
+            28.000000000000007
+          ],
+          "volume_mm3": 26118.482606650752
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "hole_diameter": 25,
+        "opening": 20
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            67.63034439086914,
+            67.99996185302734,
+            18.399999618530273
+          ],
+          "volume_mm3": 8130.646131649771,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            67.6303434,
+            67.9999624,
+            18.4
+          ],
+          "volume_mm3": 8130.645924544732,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "radius_template": {
+      "bounds_mm": [
+        80,
+        80,
+        3
+      ],
+      "volume_mm3": 17760.268071567327,
+      "feature_checks": "Four actual corner arcs R5/R10/R15/R20, 20 mm finger hole, ten recessed ticks, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "side": 60,
+            "thickness": 2,
+            "radii": [
+              3,
+              6,
+              9,
+              12
+            ],
+            "finger_hole": 16
+          },
+          "bounds_mm": [
+            60.0,
+            60.0,
+            2.0
+          ],
+          "volume_mm3": 6667.591148575119
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "side": 120,
+            "thickness": 5,
+            "radii": [
+              10,
+              20,
+              30,
+              40
+            ],
+            "finger_hole": 30
+          },
+          "bounds_mm": [
+            120.0,
+            120.0,
+            5.0
+          ],
+          "volume_mm3": 65232.280715673245
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "radii": [
+          5,
+          10,
+          15,
+          45
+        ]
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            80.0,
+            3.0
+          ],
+          "volume_mm3": 17758.992482060905,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            80.0,
+            80.0,
+            3.0
+          ],
+          "volume_mm3": 17758.992375391364,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "center_finder": {
+      "bounds_mm": [
+        100,
+        24,
+        16
+      ],
+      "volume_mm3": 10264.323346768804,
+      "feature_checks": "Equal 8 mm pins, midpoint 3.2 mm hole; tangency and centered marking at stock widths 20/45/72 mm; analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "pin_spacing": 45,
+            "pin_diameter": 6,
+            "pin_height": 7,
+            "plate_width": 18,
+            "plate_thickness": 3,
+            "end_margin": 8,
+            "mark_hole": 2.6
+          },
+          "bounds_mm": [
+            61.0,
+            18.0,
+            10.000000199999999
+          ],
+          "volume_mm3": 3453.4655381413872
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "pin_spacing": 140,
+            "pin_diameter": 12,
+            "pin_height": 20,
+            "plate_width": 32,
+            "plate_thickness": 6,
+            "end_margin": 16,
+            "mark_hole": 5
+          },
+          "bounds_mm": [
+            172.0,
+            32.0,
+            26.000000200000002
+          ],
+          "volume_mm3": 36088.217507181915
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "plate_width": 14
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            24.0,
+            16.0
+          ],
+          "volume_mm3": 10264.005454969292,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            24.0,
+            16.0
+          ],
+          "volume_mm3": 10264.00548705965,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "brush_rest": {
+      "bounds_mm": [
+        100,
+        150,
+        20
+      ],
+      "volume_mm3": 57987.73492128986,
+      "feature_checks": "Six matching 8.6/12.6/16.6 mm cradles, intact floor, six wash portals and their roofs, open catch region, lowered pouring lip.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "width": 80,
+            "length": 120,
+            "rim_height": 10,
+            "groove_diameters": [
+              6,
+              8
+            ],
+            "groove_pitch": 24,
+            "rail_height": 16,
+            "rail_spacing": 30,
+            "rear_inset": 25
+          },
+          "bounds_mm": [
+            80.00000000000112,
+            120.0,
+            16.0
+          ],
+          "volume_mm3": 37150.579076506365
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "width": 140,
+            "length": 180,
+            "wall": 3,
+            "floor": 3,
+            "rim_height": 16,
+            "groove_diameters": [
+              10,
+              14,
+              18,
+              22
+            ],
+            "clearance": 1,
+            "groove_pitch": 32,
+            "rail_height": 27,
+            "rail_thickness": 5,
+            "rail_spacing": 50
+          },
+          "bounds_mm": [
+            140.0000000000066,
+            180.0,
+            27.0
+          ],
+          "volume_mm3": 125616.23037828237
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "rail_height": 18
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            150.0,
+            20.0
+          ],
+          "volume_mm3": 57987.80778595701,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            100.0,
+            150.0,
+            20.0
+          ],
+          "volume_mm3": 57987.800241950936,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    },
+    "utility_peg": {
+      "bounds_mm": [
+        60,
+        24,
+        31
+      ],
+      "volume_mm3": 6999.604172526782,
+      "feature_checks": "Two 4.4 mm mounting holes on 44 centers, 10 mm stem, broad root, tapered 16 mm retaining head, analytic volume.",
+      "variants": [
+        {
+          "case": "compact",
+          "overrides": {
+            "mount_spacing": 30,
+            "end_margin": 6,
+            "plate_width": 20,
+            "plate_thickness": 2.4,
+            "mount_hole": 3.2,
+            "peg_diameter": 6,
+            "peg_length": 20,
+            "head_diameter": 12,
+            "head_thickness": 2
+          },
+          "bounds_mm": [
+            42.0,
+            20.00000000000002,
+            22.4
+          ],
+          "volume_mm3": 2890.0526534490787
+        },
+        {
+          "case": "large",
+          "overrides": {
+            "mount_spacing": 60,
+            "end_margin": 10,
+            "plate_width": 34,
+            "plate_thickness": 4,
+            "mount_hole": 5.5,
+            "peg_diameter": 16,
+            "peg_length": 45,
+            "head_diameter": 24,
+            "head_thickness": 3
+          },
+          "bounds_mm": [
+            80.0,
+            34.00000000000017,
+            49.0
+          ],
+          "volume_mm3": 21186.558099775262
+        }
+      ],
+      "invalid_parameters_rejected": {
+        "head_diameter": 10
+      },
+      "mesh": {
+        "stl": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            60.0,
+            24.0,
+            31.0
+          ],
+          "volume_mm3": 6999.102617955182,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        },
+        "3mf": {
+          "watertight": true,
+          "consistent_winding": true,
+          "connected_bodies": 1,
+          "bounds_mm": [
+            60.0,
+            24.0,
+            31.0
+          ],
+          "volume_mm3": 6999.102672403947,
+          "bed_z": 0.0,
+          "downward_area_above_bed_mm2": 0.0
+        }
+      }
+    }
+  },
+  "validated_files_sha256": {
+    "parts_tray.step.py": "bd22a4c46639424a8030c0c573735c7cd61e8c0f9e361e5cbacd034eaff3fbff",
+    "parts_tray.step": "cc9667a5623579194ca2ca93247cd72b3d392cda08b68f0b0030d6b965b0a6e6",
+    "parts_tray.stl": "25bbaa488b89590ba28191a1800a5f9ba6f32ff8ea4866fbba673732824931d6",
+    "parts_tray.3mf": "1e510b6fe3bb7e4122f4fa352bfe9bc21e9571796bd6eda15655ae5d28d197f7",
+    "cable_comb.step.py": "f548dfbd0f15d6ef42360b42bf03c802e8c685284d549cf890823e8617871846",
+    "cable_comb.step": "dd02df1e4fea902d4b17a9f4f4b93e8b6c5e3945d4141df65324eedbc17c665d",
+    "cable_comb.stl": "9e82919b660cca7e53f224e6c8478bc34ef46b50c0e24fd87babae5c7d238f84",
+    "cable_comb.3mf": "0abc3a7a965f291d1e6782aab187c46c9b4a34a162d6fa17c561fd1f074b2004",
+    "divider_foot.step.py": "13f808a6097bd7d99ddb834cf1dd5b05c80db900e6ae45fab22fb080318fd58a",
+    "divider_foot.step": "c853a5dfca08fb3d878a0c01f519b6a8cf51b8bd78d68e114c135356118c747b",
+    "divider_foot.stl": "e40d1e6d55c96eaef1c4debc1759fa048cb2c01432f9d8bbdf7df0dfa1023f6f",
+    "divider_foot.3mf": "c348aa92413cdaa5835ca112c4c95a554d8a9b58e63b6e3cd403cd19a2e2b712",
+    "divider_fit_coupon.step.py": "db0d2e9d3a78c1bb72cb6f85600677d64b2525b2300a57c62b77e8ac8a9e8d5c",
+    "divider_fit_coupon.step": "789adda9941fb735e8dbb9fa4bfe412f4ec9ccdd6aecea7a8f9f10f7a7e7da3b",
+    "divider_fit_coupon.stl": "125fe15d1d97e6ae5db678186f0af24600ddd6adb57ad570811cb1fff7cc5c5a",
+    "divider_fit_coupon.3mf": "c2f9f5e8e058242e22b762499654df23176d4115ed34f8800109eb1fe2ea6ded",
+    "phone_stand.step.py": "2ff59ee183e8a4cefac81fb0815396ec6c377b6940a1cbabadfcb3b5fbe2a226",
+    "phone_stand.step": "e0f725e73be03a3c43266fc46903fe99049ad9ec6ec863bbb8309d62bc131982",
+    "phone_stand.stl": "99dd72466aef2e2bf1c3ca4a49a0d573f7f516cbba921f765a04f491faa845dc",
+    "phone_stand.3mf": "d7b9cc3a93171d3e0b34b75d71fb2373a858101320809179d2f67f22afcaec22",
+    "corner_square.step.py": "6a7e33d5a891b6c89dc6af0ec7d25fccd6c7e243e4a39dda6d3194293407623f",
+    "corner_square.step": "72d6a3b0a689db855b830671b336100aa9dfd2ae63062199f111f750879a325c",
+    "corner_square.stl": "af877ca13dc392a7b8c2303cd7ac59fe99794b62ad5971173a90bee01a0bb90a",
+    "corner_square.3mf": "d3afa74d02ee443e290b11aafdfac816374e338300bd7de7aed806b9dfab4f96",
+    "handle_marking_jig.step.py": "de854444da6669da383d6a6422489b3ba8d0d75aff75a8060e69c82b1ec933ce",
+    "handle_marking_jig.step": "7a7b0235f4c5250316a597ae2c5d79b90f87529b355b0703ebad34ae3b8d86b2",
+    "handle_marking_jig.stl": "06564aafa1cf5c22157a31c5e3f778350769a157282af4b0c95b8ead5b720fa2",
+    "handle_marking_jig.3mf": "950b54a114d52c26f524f0f0127da9df458205885da4a5542ebf72ba9508af86",
+    "tube_squeezer.step.py": "37bf0d2f4dfb91ccd0881fcb8c794da49562f3d9d67663279ef910eacf455281",
+    "tube_squeezer.step": "2bdec3f6c0e0f384d582a441d0c3d2ff747258609acfdc5cc264c8ed75bcd458",
+    "tube_squeezer.stl": "63bbe63f61f4a09501f4caccadb11658132e72e4104ced6c9686ee43971118d0",
+    "tube_squeezer.3mf": "bec1b6df9bc9cbd685a1d5deb0175bd36654936bafe355d0c61a04056df15f8e",
+    "soap_dish_tray.step.py": "70d968ed6a2275d25891a04b2eef97616f1c829d6106501c49fa214151e89139",
+    "soap_dish_tray.step": "07beee3fbcd8fd1dd90a8f0628ee8263d89d4624b9e5bb6329c21d00f586388c",
+    "soap_dish_tray.stl": "44ed3dc12509042a2b9faaa7f37e4dab091c947cce678243657479155f1cd5e4",
+    "soap_dish_tray.3mf": "ca8fa68576ad41d009d89ab4c04328a508d94e4f2ad6235f0ae351e53e7eb5ba",
+    "soap_dish_insert.step.py": "97a82fe264d017f314a9f46060afe2e63d6babb256bedbed68fcb8b265b1d3b7",
+    "soap_dish_insert.step": "9040a1b7bd19369001e7cfbb1a981c0f45864f00df5a9116a46aa434fccb8d47",
+    "soap_dish_insert.stl": "aa978560c0ced0058477ca1bb52d7d172f91d98fb50e61ca24fa729e1901ddae",
+    "soap_dish_insert.3mf": "746c262126c413c95dc8313ff7a4f37dfc2d6bb1f0390ff4cee75e457387e684",
+    "label_stand.step.py": "c846d330084539f8bc4d7489ca6941763b320a36a08c54c270127c88b07c4515",
+    "label_stand.step": "7c733d350ea27d4161f073fdf3e2b09a68c5a9b51df434b2b01322ea8096b0ca",
+    "label_stand.stl": "8fb20202bbb8a2ff6d4629401d278236ea0d87d011018bcf81ba9a09a56d06e2",
+    "label_stand.3mf": "d52ae98ee128c9904f9811b42752c9415a7548780fe43567eaccb2df47e7f982",
+    "paint_pyramid.step.py": "9069a29d20c5063da89f095b985229cb803eb9479c4fa5b181061a59e24e2a3a",
+    "paint_pyramid.step": "caf7e489044bfebce1064928f11ab00fd48d4f3a302b678882e7fd4fc2ef7ccf",
+    "paint_pyramid.stl": "1f7c0d85a6978178e6cabfc01bfcbab3ab8a8f79a97289031ea05265e6f5156f",
+    "paint_pyramid.3mf": "dd70f4b4a18b52e70696bdd74acbc8a4df8f7198f482c52d521fd0ca3b6dd501",
+    "cable_winder.step.py": "ec0783a90c31e17d41d7f650a6f1c79187c3ac1b9ed8770313e45b4b6386b134",
+    "cable_winder.step": "3646408732757000d3f133dce846c10064888c24905a312567c7b79548594c2b",
+    "cable_winder.stl": "5635bcf3cb2b84a47c424c7b979e591c5f21a98b61a14024402c394f87a5227d",
+    "cable_winder.3mf": "535736bc8dfb3171471f596e448c295d26f9d22ca2c5d9a9fad8d09d3030bb56",
+    "hex_bit_rack.step.py": "cc02fc6b848945b3603de9664f04aaa64437a40b6b37149dedd8e4f4d5716214",
+    "hex_bit_rack.step": "ce91a996fec150a4f53d3fd54d51f545e29812fb3560643c2b93c609cd16eeca",
+    "hex_bit_rack.stl": "680ad68b8486b4f94d38da581bd6136974d4e8d37f70e14180e2184d66cea092",
+    "hex_bit_rack.3mf": "1febb6eb5d26d905fa7b9655ee2ed4e229fb32e9e4309b98bde017b1ab9c69f3",
+    "hex_bit_fit_coupon.step.py": "6f06a6f4c556128950c1a06a2544d357a514c881d17f87039d8a8a3b2e1fe917",
+    "hex_bit_fit_coupon.step": "1dbaa0f507baac89621267069efbbd7c0a8f496bfe16930dcde7c685c5a098e5",
+    "hex_bit_fit_coupon.stl": "b55c1ebea2c8bd933304db1cbf4f96f29bf243c0666a690055de003ccf9d6abd",
+    "hex_bit_fit_coupon.3mf": "bcc4b1a1273cc26d038a0ad4a9ca31e1847aca25ec89589448a4eb7e16d2c4ae",
+    "sanding_block.step.py": "b403206ede5452e8dd753d6d448561e89e42176dde0cd9060dd81bd564acab69",
+    "sanding_block.step": "3e95c08c21dacc1d53e04dfbbca9877e9ccfcec3dcc2e8ebe70c0d43592c4292",
+    "sanding_block.stl": "57506f3edec75205185c1512631ea10d72c2d8b6211331ed9ba196056bfcb600",
+    "sanding_block.3mf": "2b06a077708275748e5f6d1f80b4e66d6a03efe31edf75787c32fd1494c454d6",
+    "sanding_wedge.step.py": "13daea19f1b16980b2af120170bb9c46f560818c4ec937754c0336807d5e913f",
+    "sanding_wedge.step": "3aa9e90d6406d4c40ed7cb7c64d0400856470e276085179c455a4a7e87ee5fa8",
+    "sanding_wedge.stl": "e80e7568e84c03f6c37cf0e577f4d48e95ab391358dada8f7522554798a2aa7f",
+    "sanding_wedge.3mf": "386e317ed3e9d8954466a34ab0096640b90ef0cca892fe2782671e62e99c9e1f",
+    "cable_grommet.step.py": "e47f68a9ff1537a9c96f1f65f85945aa9a116062ae2095e5ca71b4ca90bdd296",
+    "cable_grommet.step": "4389e9d93443de087ba8062ad812f7b3a48ab2ae62d6f45ada67b11d6d31e863",
+    "cable_grommet.stl": "799b3ecf3ba25c20f03e0d27f53a5c6931f367004bf3de1d3c0b471bbbd9500b",
+    "cable_grommet.3mf": "a5690573ea2f5ee13939b5023fe5b37ee84b9a974ae6231dd61c6e00cc735f1f",
+    "radius_template.step.py": "85063bcfd798dfe726a96ce4dc56c58f9497047ac0df9567e2aabf84e52b9d16",
+    "radius_template.step": "ed3d1b7adc33904096799340b0e24c2c679709d002e07b02ef35739f8531bb40",
+    "radius_template.stl": "541b70d03d6ab25e0dfacf3e45f6e0cf91d8913781804a62bd407822d42fd063",
+    "radius_template.3mf": "b909f5fc662da980ee0e14755ca30853115b3072535ba163abbb7852b92da0da",
+    "center_finder.step.py": "ca5b61befce17682699e791268489075de3dbcd0b04b82ef31716f6630e53468",
+    "center_finder.step": "d1a5e3fbf33aaf5036a8364726564a69d6181cf89dbf8406d5cef65397106275",
+    "center_finder.stl": "2ae228b5b37916c21753d6121a33b38d56f4672f42fd2a1df13fb86fe1f77b2f",
+    "center_finder.3mf": "6e82ece91e5a748e995ce88bf77e5f6206636f6014c3d0d2ccca4d3a0a0cafbc",
+    "brush_rest.step.py": "ecf9c4402f3b6105c4cc5cfd4703e2f2cc1830aa3b015f28d55648d6d7ddc2a3",
+    "brush_rest.step": "c33b6f2ca5b29b9fe5fd78e9c02084d6fc6158cbb62730181f76bc591d857427",
+    "brush_rest.stl": "2ad04a90a767a7a8f2caca80df870a679c7ef09ef18e77d50c5cd5ab0fdb6a60",
+    "brush_rest.3mf": "d37caa5035d103f7d05a33413185931c328faa65054ff0cd054ba5e2559ad88b",
+    "utility_peg.step.py": "fd06536b062c2e5b219afbf56065a9d21232bdfbbbeaf7bf624e34a0b67ed375",
+    "utility_peg.step": "86939486c3c6935f5c9145136c2669d0f2c1f5c8d129dae9e4e3e4ac97363f93",
+    "utility_peg.stl": "6bab7762c69775a6a8d957bbba07169f906bdeeb4b69a3cfa73a8b59af80ef1c",
+    "utility_peg.3mf": "13a921989cfe2a4dd6bdb4bf46c22e3bbcf66a6aa8d1884ddde06414fd9e02f6",
+    "sliding_box.step.py": "adefb90aa86443d3f2b6a448c62a2b642c93133f3d07f20e092b7c95b1e6b39d",
+    "sliding_box.step": "3eb43bd86c8f7ae56a828c92244299891fb4de0187d9735fb45355ec66f56532",
+    "sliding_box.stl": "4b7ecea2c441ce5ff1a75ef81157097295f5257f43735c880016a2dfba5bf286",
+    "sliding_box.3mf": "3c6e64b4f22b3cbacbfb5b60f2dc8cbd52bcc0aec7a5e9e21857b5a317347cef",
+    "sliding_lid.step.py": "7fd89f87e9ae3c38097861059e8bf1801488ed34efcc6361b9ca4a0a79aa3670",
+    "sliding_lid.step": "fced4f9c257ca2bc5cbccbd8e53cd4fc33eb5aa18de861c385232ccfcf4487eb",
+    "sliding_lid.stl": "686cb502b563409cc53f3c1513b28ad94d37c731f7110b40171dd6af4d04ea68",
+    "sliding_lid.3mf": "c606ddc4e26fe6a856ae454f644257f4ce41261f11a3be14198129cbba98ceac",
+    "sliding_fit_channel.step.py": "8a65d4458639c42f2b5224fe420c435ac65da033594778d83974e9bae22875df",
+    "sliding_fit_channel.step": "f7ec85e564597b239d5704e833cde1e791200e42ed059de49e567005f607ccf1",
+    "sliding_fit_channel.stl": "da76128bad3eabeae25aed650048d070b5fd545677d2034a97b65ed967907733",
+    "sliding_fit_channel.3mf": "68cb341135e6ed656c92ddfc104fcf9d2f567a8bcf1abf227c7d2ddf7d45afdd",
+    "sliding_fit_slider.step.py": "1f5b3c741f2836785854331dbc2ebbaa47b39d147d00d4a659b880a8ee0414db",
+    "sliding_fit_slider.step": "2af8c67a6718548a6faa4310f21b3e970a479635e271a62ea80c78a657949e63",
+    "sliding_fit_slider.stl": "f2add71b5d1d8b4cbbd08528499c71368b3aff6e658ddf6ccd331cd67a33b82c",
+    "sliding_fit_slider.3mf": "8da581834fb863dfaac4d8ef5c22a3107523c5f131a2fd2f9c2bb75b45920687",
+    "round_stock_cradle.step.py": "77142dc1ecc4c3c7f6b1c4b2a6230e50c3a98d0f4a17e267a3daa4ed1b0b5c18",
+    "round_stock_cradle.step": "0814be0108d88639d8a214077e8236b8d9b796308c4bbab38d26a9aeff0831a1",
+    "round_stock_cradle.stl": "ccca4ae19aae4af62696dd455178a88f09acc13baa3dd501fbec921052d01978",
+    "round_stock_cradle.3mf": "b208c6080cf7e338e135e9159c39122984f3005b7401dbb011951e3e1cb623ec",
+    "tie_anchor.step.py": "9df79837af6907e53df62dbfd1e2b02ce5e9c1686b34517b8f370491155cf6c2",
+    "tie_anchor.step": "126d8dd67dfe25a152072d1512777a8cc54c2420ef77c268121d00aae9524270",
+    "tie_anchor.stl": "94c30f802cbdc1f99b567a4c42efb9dfb74f827b57012679caacd14599ffe09e",
+    "tie_anchor.3mf": "68a57af17f92c3175b78117f451da1a4b7fedc4f5678ff221001f1ac2a5bda0e",
+    "workshop_funnel.step.py": "054d5441d528a5ec4b2cab46d15fe23caa0605c69ba433b6891946f1bfc61b99",
+    "workshop_funnel.step": "777d95d685396c7f76c9c8a450d71ed23a62b34cc1a6494d65ae5f933c330e0f",
+    "workshop_funnel.stl": "df353dbf6b5cd0f131aaef78d5b5edcb15cb4d3488d9faa6b3667d3dc407215e",
+    "workshop_funnel.3mf": "00384946806c503ff80e59cf8de72b0a27ac1359a64fe1460161993ed218a127",
+    "fold_clip.step.py": "c3301f89855acf0b4c3aff0cd6879e6397dbe25256f3d20b95e2c1ec8f167f46",
+    "fold_clip.step": "7730a04f2d54ae3362e2f77cffb2add460d8ba312b00781f9ee3b337a67c427c",
+    "fold_clip.stl": "73df06a3efe4c099ddca1d40061563ce6abf8cb0121ecb4b22f6d23f0393918d",
+    "fold_clip.3mf": "16f8289cfd09665c01218c9679de77dd560f5de36c1a1d503096ef71174798a4",
+    "cord_clip.step.py": "82c1740b08c585ab89e2f833db858ea22590117f304065c428f16cbd7a278acd",
+    "cord_clip.step": "7bb46ce4fbe8d475a364eda67c84514c9231a7c69ec11967e57c57ae7e866eee",
+    "cord_clip.stl": "0caaeac62913c0dbebb1eb28231101f3965a2ba04a83d20c7c4fa1b3a7274863",
+    "cord_clip.3mf": "d3c69db6c1867fc8a6463d53f34b52a37f0c770caacd9d746fdeb757002b80fe",
+    "hand_knob.step.py": "186491dcb7a56cc2eaaac4ce8445b8e6f150634b3dc509d9afe5b61a10cafa7a",
+    "hand_knob.step": "1dbb32d1ebdaffc66924f8dffd2a2af10c5b42d266dbb0b8eadd6cd34fff26aa",
+    "hand_knob.stl": "9b2f4503928918d5166df99eb293b7d52a4be6e7d1354e01086567b022f6a224",
+    "hand_knob.3mf": "49e08bc0c190f4832cd3a0a7d9933ef5c25188bfee311edb898373e988f740e1",
+    "slotted_shim.step.py": "69f6a9b0b61dac3cc968a1a17cd50c9bb1ddfa39d20d9ba4ca9824fba99f5719",
+    "slotted_shim.step": "250846b1523a2b7a0c57218b270a8e4e0699272c36d80bcd3c0ab6a57b9af834",
+    "slotted_shim.stl": "ffcece7ca7ce10d35f1bd06edac3c840bd6de79498c5f7440ab5e971286102a7",
+    "slotted_shim.3mf": "f76320f11138bb748d34b7a90e3f76f2d25ba65ec0c352bb142392a4e877bf0d",
+    "marking_saddle.step.py": "425c286ffa83a1f611701539f5357673f9061054e6d85191d006602ea41c1a3a",
+    "marking_saddle.step": "7b8c5d75a8615e04af0b6a7efaff582b98263e0f8cbf030c4177ef0ec02ecc6d",
+    "marking_saddle.stl": "6243aa47740b09752e54ea60acba035449ddae804a85293c87603f12a87b631f",
+    "marking_saddle.3mf": "ddf1071255547194d749d71e7481ab4d2894658286dc64366e399706ef114fcf",
+    "roll_adapter.step.py": "253f1861e4571520b7e5456548858ca8a8da79fd395f4c2792367c9bb57805eb",
+    "roll_adapter.step": "e7e76fcc5e07a844a262ca9970dc0a1aed17b3894162f420d8dc7d0e4216ee85",
+    "roll_adapter.stl": "c272ceb73e63e59befe0bd2598729c9b62afcaf7fb256d73489c1f19a5526012",
+    "roll_adapter.3mf": "80f72546674607ef2e00a6946e0e2926bd66fd9c16f35866e9fe9ca5a41a2760",
+    "bookend.step.py": "5efe580245984a18d786a69a9036463beca031e1fb3c33577ecd20e7ad52ccfc",
+    "bookend.step": "d95bdeabbeadf90cf09fadcb5b52d959786b96078c4bd683bc1f96abc90625ce",
+    "bookend.stl": "6454fda7766df2a776c350eb676a842473cec928f05689e0726b260028586e43",
+    "bookend.3mf": "c2ab8cf7b0fac0edbdf53ffbe49cc928f0baa538437409f5540e93b109024788",
+    "corner_cable_guide.step.py": "104845af9dbcc837dcdb07e6d475147f1bb7d2241b6bf255324cd5201e4317eb",
+    "corner_cable_guide.step": "ae304e69ad4b118cdf693ccd09a0427b0f1af10e95f63d26c7412beec8f60b49",
+    "corner_cable_guide.stl": "7762220c866d9c17bfbda448cd7a2a6b43954ed56036b2b9331d9aec929a6e4c",
+    "corner_cable_guide.3mf": "96ba0a5f63a4f0140961b511e542cb6d0e3c7ce3ae6ee773e8b22ba7a027f00c",
+    "workshop_scoop.step.py": "a4b9a71469a41d35341cc5097235c834049d917a73aa134fb92fa02965eaf2d8",
+    "workshop_scoop.step": "6320e91c252be7a0d62fb25387c8af601027d3706192adb3266751db00099adf",
+    "workshop_scoop.stl": "ee8a0a4213004d4d60727d697ca3c9d165ac59ea32b68013268bcc91896f7ccd",
+    "workshop_scoop.3mf": "07576ff4f2229e3a0c4af7ab76f9f00d5177086fce939642487a6939c106dd93",
+    "plant_marker.step.py": "194b214096445c64cb4250f970e5ba8edb9ae9149c1560260773fceb277f4ff9",
+    "plant_marker.step": "56150574d876f6767b3ff206eb9e4e16af6419b20666cd512282f31b30401346",
+    "plant_marker.stl": "2b7601340bffce10bd07c31ced7b7c120e4c621e052446014ddcf1f6f123a3aa",
+    "plant_marker.3mf": "f088f0c3de11a3d145e96e9b12d2e9edbee195156c0b8168bc0f565728226cf0",
+    "ruler_stop.step.py": "26036b9010bfbb7d8aad35886727a63119454ba03bb9092a5cc0c529d14a63d6",
+    "ruler_stop.step": "a08912c51fbbfbec488927d2b8db8a62797390204d2e3ddd1ae8828beedaebfd",
+    "ruler_stop.stl": "5fbe4001ade616e65892adbcca2c71d165b0d2d64cc2b1deb9719dc3ec05c93c",
+    "ruler_stop.3mf": "5c0c2eb3f4565dae8675e4bc9ad533dd1a27a0e8d87bb209f92b1b1097bb7466",
+    "ruler_wedge.step.py": "96784b6729b04b8a2770f88e0b30dc4f714909b63181e4d423daf9c24e0db40a",
+    "ruler_wedge.step": "5ba46191884233fb1e5e2929b572b96d5bfb2c52c6d089aedfb83d5c1d726977",
+    "ruler_wedge.stl": "619bae5996c1ba5cdd5214fa2b11c58b6f6ec5e24f1a19eaf0ab2de6b05af211",
+    "ruler_wedge.3mf": "ce1aa033c2f88b4374611684f4a254640c66abc1299925c50d60707b63e57099",
+    "tube_reducer.step.py": "843dcc83fa088ba0055292ab9247e4c9f59135bab106e270a017d82699ebb17b",
+    "tube_reducer.step": "ad2b73985aad8dd1444f1d9d46572255f778fa7cb4d2fc632384925af854f309",
+    "tube_reducer.stl": "3bfeaab37f6524bad32bff8b136516864b7988d6972be43479769e349c885672",
+    "tube_reducer.3mf": "8bccac43adfb381914aed11b8eb2d7abe3c38fe3248e250460eedb5a28f89da7",
+    "socket_fit_ring.step.py": "6adaa7cd3169c5b3f97ee5b21feeecab7270ae04fb3b092be03bab6b67e592ae",
+    "socket_fit_ring.step": "7b7b1356dfd6c47e44bd2ead18734b6236f62ecdc161a7a5ec1a5ed5fdcfa233",
+    "socket_fit_ring.stl": "70e1592d9a21ac1a1584d610731bce3e4660c73671c5802d473161c54755fd7f",
+    "socket_fit_ring.3mf": "98ff004215510d1c6ef0cf66e4c75aafcda5189e0b446661b83806b1594b6e5e",
+    "strap_corner.step.py": "05a780952c35cf0d02926cb810e2f3c07000a31d01bdcfe46c31db6e6d84ff4a",
+    "strap_corner.step": "8dd039146070ef3da61c7814e881669151a36b8f3f59a95c9fe04e802078906c",
+    "strap_corner.stl": "e93ac206270e86069c721cacab68449ea9d23c0220b382d33f9eb73679996d6d",
+    "strap_corner.3mf": "4f705b5bcb2b09e9e449521dd1298584128363b1478bbfb81f910763395916f2",
+    "sorting_sieve.step.py": "a0b17ac4cfe4f65e466b44051b9eee1523d1da56312b7d7d7e2c5d53754ca8c6",
+    "sorting_sieve.step": "1796e1e56e50569e273cc55c43b54924b9f5a96cfe81e153235989b6e9f8bd92",
+    "sorting_sieve.stl": "ba0c73c1538733905bafb7c896f2361a9d6eb4a2f3a2f48a144cab812a858808",
+    "sorting_sieve.3mf": "a636abef0a29a92edc3de1eb6a1bca6b615b46185cf995da1ec9bc56bfceb9d5",
+    "sieve_aperture_coupon.step.py": "e9f033bc4db59f1a335aaa15463aae77932091e3e25975e3113ef6e8145f3ef5",
+    "sieve_aperture_coupon.step": "c5dbe1bb0516ecf4c7fd4ecdded3547a87084e929ccadfa6d7019ef0d2a303b4",
+    "sieve_aperture_coupon.stl": "204efba6663dee468b8a36c09a6bd1d3f3476e26367004606f238e97d48ba101",
+    "sieve_aperture_coupon.3mf": "2cb53ad679d42fe8aed09e56d4d7352e0470c1cc5d26c47fee30ef5b4a5129e8",
+    "divider_joint.step.py": "d4829d85fd4284c5f771af53c2c9b6dcdceeef3235fbb470f1525e87052c5d21",
+    "divider_joint.step": "bbb88a5ae3f3182569d02a4a810a2851fc19cfe17d8b1859d432fe8c8c4f072c",
+    "divider_joint.stl": "04da86303c24dfbb4a5edf941ecccf26b6a171d6ffe23b63124e3469d20b690e",
+    "divider_joint.3mf": "4dbf008c0aaaa556974cc1125052e02e4fe12023c81564a0da72cf5aac2f7bca",
+    "soap_dish_assembly.step.py": "db762d4fbdda33b287e7c07a7b40ca9d0af9eee978a5962847135dd8952e2cf9",
+    "soap_dish_assembly.step": "435b68d1c9fb631a7861e2d54a711506fe33fb39d535b7b5169ab3f523c986e6",
+    "sanding_assembly.step.py": "c73f18675f2ae01523365b2b9a8fae8f7b2b906d12b56b4ad5157bdd16d43461",
+    "sanding_assembly.step": "54f04f72ca1f5defe59de2415b2c922d1592dc8aa313e90fae0dbb134ca03ef0",
+    "sliding_box_assembly.step.py": "c9abea4cebeb35fbb59e29027169eb1a52f9a60714ea3461f70b9b8dd463d344",
+    "sliding_box_assembly.step": "955112e40f0ff69e6031945d05ef3538f08ac35c9b864e6784e0f4da232c0da6",
+    "ruler_stop_assembly.step.py": "bcb6052852289b204943df0b20badf0da58b7f32f4709266af9360ed98982d1d",
+    "ruler_stop_assembly.step": "3598611fdbdb2b430949e4003d4963cc3793c2f450215ae21ef3dbb97a0206d3",
+    "strap_clamp_assembly.step.py": "4270ffc89d7c933ef2d4f46bd031fe14c955d21f26e2a422682e8d8a2f4cb059",
+    "strap_clamp_assembly.step": "6b5498ce207efa5af83450691bdb0e20235f2f1dc74a691308a4f5e5323486fb",
+    "divider_joint_assembly.step.py": "162e6fdd19a50d425d19a32a2a5ad8b892b2c4c8c9eac6a46925d2093ddf8534",
+    "divider_joint_assembly.step": "5cc510025b8948fec9162e7d1ee17fe9965242109396f8ec9c8ab4ad89fda216",
+    "divider_joint_common.py": "4258fd1993a7b4cf30dfdb14cd0316e1f29899ab9d720723af2e39d9ed1ff55f",
+    "ruler_stop_common.py": "8203294c30512d589b9f80f48dd2f8e749d44315e03fffb3dc3f27cbb304fc64",
+    "sanding_common.py": "fb99520121d192dd8f3a79c9b51fc42524769bfc4dcbc7e3cdcca178fa1d8bbb",
+    "sliding_box_common.py": "9511def9195f9f52713528637fb9021eacbb6c3dff13f68c0d00d0c22b4960fe",
+    "soap_dish_common.py": "23e09c12a0d17cb0b73e427dfe7f5b5a544479ecd4ad0028e76a997b361e8886",
+    "strap_corner_common.py": "230c833c92efa2c4a2f6c9eea3a54d11ab15cddd78cf7b5c1d2e7d85eaeb53bb"
+  },
+  "soap_dish_assembly": [
+    {
+      "case": "default",
+      "overrides": {},
+      "intersection_volume_mm3": 0,
+      "minimum_part_distance_mm": 4.884981308350689e-15,
+      "feet_contact_z_mm": 2.3999999999999946,
+      "side_clearance_mm": 0.9999999999999929
+    },
+    {
+      "case": "compact",
+      "overrides": {
+        "length": 80,
+        "width": 60,
+        "height": 12,
+        "foot_height": 6
+      },
+      "intersection_volume_mm3": 0,
+      "minimum_part_distance_mm": 1.3322676295501878e-15,
+      "feet_contact_z_mm": 2.3999999999999972,
+      "side_clearance_mm": 0.9999999999999929
+    },
+    {
+      "case": "large",
+      "overrides": {
+        "length": 200,
+        "width": 140,
+        "height": 24,
+        "foot_height": 16
+      },
+      "intersection_volume_mm3": 0,
+      "minimum_part_distance_mm": 9.325873406851315e-15,
+      "feet_contact_z_mm": 2.3999999999999875,
+      "side_clearance_mm": 1.0
+    }
+  ],
+  "sanding_assembly": [
+    {
+      "case": "default",
+      "overrides": {},
+      "rigid_part_overlap_mm3": 0,
+      "paper_gap_mm": 0.3,
+      "engagement_mm": 10.416666666666668,
+      "wedge_bottom_clearance_mm": 3.583333333333332,
+      "wedge_grip_above_block_mm": 9.583333333333332
+    },
+    {
+      "case": "compact",
+      "overrides": {
+        "length": 75,
+        "width": 38,
+        "height": 22,
+        "end_margin": 6,
+        "slot_width": 5,
+        "slot_span": 30,
+        "slot_depth": 13,
+        "paper_thickness": 0.2,
+        "wedge_tip": 2.8,
+        "wedge_top": 6.6,
+        "wedge_height": 18,
+        "wedge_end_clearance": 1.6
+      },
+      "rigid_part_overlap_mm3": 0,
+      "paper_gap_mm": 0.2,
+      "engagement_mm": 9.473684210526317,
+      "wedge_bottom_clearance_mm": 3.526315789473683,
+      "wedge_grip_above_block_mm": 8.526315789473683
+    },
+    {
+      "case": "large",
+      "overrides": {
+        "length": 160,
+        "width": 80,
+        "height": 38,
+        "end_margin": 10,
+        "slot_width": 8,
+        "slot_span": 68,
+        "slot_depth": 23,
+        "paper_thickness": 0.5,
+        "wedge_tip": 4,
+        "wedge_top": 11,
+        "wedge_height": 28,
+        "wedge_end_clearance": 3
+      },
+      "rigid_part_overlap_mm3": 0,
+      "paper_gap_mm": 0.5,
+      "engagement_mm": 14.0,
+      "wedge_bottom_clearance_mm": 9.0,
+      "wedge_grip_above_block_mm": 14.0
+    }
+  ],
+  "sliding_assembly": [
+    {
+      "case": "default",
+      "open_distance_mm": 0,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.23426064283290354,
+        0.23426064283290354
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "default",
+      "open_distance_mm": 30,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.23426064283290354,
+        0.23426064283290354
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "default",
+      "open_distance_mm": 97.19999999999999,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.23426064283290354,
+        0.23426064283290354
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "default_fit_sample",
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.23426064283290576,
+        0.23426064283290576
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "compact",
+      "open_distance_mm": 0,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.19521720236075704,
+        0.19521720236075205
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "compact",
+      "open_distance_mm": 30,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.19521720236075704,
+        0.19521720236075205
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "compact",
+      "open_distance_mm": 57.7,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.19521720236075704,
+        0.19521720236075205
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "compact_fit_sample",
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.19521720236075704,
+        0.19521720236075704
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "large",
+      "open_distance_mm": 0,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.39043440472150853,
+        0.3904344047215141
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "large",
+      "open_distance_mm": 30,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.39043440472150853,
+        0.3904344047215141
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "large",
+      "open_distance_mm": 146.4,
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.39043440472150853,
+        0.3904344047215141
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    },
+    {
+      "case": "large_fit_sample",
+      "rigid_part_overlap_mm3": 0,
+      "normal_side_gaps_mm": [
+        0.3904344047215141,
+        0.3904344047215141
+      ],
+      "support_contact": true,
+      "vertical_lift_blocked": true
+    }
+  ],
+  "ruler_stop_assembly": [
+    {
+      "case": "default",
+      "overrides": {},
+      "reference_length_mm": 180,
+      "rigid_part_overlap_mm3": 0,
+      "engagement_mm": 22.272727272727273,
+      "tip_to_reference_face_mm": 1.7272727272727266,
+      "grip_to_body_mm": 9.727272727272727,
+      "ruler_side_gaps_mm": [
+        0.1999999999999993,
+        0.1999999999999993
+      ],
+      "wedge_side_gaps_mm": [
+        1.1999999999999993,
+        1.1999999999999957
+      ],
+      "extra_half_mm_insertion_overlap_mm3": 0.18857142857144654,
+      "half_mm_withdrawal_clearance_mm": 0.031366667342965074
+    },
+    {
+      "case": "compact",
+      "overrides": {
+        "ruler_width": 20,
+        "ruler_thickness": 0.8,
+        "side_clearance": 0.3,
+        "body_length": 20,
+        "floor": 2.4,
+        "roof": 3,
+        "side_wall": 3,
+        "clamp_gap": 1.8,
+        "wedge_length": 30,
+        "wedge_tip": 0.6,
+        "wedge_back": 2.6,
+        "wedge_side_clearance": 0.9,
+        "grip_length": 3,
+        "grip_height": 3
+      },
+      "reference_length_mm": 140,
+      "rigid_part_overlap_mm3": 0,
+      "engagement_mm": 18.000000000000004,
+      "tip_to_reference_face_mm": 1.9999999999999964,
+      "grip_to_body_mm": 8.999999999999996,
+      "ruler_side_gaps_mm": [
+        0.15000000000000036,
+        0.15000000000000036
+      ],
+      "wedge_side_gaps_mm": [
+        0.9000000000000004,
+        0.8999999999999986
+      ],
+      "extra_half_mm_insertion_overlap_mm3": 0.15416666666667309,
+      "half_mm_withdrawal_clearance_mm": 0.033259505261885786
+    },
+    {
+      "case": "large",
+      "overrides": {
+        "ruler_width": 35,
+        "ruler_thickness": 1.5,
+        "side_clearance": 0.6,
+        "body_length": 30,
+        "floor": 4,
+        "roof": 5,
+        "side_wall": 5,
+        "clamp_gap": 3,
+        "wedge_length": 45,
+        "wedge_tip": 1.2,
+        "wedge_back": 4,
+        "wedge_side_clearance": 1.4,
+        "grip_length": 5,
+        "grip_height": 5
+      },
+      "reference_length_mm": 220,
+      "rigid_part_overlap_mm3": 0,
+      "engagement_mm": 28.92857142857143,
+      "tip_to_reference_face_mm": 1.0714285714285658,
+      "grip_to_body_mm": 11.07142857142857,
+      "ruler_side_gaps_mm": [
+        0.3000000000000007,
+        0.3000000000000007
+      ],
+      "wedge_side_gaps_mm": [
+        1.3999999999999986,
+        1.399999999999995
+      ],
+      "extra_half_mm_insertion_overlap_mm3": 0.2551111111111113,
+      "half_mm_withdrawal_clearance_mm": 0.031051060458557843
+    }
+  ],
+  "tube_reducer_fit": [
+    {
+      "case": "default",
+      "overrides": {},
+      "reference_tube_wall_mm": 2.0,
+      "large_end_engagement_mm": 22.545454545454547,
+      "small_end_engagement_mm": 20.0,
+      "minimum_adapter_bore_mm": 28.4,
+      "seated_overlap_mm3": 0,
+      "contact_gap_mm": 0,
+      "overinserted_half_mm_overlap_mm3": {
+        "large": 7.181884427858336,
+        "small": 81.28158315052355
+      },
+      "withdrawn_one_mm_gap_mm": {
+        "large": 0.19999999999999526,
+        "small": 0.19999999999999626
+      },
+      "matching_fit_rings": {
+        "large": {
+          "tube_diameter_mm": 50.0,
+          "diametral_clearance_mm": 0.4,
+          "measured_radial_gap_mm": 0.19999999999999543
+        },
+        "small": {
+          "tube_diameter_mm": 32.0,
+          "diametral_clearance_mm": 0.4,
+          "measured_radial_gap_mm": 0.1999999999999967
+        }
+      },
+      "analytic_volume_mm3": 27347.658297278744
+    },
+    {
+      "case": "compact",
+      "overrides": {
+        "large_diameter": 30,
+        "small_diameter": 18,
+        "large_clearance": 0.3,
+        "small_clearance": 0.2,
+        "wall": 2,
+        "large_depth": 12,
+        "small_depth": 10,
+        "transition_length": 16,
+        "stop_inset": 1.4,
+        "lead_in": 0.4
+      },
+      "reference_tube_wall_mm": 1.4,
+      "large_end_engagement_mm": 12.322147651006711,
+      "small_end_engagement_mm": 10,
+      "minimum_adapter_bore_mm": 15.399999999999999,
+      "seated_overlap_mm3": 0,
+      "contact_gap_mm": 0,
+      "overinserted_half_mm_overlap_mm3": {
+        "large": 5.457135374587665,
+        "small": 31.25771047911811
+      },
+      "withdrawn_one_mm_gap_mm": {
+        "large": 0.14999999999999883,
+        "small": 0.09999999999999813
+      },
+      "matching_fit_rings": {
+        "large": {
+          "tube_diameter_mm": 30,
+          "diametral_clearance_mm": 0.3,
+          "measured_radial_gap_mm": 0.14999999999999888
+        },
+        "small": {
+          "tube_diameter_mm": 18,
+          "diametral_clearance_mm": 0.2,
+          "measured_radial_gap_mm": 0.09999999999999831
+        }
+      },
+      "analytic_volume_mm3": 7077.557953590791
+    },
+    {
+      "case": "large",
+      "overrides": {
+        "large_diameter": 80,
+        "small_diameter": 50,
+        "large_clearance": 0.8,
+        "small_clearance": 0.6,
+        "wall": 3.2,
+        "large_depth": 32,
+        "small_depth": 28,
+        "transition_length": 45,
+        "stop_inset": 2.8,
+        "lead_in": 0.8
+      },
+      "reference_tube_wall_mm": 2.8,
+      "large_end_engagement_mm": 33.00558659217877,
+      "small_end_engagement_mm": 28,
+      "minimum_adapter_bore_mm": 45.0,
+      "seated_overlap_mm3": 0,
+      "contact_gap_mm": 0,
+      "overinserted_half_mm_overlap_mm3": {
+        "large": 12.475845557429238,
+        "small": 179.48203835761217
+      },
+      "withdrawn_one_mm_gap_mm": {
+        "large": 0.3696099420853686,
+        "small": 0.299999999999997
+      },
+      "matching_fit_rings": {
+        "large": {
+          "tube_diameter_mm": 80,
+          "diametral_clearance_mm": 0.8,
+          "measured_radial_gap_mm": 0.3999999999999963
+        },
+        "small": {
+          "tube_diameter_mm": 50,
+          "diametral_clearance_mm": 0.6,
+          "measured_radial_gap_mm": 0.2999999999999973
+        }
+      },
+      "analytic_volume_mm3": 84807.58689897094
+    }
+  ],
+  "strap_clamp_assembly": [
+    {
+      "case": "default",
+      "overrides": {},
+      "reference_frame_dimensions_mm": [
+        180,
+        130,
+        30,
+        20
+      ],
+      "component_count": 6,
+      "pairwise_overlap_mm3": 0,
+      "perpendicular_contact_faces": 8,
+      "all_pads_contact_frame_and_strap": true,
+      "usable_contact_length_mm": 27.0,
+      "lower_lip_gap_mm": 1.0,
+      "upper_lip_gap_mm": 1.0,
+      "lip_extension_beyond_strap_mm": 0.8,
+      "vertical_shift_overlap_mm3": {
+        "up": [
+          27.937462792561817,
+          27.93746279253039,
+          27.937462985359048,
+          27.937462895895578
+        ],
+        "down": [
+          42.22035345412634,
+          42.22035345410808,
+          42.220353459429234,
+          42.220353441412286
+        ]
+      },
+      "reference_strap_centerline_length_mm": 661.4690230273852,
+      "analytic_pad_volume_mm3": 13040.94207934476
+    },
+    {
+      "case": "compact",
+      "overrides": {
+        "leg_length": 22,
+        "wall": 5,
+        "corner_relief": 2.4,
+        "strap_width": 12,
+        "strap_thickness": 1,
+        "width_clearance": 1.6,
+        "lip_projection": 1.6,
+        "lip_thickness": 1.6
+      },
+      "reference_frame_dimensions_mm": [
+        120,
+        80,
+        18,
+        14
+      ],
+      "component_count": 6,
+      "pairwise_overlap_mm3": 0,
+      "perpendicular_contact_faces": 8,
+      "all_pads_contact_frame_and_strap": true,
+      "usable_contact_length_mm": 19.6,
+      "lower_lip_gap_mm": 0.8000000000000003,
+      "upper_lip_gap_mm": 0.7999999999999989,
+      "lip_extension_beyond_strap_mm": 0.6000000000000001,
+      "vertical_shift_overlap_mm3": {
+        "up": [
+          20.909144261797444,
+          20.909144261788978,
+          20.909144335806978,
+          20.909144302145407
+        ],
+        "down": [
+          26.31968989869086,
+          26.319689898685986,
+          26.319689899859927,
+          26.31968989290848
+        ]
+      },
+      "reference_strap_centerline_length_mm": 434.5575191894877,
+      "analytic_pad_volume_mm3": 4606.222699043245
+    },
+    {
+      "case": "large",
+      "overrides": {
+        "leg_length": 45,
+        "wall": 8,
+        "corner_relief": 4,
+        "strap_width": 38,
+        "strap_thickness": 1.8,
+        "width_clearance": 3,
+        "lip_projection": 2.8,
+        "lip_thickness": 2.8
+      },
+      "reference_frame_dimensions_mm": [
+        260,
+        190,
+        48,
+        30
+      ],
+      "component_count": 6,
+      "pairwise_overlap_mm3": 0,
+      "perpendicular_contact_faces": 8,
+      "all_pads_contact_frame_and_strap": true,
+      "usable_contact_length_mm": 41,
+      "lower_lip_gap_mm": 1.5,
+      "upper_lip_gap_mm": 1.5,
+      "lip_extension_beyond_strap_mm": 0.9999999999999998,
+      "vertical_shift_overlap_mm3": {
+        "up": [
+          41.19409985409892,
+          41.19409985401791,
+          41.194100293359526,
+          41.194100086150115
+        ],
+        "down": [
+          93.58207857767744,
+          93.5820785776292,
+          93.58207859668407,
+          93.58207855325605
+        ]
+      },
+      "reference_strap_centerline_length_mm": 955.9203492338984,
+      "analytic_pad_volume_mm3": 38854.056971189915
+    }
+  ],
+  "divider_joint_assembly": [
+    {
+      "case": "cross",
+      "overrides": {},
+      "reference_length_mm": 80,
+      "reference_height_mm": 50,
+      "component_count": 5,
+      "pairwise_overlap_mm3": 0,
+      "all_boards_contact_floor_and_backstop": true,
+      "side_gap_mm": 0.2,
+      "withdrawal_gap_mm": 0.5,
+      "over_insertion_and_lowering_obstructed": true,
+      "board_cut_length_for_180mm_centers_mm": 171.8
+    },
+    {
+      "case": "T",
+      "overrides": {
+        "board_thickness": 2,
+        "clearance": 0.3,
+        "wall": 2,
+        "insertion_depth": 12,
+        "height": 14,
+        "floor": 2,
+        "lead_in": 0.3,
+        "ports": [
+          0,
+          90,
+          180
+        ]
+      },
+      "reference_length_mm": 60,
+      "reference_height_mm": 35,
+      "component_count": 4,
+      "pairwise_overlap_mm3": 0,
+      "all_boards_contact_floor_and_backstop": true,
+      "side_gap_mm": 0.15,
+      "withdrawal_gap_mm": 0.5,
+      "over_insertion_and_lowering_obstructed": true,
+      "board_cut_length_for_180mm_centers_mm": 173.7
+    },
+    {
+      "case": "corner",
+      "overrides": {
+        "board_thickness": 6,
+        "clearance": 0.8,
+        "wall": 3,
+        "insertion_depth": 24,
+        "height": 26,
+        "floor": 3,
+        "lead_in": 0.8,
+        "ports": [
+          0,
+          90
+        ]
+      },
+      "reference_length_mm": 100,
+      "reference_height_mm": 70,
+      "component_count": 3,
+      "pairwise_overlap_mm3": 0,
+      "all_boards_contact_floor_and_backstop": true,
+      "side_gap_mm": 0.4,
+      "withdrawal_gap_mm": 0.5,
+      "over_insertion_and_lowering_obstructed": true,
+      "board_cut_length_for_180mm_centers_mm": 167.2
+    }
+  ]
+}

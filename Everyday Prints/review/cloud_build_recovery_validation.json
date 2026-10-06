@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "cancel_preview_retry_late_transfer",
+    "cancel_cad_retry_late_transfer",
+    "preview_timeout_headers",
+    "cad_timeout_body_retry",
+    "cancel_initial_cad_refresh",
+    "previous_deadline_cannot_stop_retry",
+    "navigation_hides_stop_control",
+    "cancel_without_verified_preview",
+    "mobile_keyboard_stop_control",
+    "late_service_error_keeps_stop_message"
+  ],
+  "failures": [],
+  "wait_deadline_ms": 900000,
+  "fixture_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "transport": "compiled assets through Playwright routes; real CAD fixtures"
+}

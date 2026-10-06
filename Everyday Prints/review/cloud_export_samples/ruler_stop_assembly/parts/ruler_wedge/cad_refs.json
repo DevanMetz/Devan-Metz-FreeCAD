@@ -1,0 +1,217 @@
+{
+  "ok": true,
+  "tokens": [
+    {
+      "line": 1,
+      "token": "#",
+      "cadPath": "review/cloud_export_samples/ruler_stop_assembly/parts/ruler_wedge/ruler_wedge",
+      "stepPath": "review/cloud_export_samples/ruler_stop_assembly/parts/ruler_wedge/ruler_wedge.step",
+      "stepHash": "ba23666450e31a2511359016d0ce521fae517b1714dc84e84e0d304f20e7371f",
+      "summary": {
+        "kind": "assembly",
+        "occurrenceCount": 1,
+        "leafOccurrenceCount": 1,
+        "shapeCount": 1,
+        "faceCount": 8,
+        "edgeCount": 18,
+        "vertexCount": 0,
+        "bounds": {
+          "min": [
+            0.0,
+            -9.0,
+            0.0
+          ],
+          "max": [
+            35.0,
+            9.0,
+            7.0
+          ]
+        }
+      },
+      "selections": [],
+      "warnings": [],
+      "entryFacts": {
+        "size": [
+          35.0,
+          18.0,
+          7.0
+        ],
+        "extentAxis": "x",
+        "center": [
+          17.5,
+          0.0,
+          3.5
+        ],
+        "diag": 39.97499218261337,
+        "kind": "assembly"
+      },
+      "planes": [
+        {
+          "axis": "z",
+          "coordinate": 0.0,
+          "normalSign": -1,
+          "faceCount": 1,
+          "totalArea": 630.0,
+          "bbox": {
+            "min": [
+              0.0,
+              -9.0,
+              0.0
+            ],
+            "max": [
+              35.0,
+              9.0,
+              0.0
+            ]
+          },
+          "selectors": [
+            "f1"
+          ]
+        },
+        {
+          "axis": "z",
+          "coordinate": 1.805714,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 577.136772,
+          "bbox": {
+            "min": [
+              0.0,
+              -9.0,
+              0.8
+            ],
+            "max": [
+              32.0,
+              9.0,
+              2.811429
+            ]
+          },
+          "selectors": [
+            "f3"
+          ]
+        },
+        {
+          "axis": "x",
+          "coordinate": 35.0,
+          "normalSign": 1,
+          "faceCount": 1,
+          "totalArea": 126.0,
+          "bbox": {
+            "min": [
+              35.0,
+              -9.0,
+              0.0
+            ],
+            "max": [
+              35.0,
+              9.0,
+              7.0
+            ]
+          },
+          "selectors": [
+            "f7"
+          ]
+        }
+      ],
+      "entryPositioning": {
+        "kind": "assembly",
+        "bbox": {
+          "min": [
+            0.0,
+            -9.0,
+            0.0
+          ],
+          "max": [
+            35.0,
+            9.0,
+            7.0
+          ]
+        },
+        "bboxFacts": {
+          "size": [
+            35.0,
+            18.0,
+            7.0
+          ],
+          "extentAxis": "x",
+          "center": [
+            17.5,
+            0.0,
+            3.5
+          ],
+          "diag": 39.97499218261337
+        },
+        "majorPlanes": [
+          {
+            "axis": "z",
+            "coordinate": 0.0,
+            "normalSign": -1,
+            "faceCount": 1,
+            "totalArea": 630.0,
+            "bbox": {
+              "min": [
+                0.0,
+                -9.0,
+                0.0
+              ],
+              "max": [
+                35.0,
+                9.0,
+                0.0
+              ]
+            },
+            "selectors": [
+              "f1"
+            ]
+          },
+          {
+            "axis": "z",
+            "coordinate": 1.805714,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 577.136772,
+            "bbox": {
+              "min": [
+                0.0,
+                -9.0,
+                0.8
+              ],
+              "max": [
+                32.0,
+                9.0,
+                2.811429
+              ]
+            },
+            "selectors": [
+              "f3"
+            ]
+          },
+          {
+            "axis": "x",
+            "coordinate": 35.0,
+            "normalSign": 1,
+            "faceCount": 1,
+            "totalArea": 126.0,
+            "bbox": {
+              "min": [
+                35.0,
+                -9.0,
+                0.0
+              ],
+              "max": [
+                35.0,
+                9.0,
+                7.0
+              ]
+            },
+            "selectors": [
+              "f7"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "verified_step_sha256": "ba23666450e31a2511359016d0ce521fae517b1714dc84e84e0d304f20e7371f"
+}

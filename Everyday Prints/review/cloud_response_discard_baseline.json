@@ -1,0 +1,23 @@
+{
+  "invalid_preview_metadata": {
+    "busy": true,
+    "message": "Building your CAD model\u2026 This can take a little longer after the service has been idle.",
+    "stats": {
+      "target": "preview",
+      "mode": "pending",
+      "pulls": 2,
+      "cancelled": 0
+    }
+  },
+  "invalid_cad_metadata": {
+    "busy": false,
+    "message": "The model details do not match this request. Update the preview to try again.",
+    "stats": {
+      "target": "cad",
+      "mode": "pending",
+      "pulls": 0,
+      "cancelled": 0
+    },
+    "download_enabled": true
+  }
+}

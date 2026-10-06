@@ -1,0 +1,16 @@
+[
+  {
+    "operation": "preview",
+    "message": "Cannot read properties of null (reading 'error')",
+    "draft": "180.5",
+    "size": "150 \u00d7 100 \u00d7 24",
+    "rebuild_enabled": true
+  },
+  {
+    "operation": "cad",
+    "message": "Cannot read properties of null (reading 'error')",
+    "draft": "180.5",
+    "size": "180.5 \u00d7 100 \u00d7 24",
+    "rebuild_enabled": true
+  }
+]

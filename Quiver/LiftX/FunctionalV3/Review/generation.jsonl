@@ -1,0 +1,13 @@
+{"ok":true,"sourceRef":"lower_frame.step.py","cadPath":"lower_frame","kind":"part","outcome":"built","packagePath":"__cadgen__/models/lower_frame.step.py"}
+{"ok":true,"sourceRef":"upper_hood.step.py","cadPath":"upper_hood","kind":"part","outcome":"built","packagePath":"__cadgen__/models/upper_hood.step.py"}
+{"ok":true,"sourceRef":"provisional_dock.step.py","cadPath":"provisional_dock","kind":"part","outcome":"built","packagePath":"__cadgen__/models/provisional_dock.step.py"}
+{"ok":true,"sourceRef":"axis_sizing_coupon.step.py","cadPath":"axis_sizing_coupon","kind":"part","outcome":"built","packagePath":"__cadgen__/models/axis_sizing_coupon.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_600.step.py","cadPath":"gripper_axis_600","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_600.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_500.step.py","cadPath":"gripper_axis_500","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_500.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_400.step.py","cadPath":"gripper_axis_400","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_400.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_340.step.py","cadPath":"gripper_axis_340","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_340.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_300.step.py","cadPath":"gripper_axis_300","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_300.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_260.step.py","cadPath":"gripper_axis_260","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_260.step.py"}
+{"ok":true,"sourceRef":"gripper_axis_200.step.py","cadPath":"gripper_axis_200","kind":"part","outcome":"built","packagePath":"__cadgen__/models/gripper_axis_200.step.py"}
+{"ok":true,"sourceRef":"LiftX_LH_Assembly.step.py","cadPath":"LiftX_LH_Assembly","kind":"part","outcome":"built","packagePath":"__cadgen__/models/LiftX_LH_Assembly.step.py"}
+{"ok":true,"sourceRef":"LiftX_LH_Loaded_Clearance_Reference.step.py","cadPath":"LiftX_LH_Loaded_Clearance_Reference","kind":"part","outcome":"built","packagePath":"__cadgen__/models/LiftX_LH_Loaded_Clearance_Reference.step.py"}

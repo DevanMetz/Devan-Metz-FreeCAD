@@ -1,0 +1,234 @@
+[
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\lower_frame.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\lower_frame_0.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\lower_frame_1.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\upper_hood.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\upper_hood_0.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\upper_hood_1.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\provisional_dock.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\provisional_dock_0.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\provisional_dock_1.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\axis_sizing_coupon.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\axis_sizing_coupon_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_600.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_600_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_500.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_500_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_400.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_400_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_340.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_340_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_300.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_300_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_260.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_260_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\gripper_axis_200.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\gripper_axis_200_0.png",
+        "camera": "iso"
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  },
+  {
+    "input": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\LiftX_LH_Loaded_Clearance_Reference.step.py",
+    "mode": "view",
+    "theme": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\review_theme.json",
+    "outputs": [
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\LiftX_LH_Loaded_Clearance_Reference_0.png",
+        "camera": "iso"
+      },
+      {
+        "path": "C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Quiver\\LiftX\\FunctionalV3\\Review\\LiftX_LH_Loaded_Clearance_Reference_1.png",
+        "camera": {
+          "direction": [
+            -1,
+            1,
+            -0.8
+          ]
+        }
+      }
+    ],
+    "render": {
+      "sizeProfile": "diagnostic",
+      "viewLabels": true,
+      "padding": 0.12
+    }
+  }
+]

@@ -1,0 +1,192 @@
+{
+  "scope": "Sampled rigid geometry only. TPU and foam deform intentionally; no structural or bow-fit certification.",
+  "selected_axis_spine": 340,
+  "selected_shaft_od_mm": 6.7818,
+  "shaft_od_mm": 7.2644,
+  "broadhead_envelope_mm": [
+    35.0,
+    70.0
+  ],
+  "parts": {
+    "upper": {
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 194903.29851960696,
+      "print_bbox_mm": [
+        144.0000002,
+        102.10511796651531,
+        166.0000002
+      ],
+      "fits_256_with_3mm_margin_each_side": true
+    },
+    "lower": {
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 88006.93073808232,
+      "print_bbox_mm": [
+        108.0,
+        84.60511786651546,
+        228.0000002
+      ],
+      "fits_256_with_3mm_margin_each_side": true
+    },
+    "dock": {
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 40288.117341920704,
+      "print_bbox_mm": [
+        57.0,
+        80.00000000000001,
+        24.600000000000016
+      ],
+      "fits_256_with_3mm_margin_each_side": true
+    },
+    "gripper": {
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 14880.241768524433,
+      "print_bbox_mm": [
+        104.0,
+        53.79550197751381,
+        12.700000000000008
+      ],
+      "fits_256_with_3mm_margin_each_side": true
+    },
+    "coupon": {
+      "valid": true,
+      "solids": 1,
+      "volume_mm3": 11355.974069846789,
+      "print_bbox_mm": [
+        119.0,
+        16.681175427630606,
+        9.0
+      ],
+      "fits_256_with_3mm_margin_each_side": true
+    }
+  },
+  "spine_joint": {
+    "rigid_overlap_mm3": 0.0,
+    "nominal_socket_side_clearance_mm": 0.3,
+    "bolt_axes_mm": [
+      [
+        0,
+        -29,
+        205
+      ],
+      [
+        0,
+        -29,
+        220
+      ]
+    ],
+    "hood_neck_one_solid": true
+  },
+  "removal": [
+    {
+      "arrow": 1,
+      "axis_mm": [
+        -44.0,
+        0.0
+      ],
+      "samples": 85,
+      "pivot_deg": 2.332449155463784,
+      "withdrawal_mm": 95,
+      "max_hard_overlap_mm3": 0.0,
+      "max_neighbor_overlap_mm3": 0.0,
+      "pass": true,
+      "first_failures": []
+    },
+    {
+      "arrow": 2,
+      "axis_mm": [
+        0.0,
+        0.0
+      ],
+      "samples": 85,
+      "pivot_deg": 2.332449155463784,
+      "withdrawal_mm": 95,
+      "max_hard_overlap_mm3": 0.0,
+      "max_neighbor_overlap_mm3": 0.0,
+      "pass": true,
+      "first_failures": []
+    },
+    {
+      "arrow": 3,
+      "axis_mm": [
+        44.0,
+        0.0
+      ],
+      "samples": 85,
+      "pivot_deg": 2.332449155463784,
+      "withdrawal_mm": 95,
+      "max_hard_overlap_mm3": 0.0,
+      "max_neighbor_overlap_mm3": 0.0,
+      "pass": true,
+      "first_failures": []
+    },
+    {
+      "arrow": 4,
+      "axis_mm": [
+        -22.0,
+        38.1051177665153
+      ],
+      "samples": 85,
+      "pivot_deg": 2.332449155463784,
+      "withdrawal_mm": 95,
+      "max_hard_overlap_mm3": 0.0,
+      "max_neighbor_overlap_mm3": 0.0,
+      "pass": true,
+      "first_failures": []
+    },
+    {
+      "arrow": 5,
+      "axis_mm": [
+        22.0,
+        38.1051177665153
+      ],
+      "samples": 85,
+      "pivot_deg": 2.332449155463784,
+      "withdrawal_mm": 95,
+      "max_hard_overlap_mm3": 0.0,
+      "max_neighbor_overlap_mm3": 0.0,
+      "pass": true,
+      "first_failures": []
+    }
+  ],
+  "dock": {
+    "rigid_slide_samples": 43,
+    "stroke_mm": 84,
+    "excludes_flexible_latch": true,
+    "pass": true,
+    "failures": [],
+    "bow_fit": "UNVERIFIED; generic mounting template only"
+  },
+  "gripper_rigid_overlap_mm3": 0.0,
+  "tpu_jaw_expansion_zone_hard_overlap_mm3": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parked_hard_interference_mm3": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parked_arrow_pair_overlap_mm3": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "pass": true
+}

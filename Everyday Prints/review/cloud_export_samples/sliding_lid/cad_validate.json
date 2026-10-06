@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/sliding_lid/sliding_lid",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "d5563e7400bf1e64a1913069a6f5bdbf2390a17fce65cd1dc116f3add47dbc08"
+}

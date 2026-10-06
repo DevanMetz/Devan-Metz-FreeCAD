@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/sanding_assembly/parts/sanding_wedge/sanding_wedge",
+  "occurrenceCount": 1,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "6a8f42e303a8f07b048691e3987aed6a9b2f118da6544629e1664e62d8cea76a"
+}

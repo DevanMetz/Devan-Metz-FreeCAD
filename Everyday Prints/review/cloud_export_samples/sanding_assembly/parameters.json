@@ -1,0 +1,41 @@
+{
+  "model": "sanding_assembly",
+  "parameters": {
+    "end_margin": 7.0,
+    "height": 25.0,
+    "length": 120,
+    "paper_thickness": 0.3,
+    "slot_depth": 14.0,
+    "slot_span": 40.0,
+    "slot_width": 6.0,
+    "wedge_end_clearance": 2.0,
+    "wedge_height": 20.0,
+    "wedge_tip": 3.2,
+    "wedge_top": 8.0,
+    "width": 50.0
+  },
+  "units": "mm",
+  "printable": false,
+  "bounds_mm": [
+    120.0,
+    50.0,
+    34.58333333333333
+  ],
+  "volume_mm3": 127809.95578202786,
+  "solid_count": 3,
+  "physical_print_tested": false,
+  "mesh_sha256": "8d39f54860ce3e2385bd1661fa79936746e8f02a750ed7292ef8a1e74bdd85f4",
+  "format": "cad",
+  "kit": [
+    {
+      "model": "sanding_block",
+      "quantity": 1,
+      "role": "component"
+    },
+    {
+      "model": "sanding_wedge",
+      "quantity": 2,
+      "role": "component"
+    }
+  ]
+}

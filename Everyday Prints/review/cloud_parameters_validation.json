@@ -1,0 +1,17 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "scalar_ranges_gate_all_actions_before_building",
+    "rejected_files_are_atomic_and_keep_cached_downloads",
+    "list_preflight_blocks_caps_and_wrong_numeric_types",
+    "valid_decimal_and_ordered_list_links_round_trip",
+    "invalid_link_parameters_restore_defaults_with_explanation",
+    "malformed_and_oversized_links_offer_working_originals",
+    "invalid_range_drafts_survive_history_without_becoming_links",
+    "mobile_keyboard_errors_and_revert_keep_verified_files",
+    "late_link_feedback_respects_edits_and_reset"
+  ],
+  "failures": [],
+  "cad_fixture_sha256": "1909024d90c4991c33ada854fa6bfc5808b8616a1d7dc170af09284b6842065e",
+  "transport": "compiled assets with real original CAD ZIP and controlled clipboard"
+}

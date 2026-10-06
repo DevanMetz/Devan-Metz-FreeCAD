@@ -1,0 +1,145 @@
+[
+  {
+    "name": "lower_frame",
+    "result": {
+      "ok": true,
+      "entry": "lower_frame",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "upper_hood",
+    "result": {
+      "ok": true,
+      "entry": "upper_hood",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "provisional_dock",
+    "result": {
+      "ok": true,
+      "entry": "provisional_dock",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "axis_sizing_coupon",
+    "result": {
+      "ok": true,
+      "entry": "axis_sizing_coupon",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_600",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_600",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_500",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_500",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_400",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_400",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_340",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_340",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_300",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_300",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_260",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_260",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "gripper_axis_200",
+    "result": {
+      "ok": true,
+      "entry": "gripper_axis_200",
+      "occurrenceCount": 1,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "LiftX_LH_Assembly",
+    "result": {
+      "ok": true,
+      "entry": "LiftX_LH_Assembly",
+      "occurrenceCount": 9,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  },
+  {
+    "name": "LiftX_LH_Loaded_Clearance_Reference",
+    "result": {
+      "ok": true,
+      "entry": "LiftX_LH_Loaded_Clearance_Reference",
+      "occurrenceCount": 14,
+      "failureCount": 0,
+      "parts": [],
+      "errors": []
+    }
+  }
+]

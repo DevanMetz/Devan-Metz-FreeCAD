@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/ruler_stop_assembly/ruler_stop_assembly",
+  "occurrenceCount": 3,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "f3e8ce26579d2a41e1b49e5ad836ff977e700d685b45102c2c513a931e5d2bde"
+}

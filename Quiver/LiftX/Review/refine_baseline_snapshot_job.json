@@ -1,0 +1,26 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/Review/refine_baseline_chassis.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_baseline_bottom_iso.png", "camera": { "direction": [1, -1, 0.8] } },
+        { "path": "Quiver/LiftX/Review/refine_baseline_bottom.png", "camera": "bottom" },
+        { "path": "Quiver/LiftX/Review/refine_baseline_side.png", "camera": "right" },
+        { "path": "Quiver/LiftX/Review/refine_baseline_top.png", "camera": "top" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.10, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "Quiver/LiftX/Review/refine_baseline_section.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/refine_baseline_section_iso.png", "camera": { "direction": [-1, 1, -0.5] } },
+        { "path": "Quiver/LiftX/Review/refine_baseline_section_side.png", "camera": "right" }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.10, "sizeProfile": "diagnostic" }
+    }
+  ]
+}

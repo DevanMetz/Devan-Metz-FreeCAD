@@ -1,0 +1,74 @@
+{
+  "base": "https://everyday-prints.test",
+  "passed": [
+    "defaults_keep_existing_names",
+    "real_decimal_variants_have_distinct_stl_and_cad_names",
+    "fingerprints_distinguish_internal_changes_at_the_same_size",
+    "reverted_edits_keep_the_verified_cached_name",
+    "list_dimensions_use_the_mesh_size_and_save_files_keep_their_name"
+  ],
+  "failures": [],
+  "downloads": [
+    {
+      "filename": "parts_tray.stl",
+      "file_sha256": "25bbaa488b89590ba28191a1800a5f9ba6f32ff8ea4866fbba673732824931d6",
+      "preview_size": "150 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-cad.zip",
+      "file_sha256": "1909024d90c4991c33ada854fa6bfc5808b8616a1d7dc170af09284b6842065e",
+      "preview_size": "150 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray.stl",
+      "file_sha256": "94dc0404e464d4d8503395b648a9940a6e6866024f3e2ad9171b7f1c263e3531",
+      "preview_size": "150 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-180.5x100x24mm-6f7e6198de7a.stl",
+      "file_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "preview_size": "180.5 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-180.5x100x24mm-6f65bab83659-cad.zip",
+      "file_sha256": "6f65bab836594050df80a46e3c17fe59e53ec2f8ed3ac43e988ff5d60f835252",
+      "preview_size": "180.5 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-201.35x100x24mm-86d35e8c7c61.stl",
+      "file_sha256": "86d35e8c7c61d89fee84da699de10074576910d4c95bd3c64359a17e5b1b16e1",
+      "preview_size": "201.35 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-201.35x100x24mm-4a60eab4e1cf-cad.zip",
+      "file_sha256": "4a60eab4e1cf658d001a7d0fcda3a6a574304d75dbdea58643fe1eca85ac518a",
+      "preview_size": "201.35 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-150x100x24mm-0ad058e314db.stl",
+      "file_sha256": "0ad058e314db94d4ae6c322339a7f056c04c3bd9138c0e49f844816cca7a3fe0",
+      "preview_size": "150 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-150x100x24mm-739060e7cd2e.stl",
+      "file_sha256": "739060e7cd2e9e5c2f1fe37264f30c415a8f8617ef81716beebe0b5562bf3033",
+      "preview_size": "150 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "file_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "preview_size": "180.5 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "file_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "preview_size": "180.5 \u00d7 100 \u00d7 24"
+    },
+    {
+      "filename": "cable_comb-custom-36.3x32x4mm-61f3c6d92365.stl",
+      "file_sha256": "61f3c6d923653f59ca98e0a0670f7a92157eee55fdaadef382716912e1b762cd",
+      "preview_size": "36.3 \u00d7 32 \u00d7 4"
+    }
+  ],
+  "transport": "compiled assets with native CAD jobs and real export fixtures"
+}

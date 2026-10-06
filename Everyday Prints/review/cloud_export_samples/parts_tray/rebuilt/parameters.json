@@ -1,0 +1,25 @@
+{
+  "model": "parts_tray",
+  "parameters": {
+    "columns": 3,
+    "floor": 2.0,
+    "height": 24.0,
+    "length": 190.5,
+    "outer_radius": 4.4,
+    "pocket_radius": 2.0,
+    "rows": 2,
+    "wall": 2.4,
+    "width": 100.0
+  },
+  "units": "mm",
+  "printable": true,
+  "bounds_mm": [
+    190.5,
+    100.00000000000452,
+    24.0
+  ],
+  "volume_mm3": 87928.9486824316,
+  "solid_count": 1,
+  "physical_print_tested": false,
+  "kit": []
+}

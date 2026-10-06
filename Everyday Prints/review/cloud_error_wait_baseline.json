@@ -1,0 +1,16 @@
+[
+  {
+    "operation": "preview",
+    "message": "Building your CAD model\u2026 This can take a little longer after the service has been idle.",
+    "rebuild_enabled": false,
+    "cad_enabled": false,
+    "body_cancelled": 0
+  },
+  {
+    "operation": "cad",
+    "message": "Building the CAD download with your preview dimensions\u2026",
+    "rebuild_enabled": false,
+    "cad_enabled": false,
+    "body_cancelled": 0
+  }
+]

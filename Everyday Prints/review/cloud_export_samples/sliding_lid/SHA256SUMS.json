@@ -1,0 +1,18 @@
+{
+  "sliding_lid.step": "d5563e7400bf1e64a1913069a6f5bdbf2390a17fce65cd1dc116f3add47dbc08",
+  "sliding_lid.stl": "1edef38fa2e72321cc5aa630486524a5b7e7746a81e2001cdbd58aa3c7e21d46",
+  "sliding_lid.3mf": "2083d21e40d1d78969f5ca88216801a9192d75c9468a4c3550a7eccc444a12f3",
+  "sources/divider_joint_common.py": "247a0dc299e0a9c5e5c7df1550b1160c5f446cc1a58a15f28cf5c45de456349b",
+  "sources/ruler_stop_common.py": "32f609a094234e22bf493814b8731b8d38f9755d59ec062e3535aecf157b582c",
+  "sources/sanding_common.py": "70a392bb6df826e189e4c1bffc00175ee781d82cd19c38edd0464ba1c4b073d6",
+  "sources/sliding_box_common.py": "0b69bdb1707aaa6bd3aa09db4e7629473f3ce87116298f6521c28323ef19cf15",
+  "sources/sliding_lid.step.py": "2c089cb8557ad59ac8e29b601aeb169952ee10234e95dc80eb8b51b0796e50b1",
+  "sources/soap_dish_common.py": "4c5e8ac9e9628ad8df235bd4514470c5e99baa4ae8d79a59ff964edc780ac0a1",
+  "sources/strap_corner_common.py": "6f1819499b0ee63e6e42fa82fe3211dcfc3dfaad15e7e17f7b84ebf9f17edb92",
+  "LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+  "NOTICE": "9d6ce01bf089e69a912261a0e309895fe1b31e5b60bf2884f7f4e3febd00808a",
+  "rebuild.py": "52fd0f64c25ba6a0ab16e9a0465c2b8661a0ef9e43d28f1208f0edf741be20db",
+  "requirements.txt": "deb082a45c20743e3013f241ab8522fd637e4b58a00c24d4405cbcfc8955dfcc",
+  "parameters.json": "752182ef48d23377eca495a3284e741ecfe60fb2e6cd16dc14196437b775fdc7",
+  "README.md": "70ce30d2ad3988de8991b32ed44369274471d083ab6d2576d0f881848476c2d1"
+}

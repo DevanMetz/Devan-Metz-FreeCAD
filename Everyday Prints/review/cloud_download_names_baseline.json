@@ -1,0 +1,30 @@
+[
+  {
+    "length": "180.5",
+    "format": "stl",
+    "filename": "parts_tray-custom.stl",
+    "preview_size": "180.5 \u00d7 100 \u00d7 24",
+    "file_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f"
+  },
+  {
+    "length": "180.5",
+    "format": "cad",
+    "filename": "parts_tray-custom-cad.zip",
+    "preview_size": "180.5 \u00d7 100 \u00d7 24",
+    "file_sha256": "99e4b683b8b7923ee69068131951642ee04758d1855c792431f4ee72024b6911"
+  },
+  {
+    "length": "201.35",
+    "format": "stl",
+    "filename": "parts_tray-custom.stl",
+    "preview_size": "201.35 \u00d7 100 \u00d7 24",
+    "file_sha256": "86d35e8c7c61d89fee84da699de10074576910d4c95bd3c64359a17e5b1b16e1"
+  },
+  {
+    "length": "201.35",
+    "format": "cad",
+    "filename": "parts_tray-custom-cad.zip",
+    "preview_size": "201.35 \u00d7 100 \u00d7 24",
+    "file_sha256": "b67634e32068e910b56e656b7600f95c805ef6fbb6489a01fd447085fc4e5476"
+  }
+]

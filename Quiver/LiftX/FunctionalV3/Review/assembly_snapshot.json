@@ -1,0 +1,12 @@
+{
+  "input": "C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/LiftX_LH_Assembly.step.py",
+  "mode": "view",
+  "theme": "C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/review_theme.json",
+  "outputs": [
+    {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/quiver_iso.png", "camera":"iso"},
+    {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/quiver_underside.png", "camera":{"direction":[-1,-1,-0.65]}},
+    {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/quiver_top.png", "camera":"top"},
+    {"path":"C:/Users/metzd/Documents/GitHub/FreeCAD/Quiver/LiftX/FunctionalV3/Review/quiver_side.png", "camera":"right"}
+  ],
+  "render":{"sizeProfile":"assembly","padding":0.1,"viewLabels":true}
+}

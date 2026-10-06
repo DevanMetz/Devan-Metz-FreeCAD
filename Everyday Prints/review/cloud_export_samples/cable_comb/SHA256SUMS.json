@@ -1,0 +1,18 @@
+{
+  "cable_comb.step": "e4832c1e8917a949b7da9494ba99a61e077623cd7bd320015ad2222d4cdedc2a",
+  "cable_comb.stl": "61f3c6d923653f59ca98e0a0670f7a92157eee55fdaadef382716912e1b762cd",
+  "cable_comb.3mf": "e7916a9665cd9ef22855a20ecc914e05902d578bb01611aa22ed28a935c54269",
+  "sources/cable_comb.step.py": "4c8350a68812c5dae82948967d029af7e70cac3e2f14903093fa71211a7126fe",
+  "sources/divider_joint_common.py": "247a0dc299e0a9c5e5c7df1550b1160c5f446cc1a58a15f28cf5c45de456349b",
+  "sources/ruler_stop_common.py": "32f609a094234e22bf493814b8731b8d38f9755d59ec062e3535aecf157b582c",
+  "sources/sanding_common.py": "70a392bb6df826e189e4c1bffc00175ee781d82cd19c38edd0464ba1c4b073d6",
+  "sources/sliding_box_common.py": "0b69bdb1707aaa6bd3aa09db4e7629473f3ce87116298f6521c28323ef19cf15",
+  "sources/soap_dish_common.py": "4c5e8ac9e9628ad8df235bd4514470c5e99baa4ae8d79a59ff964edc780ac0a1",
+  "sources/strap_corner_common.py": "6f1819499b0ee63e6e42fa82fe3211dcfc3dfaad15e7e17f7b84ebf9f17edb92",
+  "LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+  "NOTICE": "9d6ce01bf089e69a912261a0e309895fe1b31e5b60bf2884f7f4e3febd00808a",
+  "rebuild.py": "52fd0f64c25ba6a0ab16e9a0465c2b8661a0ef9e43d28f1208f0edf741be20db",
+  "requirements.txt": "deb082a45c20743e3013f241ab8522fd637e4b58a00c24d4405cbcfc8955dfcc",
+  "parameters.json": "ef1f8013b7bbf3e13fb6b3fce773c15a427fb92aa0c50af81c50b2408feb9f14",
+  "README.md": "fb50ab9de7b6563ac11664a62d3aeef17265de96fe32c7cf2891e72564e21ab6"
+}

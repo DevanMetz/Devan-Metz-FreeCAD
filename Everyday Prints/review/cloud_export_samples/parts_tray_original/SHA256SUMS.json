@@ -1,0 +1,18 @@
+{
+  "parts_tray.step": "373999f2df9a458dcd79407db7c471b00fc7c0c31f631d18c77d79751964c1d6",
+  "parts_tray.stl": "94dc0404e464d4d8503395b648a9940a6e6866024f3e2ad9171b7f1c263e3531",
+  "parts_tray.3mf": "ac3598843cf8d76a91ac8b0e6b377ce746f647e063ec3973f4342605011395a4",
+  "sources/divider_joint_common.py": "247a0dc299e0a9c5e5c7df1550b1160c5f446cc1a58a15f28cf5c45de456349b",
+  "sources/parts_tray.step.py": "bbc1643dc9c7114d95beaa561e07d2f54384917620b09ce251fdaeb8b4458953",
+  "sources/ruler_stop_common.py": "32f609a094234e22bf493814b8731b8d38f9755d59ec062e3535aecf157b582c",
+  "sources/sanding_common.py": "70a392bb6df826e189e4c1bffc00175ee781d82cd19c38edd0464ba1c4b073d6",
+  "sources/sliding_box_common.py": "0b69bdb1707aaa6bd3aa09db4e7629473f3ce87116298f6521c28323ef19cf15",
+  "sources/soap_dish_common.py": "4c5e8ac9e9628ad8df235bd4514470c5e99baa4ae8d79a59ff964edc780ac0a1",
+  "sources/strap_corner_common.py": "6f1819499b0ee63e6e42fa82fe3211dcfc3dfaad15e7e17f7b84ebf9f17edb92",
+  "LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+  "NOTICE": "9d6ce01bf089e69a912261a0e309895fe1b31e5b60bf2884f7f4e3febd00808a",
+  "rebuild.py": "52fd0f64c25ba6a0ab16e9a0465c2b8661a0ef9e43d28f1208f0edf741be20db",
+  "requirements.txt": "deb082a45c20743e3013f241ab8522fd637e4b58a00c24d4405cbcfc8955dfcc",
+  "parameters.json": "700fb6e14473d0aa2bf6d4bd5bcca4677d82201e72006ed0d97aca93385f64af",
+  "README.md": "18a0bfa1b7dcf72631471835840ea8a7c19b2af967b0ee052ba31cd62968f10d"
+}

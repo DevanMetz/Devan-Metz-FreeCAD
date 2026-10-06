@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "held_original_download_and_export",
+    "held_custom_files_and_late_upgrade",
+    "close_before_module_initialization",
+    "switch_models_during_load",
+    "failed_module_keeps_downloads",
+    "no_webgl_keeps_downloads",
+    "failed_renderer_keeps_verified_files",
+    "corrupt_mesh_stays_blocked"
+  ],
+  "failures": [],
+  "fixture_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "transport": "compiled assets and real CAD fixtures with controlled viewer loading"
+}

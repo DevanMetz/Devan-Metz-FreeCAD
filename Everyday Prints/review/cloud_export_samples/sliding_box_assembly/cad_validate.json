@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "entry": "review/cloud_export_samples/sliding_box_assembly/sliding_box_assembly",
+  "occurrenceCount": 2,
+  "failureCount": 0,
+  "parts": [],
+  "errors": [],
+  "verified_step_sha256": "ed642708dab258e9dab594565a13fe8389dcf3f416a2a36e117dfee5bb15a0cc"
+}

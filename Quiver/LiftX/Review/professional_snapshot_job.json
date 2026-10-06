@@ -1,0 +1,33 @@
+{
+  "jobs": [
+    {
+      "input": "Quiver/LiftX/STEP/quiver_chassis_petg.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/professional_chassis_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/professional_chassis_iso_opposite.png", "camera": { "direction": [-1, 1, -0.8] } },
+        { "path": "Quiver/LiftX/Review/professional_chassis_top.png", "camera": "top" },
+        { "path": "Quiver/LiftX/Review/professional_chassis_front.png", "camera": "front" }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      }
+    },
+    {
+      "input": "Quiver/LiftX/STEP/bow_dock_petg.step",
+      "mode": "view",
+      "outputs": [
+        { "path": "Quiver/LiftX/Review/professional_dock_iso.png", "camera": "iso" },
+        { "path": "Quiver/LiftX/Review/professional_dock_front.png", "camera": "front" },
+        { "path": "Quiver/LiftX/Review/professional_dock_back.png", "camera": "back" }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.16,
+        "sizeProfile": "diagnostic"
+      }
+    }
+  ]
+}

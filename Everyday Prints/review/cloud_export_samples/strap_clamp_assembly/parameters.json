@@ -1,0 +1,36 @@
+{
+  "model": "strap_clamp_assembly",
+  "parameters": {
+    "corner_relief": 3.0,
+    "frame_depth": 130.0,
+    "frame_height": 30.0,
+    "frame_width": 180.0,
+    "leg_length": 25,
+    "lip_projection": 2.0,
+    "lip_thickness": 2.0,
+    "rail_width": 20.0,
+    "strap_thickness": 1.2,
+    "strap_width": 20,
+    "wall": 6.0,
+    "width_clearance": 2.0
+  },
+  "units": "mm",
+  "printable": false,
+  "bounds_mm": [
+    196.0000002,
+    146.0000002,
+    30.0000001
+  ],
+  "volume_mm3": 377437.65320627036,
+  "solid_count": 6,
+  "physical_print_tested": false,
+  "mesh_sha256": "1abc58bde1dc59e05483c72cfb5c02878aa2ac19ffc11688d5b089138595594d",
+  "format": "cad",
+  "kit": [
+    {
+      "model": "strap_corner",
+      "quantity": 4,
+      "role": "component"
+    }
+  ]
+}
