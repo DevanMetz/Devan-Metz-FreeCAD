@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **426 focused browser
+The latest local customizer and download build passes **429 focused browser
 checks across thirty-four suites**, the **53-model catalog and image smoke test**,
 **102 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,19 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Rejected multiple-file drops now keep their error message when an older
+original preview succeeds or fails, including after an invalid shared link.
+The baseline replaced the main rejection with stale import or link feedback.
+The shared error handler now advances the existing file-action token, so late
+responses keep verified preview and download behavior without changing the
+newer error, measurements or Load dimensions focus.
+
+The dimensions-preview suite now has fifteen checks, covering held headers and
+bodies, failed previews, invalid shared links and recovery through a newer file
+or custom build. Downloads match exact original or rebuilt STL/CAD bytes.
+Desktop and phone layouts were reviewed. Evidence is under
+`review/cloud_drop_feedback_*`.
 
 Saved dimensions now accepts one JSON file or CAD/kit ZIP dropped into a
 visible file box. The baseline ignored both a JSON file and a real 214,046-byte

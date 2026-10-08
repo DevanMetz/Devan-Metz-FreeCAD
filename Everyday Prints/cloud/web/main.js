@@ -1005,6 +1005,8 @@ function supersedeDimensionsRead() {
 }
 
 function showDimensionsError(text) {
+  // A rejected file action supersedes earlier import and link feedback.
+  ++dimensionsRead;
   $('dimensions-error').textContent = text;
   $('dimensions-error').hidden = false;
   message(text, true);

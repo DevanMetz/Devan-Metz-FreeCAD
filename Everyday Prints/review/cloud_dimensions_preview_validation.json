@@ -8,6 +8,9 @@
     "unavailable_original_builds_and_downloads_exact_saved_model",
     "late_original_failure_keeps_new_field_error",
     "late_verified_original_keeps_rejected_file_error",
+    "late_original_success_keeps_multiple_drop_rejection",
+    "late_original_failure_keeps_multiple_drop_rejection_and_recovery",
+    "late_original_keeps_multiple_drop_rejection_after_invalid_shared_link",
     "newer_matching_file_reflects_late_verified_preview",
     "reset_reflects_late_verified_original_without_old_file_feedback",
     "building_saved_model_supersedes_late_original_failure",
@@ -15,6 +18,45 @@
     "second_model_file_keeps_its_values_and_focus"
   ],
   "failures": [],
+  "cases": [
+    {
+      "check": "multiple_drop_success",
+      "mode": "headers",
+      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "original_mesh_sha256": "9e82919b660cca7e53f224e6c8478bc34ef46b50c0e24fd87babae5c7d238f84",
+      "native_jobs": 0
+    },
+    {
+      "check": "multiple_drop_success",
+      "mode": "body",
+      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "original_mesh_sha256": "9e82919b660cca7e53f224e6c8478bc34ef46b50c0e24fd87babae5c7d238f84",
+      "native_jobs": 0
+    },
+    {
+      "check": "multiple_drop_failure",
+      "mode": "failure",
+      "saved_parameters": {
+        "cable_diameters": [
+          2,
+          3.5,
+          9
+        ],
+        "clearance": 0.6,
+        "depth": 32.0,
+        "mounting_hole": 4.5,
+        "slot_depth": 18.0,
+        "thickness": 4.0,
+        "web": 5.0
+      },
+      "native_jobs": 0
+    },
+    {
+      "check": "multiple_drop_shared_link",
+      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "native_jobs": 0
+    }
+  ],
   "fixtures_sha256": {
     "cable_comb": "52312bcd6a79e5ebc408beb0b5f4d7709274e87a93e603281c51fa3f06a66e5b"
   },

@@ -38,7 +38,7 @@ window.fetch = async (...args) => {
 
 def main():
     archive, metadata, mesh = fixture("cable_comb")
-    passed, failures = [], []
+    passed, failures, cases = [], [], []
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=["--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
         context = browser.new_context(viewport={"width": 1440, "height": 1080}, accept_downloads=True)
@@ -194,6 +194,97 @@ def main():
             expect(page.locator("#download")).to_be_enabled()
             assert not jobs
 
+        def reject_multiple_drop(page):
+            values = page.locator("#parameter-fields input").evaluate_all("inputs => inputs.map(input => [input.id, input.value])")
+            page.evaluate("""() => {
+              const data = new DataTransfer();
+              for (const name of ['first.json', 'second.json']) data.items.add(new File(['{}'], name, {type:'application/json'}));
+              document.querySelector('#dimension-drop').dispatchEvent(new DragEvent('drop', {bubbles:true, cancelable:true, dataTransfer:data}));
+            }""")
+            expect(page.locator("#dimensions-error")).to_have_text("Drop one saved dimensions JSON file or CAD/kit ZIP at a time.")
+            expect(page.locator("#form-message")).to_have_text("Drop one saved dimensions JSON file or CAD/kit ZIP at a time.")
+            page.locator("#load-dimensions").focus()
+            return values
+
+        def retained_drop_error(page, values):
+            text = "Drop one saved dimensions JSON file or CAD/kit ZIP at a time."
+            expect(page.locator("#dimensions-error")).to_have_text(text)
+            expect(page.locator("#form-message")).to_have_text(text)
+            expect(page.locator("#form-message")).to_have_class("form-message error")
+            expect(page.locator("#load-dimensions")).to_be_focused()
+            expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP here, or use Load dimensions. " + text)
+            assert page.locator("#parameter-fields input").evaluate_all("inputs => inputs.map(input => [input.id, input.value])") == values
+
+        def late_original_success_keeps_multiple_drop_rejection(page):
+            for mode in ("headers", "body"):
+                other = page if mode == "headers" else context.new_page()
+                try:
+                    jobs = setup(other, mode)
+                    load(other, {"model":"cable_comb", "parameters":{}, "units":"mm"})
+                    confirmed(other)
+                    waiting(other)
+                    values = reject_multiple_drop(other)
+                    release(other)
+                    settled(other)
+                    retained_drop_error(other, values)
+                    expect(other.locator("#download")).to_be_enabled()
+                    original = (CLOUD / ".cloudflare/output/v0/workers/default/assets/models/cable_comb.stl").read_bytes()
+                    assert download(other, "download") == original and not jobs
+                    cases.append({"check":"multiple_drop_success", "mode":mode, "message":other.locator("#form-message").inner_text(),
+                                  "original_mesh_sha256":hashlib.sha256(original).hexdigest(), "native_jobs":0})
+                    if mode == "body":
+                        other.locator("#dimensions-error").scroll_into_view_if_needed()
+                        other.screenshot(path=str(ROOT / "review/cloud_drop_feedback_desktop.png"))
+                    load(other)
+                    confirmed(other)
+                    other.locator("#rebuild").click()
+                    expect(other.locator("#download-cad")).to_be_enabled()
+                    assert download(other, "download") == mesh and download(other, "download-cad") == archive
+                    assert len(jobs) == 2
+                finally:
+                    if other is not page:
+                        other.close()
+
+        def late_original_failure_keeps_multiple_drop_rejection_and_recovery(page):
+            page.set_viewport_size({"width":390, "height":600})
+            jobs = setup(page, "failure")
+            load(page)
+            confirmed(page)
+            waiting(page)
+            values = reject_multiple_drop(page)
+            release(page)
+            settled(page)
+            retained_drop_error(page, values)
+            assert page.locator("#download").is_disabled() and not jobs
+            assert json.loads(download(page, "save-dimensions"))["parameters"] == metadata["parameters"]
+            cases.append({"check":"multiple_drop_failure", "mode":"failure", "saved_parameters":metadata["parameters"], "native_jobs":0})
+            # Save is a newer action; reproduce the rejection before recovery.
+            reject_multiple_drop(page)
+            page.locator("#dimensions-error").scroll_into_view_if_needed()
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+            page.screenshot(path=str(ROOT / "review/cloud_drop_feedback_mobile.png"))
+            page.locator("#rebuild").click()
+            expect(page.locator("#download-cad")).to_be_enabled()
+            expect(page.locator("#dimensions-error")).to_be_hidden()
+            assert download(page, "download") == mesh and download(page, "download-cad") == archive
+            assert len(jobs) == 2
+
+        def late_original_keeps_multiple_drop_rejection_after_invalid_shared_link(page):
+            page.add_init_script(HOLD + "window.originalMode='body';")
+            jobs = []
+            page.on("request", lambda request: jobs.append(request.url) if "/api/generate" in request.url else None)
+            page.goto(BASE + "/?model=cable_comb&p=%7B%22depth%22%3A%22bad%22%7D")
+            page.wait_for_function("() => typeof window.releaseOriginal === 'function'")
+            page.locator(".saved-dimensions summary").click()
+            values = reject_multiple_drop(page)
+            release(page)
+            settled(page)
+            retained_drop_error(page, values)
+            expect(page.locator("#download")).to_be_enabled()
+            assert not page.evaluate("new URL(location.href).searchParams.has('p')")
+            assert not jobs
+            cases.append({"check":"multiple_drop_shared_link", "message":page.locator("#form-message").inner_text(), "native_jobs":0})
+
         def newer_matching_file_reflects_late_verified_preview(page):
             jobs = setup(page, "body")
             load(page)
@@ -270,6 +361,9 @@ def main():
                  unavailable_original_builds_and_downloads_exact_saved_model,
                  late_original_failure_keeps_new_field_error,
                  late_verified_original_keeps_rejected_file_error,
+                 late_original_success_keeps_multiple_drop_rejection,
+                 late_original_failure_keeps_multiple_drop_rejection_and_recovery,
+                 late_original_keeps_multiple_drop_rejection_after_invalid_shared_link,
                  newer_matching_file_reflects_late_verified_preview,
                  reset_reflects_late_verified_original_without_old_file_feedback,
                  building_saved_model_supersedes_late_original_failure,
@@ -291,7 +385,7 @@ def main():
                 page.close()
         context.close()
         browser.close()
-    report = dict(endpoint=BASE, passed=passed, failures=failures,
+    report = dict(endpoint=BASE, passed=passed, failures=failures, cases=cases,
                   fixtures_sha256={"cable_comb": hashlib.sha256(archive).hexdigest()},
                   transport="compiled assets and real CAD fixtures with controlled original-preview transfers" if OFFLINE else "local HTTP bridge and real CAD fixtures")
     (ROOT / "review/cloud_dimensions_preview_validation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

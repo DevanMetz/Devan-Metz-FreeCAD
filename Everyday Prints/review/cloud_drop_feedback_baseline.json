@@ -1,0 +1,29 @@
+{
+  "head": "6f74efc033bfe62e70f68adc207d4d50f88bc9f1",
+  "observed": [
+    {
+      "mode": "body",
+      "before": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "after": "Saved dimensions match the verified preview.",
+      "file_error_still_visible": true,
+      "download_enabled": true,
+      "measurements_unchanged": true
+    },
+    {
+      "mode": "failure",
+      "before": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "after": "Saved dimensions loaded. The model preview could not be loaded. Update the preview to build this version.",
+      "file_error_still_visible": true,
+      "download_enabled": false,
+      "measurements_unchanged": true
+    },
+    {
+      "mode": "invalid_shared_link",
+      "before": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "after": "Shared dimensions could not be applied. Original dimensions are shown. Depth: use numbers between -1000 and 1000.",
+      "file_error_still_visible": true,
+      "download_enabled": true
+    }
+  ],
+  "transport": "compiled production assets and held original preview headers/bodies"
+}

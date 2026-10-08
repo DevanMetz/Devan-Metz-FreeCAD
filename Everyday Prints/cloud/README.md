@@ -591,11 +591,17 @@ Downloads stay disabled until a verified mesh matches the current inputs.
 Late original responses reflect Reset and newer valid files without dismissing
 newer field or file errors, or replacing a custom build or another model.
 
-`verify_dimensions_preview_ui.py` has twelve checks for these pending and failed
+`verify_dimensions_preview_ui.py` has fifteen checks for these pending and failed
 preview cases, mobile focus, saved values, exact rebuilt STL/CAD downloads,
-newer file selections, Reset, and model switches. Its report and screenshot are
-`../review/cloud_dimensions_preview_validation.json` and
-`../review/cloud_dimensions_preview_mobile.png`.
+newer file selections, Reset, and model switches. Rejected multiple-file drops
+retain their error, measurements and Load dimensions focus through late original
+headers, bodies and failures, including an invalid shared link. A newer valid
+file or custom build still recovers with exact STL/CAD bytes. Its report is
+`../review/cloud_dimensions_preview_validation.json`; reviewed layouts are
+`../review/cloud_dimensions_preview_mobile.png` and
+`../review/cloud_drop_feedback_desktop.png` and
+`../review/cloud_drop_feedback_mobile.png`.
+The reproduced baseline and build proof are under `../review/cloud_drop_feedback_*`.
 
 Editing, saving, loading and sharing use the same catalog field ranges, whole
 counts, finite values within -1000 to 1000, and lists of 1 to 16 numbers. Numeric

@@ -1,0 +1,52 @@
+{
+  "baseline_head": "6f74efc033bfe62e70f68adc207d4d50f88bc9f1",
+  "unit_tests": {
+    "passed": 102,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\index.html": "a0a25ce9c8218ff31fc24ad336520a8cb676afe7b69ae4c463ec597fe0162f90",
+      "assets\\assets\\index-Cw3u4ifH.css": "0485c8b0aad284d56f4a69612cea76e4ae1586d677f04742c715d4216fcc4163",
+      "assets\\assets\\zip-zfJFMEXZ.js": "ddb438d1c931c832dde39abe11a56477d38522e7057a9ad49f83362ca3b63879",
+      "assets\\assets\\index-BbtCyYXd.js": "a285446d3d7b9d89dd9d487275e7050ce9b7d0588c6bf1e00f160f4ae1a71b09"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks": 429,
+    "suites": 34,
+    "fresh_reports": 35,
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets, native CAD jobs, real exported ZIP fixtures and controlled original-preview transfers."
+  },
+  "rejected_drop_feedback": {
+    "preview_suite_checks": 15,
+    "new_regression_checks": 3,
+    "controlled_cases": 4,
+    "reproduced_baseline_cases": 3,
+    "report": "cloud_dimensions_preview_validation.json",
+    "baseline": "cloud_drop_feedback_baseline.json",
+    "retained_error_focus_and_measurements": true,
+    "exact_original_and_rebuilt_downloads": true
+  },
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_drop_feedback_desktop.png",
+    "cloud_drop_feedback_mobile.png"
+  ]
+}
