@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **399 focused browser
+The latest local customizer and download build passes **405 focused browser
 checks across thirty-two suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,22 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+The 3D preview now supports keyboard inspection: arrows pan, Shift + arrows
+orbit, + / - zoom and Home fits the model. A visible focus outline, accessible
+name and associated instructions identify the interactive canvas. Tab leaves it
+and Escape closes the editor. Unavailable previews leave the Tab order and move
+canvas focus to a measurement after graphics loss. The baseline skipped the
+canvas and left its camera unchanged after each inspection key. Six additional
+browser checks verify bounded zoom, independent field and browser keys, retained
+poses through preview and CAD builds, delayed loading, navigation, graphics
+recovery and phone layouts. Exact STL/CAD bytes, dimension-bearing names and
+cached downloads remain verified. Accessibility-enabled Chromium exposes the
+canvas name and instructions without hidden-focus warnings. All twenty-three
+viewer checks pass; desktop and phone focus outlines were visually reviewed.
+Evidence is in `review/cloud_keyboard_viewer_baseline.json`,
+`review/cloud_viewer_loading_validation.json` and the
+`review/cloud_keyboard_viewer_desktop.png` and mobile screenshots.
 
 Customizer measurement inputs now have a minimum height of 44 px, matching
 the main actions. The baseline width field measured 39 px. Five additional

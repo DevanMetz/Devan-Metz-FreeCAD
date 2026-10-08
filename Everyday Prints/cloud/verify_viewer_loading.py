@@ -27,10 +27,10 @@ os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", str(ROOT.parent / ".cad-cache/
 
 def main():
     original, custom = fixture("parts_tray_original"), fixture("parts_tray")
-    passed, failures = [], []
+    passed, failures, keyboard_cases = [], [], []
     pending_by_page = {}
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True, args=["--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
+        browser = playwright.chromium.launch(headless=True, args=["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--force-renderer-accessibility"])
         context = browser.new_context(viewport={"width": 1440, "height": 1080}, accept_downloads=True)
         context.set_default_timeout(20000)
         if OFFLINE:
@@ -319,6 +319,252 @@ def main():
             assert download(page) == (CLOUD / 'public/models/parts_tray.stl').read_bytes()
             assert jobs == ['stl', 'cad']
 
+        def keyboard_canvas(page):
+            canvas = page.locator('#viewer canvas')
+            assert canvas.evaluate('element => element.tabIndex') == 0
+            assert canvas.get_attribute('aria-hidden') == 'false'
+            assert canvas.get_attribute('role') == 'application'
+            assert canvas.get_attribute('aria-label') == 'Interactive 3D preview'
+            assert canvas.get_attribute('aria-describedby') == 'viewer-help'
+            assert 'application "Interactive 3D preview"' in canvas.aria_snapshot()
+            assert 'Shift + arrows orbit' in page.locator('#viewer-help').inner_text()
+            page.locator('#close-editor').focus()
+            page.keyboard.press('Tab')
+            assert canvas.evaluate('element => element === document.activeElement'), 'Tab skipped the interactive mesh'
+            assert canvas.evaluate("element => getComputedStyle(element).outlineWidth") == '2px'
+            return canvas
+
+        def keyboard_inspection_pans_orbits_zooms_fits_and_leaves_with_tab(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').click()
+            initial = page.evaluate('window.renderedPreview')
+            canvas = keyboard_canvas(page)
+            scroll = page.locator('.editor-layout').evaluate('element => element.scrollTop')
+            page.keyboard.press('ArrowRight')
+            pan = page.evaluate('window.renderedPreview')
+            assert math.dist(pan['target'], initial['target']) > 1, (pan, initial)
+            assert math.isclose(math.dist(pan['camera'], pan['target']), math.dist(initial['camera'], initial['target']), rel_tol=1e-8)
+            page.keyboard.press('Shift+ArrowUp')
+            orbit = page.evaluate('window.renderedPreview')
+            assert orbit['target'] == pan['target'] and orbit['camera'] != pan['camera']
+            page.keyboard.press('+')
+            zoom = page.evaluate('window.renderedPreview')
+            assert math.dist(zoom['camera'], zoom['target']) < math.dist(orbit['camera'], orbit['target'])
+            page.keyboard.press('-')
+            outward = page.evaluate('window.renderedPreview')
+            assert math.dist(outward['camera'], outward['target']) > math.dist(zoom['camera'], zoom['target'])
+            assert canvas.evaluate('element => element === document.activeElement')
+            assert page.locator('.editor-layout').evaluate('element => element.scrollTop') == scroll
+            page.screenshot(path=str(ROOT / 'review/cloud_keyboard_viewer_desktop.png'))
+            page.keyboard.press('Home')
+            same_framing(page, initial)
+            page.keyboard.press('Tab')
+            assert page.locator('[data-view="iso"]').evaluate('element => element === document.activeElement')
+            page.keyboard.press('Shift+Tab')
+            assert canvas.evaluate('element => element === document.activeElement')
+            page.keyboard.press('Shift+Tab')
+            assert page.locator('#close-editor').evaluate('element => element === document.activeElement')
+            assert not jobs
+            keyboard_cases.append({'check':'inspection', 'initial':initial, 'panned':pan, 'orbited':orbit, 'zoomed':zoom})
+
+        def keyboard_zoom_stays_finite_and_browser_and_field_keys_stay_independent(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').click()
+            initial = page.evaluate('window.renderedPreview')
+            canvas = keyboard_canvas(page)
+            for _ in range(120):
+                page.keyboard.press('+')
+            inward = page.evaluate('window.renderedPreview')
+            assert math.dist(inward['camera'], inward['target']) >= inward['near'] * 2 - 1e-8
+            for _ in range(240):
+                page.keyboard.press('-')
+            outward = page.evaluate('window.renderedPreview')
+            assert math.dist(outward['camera'], outward['target']) <= outward['far'] / 2 + 1e-8
+            assert all(math.isfinite(value) for pose in (inward, outward) for value in pose['camera'])
+            page.keyboard.press('Home')
+            same_framing(page, initial)
+            shortcuts = page.evaluate("""() => {
+              const canvas = document.querySelector('#viewer canvas');
+              return [{key:'ArrowLeft',code:'ArrowLeft',altKey:true},
+                {key:'ArrowRight',code:'ArrowRight',ctrlKey:true},
+                {key:'ArrowUp',code:'ArrowUp',metaKey:true},
+                {key:'+',code:'Equal',ctrlKey:true}, {key:'-',code:'Minus',metaKey:true},
+                {key:'Home',code:'Home',ctrlKey:true}].map(keys => {
+                  const event = new KeyboardEvent('keydown',{...keys,bubbles:true,cancelable:true});
+                  canvas.dispatchEvent(event);
+                  return {...keys,prevented:event.defaultPrevented};
+                });
+            }""")
+            assert all(not event['prevented'] for event in shortcuts), shortcuts
+            same_framing(page, initial)
+            field = page.locator('#param-columns')
+            field.focus()
+            page.keyboard.press('ArrowUp')
+            assert field.input_value() == '4'
+            same_framing(page, initial)
+            assert page.locator('#download').is_disabled()
+            assert not jobs
+            keyboard_cases.append({'check':'zoom_and_independent_keys','minimum':inward,'maximum':outward,'shortcuts':shortcuts})
+
+        def keyboard_pose_survives_pending_preview_cad_and_exact_cached_downloads(page):
+            waiting, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').click()
+            keyboard_canvas(page)
+            page.keyboard.press('ArrowLeft')
+            page.keyboard.press('Shift+ArrowRight')
+            page.keyboard.press('=')
+            page.locator('#wireframe').click()
+
+            def hold(route):
+                payload = route.request.post_data_json
+                assert payload['parameters'] == custom[1]['parameters']
+                jobs.append(payload.get('format','stl'))
+                waiting.append(route)
+
+            page.route('**/api/generate', hold)
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').focus()
+            page.keyboard.press('Enter')
+            page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+            canvas = page.locator('#viewer canvas')
+            canvas.focus()
+            page.keyboard.press('Shift+ArrowUp')
+            before = page.evaluate('window.renderedPreview')
+            metadata = {**custom[1], 'format':'stl','file_sha256':custom[1]['mesh_sha256']}
+            assert len(waiting) == 1
+            waiting.pop().fulfill(body=custom[2], headers=headers(metadata,'model/stl'))
+            ready(page)
+            same_framing(page, before)
+            assert canvas.evaluate('element => element === document.activeElement')
+            page.locator('#download-cad').focus()
+            page.keyboard.press('Space')
+            page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+            canvas.focus()
+            page.keyboard.press('ArrowDown')
+            exporting = page.evaluate('window.renderedPreview')
+            with page.expect_download() as event:
+                waiting.pop().fulfill(body=custom[0], headers=headers(custom[1]))
+            assert Path(event.value.path()).read_bytes() == custom[0]
+            assert event.value.suggested_filename == f"parts_tray-custom-180.5x100x24mm-{custom[1]['file_sha256'][:12]}-cad.zip"
+            same_framing(page, exporting)
+            assert canvas.evaluate('element => element === document.activeElement')
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            assert jobs == ['stl','cad']
+            keyboard_cases.append({'check':'builds_and_downloads','before_preview':before,'during_cad':exporting,'jobs':jobs})
+
+        def late_keyboard_viewer_keeps_drafts_focus_and_closed_views_inactive(page):
+            waiting, modules, jobs = setup(page)
+            ready(page)
+            field = page.locator('#param-width')
+            field.fill('')
+            error = page.locator('#form-message').inner_text()
+            release(page, waiting)
+            viewer_ready(page)
+            assert field.evaluate('element => element === document.activeElement')
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').click()
+            canvas = keyboard_canvas(page)
+            page.keyboard.press('ArrowRight')
+            page.keyboard.press('Home')
+            assert field.input_value() == '' and page.locator('#form-message').inner_text() == error
+            assert page.locator('#download').is_disabled()
+            page.evaluate("""() => {
+              window.keyboardEditorClosed = false;
+              document.querySelector('#editor').addEventListener('close', () => {
+                window.keyboardEditorClosed = true;
+              }, {once:true});
+            }""")
+            page.keyboard.press('Escape')
+            page.wait_for_function("() => window.keyboardEditorClosed && !document.querySelector('#editor').open && !new URL(location.href).searchParams.has('model')")
+            assert canvas.evaluate('element => element.tabIndex') == -1
+            assert canvas.get_attribute('aria-hidden') == 'true'
+            assert page.locator('[data-model="parts_tray"]').evaluate('element => element === document.activeElement')
+            page.locator('[data-model="cable_comb"]').click()
+            ready(page)
+            viewer_ready(page)
+            keyboard_canvas(page)
+            assert page.locator('#viewer canvas').count() == 1
+            assert page.evaluate('window.renderedPreview.size') == [59,32,4]
+            assert not jobs
+            keyboard_cases.append({'check':'late_loading_and_navigation','size':page.evaluate('window.renderedPreview.size')})
+
+        def lost_keyboard_graphics_keeps_pending_cad_and_restores_field_focus(page):
+            waiting, modules, jobs = setup(page, hold_viewer=False)
+            open_custom(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+
+            def hold(route):
+                assert route.request.post_data_json['format'] == 'cad'
+                jobs.append('cad')
+                waiting.append(route)
+
+            page.route('**/api/generate', hold)
+            page.locator('#download-cad').focus()
+            page.keyboard.press('Space')
+            page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+            canvas = keyboard_canvas(page)
+            page.keyboard.press('Shift+ArrowRight')
+            page.keyboard.press('+')
+            before = page.evaluate('window.renderedPreview')
+            graphics(page, True)
+            fallback(page)
+            field = page.locator('#param-length')
+            assert field.evaluate('element => element === document.activeElement')
+            assert canvas.evaluate('element => element.tabIndex') == -1
+            assert canvas.get_attribute('aria-hidden') == 'true'
+            canvas.dispatch_event('keydown', {'key':'ArrowUp','code':'ArrowUp','bubbles':True,'cancelable':True})
+            assert page.evaluate('window.renderedPreview') == before
+            graphics(page, False)
+            viewer_ready(page)
+            same_framing(page, before)
+            assert field.evaluate('element => element === document.activeElement')
+            assert canvas.evaluate('element => element.tabIndex') == 0
+            with page.expect_download() as event:
+                waiting.pop().fulfill(body=custom[0],headers=headers(custom[1]))
+            assert Path(event.value.path()).read_bytes() == custom[0]
+            assert field.evaluate('element => element === document.activeElement')
+            assert download(page) == custom[2]
+            assert download(page,'download-cad') == custom[0]
+            assert jobs == ['stl','cad']
+            keyboard_cases.append({'check':'graphics_recovery','before':before,'jobs':jobs})
+
+        def mobile_keyboard_preview_keeps_visible_focus_and_exact_files(page):
+            page.set_viewport_size({'width':390,'height':600})
+            _, modules, jobs = setup(page, hold_viewer=False)
+            open_custom(page)
+            viewer_ready(page)
+            observe_rendered_model(page,modules[0])
+            page.locator('[data-view="iso"]').click()
+            initial = page.evaluate('window.renderedPreview')
+            canvas = keyboard_canvas(page)
+            box = canvas.bounding_box()
+            layout = page.locator('.editor-layout').bounding_box()
+            assert box['y'] >= layout['y'] and box['y']+box['height'] <= layout['y']+layout['height'], (box,layout)
+            page.keyboard.press('ArrowUp')
+            page.keyboard.press('Shift+ArrowLeft')
+            page.keyboard.press('=')
+            assert page.evaluate('window.renderedPreview') != initial
+            assert canvas.evaluate('element => element === document.activeElement')
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            page.screenshot(path=str(ROOT/'review/cloud_keyboard_viewer_mobile.png'))
+            page.keyboard.press('Home')
+            same_framing(page,initial)
+            assert download(page) == custom[2]
+            assert download(page,'download-cad') == custom[0]
+            assert jobs == ['stl','cad']
+            keyboard_cases.append({'check':'mobile','viewport':page.viewport_size,'canvas':box,'jobs':jobs})
+
         def held_original_download_and_export(page):
             waiting, _, jobs = setup(page)
             ready(page)
@@ -600,10 +846,18 @@ def main():
                      named_views_survive_original_cad_refresh_and_rebuild,
                      manual_orbit_zoom_and_pan_survive_larger_and_smaller_meshes,
                      pending_preview_uses_latest_view_and_edges_choice,
-                     mobile_updates_keep_view_and_new_models_reset_it):
+                     mobile_updates_keep_view_and_new_models_reset_it,
+                     keyboard_inspection_pans_orbits_zooms_fits_and_leaves_with_tab,
+                     keyboard_zoom_stays_finite_and_browser_and_field_keys_stay_independent,
+                     keyboard_pose_survives_pending_preview_cad_and_exact_cached_downloads,
+                     late_keyboard_viewer_keeps_drafts_focus_and_closed_views_inactive,
+                     lost_keyboard_graphics_keeps_pending_cad_and_restores_field_focus,
+                     mobile_keyboard_preview_keeps_visible_focus_and_exact_files):
             page = context.new_page()
             errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))
+            page.on("console", lambda message: errors.append(message.text)
+                    if 'Blocked aria-hidden' in message.text else None)
             try:
                 print(f"START {test.__name__}", flush=True)
                 test(page)
@@ -620,7 +874,7 @@ def main():
         context.close()
         browser.close()
     report = dict(endpoint=BASE, passed=passed, failures=failures,
-        fixture_archive_sha256=hashlib.sha256(custom[0]).hexdigest(),
+        fixture_archive_sha256=hashlib.sha256(custom[0]).hexdigest(), keyboard_cases=keyboard_cases,
         transport="compiled assets and real CAD fixtures with controlled viewer loading" if OFFLINE else "local HTTP bridge with controlled viewer loading")
     (ROOT / "review/cloud_viewer_loading_validation.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     assert not failures, report

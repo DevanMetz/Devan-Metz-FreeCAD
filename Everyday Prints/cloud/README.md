@@ -821,6 +821,18 @@ around its updated center. Choices made while a build is pending take effect
 when its mesh arrives. Closing the editor or opening another model resets the
 view to 3D with Edges off.
 
+The verified 3D canvas is a Tab stop with a visible focus outline. Arrow keys
+pan, Shift + arrows orbit, + / − (or =) zoom, and Home frames the model in 3D.
+Tab continues to the view buttons and Escape closes the editor. Keyboard zoom
+stays within the camera's clipping range, and Home keeps the Edges choice.
+Browser shortcuts retain their default action, while arrow keys in measurements
+continue to edit those fields. An unavailable canvas leaves the Tab order. If it
+has focus when graphics are lost, the first measurement receives visible focus;
+graphics recovery keeps that field's focus and the current camera pose.
+
+The canvas has a labelled `application` role and described keyboard instructions,
+following the [WAI-ARIA application role](https://www.w3.org/TR/wai-aria-1.2/#application).
+
 If graphics are interrupted after loading, the editor shows the original catalog
 image while keeping verified mesh dimensions and files. When graphics return, it
 redraws the current mesh with the same camera and edge display. Builds and CAD
@@ -828,7 +840,7 @@ downloads can continue during the interruption; invalid drafts, keyboard focus,
 pending requests and cached CAD files are preserved. Recovery also follows model
 navigation and does not open a closed editor or start another CAD build.
 
-`verify_viewer_loading.py` has seventeen browser checks for delayed viewer loading,
+`verify_viewer_loading.py` has twenty-three browser checks for delayed viewer loading,
 original and customized STL/CAD downloads, late 3D upgrades, model switches,
 closed editors, module failures, missing WebGL, rendering failures, and blocked
 corrupt meshes, plus graphics loss and restoration during editing, builds,
@@ -846,6 +858,16 @@ larger and smaller meshes, pending view choices, CAD refreshes and cached exact
 files. Graphics recovery also checks framing after a changed mesh arrives.
 The camera reset baseline and reviewed desktop and phone layouts are under
 `../review/cloud_camera_update_*`.
+
+Six keyboard checks measure camera movement and zoom limits from real key events,
+preserve framing through pending preview/CAD requests, verify exact cached files
+and names, and cover late loading, invalid drafts, Tab/Escape navigation, graphics
+loss and mobile focus bounds. Accessibility-enabled Chromium checks the canvas
+role and hidden-focus warnings. The baseline records the skipped canvas and
+unchanged camera after each proposed key. Evidence and reviewed layouts are
+`../review/cloud_keyboard_viewer_baseline.json`,
+`../review/cloud_viewer_loading_validation.json` and
+`../review/cloud_keyboard_viewer_desktop.png` / `../review/cloud_keyboard_viewer_mobile.png`.
 
 `verify_transfer_ui.py` checks oversized original previews, custom previews and
 CAD ZIPs, interrupted and empty transfers, cancellation during a pending read,

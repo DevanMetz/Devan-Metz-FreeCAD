@@ -17,9 +17,334 @@
     "named_views_survive_original_cad_refresh_and_rebuild",
     "manual_orbit_zoom_and_pan_survive_larger_and_smaller_meshes",
     "pending_preview_uses_latest_view_and_edges_choice",
-    "mobile_updates_keep_view_and_new_models_reset_it"
+    "mobile_updates_keep_view_and_new_models_reset_it",
+    "keyboard_inspection_pans_orbits_zooms_fits_and_leaves_with_tab",
+    "keyboard_zoom_stays_finite_and_browser_and_field_keys_stay_independent",
+    "keyboard_pose_survives_pending_preview_cad_and_exact_cached_downloads",
+    "late_keyboard_viewer_keeps_drafts_focus_and_closed_views_inactive",
+    "lost_keyboard_graphics_keeps_pending_cad_and_restores_field_focus",
+    "mobile_keyboard_preview_keeps_visible_focus_and_exact_files"
   ],
   "failures": [],
   "fixture_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "keyboard_cases": [
+    {
+      "check": "inspection",
+      "initial": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          176.16871605843238,
+          -229.019330875962,
+          188.16871605843235
+        ],
+        "target": [
+          0,
+          0,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      },
+      "panned": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          179.60575858500795,
+          -226.37545200936535,
+          188.1687160584323
+        ],
+        "target": [
+          3.4370425265755644,
+          2.6438788665965887,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      },
+      "orbited": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          177.67716886564946,
+          -223.86828537419922,
+          193.2548062108166
+        ],
+        "target": [
+          3.4370425265755644,
+          2.6438788665965887,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      },
+      "zoomed": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          161.83715738027908,
+          -203.2762704432177,
+          176.77709655528778
+        ],
+        "target": [
+          3.4370425265755644,
+          2.6438788665965887,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      }
+    },
+    {
+      "check": "zoom_and_independent_keys",
+      "minimum": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          0.35233743211687035,
+          -0.4580386617519191,
+          12.352337432116865
+        ],
+        "target": [
+          0,
+          0,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      },
+      "maximum": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          2642.530740876587,
+          -3435.289963139349,
+          2654.5307408764893
+        ],
+        "target": [
+          0,
+          0,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": false
+      },
+      "shortcuts": [
+        {
+          "key": "ArrowLeft",
+          "code": "ArrowLeft",
+          "altKey": true,
+          "prevented": false
+        },
+        {
+          "key": "ArrowRight",
+          "code": "ArrowRight",
+          "ctrlKey": true,
+          "prevented": false
+        },
+        {
+          "key": "ArrowUp",
+          "code": "ArrowUp",
+          "metaKey": true,
+          "prevented": false
+        },
+        {
+          "key": "+",
+          "code": "Equal",
+          "ctrlKey": true,
+          "prevented": false
+        },
+        {
+          "key": "-",
+          "code": "Minus",
+          "metaKey": true,
+          "prevented": false
+        },
+        {
+          "key": "Home",
+          "code": "Home",
+          "ctrlKey": true,
+          "prevented": false
+        }
+      ]
+    },
+    {
+      "check": "builds_and_downloads",
+      "before_preview": {
+        "size": [
+          150,
+          100,
+          24
+        ],
+        "camera": [
+          158.5826766962054,
+          -205.72838063966117,
+          176.77709655528773
+        ],
+        "target": [
+          -3.4370425265755644,
+          -2.6438788665965887,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 90.93404203047393,
+        "near": 0.33840905270135213,
+        "far": 10152.271581040564,
+        "edges": true
+      },
+      "during_cad": {
+        "size": [
+          180.5,
+          100,
+          24
+        ],
+        "camera": [
+          182.64690201741814,
+          -236.8808222523991,
+          196.41592465059844
+        ],
+        "target": [
+          -2.4219085243485097,
+          -4.905311105335524,
+          8.197469450824725
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 103.87041205271115,
+        "near": 0.3865514713915097,
+        "far": 11596.544141745291,
+        "edges": true
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "late_loading_and_navigation",
+      "size": [
+        59,
+        32,
+        4
+      ]
+    },
+    {
+      "check": "graphics_recovery",
+      "before": {
+        "size": [
+          180.5,
+          100,
+          24
+        ],
+        "camera": [
+          187.11725835275,
+          -234.54314924134846,
+          194.9369619720846
+        ],
+        "target": [
+          0,
+          0,
+          12
+        ],
+        "center": [
+          0,
+          0,
+          12
+        ],
+        "radius": 103.87041205271115,
+        "near": 0.3865514713915097,
+        "far": 11596.544141745291,
+        "edges": false
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "canvas": {
+        "x": 32,
+        "y": 104,
+        "width": 326,
+        "height": 245
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    }
+  ],
   "transport": "compiled assets and real CAD fixtures with controlled viewer loading"
 }

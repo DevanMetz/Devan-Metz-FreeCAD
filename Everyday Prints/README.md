@@ -110,6 +110,8 @@ limit before editing, and are included in each input's accessible description.
 Measurement inputs have a minimum height of 44 px, matching the main actions.
 Keyboard Stop and download controls stay visible through delayed 3D loading,
 including short phone and desktop windows.
+Focus the 3D preview to pan with arrows, orbit with Shift + arrows, zoom with
++ / − and fit the model with Home. Tab leaves the preview; Escape closes the editor.
 If browser graphics are interrupted, the editor shows the original image while
 keeping verified files and dimensions. Graphics recovery redraws the current
 mesh and retains its camera view, edge display, edits and pending downloads.

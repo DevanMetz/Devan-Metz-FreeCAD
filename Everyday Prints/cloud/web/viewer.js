@@ -13,8 +13,9 @@ export class ModelViewer {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.contextChange = () => {
-      this.render();
       onContextChange?.();
+      this.keyboardState();
+      this.render();
     };
     this.renderer.domElement.addEventListener('webglcontextlost', this.contextChange);
     this.renderer.domElement.addEventListener('webglcontextrestored', this.contextChange);
@@ -22,6 +23,13 @@ export class ModelViewer {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = false;
     this.controls.addEventListener('change', () => this.render());
+    this.renderer.domElement.setAttribute('role', 'application');
+    this.renderer.domElement.setAttribute('aria-label', 'Interactive 3D preview');
+    this.renderer.domElement.setAttribute('aria-describedby', 'viewer-help');
+    this.keyDown = event => this.keyboard(event);
+    this.renderer.domElement.addEventListener('keydown', this.keyDown);
+    this.controls.listenToKeyEvents(this.renderer.domElement);
+    this.keyboardState();
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x768d76, 2.1));
     const light = new THREE.DirectionalLight(0xffffff, 3.0);
     light.position.set(150, -120, 240);
@@ -70,6 +78,7 @@ export class ModelViewer {
     this.grid.position.z = -.1;
     this.scene.add(this.grid);
     this.wireframe = material.wireframe;
+    this.keyboardState();
     if (previous) {
       const scale = this.radius / previous.radius;
       this.camera.position.copy(this.target).addScaledVector(previous.camera, scale);
@@ -105,6 +114,36 @@ export class ModelViewer {
     return this.wireframe;
   }
 
+  keyboardState() {
+    const ready = !!this.mesh && this.available;
+    this.controls.enabled = ready;
+    this.renderer.domElement.tabIndex = ready ? 0 : -1;
+    this.renderer.domElement.setAttribute('aria-hidden', String(!ready));
+  }
+
+  keyboard(event) {
+    if (!this.controls.enabled || event.altKey || event.ctrlKey || event.metaKey) {
+      // Keep browser shortcuts and unavailable previews out of OrbitControls.
+      if (event.code.startsWith('Arrow')) event.stopImmediatePropagation();
+      return;
+    }
+    if (event.key === 'Home') {
+      event.preventDefault();
+      this.view('iso');
+    } else if (['+', '=', '-'].includes(event.key)) {
+      event.preventDefault();
+      const offset = this.camera.position.clone().sub(this.controls.target);
+      const distance = offset.length();
+      if (!distance) return;
+      const next = THREE.MathUtils.clamp(distance * (event.key === '-' ? 1.1 : 1 / 1.1),
+        Math.max(this.camera.near * 2, this.controls.minDistance),
+        Math.min(this.camera.far / 2, this.controls.maxDistance));
+      this.camera.position.copy(this.controls.target).addScaledVector(offset, next / distance);
+      this.controls.update();
+      this.render();
+    }
+  }
+
   get available() { return !this.renderer.getContext().isContextLost(); }
 
   render() { if (this.available) this.renderer.render(this.scene, this.camera); }
@@ -112,6 +151,7 @@ export class ModelViewer {
   dispose() {
     this.renderer.domElement.removeEventListener('webglcontextlost', this.contextChange);
     this.renderer.domElement.removeEventListener('webglcontextrestored', this.contextChange);
+    this.renderer.domElement.removeEventListener('keydown', this.keyDown);
     this.resizeObserver.disconnect();
     this.controls.dispose();
     this.clear();
@@ -128,5 +168,6 @@ export class ModelViewer {
       else object.material.dispose();
     }
     this.mesh = this.grid = undefined;
+    this.keyboardState();
   }
 }

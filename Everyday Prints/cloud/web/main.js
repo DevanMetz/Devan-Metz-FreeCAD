@@ -547,9 +547,15 @@ function discardResponse(response) {
 
 function previewDisplay(ready, loading = false) {
   $('viewer').setAttribute('aria-busy', String(loading));
+  const canvas = $('viewer').querySelector('canvas');
+  if (!ready && document.activeElement === canvas) {
+    const input = $('parameter-fields').querySelector('input');
+    input?.focus({ preventScroll: true });
+    input?.scrollIntoView({ block: 'center' });
+  }
   $('fallback-image').hidden = ready;
   document.querySelector('.view-tools').hidden = !ready;
-  document.querySelector('.viewer-help').textContent = ready ? 'Drag to orbit · Scroll to zoom · Right-drag to pan' : loading ? 'Loading 3D preview. The catalog image shows original dimensions.' : '3D preview is unavailable. The catalog image shows original dimensions.';
+  document.querySelector('.viewer-help').textContent = ready ? 'Drag to orbit · Scroll to zoom · Right-drag to pan. Focus preview: arrows pan, Shift + arrows orbit, + / − zoom, Home fits.' : loading ? 'Loading 3D preview. The catalog image shows original dimensions.' : '3D preview is unavailable. The catalog image shows original dimensions.';
   $('preview-badge').textContent = ready ? (state.item.kind === 'assembly' ? 'Reference assembly' : '3D preview') : 'Original catalog image';
   if (state.item.kind === 'print') $('download-note').textContent = ready ? 'The downloaded STL is the exact mesh in your preview.' : 'The verified STL uses the mesh dimensions shown here. The image shows the original model.';
 }
