@@ -28,7 +28,7 @@ let versionsLoading = false;
 let versionUndo = null;
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
-const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
+const HISTORY_CACHE_BYTES = 32 * 1024 * 1024;
 const BUILD_WAIT_MS = 15 * 60 * 1000;
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
 const printerInputs = ['printer-width', 'printer-depth', 'printer-height'].map($);
@@ -170,7 +170,7 @@ function rememberPage(updateURL = false) {
   let saved;
   if (dialog.open && state.item) {
     saved = { model: state.item.name, values: formValues(),
-      buffer: state.buffer, metadata: state.metadata, previewParameters: state.previewParameters };
+      buffer: state.buffer, metadata: state.metadata, previewParameters: state.previewParameters, cad: state.cad };
     if (updateURL) {
       try {
         const parameters = readParameters();
@@ -190,8 +190,12 @@ function rememberPage(updateURL = false) {
   let bytes = 0;
   for (const page of [...savedPages.values()].reverse()) {
     if (!page.buffer) continue;
-    if (bytes + page.buffer.byteLength > PREVIEW_CACHE_BYTES) page.buffer = page.metadata = page.previewParameters = null;
+    if (bytes + page.buffer.byteLength > HISTORY_CACHE_BYTES) page.buffer = page.metadata = page.previewParameters = null;
     else bytes += page.buffer.byteLength;
+  }
+  for (const page of [...savedPages.values()].reverse()) {
+    if (!page.buffer || (page.cad && bytes + page.cad.blob.size > HISTORY_CACHE_BYTES)) page.cad = null;
+    else if (page.cad) bytes += page.cad.blob.size;
   }
 }
 
@@ -662,6 +666,8 @@ async function loadOriginal(item, controller, epoch, { saved, feedback, reload =
   try {
     if (saved?.buffer && saved.metadata && saved.previewParameters) {
       await displayMesh(saved.buffer, saved.metadata, saved.previewParameters, epoch, true);
+      if (epoch !== state.epoch) return;
+      state.cad = saved.cad || null;
       return;
     }
     const buffer = await readOriginal(item.mesh, controller.signal, bytes => {

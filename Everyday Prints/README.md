@@ -114,6 +114,10 @@ Updating a preview or refreshing the original mesh for a CAD download keeps
 its camera angle, zoom, pan and Edges setting. Framing follows the new mesh size
 and center; opening another model or reopening the editor starts the usual 3D view.
 
+Back and Forward also reuse retained CAD and parts-kit downloads with their
+verified preview dimensions and filenames. History shares a 32 MiB file cache;
+previews take priority when older ZIPs need to be built again.
+
 Library transfers recover with Try again after stalled headers or bodies,
 oversized responses, or invalid text. Retry preserves searches, filters and
 shared dimensions, and late responses cannot replace a newer attempt.

@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **373 focused browser
-checks across thirty suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **379 focused browser
+checks across thirty-one suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -27,6 +27,18 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+History now restores verified CAD and assembly-kit ZIPs with their matching
+preview meshes, preserving exact bytes and dimension-bearing filenames. The
+baseline made another CAD request after Back and Forward restored the same
+custom preview. The shared 32 MiB history file budget retains preview meshes
+first and then newer ZIPs; evicting an older ZIP keeps its retained STL available.
+Restoration waits for mesh verification and checks the current view before
+attaching its cached ZIP. Six real-browser checks cover customized/original
+files, CAD refreshes, dirty and invalid fields, Revert edits and new previews,
+assembly components, superseded hashes, padded valid ZIPs exceeding the budget,
+and mobile keyboard downloads. Desktop and phone layouts were visually reviewed.
+Evidence is under `review/cloud_history_downloads_*`.
 
 Preview updates now retain the camera angle, zoom, pan and Edges setting in
 the same open model, including the original-mesh refresh for CAD downloads.

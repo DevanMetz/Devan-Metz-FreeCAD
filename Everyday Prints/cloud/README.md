@@ -726,6 +726,27 @@ drafts, missing previews, and a reachable keyboard-operated mobile stop button.
 A virtual clock tests the waiting deadline without a real 15-minute wait.
 Results are in `../review/cloud_build_recovery_validation.json`.
 
+Browser Back and Forward restore retained verified CAD and parts-kit ZIPs
+alongside their matching preview meshes. Repeat downloads keep the exact bytes
+and filenames and avoid another CAD request. Invalid or unbuilt fields still
+require correction or Revert edits before downloading. Updating the preview
+associates downloads with its new mesh, and late verification cannot attach an
+older ZIP to a newer model view.
+
+The history file cache holds at most 32 MiB across up to 64 remembered views.
+Verified preview meshes take priority, then newer CAD/kit ZIPs fill the remaining
+budget. Evicting an older ZIP keeps its retained preview available; downloading
+that ZIP again uses the normal verified CAD request.
+
+`verify_history_downloads_ui.py --offline` has six browser checks for customized
+and original downloads, one-time original CAD refreshes, repeated history,
+invalid and dirty drafts, Revert edits and replacement previews, reference kits
+and component navigation, delayed verification superseded by another view,
+mobile keyboard focus and exact filenames. Six valid ZIPs padded to about 6 MiB
+each exercise real budget eviction while preserving their original CAD members.
+The report, duplicate-request baseline and reviewed desktop/phone layouts are
+under `../review/cloud_history_downloads_*`.
+
 Verified STL and CAD downloads become available independently of the optional
 3D viewer. While its module loads, the editor shows a labeled original catalog
 image and the verified mesh dimensions. A late viewer arrival displays the

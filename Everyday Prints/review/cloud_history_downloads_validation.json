@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "custom_history_keeps_exact_files_and_mobile_keyboard_downloads",
+    "original_history_keeps_once_refreshed_mesh_and_zip",
+    "invalid_and_dirty_history_keeps_gates_and_new_previews_discard_old_cad",
+    "assembly_kit_history_keeps_reference_and_component_navigation",
+    "superseded_cached_verification_cannot_restore_old_cad",
+    "archive_budget_evicts_old_zips_without_discarding_verified_previews"
+  ],
+  "failures": [],
+  "history_cache_bytes": 33554432,
+  "padded_zip_bytes": 6291580,
+  "padded_zip_sha256": "645b9ca9ceff904d23796087b91c9f1c2a52aa010183979f6cfcc351f0ed0d9c",
+  "transport": "compiled assets and exact CAD fixtures, native assembly mesh, delayed hashes and real padded ZIPs"
+}

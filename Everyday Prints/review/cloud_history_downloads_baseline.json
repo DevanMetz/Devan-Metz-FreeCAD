@@ -1,0 +1,26 @@
+{
+  "action": "Download a customized CAD ZIP, navigate Back and Forward, then download it again",
+  "first_download": {
+    "filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+    "sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38"
+  },
+  "second_download": {
+    "filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+    "sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38"
+  },
+  "restored_dimensions_mm": "180.5 \u00d7 100 \u00d7 24",
+  "requests_before_navigation": [
+    "stl",
+    "cad"
+  ],
+  "requests_after_navigation": [
+    "stl",
+    "cad"
+  ],
+  "requests_after_second_download": [
+    "stl",
+    "cad",
+    "cad"
+  ],
+  "unnecessary_cad_requests": 1
+}
