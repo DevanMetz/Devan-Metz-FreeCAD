@@ -5,6 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
+import { readOriginal } from './original.js';
 import { PRINTER_STORAGE, readPrinterVolume, validPrinterVolume } from './printer.js';
 import { MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, undoVersionChange, versionBackup, versionName } from './versions.js';
 
@@ -649,17 +650,10 @@ async function loadOriginal(item, controller, epoch, { saved, feedback, reload =
       await displayMesh(saved.buffer, saved.metadata, saved.previewParameters, epoch, true);
       return;
     }
-    const response = await fetch(item.mesh, { signal: controller.signal, ...(reload ? { cache: 'reload' } : {}) });
-    if (epoch !== state.epoch || controller.signal.aborted) {
-      discardResponse(response);
-      return;
-    }
-    if (!response.ok || mediaType(response) === 'text/html') {
-      discardResponse(response);
-      throw new Error('The model preview could not be loaded.');
-    }
-    transfer = transferProgress('original preview', epoch);
-    const buffer = await readFile(response, controller.signal, MAX_FILE_BYTES, transfer.receive);
+    const buffer = await readOriginal(item.mesh, controller.signal, bytes => {
+      transfer ||= transferProgress('original preview', epoch);
+      if (bytes) transfer.receive(bytes);
+    }, reload);
     transfer.verify();
     await displayMesh(buffer, { model: item.name, parameters: item.defaults, bounds_mm: item.bounds_mm, mesh_sha256: item.mesh_sha256, units: 'mm', printable: item.kind === 'print' }, item.defaults, epoch, true);
     if (epoch !== state.epoch) return;

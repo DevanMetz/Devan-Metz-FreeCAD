@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "stalled_headers_recover_retry_and_ignore_expired_files",
+    "stalled_bodies_release_uncancellable_readers_and_late_bytes_stay_expired",
+    "positive_progress_keeps_slow_exact_transfers_alive_beyond_the_initial_deadline",
+    "empty_chunks_cannot_extend_inactivity_and_partial_data_never_becomes_downloadable",
+    "timeout_preserves_blank_and_ordered_list_drafts_name_errors_and_focus",
+    "accepted_dimensions_and_rejected_file_feedback_survive_background_timeouts",
+    "newer_retries_keep_their_own_deadline_and_old_headers_cannot_replace_them",
+    "cad_builds_supersede_original_deadlines_and_keep_stop_focus_and_exact_files",
+    "navigation_and_cached_history_discard_old_timers_and_late_original_meshes",
+    "assembly_timeouts_retry_components_and_graphics_failure_keep_verified_files",
+    "mobile_keyboard_timeout_retry_keeps_reachable_controls_and_exact_files"
+  ],
+  "failures": [],
+  "inactivity_ms": 15000,
+  "transport": "compiled assets and real CAD fixtures, controlled browser time and transfers"
+}

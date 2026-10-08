@@ -39,6 +39,22 @@ have not been deployed to the public library; see `../THREAD_SUMMARY.md`.
   cannot overwrite a newer model or build. No visitor CAD code executes.
 
 Original previews and STL downloads are static and do not wake the CAD service.
+Original preview transfers recover after 15 seconds without headers or new file
+bytes. Each positive receipt resets the inactivity timer so slower transfers can
+finish. Empty chunks cannot keep a stalled request alive. Expired responses and
+superseded requests cancel unused bodies or release their readers; late files
+cannot replace a newer preview. Retry original preview reloads the static STL,
+keeping field edits, file feedback, saved versions and history. CAD work keeps
+its own deadline and Stop controls, and cached previews need no network timer.
+
+`verify_original_idle_ui.py --offline` checks eleven browser recovery scenarios
+with controlled time, including progressing and empty chunks, uncancellable
+readers, late headers, raw drafts and local files, retries, CAD focus and exact
+STL/ZIP downloads, cached history, assemblies, graphics fallback and mobile
+keyboard use. Evidence and reviewed layouts are under
+`../review/cloud_original_idle_*`. Nine unit checks cover the inactivity
+boundary, timer cleanup, parent cancellation, header races and transfer limits.
+
 The preview panel's Check printer fit uses dimensions measured from the verified
 STL, comparing them with a visitor's usable build volume in millimeters. It
 allows a 90° turn on the bed while keeping the saved Z orientation. Results
@@ -262,6 +278,7 @@ python verify_versions_sync_ui.py
 python verify_versions_undo_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
+python verify_original_idle_ui.py
 python verify_share_ui.py
 python verify_parameters_ui.py
 python verify_field_feedback_ui.py

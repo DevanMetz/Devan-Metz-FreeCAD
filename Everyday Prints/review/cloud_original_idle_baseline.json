@@ -1,0 +1,20 @@
+[
+  {
+    "mode": "headers",
+    "virtual_elapsed_ms": 960000,
+    "loading": true,
+    "status": "Loading preview",
+    "feedback": "Loading the original model\u2026",
+    "retry_enabled": true,
+    "cancelled": 0
+  },
+  {
+    "mode": "body",
+    "virtual_elapsed_ms": 960000,
+    "loading": true,
+    "status": "Loading preview",
+    "feedback": "Loading the original model\u2026",
+    "retry_enabled": true,
+    "cancelled": 0
+  }
+]

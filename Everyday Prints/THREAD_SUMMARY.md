@@ -10,11 +10,24 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **346 focused browser
-checks across twenty-nine suites**, the **53-model catalog and image smoke test**,
-**84 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **357 focused browser
+checks across thirty suites**, the **53-model catalog and image smoke test**,
+**93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
+Original preview requests now recover after 15 seconds without response headers
+or new file bytes. Positive receipts reset inactivity, while empty chunks do
+not. Expired or superseded transfers cancel unused bodies or release readers,
+including cancellation just after headers arrive. Retry reloads the static STL
+without applying different measurements; newer files, invalid drafts, names,
+history, cached previews and CAD work keep their state. Eleven browser checks
+cover inactivity, slow transfers, late replies, imports, retry deadlines, exact
+STL/CAD files, navigation, assemblies, graphics fallback and mobile keyboard use.
+The baseline kept stalled headers and bodies loading after sixteen simulated
+minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
+limits. Desktop and mobile layouts were visually reviewed. Evidence is under
+`review/cloud_original_idle_*`.
+
 The latest measurements can recover after a refresh in the same tab, including
 invalid drafts, while custom downloads still require a verified matching preview.
 Customized browser STL and CAD/kit filenames include verified preview dimensions

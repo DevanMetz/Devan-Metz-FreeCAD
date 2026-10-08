@@ -66,6 +66,10 @@ separate received-byte count preserves saved-dimension and error messages, and
 downloads become available only after verification.
 File transfers stop at the 8 MiB limit; interrupted downloads preserve the last
 verified preview and allow retrying.
+Original preview transfers recover after 15 seconds without new headers or file
+bytes. Active receipts reset that timer. Retry original preview keeps your
+measurements and reloads the static file; expired replies cannot replace newer
+previews or interrupt CAD work.
 Received bytes are copied immediately, preserving exact files when a transport
 reuses its chunk buffers or includes empty chunks.
 Preview and CAD response details are checked before transferring files. Invalid
