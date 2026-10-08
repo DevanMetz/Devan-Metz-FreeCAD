@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "removal_restores_full_library_order_identity_and_selection",
+    "snapshot_matches_the_state_read_by_the_mutation",
+    "undo_replacement_keeps_verified_custom_files_and_cached_cad",
+    "rename_undo_keeps_invalid_fields_and_new_name_draft",
+    "only_the_latest_successful_save_can_be_undone",
+    "multi_model_backup_import_undo_restores_the_prior_library_atomically",
+    "unchanged_actions_and_failed_mutations_keep_the_last_real_undo",
+    "quota_denied_and_corrupt_storage_preserve_records_and_allow_retry",
+    "external_changes_clear_undo_but_unchanged_events_keep_it",
+    "unseen_newer_records_block_undo_and_refresh_the_list",
+    "undo_supersedes_backups_and_keeps_independent_dimension_file_feedback",
+    "assembly_undo_and_editor_navigation_keep_canonical_inventory",
+    "mobile_keyboard_busy_guard_and_refresh_keep_exact_downloads"
+  ],
+  "failures": [],
+  "undo_depth": 1,
+  "transport": "compiled assets and real CAD fixtures"
+}

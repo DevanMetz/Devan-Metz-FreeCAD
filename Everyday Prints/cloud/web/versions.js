@@ -80,6 +80,16 @@ export function replaceVersion(storage, models, id, item, parameters) {
   return writeVersions(storage, records.map(record => record.id === id ? { ...record, dimensions } : record));
 }
 
+export function undoVersionChange(storage, models, change) {
+  const current = readVersions(storage, models);
+  const before = checkedVersions(change?.before, models);
+  const after = checkedVersions(change?.after, models);
+  if (JSON.stringify(current) !== JSON.stringify(after)) {
+    throw Object.assign(new Error('Saved versions changed since this action. Undo cannot replace newer versions.'), { versionsChanged: true });
+  }
+  return writeVersions(storage, before);
+}
+
 export function versionBackup(storage, models) {
   const versions = readVersions(storage, models).map(({ name, dimensions }) => ({ name, dimensions }));
   if (!versions.length) throw new Error('Save a named version before exporting a backup.');

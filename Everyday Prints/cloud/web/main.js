@@ -5,7 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
-import { MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup, versionName } from './versions.js';
+import { MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, undoVersionChange, versionBackup, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -23,6 +23,7 @@ let buildFocus;
 let versions = [];
 let versionsRead = 0;
 let versionsLoading = false;
+let versionUndo = null;
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
@@ -741,6 +742,25 @@ function versionControls() {
   $('replace-version').disabled = state.busy || !selected || selected.dimensions.model !== state.item?.name;
   $('export-versions').disabled = state.busy || !versions.length;
   $('import-versions').disabled = state.busy;
+  $('undo-version').disabled = state.busy || !versionUndo;
+  $('undo-version').hidden = !versionUndo;
+}
+
+function editVersions(action) {
+  let beforeText;
+  const result = action({
+    getItem(key) { beforeText = localStorage.getItem(key); return beforeText; },
+    setItem(key, text) { localStorage.setItem(key, text); },
+  });
+  const before = readVersions({ getItem: () => beforeText }, state.models);
+  const after = Array.isArray(result) ? result : result.records;
+  const selected = $('version-choice').value;
+  if (versionUndo && JSON.stringify(before) !== JSON.stringify(versionUndo.after)) {
+    versionUndo = null;
+    versionControls();
+  }
+  if (JSON.stringify(before) !== JSON.stringify(after)) versionUndo = { before, after: structuredClone(after), selected };
+  return result;
 }
 
 function renderVersions(selected = $('version-choice').value) {
@@ -790,7 +810,7 @@ function saveCurrentVersion() {
   catch (error) { invalidParameters(error, true); return; }
   if (supersedeDimensionsRead()) markDirty();
   try {
-    versions = saveVersion(localStorage, state.models, state.item, parameters, name);
+    versions = editVersions(storage => saveVersion(storage, state.models, state.item, parameters, name));
     renderVersions(versions[0].id);
     $('version-name').value = '';
     $('version-name').setAttribute('aria-invalid', 'false');
@@ -829,7 +849,7 @@ async function loadVersionBackup(file) {
       throw new Error('The version backup could not be read. Choose it again.');
     } finally { clearTimeout(timer); }
     if (!current()) return;
-    const result = importVersionBackup(localStorage, state.models, text);
+    const result = editVersions(storage => importVersionBackup(storage, state.models, text));
     versions = result.records;
     renderVersions();
     versionBackupMessage(result.added ? `Imported ${result.added} ${result.added === 1 ? 'version' : 'versions'}.${result.skipped ? ` ${result.skipped} already saved.` : ''} Current measurements are kept.` : 'These versions are already saved. Current measurements are kept.');
@@ -1102,7 +1122,7 @@ $('rename-version').addEventListener('click', () => {
   }
   const id = $('version-choice').value;
   try {
-    versions = renameVersion(localStorage, state.models, id, name);
+    versions = editVersions(storage => renameVersion(storage, state.models, id, name));
     renderVersions(id);
     if (appliedDimensions?.versionId === id) appliedDimensions.name = name;
     $('version-name').value = '';
@@ -1121,7 +1141,7 @@ $('replace-version').addEventListener('click', () => {
   if (supersedeDimensionsRead()) markDirty();
   const id = $('version-choice').value;
   try {
-    versions = replaceVersion(localStorage, state.models, id, state.item, parameters);
+    versions = editVersions(storage => replaceVersion(storage, state.models, id, state.item, parameters));
     renderVersions(id);
     const version = versions.find(record => record.id === id);
     versionMessage(`Dimensions replaced in “${version.name}”. ${sameParameters(parameters, state.previewParameters) ? 'These measurements match the verified preview.' : 'Update preview to build changed measurements.'}`);
@@ -1133,12 +1153,29 @@ $('remove-version').addEventListener('click', () => {
   if (state.busy) return;
   supersedeVersionRead();
   try {
-    versions = removeVersion(localStorage, state.models, $('version-choice').value);
+    versions = editVersions(storage => removeVersion(storage, state.models, $('version-choice').value));
     renderVersions('');
     versionMessage('Version removed. Current measurements and files are kept.');
     $('version-choice').focus();
   } catch (error) {
     versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The version could not be removed. Browser storage is unavailable.' : error.message, true);
+  }
+});
+$('undo-version').addEventListener('click', () => {
+  if (state.busy || !versionUndo) return;
+  supersedeVersionRead();
+  try {
+    const selected = versionUndo.selected;
+    versions = undoVersionChange(localStorage, state.models, versionUndo);
+    versionUndo = null;
+    renderVersions(selected);
+    const opened = versions.find(version => version.id === appliedDimensions?.versionId);
+    if (opened) appliedDimensions.name = opened.name;
+    versionMessage('Last version change undone. Current measurements and files are kept.');
+    $('version-choice').focus();
+  } catch (error) {
+    if (error.versionsChanged) { versionUndo = null; refreshVersions(); $('version-choice').focus(); }
+    versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'Undo could not be saved. Browser storage is unavailable. Existing versions are kept. Try again or use Save dimensions to keep a file.' : error.message, true);
   }
 });
 $('export-versions').addEventListener('click', () => {
@@ -1291,12 +1328,14 @@ window.addEventListener('storage', event => {
     const next = readVersions(localStorage, state.models);
     const recovering = !$('versions-sync-message').hidden && $('versions-sync-message').classList.contains('error');
     if (JSON.stringify(next) === JSON.stringify(versions) && !recovering) return;
+    versionUndo = null;
     versions = next;
     renderVersions();
     const opened = versions.find(version => version.id === appliedDimensions?.versionId);
     if (opened) appliedDimensions.name = opened.name;
     versionsSyncMessage(recovering ? 'Saved versions are available again. Current measurements are kept.' : 'Saved versions changed in another tab. Current measurements are kept.');
   } catch (error) {
+    versionUndo = null;
     versions = [];
     renderVersions();
     versionsSyncMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser. Current measurements are kept. Use Save dimensions to keep a file.' : `${error.message} Current measurements are kept.`, true);

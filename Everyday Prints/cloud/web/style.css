@@ -54,5 +54,6 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .version-actions .secondary{width:100%;min-height:44px;padding:12px 8px}
 .version-save input[aria-invalid=true]{border-color:#b03d25}
 #version-message,#versions-sync-message{overflow-wrap:anywhere}
+#undo-version{min-height:44px;margin:12px 0}
 .version-backups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
 #version-backup-message{overflow-wrap:anywhere}

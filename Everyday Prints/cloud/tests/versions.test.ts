@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { MAX_VERSIONS, MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup } from '../web/versions.js';
+import { MAX_VERSIONS, MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, undoVersionChange, versionBackup } from '../web/versions.js';
 
 const cloud = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const models = JSON.parse(readFileSync(resolve(cloud, 'public/catalog.json'), 'utf8')).models;
@@ -12,6 +12,94 @@ function memory(text: string | null = null) {
   return { text, getItem(key: string) { assert.equal(key, VERSIONS_KEY); return this.text; },
     setItem(key: string, value: string) { assert.equal(key, VERSIONS_KEY); this.text = value; } };
 }
+
+test('undo restores removed identities and canonical dimensions for all 53 models', () => {
+  for (const item of models) {
+    const storage = memory();
+    const before = saveVersion(storage, models, item, item.defaults, 'Original');
+    const after = removeVersion(storage, models, before[0].id);
+    assert.deepEqual(undoVersionChange(storage, models, { before, after }), before);
+    assert.deepEqual(readVersions(storage, models), before);
+  }
+});
+
+test('save, rename, replacement and multi-entry backup imports undo to exact prior names, values and order', () => {
+  const incoming = memory();
+  const cable = models.find((item: any) => item.name === 'cable_comb');
+  const parameters = JSON.parse(readFileSync(resolve(cloud, '../review/cloud_export_samples/cable_comb/parameters.json'), 'utf8')).parameters;
+  saveVersion(incoming, models, cable, parameters, 'Routing');
+  saveVersion(incoming, models, tray, { ...tray.defaults, length: 180.555 }, 'Other tray');
+  for (const action of [
+    (storage: any, id: string) => saveVersion(storage, models, tray, tray.defaults, 'New'),
+    (storage: any, id: string) => renameVersion(storage, models, id, 'Renamed 🧰'),
+    (storage: any, id: string) => replaceVersion(storage, models, id, tray, { ...tray.defaults, length: 190.555 }),
+    (storage: any, id: string) => importVersionBackup(storage, models, versionBackup(incoming, models)).records,
+  ]) {
+    const storage = memory();
+    saveVersion(storage, models, cable, cable.defaults, 'Existing routing');
+    const before = saveVersion(storage, models, tray, tray.defaults, 'Original');
+    const after = action(storage, before[0].id);
+    assert.notDeepEqual(after, before);
+    assert.deepEqual(undoVersionChange(storage, models, { before, after }), before);
+    assert.deepEqual(readVersions(storage, models), before);
+  }
+});
+
+test('undo cannot overwrite newer saves, edits, removals or reordered records', () => {
+  for (const action of [
+    (storage: any, id: string) => saveVersion(storage, models, tray, tray.defaults, 'Elsewhere'),
+    (storage: any, id: string) => renameVersion(storage, models, id, 'Elsewhere'),
+    (storage: any, id: string) => replaceVersion(storage, models, id, tray, { ...tray.defaults, length: 180.5 }),
+    (storage: any, id: string) => removeVersion(storage, models, id),
+    (storage: any, id: string) => { storage.text = JSON.stringify(readVersions(storage, models).reverse()); },
+  ]) {
+    const storage = memory();
+    saveVersion(storage, models, tray, tray.defaults, 'Keep');
+    const before = saveVersion(storage, models, tray, tray.defaults, 'Original');
+    const after = renameVersion(storage, models, before[0].id, 'Changed');
+    action(storage, before[0].id);
+    const latest = storage.text;
+    assert.throws(() => undoVersionChange(storage, models, { before, after }), (error: any) => error.versionsChanged === true && /newer versions/.test(error.message));
+    assert.equal(storage.text, latest);
+  }
+});
+
+test('invalid undo records and corrupt current storage never reach a write', () => {
+  const storage = memory();
+  const before = saveVersion(storage, models, tray, tray.defaults, 'Original');
+  const after = renameVersion(storage, models, before[0].id, 'Changed');
+  const text = storage.text;
+  for (const bad of [null, {}, [before[0], before[0]], Array(21).fill(before[0]), [{ ...before[0], dimensions: { ...before[0].dimensions, parameters: { length: '180' } } }]]) {
+    assert.throws(() => undoVersionChange(storage, models, { before: bad, after }));
+    assert.throws(() => undoVersionChange(storage, models, { before, after: bad }));
+    assert.equal(storage.text, text);
+  }
+  storage.text = 'broken';
+  assert.throws(() => undoVersionChange(storage, models, { before, after }));
+  assert.equal(storage.text, 'broken');
+});
+
+test('failed undo writes preserve the change and can retry; denied reads and untrusted geometry stay guarded', () => {
+  const storage = memory();
+  const item = models.find((item: any) => item.name === 'soap_dish_assembly');
+  const before = saveVersion(storage, models, item, item.defaults, 'Set');
+  const after = removeVersion(storage, models, before[0].id);
+  const text = storage.text;
+  const write = storage.setItem, read = storage.getItem;
+  storage.setItem = () => { throw new DOMException('Full', 'QuotaExceededError'); };
+  assert.throws(() => undoVersionChange(storage, models, { before, after }), /Full/);
+  assert.equal(storage.text, text);
+  storage.getItem = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.throws(() => undoVersionChange(storage, models, { before, after }), /Denied/);
+  storage.getItem = read;
+  storage.setItem = write;
+  const untrusted = structuredClone(before);
+  untrusted[0].dimensions.kit = [{ model: 'parts_tray', quantity: 999 }];
+  untrusted[0].dimensions.mesh_sha256 = 'untrusted';
+  const restored = undoVersionChange(storage, models, { before: untrusted, after });
+  assert.deepEqual(restored, before);
+  assert.deepEqual(restored[0].dimensions.kit, item.kit);
+});
 
 test('renaming every catalog model retains its identity, dimensions and canonical assembly inventory', () => {
   for (const item of models) {

@@ -327,9 +327,16 @@ def main():
             expect(page.locator('#download')).to_be_enabled()
             _, body = download(page, keyboard=True)
             page.locator('#import-versions').focus()
-            with page.expect_file_chooser() as event:
-                page.keyboard.press('Enter')
-            event.value.set_files({'name': 'backup.json', 'mimeType': 'application/json', 'buffer': body})
+            expect(page.locator('#import-versions')).to_be_focused()
+            chooser_session = page.context.new_cdp_session(page)
+            try:
+                with page.expect_file_chooser() as event:
+                    # Playwright subscribes asynchronously; acknowledge interception before Enter.
+                    chooser_session.send('Page.setInterceptFileChooserDialog', {'enabled': True})
+                    page.keyboard.press('Enter')
+                event.value.set_files({'name': 'backup.json', 'mimeType': 'application/json', 'buffer': body})
+            finally:
+                chooser_session.detach()
             expect(page.locator('#version-backup-message')).to_contain_text('already saved')
             expect(page.locator('#import-versions')).to_be_focused()
             expect(page.locator('#download')).to_be_enabled()

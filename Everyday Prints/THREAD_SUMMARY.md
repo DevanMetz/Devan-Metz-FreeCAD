@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **308 focused browser
-checks across twenty-six suites**, the **53-model catalog and image smoke test**,
-**74 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **321 focused browser
+checks across twenty-seven suites**, the **53-model catalog and image smoke test**,
+**79 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -127,6 +127,24 @@ two real tabs and cover these paths, early catalog events, closed editors, exact
 files, storage failures, focus and mobile layout. The baseline reproduced stale
 renames and enabled actions after removal. Evidence and reviewed layouts are under
 `review/cloud_versions_sync_*`.
+
+The latest successful saved-library change now has one Undo in this tab. It
+covers Save, Rename, Replace dimensions, Remove and multi-entry backup imports,
+restoring identities, names, exact measurements, order and canonical assembly
+inventory. Current fields, typed names, validation feedback, history, preview
+files and cached CAD stay intact. Failed and unchanged actions retain the last
+meaningful Undo; another successful change replaces it and refresh clears it.
+Fresh storage must still match the captured result, preventing newer records from
+being overwritten even before an external event arrives. External changes discard
+Undo, while unrelated or unchanged events keep it. Failed writes remain retryable.
+Undo supersedes pending backups, preserves independent dimensions-file reads,
+remains disabled during CAD work and restores focus to the version list.
+Undo snapshots now capture the mutation’s own storage read. A baseline reproduced
+a version lost when storage changed between the earlier helper’s two reads.
+Thirteen browser checks and five unit checks cover these paths, full libraries,
+all fifty-three model schemas, exact STL/CAD files, canonical assemblies, storage
+failures/retries, newer data, pending work and mobile keyboard use. Reviewed
+layouts and evidence are under `review/cloud_versions_undo_*`.
 
 ## Complete design inventory
 

@@ -402,3 +402,17 @@ only when its focused action becomes unavailable. Pending backups must merge
 against fresh data without losing new entries or partly exceeding capacity.
 Keep opened version names current through delayed original previews, handle
 changes before catalog readiness and while closed, and review mobile keyboard use.
+
+Allow one Undo for the latest successful saved-library change in this tab,
+including Save, Rename, Replace dimensions, Remove and multi-entry backup imports.
+Restore prior identities, names, measurements, order and canonical assembly data
+without applying them to current editor fields or changing history/files. Return
+the previous selection and reachable keyboard focus. Keep the last meaningful
+Undo after unchanged or failed actions; newer successful changes replace it and
+refresh clears it. Compare freshly validated storage with the captured result
+before restoring, preserving newer or unreadable records and failed writes.
+External library changes discard Undo; unchanged and unrelated events keep it.
+Allow retry after a failed Undo write, supersede pending backups, preserve
+independent file feedback, guard active CAD work and review mobile keyboard use.
+Capture the snapshot from the mutation’s own storage read, so a separate earlier
+read cannot omit entries that the mutation preserved.

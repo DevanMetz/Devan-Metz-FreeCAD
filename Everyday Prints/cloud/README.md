@@ -107,6 +107,29 @@ canonical assemblies, exact downloads, cached CAD reuse, storage failures,
 late reads, Stop recovery and mobile keyboard use. Evidence and reviewed layouts
 are under `../review/cloud_version_edits_*`.
 
+Undo last version change restores the library before its latest successful Save,
+Rename, Replace dimensions, Remove or Import action, including a multi-entry
+backup import. Identities, order, names, exact measurements and canonical assembly
+quantities are restored together. The previous selection returns when it still
+exists, and keyboard focus returns to the version list. Current editor fields,
+typed names, field errors, history, preview files and cached CAD remain intact.
+
+Undo keeps one in-memory snapshot in this tab. Another successful change replaces
+it; unchanged renames/replacements, repeated imports and failed actions
+leave the last meaningful change available. Reloading clears it. External library
+changes discard it, while unrelated or unchanged storage events keep it. The
+restore operation also compares freshly validated storage with the captured
+result, so a newer change is kept even before its storage event arrives.
+Malformed records and failed reads/writes preserve data; failed Undo writes can
+be retried. The snapshot captures the same storage read used by the mutation,
+preventing a second read from separating its input from the recorded history.
+A baseline reproduced an intervening version lost by the earlier double read.
+Undo supersedes pending backup reads, keeps independent dimensions-file
+feedback, and is disabled during CAD work. Thirteen compiled-browser checks cover
+full libraries, all mutations, exact downloads and cached CAD, assemblies,
+newer entries, failed writes/retries, pending files and mobile keyboard use.
+Evidence and reviewed layouts are under `../review/cloud_versions_undo_*`.
+
 Saved-version lists also refresh after changes in another tab, including Save,
 Rename, Replace dimensions, Remove and clearing browser storage. The selected
 identity stays selected while it exists. Removing it clears the selection and
@@ -221,6 +244,7 @@ python verify_versions_ui.py
 python verify_version_backups_ui.py
 python verify_version_edits_ui.py
 python verify_versions_sync_ui.py
+python verify_versions_undo_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py
@@ -716,7 +740,10 @@ Unicode names, exact decimals/lists, canonical inventory, atomic rejection,
 UTF-8/BOM boundaries, capacity and failed writes. Five additional checks cover
 in-place renaming for every model, decimal/list replacement in full libraries,
 fresh records, invalid fields, model mismatches, corrupt data and unchanged
-actions during quota failures. All seventy-four unit tests pass.
+actions during quota failures. Five Undo checks cover restoration for all 53
+models, exact values/order through every mutation, guards against newer entries,
+invalid snapshots, corrupt storage, failed writes/retries and canonical inventory.
+All seventy-nine unit tests pass.
 
 ## API
 

@@ -26,6 +26,9 @@ Rename version uses the name above the saved-version list. Replace dimensions
 saves the current measurements into the selected version of the open model.
 Both keep its identity and current preview files; changed dimensions still need
 Update preview.
+Undo last version change restores the library before the latest successful
+save, rename, replacement, removal or import. Current measurements and files stay
+in the editor. Undo is available in this tab until a newer change or refresh.
 Saved-version lists refresh when another tab changes the library. Current
 measurements, preview files and cached CAD stay in the editor.
 Export versions saves all version names and measurements in one JSON backup.
