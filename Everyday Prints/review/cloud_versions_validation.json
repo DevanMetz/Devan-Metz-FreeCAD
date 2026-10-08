@@ -1,0 +1,20 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "save_unbuilt_decimals_refresh_open_and_download_exact_files",
+    "matching_version_reuses_preview_and_cached_cad",
+    "cross_model_lists_keep_order_and_normal_history",
+    "assembly_versions_use_canonical_inventory_and_component_navigation",
+    "name_field_validation_duplicates_and_html_labels_preserve_versions",
+    "version_limit_and_removal_preserve_current_fields_and_files",
+    "corrupt_storage_is_preserved_and_portable_dimensions_still_work",
+    "quota_failures_and_denied_reads_keep_the_current_preview",
+    "delayed_cross_model_preview_cannot_replace_newer_version_feedback",
+    "named_actions_supersede_late_local_file_reads",
+    "active_build_blocks_named_actions_without_losing_measurements",
+    "mobile_and_desktop_version_controls_keep_keyboard_downloads"
+  ],
+  "failures": [],
+  "max_versions": 20,
+  "transport": "compiled assets and real CAD fixtures"
+}

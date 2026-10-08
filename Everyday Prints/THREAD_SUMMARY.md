@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **256 focused browser
-checks across twenty-two suites**, the **53-model catalog and image smoke test**,
-**56 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **268 focused browser
+checks across twenty-three suites**, the **53-model catalog and image smoke test**,
+**63 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -69,6 +69,19 @@ exact dimensions, rotation and height limits, measured mesh versus CAD rounding,
 preview failures, unavailable graphics, CAD reuse, components, history, refresh,
 storage failures, pending work and mobile keyboard downloads. Desktop and mobile
 layouts were visually reviewed. Evidence is under `review/cloud_printer_fit_*`.
+Saved dimensions now offers up to twenty named versions in this browser. Valid
+unbuilt measurements can be saved and reopened across models, including ordered
+lists and assembly parameters. Changed versions require a new verified preview;
+matching versions reuse the mesh and cached CAD files. Duplicate names within a
+model are rejected, Remove keeps current fields and files, and Save dimensions
+remains the portable backup. Bounded, validated storage preserves old records on
+quota failures and rejects malformed or incompatible records without replacing
+them. Actions read current storage, supersede older imports and remain disabled
+during CAD work. Twelve browser checks cover these flows, exact STL/CAD downloads,
+refresh/history, late previews, and keyboard/mobile use. Seven unit tests cover
+all fifty-three defaults, real exported decimals/lists, canonical kit quantities,
+duplicate names, caps, corrupt data, failed writes and actions from another view.
+Desktop and mobile layouts were reviewed. Evidence is under `review/cloud_versions_*`.
 
 ## Complete design inventory
 

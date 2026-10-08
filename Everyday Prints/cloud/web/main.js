@@ -5,6 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
+import { readVersions, removeVersion, saveVersion, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -19,6 +20,7 @@ let appliedDimensions = null;
 let originalFeedback;
 let shareRequest = 0;
 let buildFocus;
+let versions = [];
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
@@ -350,6 +352,8 @@ function setBusy(busy) {
   $('stop-build').hidden = !busy;
   $('revert-parameters').disabled = busy;
   $('save-dimensions').disabled = $('load-dimensions').disabled = busy;
+  $('save-version').disabled = busy;
+  versionControls();
   if (!state.previewParameters) $('revert-parameters').hidden = true;
   setDownloads();
   if (busy && dialog.open && focused.disabled) $('stop-build').focus();
@@ -719,7 +723,80 @@ function loadedFileIsCurrent() {
 }
 
 function dimensionsLoaded() {
+  if (appliedDimensions?.name) {
+    message(`Version “${appliedDimensions.name}” loaded. ${sameParameters(state.parameters, state.previewParameters) ? 'These dimensions match the verified preview.' : 'Update the preview to build this version.'}`);
+    return;
+  }
   message(sameParameters(state.parameters, state.previewParameters) ? 'Saved dimensions match the verified preview.' : 'Saved dimensions loaded. Update the preview to build this version.');
+}
+
+function versionControls() {
+  const selected = versions.some(version => version.id === $('version-choice').value);
+  $('load-version').disabled = state.busy || !selected;
+  $('remove-version').disabled = state.busy || !selected;
+}
+
+function renderVersions(selected = $('version-choice').value) {
+  $('version-choice').innerHTML = `<option value="">${versions.length ? 'Choose a saved version…' : 'No saved versions yet'}</option>` + versions.map(version => {
+    const item = state.models.find(model => model.name === version.dimensions.model);
+    return `<option value="${escape(version.id)}">${escape(version.name)} · ${escape(item.title)}</option>`;
+  }).join('');
+  $('version-choice').value = selected;
+  versionControls();
+}
+
+function versionMessage(text, error = false) {
+  $('version-message').textContent = text;
+  $('version-message').classList.toggle('error', error);
+}
+
+function refreshVersions() {
+  try { versions = readVersions(localStorage, state.models); renderVersions(); }
+  catch (error) {
+    versions = [];
+    renderVersions();
+    versionMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser. Use Save dimensions to keep a file.' : error.message, true);
+  }
+}
+
+function saveCurrentVersion() {
+  if (state.busy || !state.item) return;
+  let name, parameters;
+  try { name = versionName($('version-name').value); }
+  catch (error) {
+    $('version-name').setAttribute('aria-invalid', 'true');
+    versionMessage(error.message, true);
+    $('version-name').focus();
+    return;
+  }
+  try { parameters = readParameters(); }
+  catch (error) { invalidParameters(error, true); return; }
+  if (supersedeDimensionsRead()) markDirty();
+  try {
+    versions = saveVersion(localStorage, state.models, state.item, parameters, name);
+    renderVersions(versions[0].id);
+    $('version-name').value = '';
+    $('version-name').setAttribute('aria-invalid', 'false');
+    versionMessage(`Version “${name}” saved in this browser. Save dimensions keeps a portable file.`);
+    message('Current dimensions saved as a named version.');
+  } catch (error) {
+    versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'This version could not be saved in this browser. Use Save dimensions to keep a file.' : error.message, true);
+  }
+}
+
+async function applyDimensions(item, parameters, { read = ++dimensionsRead, name } = {}) {
+  const epoch = state.epoch;
+  if (item.name !== state.item.name) {
+    appliedDimensions = { epoch: epoch + 1, read, name };
+    await openModel(item.name, parameters, { fromFile: true });
+    return;
+  }
+  fields(parameters);
+  markDirty();
+  rememberPage(true);
+  appliedDimensions = { epoch, read, name };
+  dimensionsLoaded();
+  $('parameter-fields').querySelector('input')?.focus();
 }
 
 function supersedeDimensionsRead() {
@@ -753,18 +830,7 @@ async function loadDimensions(file) {
     } finally { clearTimeout(timer); }
     if (!current()) return;
     const { item, parameters } = savedDimensions(text, state.models);
-    if (item.name !== state.item.name) {
-      appliedDimensions = { epoch: epoch + 1, read };
-      await openModel(item.name, parameters, { fromFile: true });
-      return;
-    } else {
-      fields(parameters);
-      markDirty();
-      rememberPage(true);
-      appliedDimensions = { epoch, read };
-    }
-    dimensionsLoaded();
-    $('parameter-fields').querySelector('input')?.focus();
+    await applyDimensions(item, parameters, { read });
   } catch (error) {
     if (current()) {
       const text = `Saved dimensions could not be loaded. ${error.message}`;
@@ -942,6 +1008,40 @@ $('dimensions-file').addEventListener('change', event => {
   event.target.value = '';
   loadDimensions(file);
 });
+$('save-version').addEventListener('click', saveCurrentVersion);
+$('version-name').addEventListener('input', () => {
+  $('version-name').setAttribute('aria-invalid', 'false');
+  versionMessage('Save up to 20 named versions in this browser. Save dimensions keeps a portable file.');
+});
+$('version-name').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); saveCurrentVersion(); } });
+$('version-choice').addEventListener('change', versionControls);
+$('load-version').addEventListener('click', async () => {
+  if (state.busy) return;
+  const id = $('version-choice').value;
+  try {
+    versions = readVersions(localStorage, state.models);
+    renderVersions(id);
+    const version = versions.find(record => record.id === id);
+    if (!version) throw new Error('This version is no longer saved. Choose another version.');
+    supersedeDimensionsRead();
+    clearShare();
+    versionMessage(`Version “${version.name}” opened. Update preview to build changed dimensions.`);
+    await applyDimensions(state.models.find(item => item.name === version.dimensions.model), version.dimensions.parameters, { name: version.name });
+  } catch (error) {
+    versionMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser. Use Load dimensions to reopen a file.' : error.message, true);
+  }
+});
+$('remove-version').addEventListener('click', () => {
+  if (state.busy) return;
+  try {
+    versions = removeVersion(localStorage, state.models, $('version-choice').value);
+    renderVersions('');
+    versionMessage('Version removed. Current measurements and files are kept.');
+    $('version-choice').focus();
+  } catch (error) {
+    versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The version could not be removed. Browser storage is unavailable.' : error.message, true);
+  }
+});
 $('share').addEventListener('click', async () => {
   if (supersedeDimensionsRead() && !state.busy) markDirty();
   clearShare();
@@ -1044,6 +1144,7 @@ async function start() {
     index.addAll(models.map(model => ({ ...model, words: model.name.replaceAll('_', ' ') })));
     // Publish only a complete catalog, so a failed attempt cannot leave partial data.
     state.models = models;
+    refreshVersions();
     searchIndex = index;
     const category = $('category').value;
     $('category').innerHTML = '<option value="">All categories</option>' + [...new Set(models.map(model => model.category))].map(category => `<option value="${escape(category)}">${escape(category)}</option>`).join('');

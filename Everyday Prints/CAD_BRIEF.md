@@ -356,3 +356,14 @@ settings separate from model parameters, CAD progress, history and downloads.
 Remember valid settings when browser storage allows it, and keep the check usable
 when storage is malformed or unavailable. Provide an accessible Clear action
 and explain that slicer brims and printer clearances require room.
+Let visitors save up to twenty named dimension versions in this browser and
+reopen them across parts and assemblies. Validate names and all stored parameters
+against the current catalog, retain fine decimals and list order, and derive
+assembly quantities from canonical inventory. Preserve ordinary preview/download
+guards: unbuilt versions need Update preview, while matching versions can reuse
+verified meshes and cached CAD. Removing a version must keep current fields and
+files. Bound storage, reject same-model duplicate names, read current records on
+each action, and preserve saved data on corrupt reads or failed writes. Offer the
+portable Save dimensions flow for storage failures. Named actions must supersede
+older file imports, keep late preview feedback current, and stay disabled during
+CAD work. Review desktop/mobile controls and keyboard focus.

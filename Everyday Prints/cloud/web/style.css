@@ -41,3 +41,14 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .printer-fit-result[data-fit=fits],.printer-fit-result[data-fit=rotate]{color:var(--green)}
 .printer-fit-result[data-fit=large]{color:#b03d25}
 .printer-check .text-button{min-height:44px;font-size:12px}
+
+.named-versions{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.named-versions label{display:block;margin:8px 0;color:#22392f;font-size:11px}
+.version-save,.version-actions{display:flex;gap:10px;align-items:center}
+.version-save input,.named-versions select{border:1px solid #c9d3c7;border-radius:5px;background:#fbfcf9;color:#22392f;padding:11px;font-size:12px;min-height:44px;min-width:0}
+.version-save input{flex:1;width:0}
+.version-save .secondary,.version-actions .secondary{width:auto;flex-shrink:0}
+.named-versions select{width:100%;margin-bottom:10px}
+.version-actions .text-button{min-height:44px;font-size:12px}
+.version-save input[aria-invalid=true]{border-color:#b03d25}
+#version-message{overflow-wrap:anywhere}

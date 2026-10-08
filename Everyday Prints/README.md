@@ -17,6 +17,11 @@ Revert edits restores the last verified preview's dimensions for immediate
 downloads, including cached CAD kits.
 Saved dimensions can be exported as JSON and loaded back into the customizer,
 including parameters.json from CAD downloads, without starting a build.
+Saved dimensions also keeps up to 20 named versions in this browser. Save valid
+measurements before building, reopen a part or assembly version, or remove a
+version while keeping current fields and files. Changed versions require Update
+preview; matching versions can reuse verified STL and cached CAD downloads.
+Save dimensions keeps a portable backup outside browser storage.
 Unfinished measurements can recover after refreshing the same view in this tab,
 including blank fields and invalid lists. Recovered custom dimensions still need
 Update preview. Save dimensions keeps a portable file.

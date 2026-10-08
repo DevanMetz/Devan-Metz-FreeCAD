@@ -70,6 +70,25 @@ from older history entries, and a mobile keyboard STL download. Results and the
 mobile review are in `../review/cloud_unavailable_link_validation.json` and
 `../review/cloud_unavailable_link_mobile.png`.
 
+The Saved dimensions section also holds up to 20 named versions in this browser.
+Names are scoped to a model; opening a version restores its validated scalar or
+ordered list values and navigates to that model. Valid unbuilt measurements can
+be saved, but changed versions still need Update preview before downloading.
+Matching versions reuse the current verified mesh and cached CAD/kit files.
+Assembly quantities come from the catalog, and stored geometry details cannot
+replace verified previews. Removing a version keeps the editor's fields and
+files. Save dimensions provides a portable file outside browser storage.
+
+Version actions read current storage, preserve existing records on failed writes,
+reject duplicate names for the same model, and enforce a 64 KiB UTF-8 record
+limit. Malformed or incompatible records are preserved with recovery guidance;
+denied storage and quota failures keep ordinary editing and downloads usable.
+Save and Open version supersede older file reads; active CAD work disables
+version actions without interrupting the build. Twelve browser checks cover
+persistence, fine decimals, lists, assemblies, history, exact STL/CAD reuse,
+validation, limits, storage failures, late previews/imports and mobile keyboard
+controls. Evidence and reviewed layouts are under `../review/cloud_versions_*`.
+
 CAD and kit downloads run the builder with the saved dimensions. A first build
 after inactivity includes Container startup time. The first installation
 after changing the runtime bundle may take several minutes. Container usage is
@@ -140,6 +159,7 @@ python verify_revert_ui.py
 python verify_dimensions_ui.py
 python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
+python verify_versions_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py
@@ -627,7 +647,10 @@ reads and late bytes, a short error deadline, and prompt release even when a
 reader ignores cancellation. Six mesh checks cover all catalog previews and
 real custom/kit files, binary facet layout, finite values, positive extents,
 dimension agreement, tessellation tolerance, and valid binary headers and
-attribute bytes. All fifty-six unit tests pass.
+attribute bytes. Seven named-version checks cover all 53 defaults, exact exported
+decimals and lists, canonical assembly inventory, duplicate names, storage caps,
+corrupt records, failed writes and changes saved by another view. All sixty-three
+unit tests pass.
 
 ## API
 
