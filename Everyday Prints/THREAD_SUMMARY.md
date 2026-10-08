@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **417 focused browser
-checks across thirty-three suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **426 focused browser
+checks across thirty-four suites**, the **53-model catalog and image smoke test**,
 **102 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -27,6 +27,22 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Saved dimensions now accepts one JSON file or CAD/kit ZIP dropped into a
+visible file box. The baseline ignored both a JSON file and a real 214,046-byte
+CAD ZIP. File drags highlight the box; text drags stay independent. Dropping uses
+the existing bounded importer, including CRC/UTF-8 checks and late-read guards.
+Multiple or rejected files preserve measurements and verified STL/CAD files.
+A pending CAD download keeps its request and Stop focus. Load dimensions keeps
+its keyboard and touch chooser, with associated instructions and error feedback.
+
+Nine compiled-browser checks pass, including a trusted Chromium file drag from
+an exported ZIP on disk with native copy and leave feedback. They verify exact
+file bytes and filenames,
+JSON model changes and history, canonical kit inventories, unsupported/multiple
+files, size caps and corrupt ZIPs, busy CAD, newer edits/files/navigation, hover
+cleanup and phone keyboard use without 3D graphics. Desktop and phone layouts
+were visually reviewed. Evidence is under `review/cloud_dimension_drop_*`.
 
 Patched both Miniflare toolchain paths to Sharp 0.35.5 with librsvg 2.63.2,
 resolving the five high npm audit findings in

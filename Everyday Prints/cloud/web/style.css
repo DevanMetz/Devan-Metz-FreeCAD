@@ -20,6 +20,8 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .saved-dimensions p{line-height:1.6;margin:10px 0}
 .dimension-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .dimension-actions .secondary{min-height:44px;font-size:12px}
+.dimension-drop{border:1px dashed #ccd7c8;border-radius:6px;padding:12px;margin-top:12px}
+.dimension-drop.is-dragging{border-color:var(--green);background:#eaf0e6;outline:2px solid #90bca5;outline-offset:2px}
 .parameter .parameter-error,.saved-dimensions .dimensions-error{color:#b03d25}
 .parameter .parameter-help{font-size:11px;color:var(--muted);line-height:1.5}
 .parameter input[aria-invalid=true]{border-color:#b03d25}

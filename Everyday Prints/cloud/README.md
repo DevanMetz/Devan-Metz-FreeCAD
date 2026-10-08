@@ -293,6 +293,8 @@ python verify_transfer_progress_ui.py
 python verify_revert_ui.py
 python verify_field_revert_ui.py
 python verify_dimensions_ui.py
+python verify_zip_dimensions_ui.py
+python verify_dimension_drop_ui.py
 python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
 python verify_printer_sync_ui.py
@@ -517,6 +519,19 @@ its extracted `parameters.json`, or a saved dimensions JSON file. It
 opens its model and fills the fields without starting CAD work. Partial parameter
 objects use the model's defaults for omitted fields. Update preview is required
 for changed dimensions; matching inputs retain the verified STL and cached ZIP.
+
+You can also drop one saved dimensions JSON file or CAD/kit ZIP into the file
+box in Saved dimensions. The box highlights for file drags; dropping uses the
+same bounded importer as Load dimensions. Multiple or rejected files keep the
+current measurements and verified downloads. Pending builds stay in progress.
+Load dimensions remains available for keyboard and touch use.
+
+`verify_dimension_drop_ui.py --offline` has nine checks. Its desktop case sends
+an exported ZIP from disk through Chromium's trusted native drag pipeline.
+It covers exact dropped-file downloads,
+JSON model switches and history, kit inventories, rejected and oversized files,
+busy CAD, late reads, drag feedback and the phone chooser with unavailable 3D.
+Evidence and reviewed layouts are under `../review/cloud_dimension_drop_*`.
 
 JSON files are limited to 16 KiB. Model and parameter names, units, numeric types,
 counts, list lengths and numeric bounds are validated before the form changes.

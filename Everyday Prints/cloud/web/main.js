@@ -14,6 +14,7 @@ const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const sizeText = values => values.map(value => Number(value.toFixed(2))).join(' × ');
 const dialog = $('editor');
+const dimensionsDrop = $('dimension-drop');
 const state = { models: [], kind: '', item: null, parameters: null, previewParameters: null, blob: null, buffer: null, meshSize: null, metadata: null, cad: null, busy: false, catalogLoading: false, epoch: 0 };
 let searchIndex, viewer, viewerPromise, abort;
 let activeEntry;
@@ -1003,6 +1004,13 @@ function supersedeDimensionsRead() {
   return feedback;
 }
 
+function showDimensionsError(text) {
+  $('dimensions-error').textContent = text;
+  $('dimensions-error').hidden = false;
+  message(text, true);
+  $('dimensions-error').scrollIntoView({ block: 'nearest' });
+}
+
 async function loadDimensions(file) {
   if (!file || state.busy) return;
   clearDimensionsError();
@@ -1029,11 +1037,7 @@ async function loadDimensions(file) {
     await applyDimensions(item, parameters, { read });
   } catch (error) {
     if (current()) {
-      const text = `Saved dimensions could not be loaded. ${error.message}`;
-      $('dimensions-error').textContent = text;
-      $('dimensions-error').hidden = false;
-      message(text, true);
-      $('dimensions-error').scrollIntoView({ block: 'nearest' });
+      showDimensionsError(`Saved dimensions could not be loaded. ${error.message}`);
     }
   } finally {
     if (dimensionsLoading?.read === read) dimensionsLoading = null;
@@ -1151,6 +1155,7 @@ $('close-editor').addEventListener('click', closeEditor);
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeEditor(); });
 dialog.addEventListener('close', () => {
   if (dialog.open) return;
+  dimensionsDrop.classList.remove('is-dragging');
   supersedeVersionRead();
   clearShare();
   abort?.abort();
@@ -1233,6 +1238,33 @@ $('dimensions-file').addEventListener('change', event => {
   event.target.value = '';
   loadDimensions(file);
 });
+const isFileDrag = event => Array.from(event.dataTransfer?.types || []).includes('Files');
+for (const type of ['dragenter', 'dragover']) dimensionsDrop.addEventListener(type, event => {
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = state.busy ? 'none' : 'copy';
+  dimensionsDrop.classList.toggle('is-dragging', !state.busy);
+});
+dimensionsDrop.addEventListener('dragleave', event => {
+  if (!dimensionsDrop.contains(event.relatedTarget)) dimensionsDrop.classList.remove('is-dragging');
+});
+dimensionsDrop.addEventListener('drop', event => {
+  dimensionsDrop.classList.remove('is-dragging');
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  if (state.busy) {
+    message('Finish the current build or use Stop waiting before loading dimensions.', true);
+    return;
+  }
+  const files = event.dataTransfer.files;
+  if (files.length !== 1) {
+    supersedeDimensionsRead();
+    showDimensionsError('Drop one saved dimensions JSON file or CAD/kit ZIP at a time.');
+    return;
+  }
+  loadDimensions(files[0]);
+});
+document.addEventListener('dragend', () => dimensionsDrop.classList.remove('is-dragging'));
 $('save-version').addEventListener('click', saveCurrentVersion);
 $('version-name').addEventListener('input', () => {
   $('version-name').setAttribute('aria-invalid', 'false');

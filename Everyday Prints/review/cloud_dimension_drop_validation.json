@@ -1,0 +1,146 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "desktop_zip_drop_builds_exact_downloads",
+    "json_drop_repairs_drafts_switches_models_and_history",
+    "kit_drop_loads_canonical_inventory_without_a_job",
+    "unsupported_and_multiple_drops_preserve_verified_files",
+    "oversized_and_corrupt_drops_recover_with_the_chooser",
+    "busy_cad_drop_preserves_the_in_flight_download",
+    "newer_actions_supersede_held_drops",
+    "file_hover_text_drag_and_editor_close_leave_no_drop_state",
+    "mobile_keyboard_and_graphics_fallback_keep_the_load_action"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "desktop",
+      "zip_bytes": 214046,
+      "jobs": [
+        "stl",
+        "cad"
+      ],
+      "mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "native_drag_events": [
+        {
+          "type": "dragenter",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragover",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragenter",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragleave",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "none",
+          "files": []
+        },
+        {
+          "type": "dragenter",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragleave",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "none",
+          "files": []
+        },
+        {
+          "type": "dragover",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragover",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "drop",
+          "trusted": true,
+          "types": [
+            "Files"
+          ],
+          "effect": "copy",
+          "files": [
+            {
+              "name": "download.zip",
+              "size": 214046
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "check": "kit",
+      "model": "soap_dish_assembly",
+      "native_jobs": 0
+    },
+    {
+      "check": "busy_cad",
+      "jobs": [
+        "stl",
+        "cad"
+      ],
+      "focus": "stop-build"
+    },
+    {
+      "check": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "button": {
+        "x": 200,
+        "y": 323.53125,
+        "width": 143,
+        "height": 44
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    }
+  ],
+  "archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "transport": "compiled assets under the production CSP, real exported ZIPs and genuine File/DataTransfer objects"
+}

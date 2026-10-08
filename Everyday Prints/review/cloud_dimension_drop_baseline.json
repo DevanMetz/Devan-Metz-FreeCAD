@@ -1,0 +1,22 @@
+{
+  "head": "31219a3fc376ac94b1c583df9645f6609c1d6329",
+  "drop_target_present": false,
+  "observed": [
+    {
+      "file": "tray.json",
+      "length_before": "150",
+      "length_after": "150",
+      "dragover_prevented": false,
+      "drop_prevented": false
+    },
+    {
+      "file": "tray-cad.zip",
+      "length_before": "150",
+      "length_after": "150",
+      "dragover_prevented": false,
+      "drop_prevented": false
+    }
+  ],
+  "load_button_available": true,
+  "browser_transport": "compiled production assets with genuine File and DataTransfer objects"
+}
