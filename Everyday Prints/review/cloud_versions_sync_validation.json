@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "real_ui_saves_renames_and_removes_refresh_the_other_tab",
+    "selected_replacement_keeps_dirty_fields_history_preview_and_cached_cad",
+    "removal_and_clear_recover_keyboard_focus_without_changing_dimensions",
+    "unchanged_or_unrelated_storage_events_do_not_dismiss_feedback_or_focus",
+    "queued_events_read_latest_storage_without_trusting_event_values",
+    "corrupt_and_denied_reads_keep_storage_and_editor_then_recover",
+    "pending_backup_import_merges_fresh_external_records",
+    "capacity_and_dimension_file_reads_stay_independent_of_sync",
+    "active_cad_work_keeps_progress_stop_focus_and_exact_files",
+    "late_original_preview_uses_external_rename_without_loading_new_measurements",
+    "closed_editor_and_early_catalog_events_use_current_library",
+    "mobile_keyboard_sync_keeps_long_names_bounded_and_downloads_exact"
+  ],
+  "failures": [],
+  "transport": "real shared-context browser tabs, compiled assets and real CAD fixtures"
+}

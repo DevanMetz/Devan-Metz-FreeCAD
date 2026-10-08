@@ -389,3 +389,16 @@ Supersede pending backup imports through either edit, cancel pending dimensions
 reads on replacement, and keep unrelated file feedback when renaming. Use the
 updated name if an opened version’s original preview arrives later. Disable both
 controls during CAD work and review keyboard/mobile layouts.
+
+Refresh saved-version lists when another browser tab changes or clears their
+storage. Preserve a selected identity while it exists and clear unavailable
+selections. Read current validated records, ignore unrelated storage/events and
+avoid unnecessary renders for unchanged canonical data. Keep current fields,
+name drafts, history, verified files, field/import feedback and CAD progress.
+External changes must not automatically apply saved measurements. Disable stale
+actions on malformed or denied reads, preserve storage and recover on valid later
+changes. Use a separate accessible notice and return focus to the version list
+only when its focused action becomes unavailable. Pending backups must merge
+against fresh data without losing new entries or partly exceeding capacity.
+Keep opened version names current through delayed original previews, handle
+changes before catalog readiness and while closed, and review mobile keyboard use.

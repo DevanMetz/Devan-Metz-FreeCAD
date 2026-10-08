@@ -26,6 +26,8 @@ Rename version uses the name above the saved-version list. Replace dimensions
 saves the current measurements into the selected version of the open model.
 Both keep its identity and current preview files; changed dimensions still need
 Update preview.
+Saved-version lists refresh when another tab changes the library. Current
+measurements, preview files and cached CAD stay in the editor.
 Export versions saves all version names and measurements in one JSON backup.
 Import versions merges that file into another browser, keeps existing entries,
 numbers conflicting names and skips already saved versions. Imports leave the

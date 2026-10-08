@@ -5,7 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
-import { MAX_VERSIONS_BYTES, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup, versionName } from './versions.js';
+import { MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -744,6 +744,9 @@ function versionControls() {
 }
 
 function renderVersions(selected = $('version-choice').value) {
+  $('versions-sync-message').textContent = '';
+  $('versions-sync-message').classList.remove('error');
+  $('versions-sync-message').hidden = true;
   $('version-choice').innerHTML = `<option value="">${versions.length ? 'Choose a saved version…' : 'No saved versions yet'}</option>` + versions.map(version => {
     const item = state.models.find(model => model.name === version.dimensions.model);
     return `<option value="${escape(version.id)}">${escape(version.name)} · ${escape(item.title)}</option>`;
@@ -755,6 +758,12 @@ function renderVersions(selected = $('version-choice').value) {
 function versionMessage(text, error = false) {
   $('version-message').textContent = text;
   $('version-message').classList.toggle('error', error);
+}
+
+function versionsSyncMessage(text, error = false) {
+  $('versions-sync-message').textContent = text;
+  $('versions-sync-message').classList.toggle('error', error);
+  $('versions-sync-message').hidden = false;
 }
 
 function refreshVersions() {
@@ -1274,6 +1283,27 @@ async function start() {
   await restoreLocation();
 }
 window.addEventListener('popstate', restoreLocation);
+window.addEventListener('storage', event => {
+  if (!state.models.length || (event.key !== VERSIONS_KEY && event.key !== null)) return;
+  const focused = document.activeElement;
+  try {
+    if (event.storageArea !== localStorage) return;
+    const next = readVersions(localStorage, state.models);
+    const recovering = !$('versions-sync-message').hidden && $('versions-sync-message').classList.contains('error');
+    if (JSON.stringify(next) === JSON.stringify(versions) && !recovering) return;
+    versions = next;
+    renderVersions();
+    const opened = versions.find(version => version.id === appliedDimensions?.versionId);
+    if (opened) appliedDimensions.name = opened.name;
+    versionsSyncMessage(recovering ? 'Saved versions are available again. Current measurements are kept.' : 'Saved versions changed in another tab. Current measurements are kept.');
+  } catch (error) {
+    versions = [];
+    renderVersions();
+    versionsSyncMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser. Current measurements are kept. Use Save dimensions to keep a file.' : `${error.message} Current measurements are kept.`, true);
+  } finally {
+    if (dialog.open && !state.busy && focused instanceof HTMLButtonElement && focused.disabled && focused.closest('.named-versions')) $('version-choice').focus();
+  }
+});
 $('retry-catalog').addEventListener('click', start);
 restorePrinterVolume();
 start();

@@ -107,6 +107,27 @@ canonical assemblies, exact downloads, cached CAD reuse, storage failures,
 late reads, Stop recovery and mobile keyboard use. Evidence and reviewed layouts
 are under `../review/cloud_version_edits_*`.
 
+Saved-version lists also refresh after changes in another tab, including Save,
+Rename, Replace dimensions, Remove and clearing browser storage. The selected
+identity stays selected while it exists. Removing it clears the selection and
+disables stale actions; if a focused action becomes unavailable, keyboard focus
+returns to the list. Editor fields, an unfinished name, history, preview files,
+cached CAD, field errors, dimensions-file feedback and CAD progress remain intact.
+Opening a changed entry still requires an explicit Open version action.
+
+Synchronization reads the latest storage and validates it against the current
+catalog instead of trusting event payloads. Unrelated keys, session storage and
+unchanged canonical records are ignored. Invalid or denied reads leave storage
+untouched, disable stale library actions and show a separate recovery notice.
+Valid later changes restore the list, including an empty library. Pending backup
+imports continue and merge against fresh records; capacity failures stay atomic.
+Original previews use a renamed opened entry’s current name. Changes before
+catalog readiness are picked up by its initial read; closed editors stay current
+without moving library focus. Local actions dismiss the synchronization notice.
+Twelve checks use two real tabs, with exact STL/CAD fixtures, malformed data,
+storage denial, queued events, pending files/builds and mobile keyboard review.
+Evidence is under `../review/cloud_versions_sync_*`.
+
 Export versions downloads `everyday-prints-versions.json`, containing all names
 and canonical dimensions with format `everyday-prints-versions` and version 1.
 Import versions validates the whole backup before merging it into current browser
@@ -199,6 +220,7 @@ python verify_printer_fit_ui.py
 python verify_versions_ui.py
 python verify_version_backups_ui.py
 python verify_version_edits_ui.py
+python verify_versions_sync_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py

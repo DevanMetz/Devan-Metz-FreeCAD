@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **296 focused browser
-checks across twenty-five suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **308 focused browser
+checks across twenty-six suites**, the **53-model catalog and image smoke test**,
 **74 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -112,6 +112,21 @@ and ordered-list STL/CAD downloads, cached CAD reuse, canonical assembly
 inventory, storage denial, late reads, Stop recovery and keyboard/mobile use.
 Desktop and mobile layouts were reviewed. Evidence is under
 `review/cloud_version_edits_*`.
+
+Saved-version changes now refresh other open tabs without replacing their editor
+measurements or files. Selection follows the same local identity; removed entries
+clear it and disable stale actions, with keyboard focus returning to the list if
+its current action becomes unavailable. Synchronization keeps drafts, typed names,
+history, preview correspondence, cached CAD, field/file feedback and pending work.
+It reads current validated storage, ignores unrelated or unchanged events, and
+uses a separate notice for external changes or unreadable records. Corrupt data
+remains untouched and valid later changes restore the list. Pending backups merge
+against newer entries and retain atomic capacity checks. Opened version names
+stay current through late original previews. Twelve compiled-browser checks use
+two real tabs and cover these paths, early catalog events, closed editors, exact
+files, storage failures, focus and mobile layout. The baseline reproduced stale
+renames and enabled actions after removal. Evidence and reviewed layouts are under
+`review/cloud_versions_sync_*`.
 
 ## Complete design inventory
 
