@@ -188,14 +188,25 @@ function rememberPage(updateURL = false) {
   savedPages.set(activeEntry.id, saved);
   while (savedPages.size > 64) savedPages.delete(savedPages.keys().next().value);
   let bytes = 0;
+  const buffers = new Set();
   for (const page of [...savedPages.values()].reverse()) {
-    if (!page.buffer) continue;
+    if (!page.buffer || buffers.has(page.buffer)) continue;
     if (bytes + page.buffer.byteLength > HISTORY_CACHE_BYTES) page.buffer = page.metadata = page.previewParameters = null;
-    else bytes += page.buffer.byteLength;
+    else {
+      buffers.add(page.buffer);
+      bytes += page.buffer.byteLength;
+    }
   }
+  const blobs = new Set();
   for (const page of [...savedPages.values()].reverse()) {
-    if (!page.buffer || (page.cad && bytes + page.cad.blob.size > HISTORY_CACHE_BYTES)) page.cad = null;
-    else if (page.cad) bytes += page.cad.blob.size;
+    if (!page.buffer) page.cad = null;
+    else if (page.cad && !blobs.has(page.cad.blob)) {
+      if (bytes + page.cad.blob.size > HISTORY_CACHE_BYTES) page.cad = null;
+      else {
+        blobs.add(page.cad.blob);
+        bytes += page.cad.blob.size;
+      }
+    }
   }
 }
 

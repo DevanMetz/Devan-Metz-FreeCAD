@@ -1,0 +1,138 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "observed": [
+    {
+      "repeated_dense_views": 6,
+      "native_jobs_before_return": 4,
+      "native_jobs_after_return": 5,
+      "extra_native_jobs_on_return": [
+        [
+          "parts_tray",
+          "cad"
+        ]
+      ],
+      "unique_download_blobs": 2,
+      "unique_dense_mesh_buffers": 1,
+      "dense_mesh_bytes": 1894284,
+      "two_zip_bytes": 12583160,
+      "history_cache_bytes": 33554432,
+      "jobs": [
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ]
+      ]
+    },
+    {
+      "repeated_dense_views": 20,
+      "native_jobs_before_return": 16,
+      "native_jobs_after_return": 18,
+      "extra_native_jobs_on_return": [
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ]
+      ],
+      "unique_download_blobs": 8,
+      "unique_dense_mesh_buffers": 7,
+      "dense_mesh_bytes": 1894284,
+      "two_zip_bytes": 12583160,
+      "history_cache_bytes": 33554432,
+      "jobs": [
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ],
+        [
+          "parts_tray",
+          "stl"
+        ],
+        [
+          "parts_tray",
+          "cad"
+        ]
+      ]
+    }
+  ],
+  "transport": "compiled application; exact native STL/CAD ZIPs with valid stored padding; weak reference identity observation"
+}

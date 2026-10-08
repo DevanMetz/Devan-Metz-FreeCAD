@@ -10,11 +10,31 @@
     "reopened_named_versions_reuse_custom_files_but_changed_parameters_build",
     "reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries",
     "cached_preview_verification_respects_stop_edits_deadlines_and_navigation",
+    "shared_cad_references_do_not_evict_older_distinct_downloads",
+    "shared_dense_meshes_and_cad_survive_twenty_reopened_views",
     "archive_budget_evicts_old_zips_without_discarding_verified_previews"
   ],
   "failures": [],
   "history_cache_bytes": 33554432,
   "padded_zip_bytes": 6291580,
-  "padded_zip_sha256": "0138e14e0e54ef9e6ac5d98c3ebf4ba3ca82f84a2960ce7d4d90bf6a944ffba6",
-  "transport": "compiled assets and exact CAD fixtures, native assembly mesh, delayed hashes and real padded ZIPs"
+  "padded_zip_sha256": "85da7c566d3c2b6e3cea3211e82a8260ff4ae86b5353f31ec8b3a64a3de0eec0",
+  "shared_file_retention": [
+    {
+      "repeated_dense_views": 6,
+      "native_jobs": 4,
+      "unique_download_blobs": 2,
+      "unique_dense_mesh_buffers": 1,
+      "dense_mesh_bytes": 1894284,
+      "two_zip_bytes": 12583160
+    },
+    {
+      "repeated_dense_views": 20,
+      "native_jobs": 4,
+      "unique_download_blobs": 2,
+      "unique_dense_mesh_buffers": 1,
+      "dense_mesh_bytes": 1894284,
+      "two_zip_bytes": 12583160
+    }
+  ],
+  "transport": "compiled assets and exact CAD fixtures, native assembly and dense meshes, delayed hashes, real padded ZIPs and weak reference identity observation"
 }

@@ -36,13 +36,32 @@ def main():
     with ZipFile(io.BytesIO(large_zip)) as archive:
         assert archive.testzip() is None and archive.read('parts_tray.stl') == custom[2]
     assert len(large_zip) < 8 * 1024 * 1024 and len(large_zip) * 6 > 32 * 1024 * 1024
-    passed, failures = [], []
+    status, dense_zip, response_headers = native_request({'model': 'parts_tray',
+        'parameters': {**custom[1]['parameters'], 'columns': 6, 'rows': 6}, 'format': 'cad'})
+    assert status == 200, (status, dense_zip[:250])
+    dense_metadata = json.loads(unquote(response_headers['X-Model-Metadata']))
+    with ZipFile(io.BytesIO(dense_zip)) as archive:
+        assert archive.testzip() is None
+        dense_mesh = archive.read('parts_tray.stl')
+    assert hashlib.sha256(dense_mesh).hexdigest() == dense_metadata['mesh_sha256']
+    assert len(dense_mesh) < 8 * 1024 * 1024 and len(dense_mesh) * 20 > 32 * 1024 * 1024
+    shared_variants = []
+    for body, metadata, mesh in (original, (dense_zip, dense_metadata, dense_mesh)):
+        padded = io.BytesIO(body)
+        with ZipFile(padded, 'a', compression=ZIP_STORED) as archive:
+            archive.writestr('cache-budget-padding.bin', bytes(6 * 1024 * 1024 - len(body)))
+        padded_body = padded.getvalue()
+        with ZipFile(io.BytesIO(padded_body)) as archive:
+            assert archive.testzip() is None and archive.read('parts_tray.stl') == mesh
+        assert len(padded_body) < 8 * 1024 * 1024
+        shared_variants.append((padded_body, metadata, mesh))
+    passed, failures, shared_retention = [], [], []
 
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=[
             '--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
 
-        def setup(page, large=False):
+        def setup(page, large=False, file_variants=None):
             jobs = []
 
             def generate(route):
@@ -54,7 +73,10 @@ def main():
                     body, metadata = (assembly[0], assembly[1]) if kind == 'cad' else (assembly_mesh, assembly_preview)
                 else:
                     assert payload['model'] == 'parts_tray'
-                    selected = large[payload['parameters']['length']] if large else custom if payload['parameters'] == custom[1]['parameters'] else original
+                    if file_variants:
+                        selected = next(row for row in file_variants if payload['parameters'] == row[1]['parameters'])
+                    else:
+                        selected = large[payload['parameters']['length']] if large else custom if payload['parameters'] == custom[1]['parameters'] else original
                     assert payload['parameters'] == selected[1]['parameters'], payload
                     body = selected[0]
                     metadata = {**selected[1], 'file_sha256': hashlib.sha256(body).hexdigest()}
@@ -365,6 +387,82 @@ def main():
             assert download(page, original[0]) == 'parts_tray-cad.zip'
             assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2
 
+        def shared_files_survive_repeated_views(page, visits):
+            jobs = setup(page, file_variants=shared_variants)
+            page.evaluate("""() => {
+              const create = URL.createObjectURL.bind(URL), ids = new WeakMap();
+              window.cadReferences = [];
+              let next = 0;
+              URL.createObjectURL = blob => {
+                if (blob.type === 'application/zip') {
+                  if (!ids.has(blob)) ids.set(blob, ++next);
+                  window.cadReferences.push({id: ids.get(blob), bytes: blob.size});
+                }
+                return create(blob);
+              };
+              const digest = crypto.subtle.digest.bind(crypto.subtle), buffers = new WeakMap();
+              window.meshReferences = [];
+              let nextBuffer = 0;
+              crypto.subtle.digest = (...args) => {
+                const buffer = args[1] instanceof ArrayBuffer ? args[1] : args[1].buffer;
+                if (!buffers.has(buffer)) buffers.set(buffer, ++nextBuffer);
+                window.meshReferences.push({id: buffers.get(buffer), bytes: buffer.byteLength});
+                return digest(...args);
+              };
+            }""")
+            open_tray(page)
+            first_id = page.evaluate('history.state.everydayPrints.id')
+            filename = download(page, shared_variants[0][0])
+            cable = next(item for item in json.loads((CLOUD / 'public/catalog.json').read_text(encoding='utf-8'))['models']
+                         if item['name'] == 'cable_comb')
+
+            def load_file(record):
+                page.locator('#dimensions-file').set_input_files({'name': 'parameters.json',
+                    'mimeType': 'application/json', 'buffer': json.dumps(record).encode('utf-8')})
+                wait_model(page, record['model'])
+
+            for _ in range(visits):
+                load_file({'model': cable['name'], 'parameters': cable['defaults'], 'units': 'mm'})
+                load_file(dense_metadata)
+                page.locator('#rebuild').click()
+                ready(page)
+                dense_filename = download(page, shared_variants[1][0])
+                assert f'180.5x100x24mm-{hashlib.sha256(shared_variants[1][0]).hexdigest()[:12]}-cad.zip' in dense_filename
+            newest_id = page.evaluate('history.state.everydayPrints.id')
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2, jobs
+            blob_ids = page.evaluate('window.cadReferences')
+            buffer_ids = page.evaluate('window.meshReferences')
+            assert len(blob_ids) == visits + 1 and len({row['id'] for row in blob_ids}) == 2, blob_ids
+            assert len({row['id'] for row in buffer_ids if row['bytes'] == len(dense_mesh)}) == 1, buffer_ids
+            page.evaluate('steps => history.go(steps)', -2 * visits)
+            page.wait_for_function('id => history.state.everydayPrints.id === id', arg=first_id)
+            wait_model(page)
+            ready(page)
+            if visits == 20:
+                page.set_viewport_size({'width': 390, 'height': 844})
+            assert download(page, shared_variants[0][0], keyboard=visits == 20) == filename
+            assert download(page, original[2], 'download') == 'parts_tray.stl'
+            assert len(jobs) == 4, 'Shared file references evicted the older distinct download'
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            page.screenshot(path=str(ROOT / f'review/cloud_shared_history_{"mobile" if visits == 20 else "desktop"}.png'))
+            page.evaluate('steps => history.go(steps)', 2 * visits)
+            page.wait_for_function('id => history.state.everydayPrints.id === id', arg=newest_id)
+            wait_model(page)
+            ready(page)
+            assert download(page, shared_variants[1][0], keyboard=visits == 20) == dense_filename
+            assert download(page, dense_mesh, 'download') == f'parts_tray-custom-180.5x100x24mm-{dense_metadata["mesh_sha256"][:12]}.stl'
+            assert len(jobs) == 4
+            shared_retention.append({'repeated_dense_views': visits, 'native_jobs': len(jobs),
+                'unique_download_blobs': len({row['id'] for row in blob_ids}),
+                'unique_dense_mesh_buffers': len({row['id'] for row in buffer_ids if row['bytes'] == len(dense_mesh)}),
+                'dense_mesh_bytes': len(dense_mesh), 'two_zip_bytes': sum(len(row[0]) for row in shared_variants)})
+
+        def shared_cad_references_do_not_evict_older_distinct_downloads(page):
+            shared_files_survive_repeated_views(page, 6)
+
+        def shared_dense_meshes_and_cad_survive_twenty_reopened_views(page):
+            shared_files_survive_repeated_views(page, 20)
+
         def archive_budget_evicts_old_zips_without_discarding_verified_previews(page):
             variants = {}
             for index in range(6):
@@ -435,6 +533,8 @@ def main():
                      reopened_named_versions_reuse_custom_files_but_changed_parameters_build,
                      reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries,
                      cached_preview_verification_respects_stop_edits_deadlines_and_navigation,
+                     shared_cad_references_do_not_evict_older_distinct_downloads,
+                     shared_dense_meshes_and_cad_survive_twenty_reopened_views,
                      archive_budget_evicts_old_zips_without_discarding_verified_previews):
             context = browser.new_context(viewport={'width': 1440, 'height': 1080}, accept_downloads=True)
             context.set_default_timeout(20000)
@@ -458,7 +558,8 @@ def main():
     report = {'endpoint': BASE, 'passed': passed, 'failures': failures,
         'history_cache_bytes': 32 * 1024 * 1024, 'padded_zip_bytes': len(large_zip),
         'padded_zip_sha256': hashlib.sha256(large_zip).hexdigest(),
-        'transport': 'compiled assets and exact CAD fixtures, native assembly mesh, delayed hashes and real padded ZIPs' if OFFLINE else 'local HTTP'}
+        'shared_file_retention': shared_retention,
+        'transport': 'compiled assets and exact CAD fixtures, native assembly and dense meshes, delayed hashes, real padded ZIPs and weak reference identity observation' if OFFLINE else 'local HTTP'}
     (ROOT / 'review/cloud_history_downloads_validation.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     assert not failures, report
 

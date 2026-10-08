@@ -357,7 +357,7 @@ and reloads. Nine passing checks are saved in
 `../review/cloud_navigation_validation.json`. Navigation restores library
 filters and focus. Closing a component returns to the library; closing a direct
 model link opens the library on the same site. Recent previews are cached only
-in the current tab, with a 32 MiB mesh budget and up to 64 saved views. Reloading
+in the current tab, with a shared 32 MiB file budget and up to 64 saved views. Reloading
 fetches and verifies the original mesh again; customized measurements require
 Update preview before downloading their version.
 
@@ -751,15 +751,24 @@ older ZIP to a newer model view.
 
 The history file cache holds at most 32 MiB across up to 64 remembered views.
 Verified preview meshes take priority, then newer CAD/kit ZIPs fill the remaining
-budget. Evicting an older ZIP keeps its retained preview available; downloading
-that ZIP again uses the normal verified CAD request.
+budget. Reused ArrayBuffers and CAD Blobs count once by reference identity,
+so several history entries sharing the same files cannot consume the budget
+repeatedly. Separately allocated files still count individually. Evicting an
+older ZIP keeps its retained preview available; downloading that ZIP again uses
+the normal verified CAD request.
 
-`verify_history_downloads_ui.py --offline` has ten browser checks for customized
+`verify_history_downloads_ui.py --offline` has twelve browser checks for customized
 and original downloads, one-time original CAD refreshes, repeated history,
 invalid and dirty drafts, Revert edits and replacement previews, reference kits
 and component navigation, delayed verification superseded by another view,
 mobile keyboard focus and exact filenames. Six distinct native CAD ZIPs padded to about 6 MiB
 each exercise real budget eviction while preserving their original CAD members.
+Two more checks repeatedly reopen shared native files, observe object identity
+without retaining them, and verify both older and newer exact downloads with
+only four native requests after six or twenty reopened views. A native 36-pocket
+tray supplies a mesh whose twenty references exceed 32 MiB. The earlier duplicate
+accounting caused five and eighteen requests. Evidence and reviewed desktop and
+phone layouts are under `../review/cloud_shared_history_*`.
 The report, duplicate-request baseline and reviewed desktop/phone layouts are
 under `../review/cloud_history_downloads_*`.
 

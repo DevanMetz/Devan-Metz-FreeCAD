@@ -120,7 +120,8 @@ The preview is verified again, with Stop waiting available during restoration.
 
 Back and Forward also reuse retained CAD and parts-kit downloads with their
 verified preview dimensions and filenames. History shares a 32 MiB file cache;
-previews take priority when older ZIPs need to be built again.
+previews take priority when older ZIPs need to be built again. Reused files count
+once across saved views, so reopening them keeps room for other downloads.
 
 Library transfers recover with Try again after stalled headers or bodies,
 oversized responses, or invalid text. Retry preserves searches, filters and
