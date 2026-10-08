@@ -101,7 +101,7 @@ def main():
                 expect(page.locator('#retry-original')).to_be_visible()
             else:
                 ready(page)
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             assert not modules, 'Opening the editor loaded the optional ZIP module'
             return jobs, modules, waiting
 
@@ -209,7 +209,7 @@ def main():
                 expect(page.locator('#form-message')).to_contain_text('Saved dimensions')
                 assert page.locator('#download').is_hidden()
                 if not page.locator('.saved-dimensions').evaluate('element=>element.open'):
-                    page.locator('.saved-dimensions summary').click()
+                    page.locator('.saved-dimensions > summary').click()
                 record=json.loads(download(page,'save-dimensions')[1])
                 assert record['parameters']==fixtures[name][1]['parameters'] and record['kit']==catalog[name]['kit']
                 assert page.locator('#part-links button').count()==len(catalog[name]['kit'])

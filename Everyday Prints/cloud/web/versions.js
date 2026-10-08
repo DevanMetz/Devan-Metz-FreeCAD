@@ -128,7 +128,7 @@ export function importVersionBackup(storage, models, text) {
     }
     if (name === null) { skipped++; continue; }
     if (working.length >= MAX_VERSIONS) throw new Error('This backup would exceed 20 saved versions. Remove versions before importing it. Existing versions are kept.');
-    const record = { ...version, id: crypto.randomUUID(), name };
+    const record = { id: crypto.randomUUID(), ...version, name };
     working.push(record);
     added.push(record);
   }

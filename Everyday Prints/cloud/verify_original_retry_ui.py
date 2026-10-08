@@ -119,7 +119,7 @@ def main():
             return page.evaluate("({ length: history.length, state: history.state, url: location.href })")
 
         def load(page, record):
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             with page.expect_file_chooser() as event:
                 page.locator("#load-dimensions").click()
             event.value.set_files({"name": "parameters.json", "mimeType": "application/json", "buffer": json.dumps(record).encode("utf-8")})

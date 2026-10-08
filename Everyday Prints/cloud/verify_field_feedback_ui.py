@@ -68,7 +68,7 @@ def main():
             page.goto(BASE)
             page.locator(f'[data-model="{model}"]').click()
             page.wait_for_function("() => !document.querySelector('#download-cad').disabled")
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             return jobs, downloads
 
         def field(page, key):

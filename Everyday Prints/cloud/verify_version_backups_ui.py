@@ -76,7 +76,7 @@ def main():
                 expect(page.locator('#retry-original')).to_be_visible()
             else:
                 expect(page.locator('#download')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return jobs
 
         def stored(page):

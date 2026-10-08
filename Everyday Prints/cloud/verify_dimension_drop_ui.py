@@ -70,7 +70,7 @@ def main():
             page.goto(BASE)
             page.locator('[data-model="parts_tray"]').click()
             ready(page)
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return jobs
 
         def ready(page):
@@ -128,7 +128,7 @@ def main():
                 other.on('pageerror', lambda error: errors.append(str(error)))
                 try:
                     jobs = setup(other)
-                    other.locator('.saved-dimensions summary').click()
+                    other.locator('.saved-dimensions > summary').click()
                     other.locator('#param-length').fill('190.55')
                     other.locator(target).scroll_into_view_if_needed()
                     assert not other.locator('.saved-dimensions').evaluate('node=>node.open')

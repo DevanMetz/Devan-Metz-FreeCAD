@@ -66,7 +66,7 @@ def main():
             page.goto(BASE)
             page.locator('[data-model="parts_tray"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return control
 
         def choose(page,row=wide):

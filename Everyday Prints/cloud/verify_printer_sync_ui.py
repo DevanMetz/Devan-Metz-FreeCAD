@@ -355,7 +355,7 @@ def main():
 
         def version_undo_typed_names_and_model_errors_stay_independent(page):
             peer, jobs = setup(page)
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#version-name').fill('Original')
             page.locator('#save-version').click()
             page.locator('#version-name').fill('Revised')
@@ -600,7 +600,7 @@ def main():
             expect(page.locator('#rebuild')).to_be_enabled()
             cached = download(page, 'download-cad')
             assert cached[1] == archive and len(jobs) == 2
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#version-name').fill('Saved tray')
             page.locator('#save-version').click()
             expect(page.locator('#undo-version')).to_be_visible()

@@ -131,7 +131,7 @@ def main():
             assert body == comb[2]
             dimensions = 'x'.join(f'{value:.2f}'.rstrip('0').rstrip('.') for value in comb[1]['bounds_mm'])
             assert row['filename'] == f"cable_comb-custom-{dimensions}mm-{comb[1]['mesh_sha256'][:12]}.stl"
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             with page.expect_download() as event:
                 page.locator('#save-dimensions').click()
             assert event.value.suggested_filename == 'cable_comb-dimensions.json'

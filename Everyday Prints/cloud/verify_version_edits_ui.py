@@ -54,7 +54,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator(f'[data-model="{model}"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#version-choice').select_option((rows or [record()])[0]['id'])
             return jobs
 

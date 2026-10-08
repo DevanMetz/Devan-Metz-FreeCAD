@@ -1,0 +1,148 @@
+{
+  "baseline_head": "95292bc42a34f6813d27daac1a5348b54baba0a2",
+  "unit_tests": {
+    "passed": 111,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\index.html": "27dcb8da85762eaf89f4fa7449956a4f0fecb31f484e1d9e03100dabe1d51cde",
+      "assets\\assets\\index-2pd9TKeg.css": "1fd8d124c2ec17740ae834046129b4f93c5be52229962bce4c4c731a95e8c353",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\assets\\index-DMnIc5P1.js": "8b1dabbce32241ee7ac61f08dc0209accb3f7c6e47502b82b8d31503812c3357",
+      "assets\\assets\\zip-ioCtbVrG.js": "364eba839c2d71cd12ab4e9eadf866c6682eac49eab7fb8e9ddb5358d0a8e77c"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 343,
+    "suites_current_build": 27,
+    "fresh_reports_current_build": 28,
+    "reports": {
+      "cloud_version_backups_validation.json": 17,
+      "cloud_versions_validation.json": 12,
+      "cloud_version_edits_validation.json": 14,
+      "cloud_versions_undo_validation.json": 13,
+      "cloud_versions_sync_validation.json": 12,
+      "cloud_field_revert_validation.json": 13,
+      "cloud_history_downloads_validation.json": 16,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_zip_dimensions_validation.json": 13,
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_original_retry_ui_validation.json": 23,
+      "cloud_original_idle_validation.json": 11,
+      "cloud_transfer_progress_validation.json": 15,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23,
+      "cloud_build_recovery_validation.json": 10,
+      "cloud_selected_version_validation.json": 8,
+      "cloud_version_drop_validation.json": 9,
+      "cloud_json_encoding_validation.json": 9,
+      "cloud_version_measurements_validation.json": 9,
+      "cloud_download_names_validation.json": 5,
+      "cloud_draft_recovery_validation.json": 12,
+      "cloud_parameters_validation.json": 9,
+      "cloud_printer_sync_validation.json": 20
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets and CSP, all 53 saved schemas, real and queued two-tab storage events, controlled JSON reads, native version exports and exact CAD fixtures, keyboard inspection and downloads with and without graphics."
+  },
+  "previous_focused_browser_checkpoint": {
+    "head": "95292bc42a34f6813d27daac1a5348b54baba0a2",
+    "focused_checks": 288,
+    "suites": 22
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "retained_browser_evidence": {
+    "checks_mixed_builds": 471,
+    "suites_mixed_builds": 38
+  },
+  "saved_measurements": {
+    "baseline_model_selections_without_inspection": 2,
+    "verified_browser_checks": 9,
+    "measured_cases": 15,
+    "native_collapsible_read_only_disclosure": true,
+    "collapsed_initially": true,
+    "canonical_models_checked": 53,
+    "canonical_assembly_inventories": 6,
+    "exact_scalars_ordered_lists_labels_and_units": true,
+    "untrusted_geometry_and_inventory_ignored": true,
+    "names_are_text_and_values_escape_markup": true,
+    "selection_and_disclosure_read_current_validated_storage": true,
+    "queued_events_do_not_hide_latest_records": true,
+    "inspection_storage_writes": 0,
+    "current_fields_errors_drafts_history_and_verified_files_kept": true,
+    "open_version_is_explicit_application_action": true,
+    "unchanged_inspection_preserves_undo": true,
+    "newer_library_records_clear_stale_undo": true,
+    "imported_records_use_canonical_storage_key_order": true,
+    "import_inspection_and_export_keep_undo": true,
+    "removed_corrupt_and_denied_records_clear_details": true,
+    "disappearing_disclosure_returns_focus_to_choice": true,
+    "valid_later_storage_recovers": true,
+    "local_rename_replace_remove_and_undo_update_display": true,
+    "failed_writes_keep_saved_values": true,
+    "bom_backups_native_exports_and_cross_browser_drops_remain_portable": true,
+    "explicit_list_version_open_builds_exact_stl_and_cad": true,
+    "pending_read_channels": 4,
+    "inspection_keeps_file_wait_and_deadline": true,
+    "busy_cad_inspection_does_not_apply_or_abort": true,
+    "busy_mutation_and_export_controls_guarded": true,
+    "exact_pending_cached_downloads_and_dimensional_names": true,
+    "keyboard_viewports": [
+      {
+        "width": 320,
+        "height": 568
+      },
+      {
+        "width": 390,
+        "height": 600
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 1440,
+        "height": 600
+      }
+    ],
+    "minimum_disclosure_target_px": 44,
+    "keyboard_toggle_tab_and_shift_tab": true,
+    "long_names_and_sixteen_value_lists_wrap": true,
+    "graphics_required": false,
+    "report": "cloud_version_measurements_validation.json",
+    "baseline": "cloud_version_measurements_baseline.json"
+  },
+  "verification_adjustments": [
+    {
+      "files": "22 existing browser verifiers using the Saved dimensions disclosure",
+      "change": "Scoped .saved-dimensions summary to .saved-dimensions > summary to keep existing actions bound to the outer native disclosure after adding the nested read-only panel."
+    }
+  ],
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_version_measurements_desktop.png",
+    "cloud_version_measurements_mobile.png"
+  ]
+}

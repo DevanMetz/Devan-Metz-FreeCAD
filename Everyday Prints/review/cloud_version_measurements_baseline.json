@@ -1,0 +1,66 @@
+{
+  "head": "95292bc42a34f6813d27daac1a5348b54baba0a2",
+  "observed": [
+    {
+      "selected_model": "parts_tray",
+      "selected_name": "Wide tray",
+      "selected_option_label": "Wide tray · Divided parts tray",
+      "saved_measurements_panel_count": 0,
+      "current_model": "parts_tray",
+      "current_length": "190.55",
+      "selection_kept_editor_and_history": true,
+      "exported_parameters": {
+        "length": 180.5,
+        "width": 100,
+        "height": 24,
+        "columns": 3,
+        "rows": 2,
+        "wall": 2.4,
+        "floor": 2,
+        "outer_radius": 4.4,
+        "pocket_radius": 2
+      },
+      "native_export_file": "everyday-prints-version.json"
+    },
+    {
+      "selected_model": "cable_comb",
+      "selected_name": "Routing <wide> ✓",
+      "selected_option_label": "Routing <wide> ✓ · Desk-edge cable comb",
+      "saved_measurements_panel_count": 0,
+      "current_model": "parts_tray",
+      "current_length": "190.55",
+      "selection_kept_editor_and_history": true,
+      "exported_parameters": {
+        "cable_diameters": [
+          2,
+          3.5,
+          9
+        ],
+        "clearance": 0.6,
+        "web": 5,
+        "depth": 32,
+        "thickness": 4,
+        "slot_depth": 18,
+        "mounting_hole": 4.5
+      },
+      "native_export_file": "everyday-prints-version.json"
+    }
+  ],
+  "transport": "Compiled production assets, real saved records and selected-version native exports.",
+  "canonical_import_baseline": {
+    "head": "95292bc42a34f6813d27daac1a5348b54baba0a2",
+    "semantically_identical_records": true,
+    "imported_key_order": [
+      "name",
+      "dimensions",
+      "id"
+    ],
+    "reread_key_order": [
+      "id",
+      "name",
+      "dimensions"
+    ],
+    "serialized_library_equal": false,
+    "transport": "Original committed versions module with unchanged dimensions helper, real catalog defaults and the existing import/read APIs."
+  }
+}

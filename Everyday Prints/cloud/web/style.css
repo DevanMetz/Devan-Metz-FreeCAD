@@ -52,6 +52,12 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .version-save input{flex:1;width:0}
 .version-save .secondary,.version-actions .secondary{width:auto;flex-shrink:0}
 .named-versions select{width:100%;margin-bottom:10px}
+.version-measurements{margin:0 0 12px;padding:0 12px;border:1px solid #c9d3c7;border-radius:5px;background:#fbfcf9}
+.version-measurements summary{font-size:12px;font-weight:600}
+#version-measurements-name{font-weight:600;color:#22392f;overflow-wrap:anywhere}
+.version-measurements dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 12px;margin:12px 0;line-height:1.6}
+.version-measurements dt,.version-measurements dd{min-width:0;overflow-wrap:anywhere}
+.version-measurements dd{margin:0;color:#22392f}
 .version-actions .text-button{min-height:44px;font-size:12px}
 .version-actions .secondary{width:100%;min-height:44px;padding:12px 8px}
 .version-save input[aria-invalid=true]{border-color:#b03d25}

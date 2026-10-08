@@ -79,7 +79,7 @@ def main():
             page.goto(BASE)
             page.locator('[data-model="parts_tray"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return control
 
         def drop(page, body=backup([cable]), name='version.json', target='#param-length', size=None):
@@ -149,7 +149,7 @@ def main():
                     other.locator('#save-dimensions').click()
                     expect(other.locator('#param-length')).to_have_attribute('aria-invalid', 'true')
                     other.locator('#version-name').fill('Unfinished name')
-                    other.locator('.saved-dimensions summary').click()
+                    other.locator('.saved-dimensions > summary').click()
                     before = snapshot(other)
                     path = ROOT.parent / '.cad-cache' / name
                     path.write_bytes(body)

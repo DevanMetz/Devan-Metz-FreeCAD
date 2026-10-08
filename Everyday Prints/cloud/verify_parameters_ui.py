@@ -64,7 +64,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator(f'[data-model="{name}"]').click()
             ready(page)
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             return jobs, downloads
 
         def error(page, text):
@@ -174,7 +174,7 @@ def main():
             page.goto(share_url("cable_comb", {"cable_diameters": ordered}))
             page.wait_for_function("() => document.querySelector('#preview-loading').hidden")
             assert page.locator('[data-parameter="cable_diameters"]').input_value() == "9, 2, 3.55"
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             assert json.loads(download(page, "save-dimensions")[1])["parameters"]["cable_diameters"] == ordered
             page.locator("#share").click()
             page.wait_for_function("window.copies.length === 1")

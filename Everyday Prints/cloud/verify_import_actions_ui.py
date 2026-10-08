@@ -57,7 +57,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator('[data-model="parts_tray"]').click()
             expect(page.locator('#download')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return jobs
 
         def select(page, length, name='parameters.json', model='parts_tray'):

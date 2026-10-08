@@ -10,12 +10,36 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest JSON encoding build passes **288 focused browser checks across
-twenty-two affected suites**, the **53-model catalog and image smoke test**,
+The latest saved-measurement build passes **343 focused browser checks across
+twenty-seven affected suites**, the **53-model catalog and image smoke test**,
 **111 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
+A selected named version now offers a collapsible View saved measurements
+panel. It shows the saved model, exact scalar/list values, field labels and
+units, plus canonical component quantities for assembly kits. Previously,
+the selection showed only a name/model; inspecting values required opening
+the version or downloading its backup. Read-only inspection keeps current
+measurements, field errors, name drafts, history and verified STL/CAD files.
+Open version remains the action that applies those measurements.
+
+Selection and opening the panel read current validated storage, including
+before queued cross-tab events arrive. Unchanged reads preserve Undo, while
+newer records clear a stale Undo. Imported records now use the same canonical
+key order as storage reads, so inspection does not mistake their unchanged
+data for a newer library. Removed or unreadable selections clear the panel
+and return its focused disclosure to the version list. Pending imports and
+CAD delivery keep running while measurements are inspected.
+
+Nine browser checks cover fifteen measured cases and every model schema:
+exact decimals and ordered lists, escaped names, all six kit inventories,
+Rename/Replace/Remove/Undo and failed writes, portable native exports and
+explicit opening, four pending JSON channels, real/queued storage events,
+busy CAD with exact delivery and cached files, and keyboard disclosure/Tab
+at four screen sizes without graphics. Desktop and phone layouts were
+visually reviewed. Evidence is under `review/cloud_version_measurements_*`.
+
 Local JSON imports now decode bounded raw bytes as strict UTF-8. Previously,
 a damaged byte inside a JSON string changed a tray measurement through Load
 dimensions and imported a version named “Broken �” through Import versions

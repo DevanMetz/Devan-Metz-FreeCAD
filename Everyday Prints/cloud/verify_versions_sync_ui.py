@@ -44,7 +44,7 @@ def main():
             peer.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             peer.locator('[data-model="parts_tray"]').click()
             expect(peer.locator('#download-cad')).to_be_enabled()
-            peer.locator('.saved-dimensions summary').click()
+            peer.locator('.saved-dimensions > summary').click()
             page.add_init_script(FILES + EVENTS)
             jobs = []
 
@@ -66,7 +66,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator('[data-model="parts_tray"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             if rows:
                 page.locator('#version-choice').select_option(rows[0]['id'])
             return peer, jobs
@@ -317,7 +317,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator('[data-model="parts_tray"]').click()
             expect(page.locator('#download')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             assert page.locator('#version-choice option').filter(has_text='Before catalog').count() == 1
             page.locator('#close-editor').click()
             page.locator('#search').focus()

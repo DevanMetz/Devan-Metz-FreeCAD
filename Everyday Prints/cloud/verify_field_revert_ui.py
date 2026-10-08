@@ -62,7 +62,7 @@ def main():
             page.locator(f'[data-model="{model}"]').click()
             if ready:
                 expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return jobs
 
         def respond(route, mismatch=False):
@@ -370,7 +370,7 @@ def main():
         def scrolled_keyboard_restore_brings_the_input_back_into_view(page):
             jobs = setup(page)
             page.set_viewport_size(dict(width=390, height=844))
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#param-length').fill('190.55')
             page.locator('#param-height').fill('26.5')
             page.locator('#revert-field-length').scroll_into_view_if_needed()

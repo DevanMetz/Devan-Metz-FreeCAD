@@ -367,6 +367,18 @@ each action, and preserve saved data on corrupt reads or failed writes. Offer th
 portable Save dimensions flow for storage failures. Named actions must supersede
 older file imports, keep late preview feedback current, and stay disabled during
 CAD work. Review desktop/mobile controls and keyboard focus.
+Offer a collapsed, read-only View saved measurements disclosure for the
+selected named version. Show its model, exact scalar/list values in catalog
+order, labels and units, plus canonical assembly component quantities.
+Read current validated storage on selection and disclosure opening, including
+when external events are queued. Keep fields, errors, drafts, history and
+verified files; Open version applies the selected measurements explicitly.
+Unchanged inspection must retain library Undo, including after imports.
+Clear unavailable details and return a focused disclosure to the version
+list after removal or unreadable storage. Keep pending file imports and CAD
+delivery independent, guard mutation/export controls during CAD work, and
+review keyboard navigation, long values and narrow/short phone layouts.
+
 Provide a portable JSON backup for the complete named-version library, including
 names, millimeter parameters and canonical assembly quantities. Validate its
 format version, all model schemas and UTF-8 byte size before merging. Preserve

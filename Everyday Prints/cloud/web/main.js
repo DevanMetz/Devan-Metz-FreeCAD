@@ -858,8 +858,27 @@ function dimensionsLoaded() {
   message(sameParameters(state.parameters, state.previewParameters) ? 'Saved dimensions match the verified preview.' : 'Saved dimensions loaded. Update the preview to build this version.');
 }
 
+function versionMeasurements(selected) {
+  const panel = $('version-measurements');
+  const focused = panel.contains(document.activeElement);
+  panel.hidden = !selected;
+  if (!selected) {
+    if (dialog.open && focused) $('version-choice').focus();
+    panel.open = false;
+    $('version-measurements-name').textContent = '';
+    $('version-measurements-fields').innerHTML = '';
+    return;
+  }
+  const item = state.models.find(model => model.name === selected.dimensions.model);
+  $('version-measurements-name').textContent = `${selected.name} · ${item.title}`;
+  const measurements = item.parameters.map(field => `<dt>${escape(field.label)}</dt><dd>${escape(parameterText(selected.dimensions.parameters[field.key]))}${field.unit ? ` ${escape(field.unit)}` : ''}</dd>`).join('');
+  const kit = item.kit.map(part => `${escape(state.models.find(model => model.name === part.model).title)} × ${part.quantity}${part.role === 'fit_coupon' ? ' (fit coupon)' : ''}`).join('<br>');
+  $('version-measurements-fields').innerHTML = measurements + (kit ? `<dt>Parts kit</dt><dd>${kit}</dd>` : '');
+}
+
 function versionControls() {
   const selected = versions.find(version => version.id === $('version-choice').value);
+  versionMeasurements(selected);
   $('load-version').disabled = state.busy || !selected;
   $('remove-version').disabled = state.busy || !selected;
   $('rename-version').disabled = state.busy || !selected;
@@ -1352,7 +1371,10 @@ $('version-name').addEventListener('input', () => {
   versionMessage('Save up to 20 named versions in this browser. Save dimensions keeps a portable file.');
 });
 $('version-name').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); saveCurrentVersion(); } });
-$('version-choice').addEventListener('change', versionControls);
+$('version-choice').addEventListener('change', () => syncVersions());
+$('version-measurements').addEventListener('toggle', () => {
+  if (dialog.open && $('version-measurements').open && !$('version-measurements').hidden) syncVersions();
+});
 $('load-version').addEventListener('click', async () => {
   if (state.busy) return;
   supersedeVersionRead();
@@ -1593,20 +1615,23 @@ async function start() {
 }
 window.addEventListener('popstate', restoreLocation);
 window.addEventListener('storage', syncPrinterVolume);
-window.addEventListener('storage', event => {
-  if (!state.models.length || (event.key !== VERSIONS_KEY && event.key !== null)) return;
+function syncVersions(event) {
+  if (!state.models.length || (event && event.key !== VERSIONS_KEY && event.key !== null)) return;
   const focused = document.activeElement;
   try {
-    if (event.storageArea !== localStorage) return;
+    if (event && event.storageArea !== localStorage) return;
     const next = readVersions(localStorage, state.models);
     const recovering = !$('versions-sync-message').hidden && $('versions-sync-message').classList.contains('error');
-    if (JSON.stringify(next) === JSON.stringify(versions) && !recovering) return;
+    if (JSON.stringify(next) === JSON.stringify(versions) && !recovering) {
+      if (!event) versionControls();
+      return;
+    }
     versionUndo = null;
     versions = next;
     renderVersions();
     const opened = versions.find(version => version.id === appliedDimensions?.versionId);
     if (opened) appliedDimensions.name = opened.name;
-    versionsSyncMessage(recovering ? 'Saved versions are available again. Current measurements are kept.' : 'Saved versions changed in another tab. Current measurements are kept.');
+    versionsSyncMessage(recovering ? 'Saved versions are available again. Current measurements are kept.' : event ? 'Saved versions changed in another tab. Current measurements are kept.' : 'Saved versions were refreshed. Current measurements are kept.');
   } catch (error) {
     versionUndo = null;
     versions = [];
@@ -1615,7 +1640,8 @@ window.addEventListener('storage', event => {
   } finally {
     if (dialog.open && !state.busy && focused instanceof HTMLButtonElement && focused.disabled && focused.closest('.named-versions')) $('version-choice').focus();
   }
-});
+}
+window.addEventListener('storage', syncVersions);
 $('retry-catalog').addEventListener('click', start);
 restorePrinterVolume();
 start();

@@ -1,0 +1,232 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "inspection_keeps_invalid_drafts_and_exact_cached_downloads",
+    "every_model_shows_ordered_units_and_canonical_kit_inventory",
+    "local_edits_undo_and_failed_writes_keep_the_selected_measurements",
+    "imported_and_exported_versions_remain_portable_for_explicit_opening",
+    "inspection_keeps_pending_json_imports_and_their_deadlines",
+    "cross_tab_replacements_removals_and_corruption_keep_reachable_focus",
+    "opening_and_selection_read_fresh_storage_before_queued_events",
+    "read_only_inspection_during_cad_keeps_exact_delivery_and_focus",
+    "keyboard_inspection_wraps_long_names_and_lists_without_graphics"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "inspection",
+      "exact_decimal": "180.555 mm",
+      "ordered_list": [
+        2,
+        3.5,
+        9
+      ],
+      "escaped_name": true,
+      "fields_errors_name_history_and_storage_kept": true,
+      "inspection_writes": 0,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "schemas",
+      "models": [
+        "parts_tray",
+        "cable_comb",
+        "divider_foot",
+        "divider_fit_coupon",
+        "phone_stand",
+        "corner_square",
+        "handle_marking_jig",
+        "tube_squeezer",
+        "soap_dish_tray",
+        "soap_dish_insert",
+        "label_stand",
+        "paint_pyramid",
+        "cable_winder",
+        "hex_bit_rack",
+        "hex_bit_fit_coupon",
+        "sanding_block",
+        "sanding_wedge",
+        "cable_grommet",
+        "radius_template",
+        "center_finder",
+        "brush_rest",
+        "utility_peg",
+        "sliding_box",
+        "sliding_lid",
+        "sliding_fit_channel",
+        "sliding_fit_slider",
+        "round_stock_cradle",
+        "tie_anchor",
+        "workshop_funnel",
+        "fold_clip",
+        "cord_clip",
+        "hand_knob",
+        "slotted_shim",
+        "marking_saddle",
+        "roll_adapter",
+        "bookend",
+        "corner_cable_guide",
+        "workshop_scoop",
+        "plant_marker",
+        "ruler_stop",
+        "ruler_wedge",
+        "tube_reducer",
+        "socket_fit_ring",
+        "strap_corner",
+        "sorting_sieve",
+        "sieve_aperture_coupon",
+        "divider_joint",
+        "soap_dish_assembly",
+        "sanding_assembly",
+        "sliding_box_assembly",
+        "ruler_stop_assembly",
+        "strap_clamp_assembly",
+        "divider_joint_assembly"
+      ],
+      "canonical_assemblies": 6,
+      "catalog_order_and_units": true,
+      "stored_geometry_ignored": true,
+      "inspection_writes": 0,
+      "native_jobs": 0
+    },
+    {
+      "check": "edits",
+      "rename_and_replace_updated": true,
+      "unchanged_inspection_kept_undo": true,
+      "quota_kept_saved_measurements": true,
+      "undo_restored_values_and_selection": true,
+      "removed_details_cleared": true,
+      "exact_cached_files": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "portable",
+      "bom_import": true,
+      "native_export_matches_display": true,
+      "drop_restored_name_and_list": true,
+      "inspection_did_not_apply_fields": true,
+      "explicit_open_built_exact_list_files": true,
+      "undo_restored_original_selection": true,
+      "native_jobs_in_new_browser": 2
+    },
+    {
+      "check": "pending_read",
+      "channel": "dimensions_chooser",
+      "inspection_kept_read_and_deadline": true,
+      "raw_reads": 1,
+      "accepted_after_inspection": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "pending_read",
+      "channel": "backup_chooser",
+      "inspection_kept_read_and_deadline": true,
+      "raw_reads": 1,
+      "accepted_after_inspection": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "pending_read",
+      "channel": "dimensions_drop",
+      "inspection_kept_read_and_deadline": true,
+      "raw_reads": 1,
+      "accepted_after_inspection": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "pending_read",
+      "channel": "backup_drop",
+      "inspection_kept_read_and_deadline": true,
+      "raw_reads": 1,
+      "accepted_after_inspection": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "sync",
+      "fresh_replacement_displayed": true,
+      "removed_or_unreadable_details_cleared": true,
+      "hidden_summary_focus_returned_to_choice": true,
+      "corrupt_raw_storage_kept": true,
+      "denied_read_recovered": true,
+      "editor_and_cached_files_kept": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "fresh_reads",
+      "opening_read_latest_name_and_decimal": true,
+      "selection_cleared_removed_record": true,
+      "unchanged_read_kept_undo": true,
+      "newer_records_cleared_stale_undo": true,
+      "queued_events_did_not_apply_fields": true,
+      "inspection_writes": 0,
+      "native_jobs": 0
+    },
+    {
+      "check": "busy",
+      "inspection_did_not_apply_or_abort": true,
+      "mutation_and_export_controls_guarded": true,
+      "disappearing_summary_kept_reachable_focus": true,
+      "exact_pending_and_cached_cad": true,
+      "dimension_names_kept": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "keyboard_layout",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "summary_target_height": 44,
+      "keyboard_toggle_and_tab": true,
+      "long_name_and_16_values_wrapped": true,
+      "invalid_draft_and_storage_kept": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    },
+    {
+      "check": "keyboard_layout",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "summary_target_height": 44,
+      "keyboard_toggle_and_tab": true,
+      "long_name_and_16_values_wrapped": true,
+      "invalid_draft_and_storage_kept": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    },
+    {
+      "check": "keyboard_layout",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "summary_target_height": 44,
+      "keyboard_toggle_and_tab": true,
+      "long_name_and_16_values_wrapped": true,
+      "invalid_draft_and_storage_kept": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    },
+    {
+      "check": "keyboard_layout",
+      "viewport": {
+        "width": 1440,
+        "height": 600
+      },
+      "summary_target_height": 44,
+      "keyboard_toggle_and_tab": true,
+      "long_name_and_16_values_wrapped": true,
+      "invalid_draft_and_storage_kept": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    }
+  ],
+  "transport": "Compiled production CSP/assets, all 53 canonical schemas, actual two-tab storage events and queued reads, native version exports and exact CAD fixtures, bounded local reads, and keyboard inspection with and without graphics."
+}

@@ -57,7 +57,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator(f'[data-model="{model}"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             expect(page.locator('#undo-version')).to_be_hidden()
             if rows:
                 page.locator('#version-choice').select_option(rows[0]['id'])
@@ -325,7 +325,7 @@ def main():
             expect(page.locator('#download')).to_be_disabled()
             title = page.locator('#model-title').inner_text()
             if not page.locator('.saved-dimensions').evaluate('(el) => el.open'):
-                page.locator('.saved-dimensions summary').click()
+                page.locator('.saved-dimensions > summary').click()
             undo(page)
             restored = stored(page)[0]
             assert restored['dimensions']['parameters'] == catalog['soap_dish_assembly']['defaults']

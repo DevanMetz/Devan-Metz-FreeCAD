@@ -56,7 +56,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator(f'[data-model="{model}"]').click()
             expect(page.locator('#download-cad')).to_be_enabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             return jobs
 
         def save(page, name, keyboard=False):
@@ -91,7 +91,7 @@ def main():
             assert stored(page)[0]['dimensions']['parameters']['length'] == 180.5 and not jobs
             assert page.locator('#download').is_disabled()
             page.reload()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             expect(page.locator('#version-choice option')).to_have_count(2)
             page.locator('#param-length').fill('190.55')
             open_version(page, 'Desk drawer')
@@ -192,7 +192,7 @@ def main():
             for text in ('not JSON', json.dumps([broken]), 'x' * 65537):
                 page.evaluate('args => localStorage.setItem(...args)', [KEY, text])
                 page.reload()
-                page.locator('.saved-dimensions summary').click()
+                page.locator('.saved-dimensions > summary').click()
                 expect(page.locator('#version-message')).to_have_class('error')
                 expect(page.locator('#download')).to_be_enabled()
                 save(page, 'Keep this model')
@@ -222,7 +222,7 @@ def main():
                 return getItem.call(this, key);
               };""")
             page.reload()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             expect(page.locator('#version-message')).to_contain_text('unavailable in this browser')
             expect(page.locator('#download')).to_be_enabled()
             assert json.loads(download(page, 'save-dimensions')[1])['model'] == 'parts_tray'

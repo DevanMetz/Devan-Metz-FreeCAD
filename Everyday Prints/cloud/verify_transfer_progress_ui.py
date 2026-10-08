@@ -146,7 +146,7 @@ def main():
         def original_receipt_keeps_saved_confirmation(page):
             jobs, _ = setup(page)
             fault(page, 'original')
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             with page.expect_file_chooser() as event:
                 page.locator('#load-dimensions').click()
             record = {'model': 'cable_comb', 'units': 'mm', 'parameters': {'depth': 40}}
@@ -226,7 +226,7 @@ def main():
             page.evaluate('window.pauseFileHash = true')
             page.locator('[data-model="parts_tray"]').click()
             hash_waiting(page, 'original preview')
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             with page.expect_file_chooser() as event:
                 page.locator('#load-dimensions').click()
             event.value.set_files({'name': 'bad.json', 'mimeType': 'application/json', 'buffer': b'{broken'})

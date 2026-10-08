@@ -171,7 +171,7 @@ def main():
         def timeout_preserves_blank_and_ordered_list_drafts_name_errors_and_focus(page):
             jobs = setup(page, 'body', model='cable_comb')
             page.locator('#param-cable_diameters').fill('4.2, bad, 2.5')
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#version-name').fill('Unsaved routing')
             page.locator('#param-cable_diameters').focus()
             before = snapshot(page)
@@ -187,7 +187,7 @@ def main():
 
         def accepted_dimensions_and_rejected_file_feedback_survive_background_timeouts(page):
             jobs = setup(page, 'headers')
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             record = dict(model='parts_tray', units='mm', parameters={'length': 180.5})
             page.locator('#dimensions-file').set_input_files(dict(name='tray.json', mimeType='application/json', buffer=json.dumps(record).encode()))
             expect(page.locator('#param-length')).to_have_value('180.5')
@@ -255,7 +255,7 @@ def main():
             page.locator('#rebuild').click()
             expect(page.locator('#download')).to_be_enabled()
             custom = download(page)
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             record = dict(model='cable_comb', units='mm', parameters=catalog['cable_comb']['defaults'])
             page.locator('#dimensions-file').set_input_files(dict(name='cable.json', mimeType='application/json', buffer=json.dumps(record).encode()))
             expect(page.locator('#download')).to_be_enabled()

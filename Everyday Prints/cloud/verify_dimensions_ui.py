@@ -80,7 +80,7 @@ def main():
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator(f'[data-model="{name}"]').click()
             ready(page)
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             return jobs
 
         def ready(page):

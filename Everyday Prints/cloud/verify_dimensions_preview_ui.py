@@ -65,7 +65,7 @@ def main():
             page.goto(BASE)
             page.locator('[data-model="parts_tray"]').click()
             page.wait_for_function("() => !document.querySelector('#download-cad').disabled")
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             page.evaluate("mode => window.originalMode = mode", mode)
             return jobs
 
@@ -275,7 +275,7 @@ def main():
             page.on("request", lambda request: jobs.append(request.url) if "/api/generate" in request.url else None)
             page.goto(BASE + "/?model=cable_comb&p=%7B%22depth%22%3A%22bad%22%7D")
             page.wait_for_function("() => typeof window.releaseOriginal === 'function'")
-            page.locator(".saved-dimensions summary").click()
+            page.locator(".saved-dimensions > summary").click()
             values = reject_multiple_drop(page)
             release(page)
             settled(page)

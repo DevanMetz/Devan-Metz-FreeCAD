@@ -194,6 +194,30 @@ Twelve checks use two real tabs, with exact STL/CAD fixtures, malformed data,
 storage denial, queued events, pending files/builds and mobile keyboard review.
 Evidence is under `../review/cloud_versions_sync_*`.
 
+Selecting a named version offers View saved measurements, a native keyboard
+disclosure showing that saved model, exact numbers and ordered lists, field
+labels and units. Assembly entries include canonical part quantities and
+fit coupons. The panel starts collapsed; inspection keeps current fields,
+validation errors, name drafts, history, browser storage and verified files.
+Open version applies the saved measurements when you choose to use them.
+
+Selection and opening the panel read current validated storage, so a delayed
+storage event cannot leave old measurements presented as current. Unchanged
+inspection preserves Undo; newer library records clear stale Undo. Imported
+records keep canonical key order so a fresh read does not erase a valid Undo.
+Removed, corrupt or denied selections clear their details and return a
+focused disclosure to the version list. Valid later records recover.
+Read-only inspection keeps pending local-file reads and their deadlines,
+and works during CAD delivery while version mutation/export buttons stay
+guarded. Long names and lists wrap at mobile widths with a 44 px disclosure.
+
+Nine browser checks cover fifteen cases, all 53 schemas and six kit
+inventories, precise values and names, local edits/Undo/failed writes, native
+backup portability and explicit list-model builds, four pending JSON paths,
+two-tab and queued-event storage, exact pending/cached STL and CAD files,
+and keyboard inspection at four sizes without graphics. Evidence and
+reviewed layouts are under `../review/cloud_version_measurements_*`.
+
 Selected or whole-library version backups can also be dropped anywhere in the
 open editor. Their contents identify the backup, including renamed files,
 reordered JSON and UTF-8 BOMs. The existing atomic import restores names and
@@ -359,6 +383,7 @@ python verify_version_backups_ui.py
 python verify_selected_version_ui.py --offline
 python verify_version_drop_ui.py --offline
 python verify_json_encoding_ui.py --offline
+python verify_version_measurements_ui.py --offline
 python verify_version_edits_ui.py
 python verify_versions_sync_ui.py
 python verify_versions_undo_ui.py

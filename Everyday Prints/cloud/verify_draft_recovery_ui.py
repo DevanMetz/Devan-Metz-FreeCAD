@@ -73,7 +73,7 @@ def main():
 
         def load(page, record):
             if not page.locator('.saved-dimensions').evaluate('element => element.open'):
-                page.locator('.saved-dimensions summary').click()
+                page.locator('.saved-dimensions > summary').click()
             with page.expect_file_chooser() as event:
                 page.locator('#load-dimensions').click()
             event.value.set_files({'name': 'parameters.json', 'mimeType': 'application/json',
@@ -103,7 +103,7 @@ def main():
             expect(page.locator('#param-length')).to_have_attribute('aria-invalid', 'true')
             expect(page.locator('#error-length')).to_contain_text('enter a number')
             assert page.locator('#download').is_disabled() and page.locator('#download-cad').is_disabled()
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             page.locator('#save-dimensions').click()
             expect(page.locator('#param-length')).to_be_focused()
             assert not jobs
@@ -253,7 +253,7 @@ def main():
             build(page)
             assert download(page) == custom[2]
             assert download(page, 'download-cad') == custom[0]
-            page.locator('.saved-dimensions summary').click()
+            page.locator('.saved-dimensions > summary').click()
             record = json.loads(download(page, 'save-dimensions'))
             assert record['parameters'] == custom[1]['parameters'] and len(jobs) == 2
 
