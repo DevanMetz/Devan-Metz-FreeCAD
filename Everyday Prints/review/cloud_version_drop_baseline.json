@@ -1,0 +1,24 @@
+{
+  "head": "4ecc8d68f04e7af8d065da6b503ff3eaee209d95",
+  "observed": [
+    {
+      "file": "everyday-prints-version.json",
+      "entries": 1,
+      "target": "#param-length",
+      "bytes": 469,
+      "length_after": "190.55",
+      "versions_after": 0,
+      "error": "Saved dimensions could not be loaded. Saved dimensions must use millimeters (units: mm)."
+    },
+    {
+      "file": "everyday-prints-versions.json",
+      "entries": 2,
+      "target": "#viewer",
+      "bytes": 880,
+      "length_after": "190.55",
+      "versions_after": 0,
+      "error": "Saved dimensions could not be loaded. Saved dimensions must use millimeters (units: mm)."
+    }
+  ],
+  "transport": "compiled production assets, exported native downloads and trusted Chromium file drops"
+}

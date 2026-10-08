@@ -194,6 +194,24 @@ Twelve checks use two real tabs, with exact STL/CAD fixtures, malformed data,
 storage denial, queued events, pending files/builds and mobile keyboard review.
 Evidence is under `../review/cloud_versions_sync_*`.
 
+Selected or whole-library version backups can also be dropped anywhere in the
+open editor. Their contents identify the backup, including renamed files,
+reordered JSON and UTF-8 BOMs. The existing atomic import restores names and
+canonical measurements, merges conflicts and retains Undo. Current fields,
+validation feedback, history and verified STL/CAD files are kept; no build
+starts. Saved dimensions opens and the backup result is brought into view.
+
+Dropped JSON has a 64 KiB read limit and a 15-second deadline. Dimensions
+records still require at most 16 KiB after classification. New edits, version
+actions, files, builds, retry or closing cancel an unresolved drop and clear
+its deadline. Late bytes cannot change measurements or browser storage.
+Import versions keeps its existing independent behavior when fields change.
+Nine checks cover trusted native exports into fresh browsers, invalid drafts,
+exact cached files/names, canonical kits, atomic errors and limits, fourteen
+discarded-read actions, timeouts/newer files, busy/closed/text drops and short
+phone keyboard use without graphics. Evidence and reviewed layouts are under
+`../review/cloud_version_drop_*`.
+
 Export selected downloads `everyday-prints-version.json` with just the chosen
 saved version, including its name and canonical measurements. It uses the same
 backup format as Export versions. The selection can belong to another model,
@@ -324,6 +342,7 @@ python verify_printer_sync_ui.py
 python verify_versions_ui.py
 python verify_version_backups_ui.py
 python verify_selected_version_ui.py --offline
+python verify_version_drop_ui.py --offline
 python verify_version_edits_ui.py
 python verify_versions_sync_ui.py
 python verify_versions_undo_ui.py
@@ -544,11 +563,12 @@ opens its model and fills the fields without starting CAD work. Partial paramete
 objects use the model's defaults for omitted fields. Update preview is required
 for changed dimensions; matching inputs retain the verified STL and cached ZIP.
 
-You can also drop one saved dimensions JSON file or CAD/kit ZIP anywhere in the
-open model editor, including the preview and measurement fields. Saved
+You can also drop one dimensions JSON, versions backup or CAD/kit ZIP anywhere
+in an open model editor, including the preview and measurement fields. Saved
 dimensions opens to show the file controls and feedback. The file box highlights
-when a file is dragged over it; dropping anywhere uses the same bounded importer
-as Load dimensions. Multiple or rejected files keep the current measurements
+when a file is dragged over it; dropping routes dimensions and ZIPs through
+their existing validation and version backups through the named-version importer.
+Multiple or rejected files keep the current measurements
 and verified downloads. Pending builds stay in progress. Text drags keep their
 normal behavior. Load dimensions remains available for keyboard and touch use.
 
@@ -561,7 +581,9 @@ closed-editor events and the phone chooser with unavailable 3D. Before-change
 evidence and reviewed layouts are under `../review/cloud_editor_drop_*`, alongside
 `../review/cloud_dimension_drop_*`.
 
-JSON files are limited to 16 KiB. Model and parameter names, units, numeric types,
+Dimensions JSON records are limited to 16 KiB; the dropped JSON reader accepts
+up to 64 KiB to identify larger version backups. The dimensions chooser keeps
+its 16 KiB pre-read cap. Model and parameter names, units, numeric types,
 counts, list lengths and numeric bounds are validated before the form changes.
 Direct ZIP imports read only the top-level `parameters.json` record. Archives
 are limited to 8 MiB, 128 entries and 24 MiB of declared uncompressed contents;

@@ -2,11 +2,11 @@ import { MAX_DIMENSIONS_BYTES } from './dimensions.js';
 import { MAX_FILE_BYTES, readWithSignal } from './transfer.js';
 
 export const MAX_DIMENSIONS_ZIP_BYTES = MAX_FILE_BYTES;
-const zipFile = file => /\.zip$/i.test(file.name) || ['application/zip', 'application/x-zip-compressed'].includes(file.type);
+export const isDimensionsZip = file => /\.zip$/i.test(file.name) || ['application/zip', 'application/x-zip-compressed'].includes(file.type);
 const archiveError = text => Object.assign(new Error(text), { dimensionsFile: true });
 
 export function checkDimensionsFile(file) {
-  if (zipFile(file)) {
+  if (isDimensionsZip(file)) {
     if (file.size > MAX_DIMENSIONS_ZIP_BYTES) throw archiveError('The CAD ZIP exceeds 8 MiB. Extract its parameters.json file and choose that instead.');
   } else if (file.size > MAX_DIMENSIONS_BYTES) {
     throw new Error('The saved dimensions file exceeds 16 KiB. Choose a parameters.json file.');
@@ -16,7 +16,7 @@ export function checkDimensionsFile(file) {
 export async function readDimensionsFile(file, signal) {
   signal?.throwIfAborted();
   checkDimensionsFile(file);
-  if (!zipFile(file)) return readWithSignal(() => file.text(), signal);
+  if (!isDimensionsZip(file)) return readWithSignal(() => file.text(), signal);
   let ZipReader, BlobReader;
   try { ({ ZipReader, BlobReader } = await readWithSignal(() => import('./zip.js'), signal)); }
   catch { signal?.throwIfAborted(); throw archiveError('ZIP reading is unavailable. Extract parameters.json from the ZIP and choose that file instead.'); }

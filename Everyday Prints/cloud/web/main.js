@@ -2,7 +2,7 @@ import MiniSearch from 'minisearch';
 import { MAX_FILE_BYTES, readFile, readWithSignal } from './transfer.js';
 import { responseProblem } from './problems.js';
 import { dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
-import { checkDimensionsFile, readDimensionsFile } from './dimension-files.js';
+import { checkDimensionsFile, isDimensionsZip, readDimensionsFile } from './dimension-files.js';
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
@@ -954,9 +954,70 @@ function supersedeVersionRead() {
   ++versionsRead;
   if (versionsLoading) {
     versionsLoading.controller.abort();
-    versionBackupMessage('Backup import stopped. Choose the file again to import its versions.');
+    versionBackupMessage(versionsLoading.dropped ? 'File reading stopped. Drop the file again to load it.' : 'Backup import stopped. Choose the file again to import its versions.');
   }
   versionsLoading = null;
+}
+
+function applyVersionBackup(text) {
+  const result = editVersions(storage => importVersionBackup(storage, state.models, text));
+  versions = result.records;
+  renderVersions();
+  versionBackupMessage(result.added ? `Imported ${result.added} ${result.added === 1 ? 'version' : 'versions'}.${result.skipped ? ` ${result.skipped} already saved.` : ''} Current measurements are kept.` : 'These versions are already saved. Current measurements are kept.');
+}
+
+async function loadDroppedJson(file) {
+  if (!file || !dialog.open || state.busy) return;
+  cancelDimensionsRead();
+  versionsLoading?.controller.abort();
+  const epoch = state.epoch, dimensionRead = ++dimensionsRead, versionRead = ++versionsRead;
+  const controller = new AbortController();
+  dimensionsLoading = { epoch, read: dimensionRead, controller };
+  versionsLoading = { read: versionRead, controller, dropped: true };
+  const draft = JSON.stringify(formValues());
+  const current = () => dialog.open && state.epoch === epoch && dimensionsRead === dimensionRead &&
+    versionsRead === versionRead && !state.busy && JSON.stringify(formValues()) === draft;
+  versionBackupMessage('Reading dropped JSON…');
+  let backup = false;
+  try {
+    const tooLarge = () => new Error('The dropped JSON exceeds 64 KiB. Choose a saved dimensions file or versions backup.');
+    if (file.size > MAX_VERSIONS_BYTES) throw tooLarge();
+    let text, timer;
+    const timedOut = new Error('Reading the dropped JSON took too long. Drop it again or use a file chooser.');
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
+    try { text = await Promise.race([readWithSignal(() => file.text(), controller.signal), timeout]); }
+    catch (error) {
+      if (error === timedOut) throw error;
+      throw new Error('The dropped JSON could not be read. Drop it again or use a file chooser.');
+    } finally { clearTimeout(timer); controller.abort(); }
+    if (!current()) return;
+    if (new TextEncoder().encode(text).byteLength > MAX_VERSIONS_BYTES) throw tooLarge();
+    try { backup = JSON.parse(text.replace(/^\uFEFF/, ''))?.format === 'everyday-prints-versions'; } catch { /* The dimensions validator supplies JSON recovery guidance. */ }
+    if (backup) {
+      applyVersionBackup(text);
+      $('version-backup-message').scrollIntoView({ block: 'nearest' });
+    } else {
+      const { item, parameters } = savedDimensions(text, state.models);
+      clearShare();
+      clearDimensionsError();
+      versionBackupMessage('');
+      if (versionsLoading?.read === versionRead) versionsLoading = null;
+      await applyDimensions(item, parameters, { read: dimensionRead });
+    }
+  } catch (error) {
+    if (current()) {
+      if (backup) {
+        versionBackupMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The backup could not be imported. Browser storage is unavailable. Existing versions and measurements are kept.' : error.message, true);
+        $('version-backup-message').scrollIntoView({ block: 'nearest' });
+      } else {
+        versionBackupMessage('');
+        showDimensionsError(`Saved file could not be loaded. ${error.message}`);
+      }
+    }
+  } finally {
+    if (dimensionsLoading?.read === dimensionRead) dimensionsLoading = null;
+    if (versionsLoading?.read === versionRead) versionsLoading = null;
+  }
 }
 
 async function loadVersionBackup(file) {
@@ -978,10 +1039,7 @@ async function loadVersionBackup(file) {
       throw new Error('The version backup could not be read. Choose it again.');
     } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;
-    const result = editVersions(storage => importVersionBackup(storage, state.models, text));
-    versions = result.records;
-    renderVersions();
-    versionBackupMessage(result.added ? `Imported ${result.added} ${result.added === 1 ? 'version' : 'versions'}.${result.skipped ? ` ${result.skipped} already saved.` : ''} Current measurements are kept.` : 'These versions are already saved. Current measurements are kept.');
+    applyVersionBackup(text);
   } catch (error) {
     if (current()) versionBackupMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The backup could not be imported. Browser storage is unavailable. Existing versions and measurements are kept.' : error.message, true);
   } finally {
@@ -1005,6 +1063,7 @@ async function applyDimensions(item, parameters, { read = ++dimensionsRead, name
 }
 
 function cancelDimensionsRead() {
+  if (dimensionsLoading && versionsLoading?.controller === dimensionsLoading.controller) supersedeVersionRead();
   dimensionsLoading?.controller.abort();
   dimensionsLoading = null;
 }
@@ -1279,10 +1338,11 @@ dialog.addEventListener('drop', event => {
   const files = event.dataTransfer.files;
   if (files.length !== 1) {
     supersedeDimensionsRead();
-    showDimensionsError('Drop one saved dimensions JSON file or CAD/kit ZIP at a time.');
+    showDimensionsError('Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.');
     return;
   }
-  loadDimensions(files[0]);
+  if (isDimensionsZip(files[0])) loadDimensions(files[0]);
+  else loadDroppedJson(files[0]);
 });
 document.addEventListener('dragend', () => dimensionsDrop.classList.remove('is-dragging'));
 $('save-version').addEventListener('click', saveCurrentVersion);

@@ -22,14 +22,14 @@
     {
       "check": "multiple_drop_success",
       "mode": "headers",
-      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "message": "Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.",
       "original_mesh_sha256": "9e82919b660cca7e53f224e6c8478bc34ef46b50c0e24fd87babae5c7d238f84",
       "native_jobs": 0
     },
     {
       "check": "multiple_drop_success",
       "mode": "body",
-      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "message": "Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.",
       "original_mesh_sha256": "9e82919b660cca7e53f224e6c8478bc34ef46b50c0e24fd87babae5c7d238f84",
       "native_jobs": 0
     },
@@ -53,7 +53,7 @@
     },
     {
       "check": "multiple_drop_shared_link",
-      "message": "Drop one saved dimensions JSON file or CAD/kit ZIP at a time.",
+      "message": "Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.",
       "native_jobs": 0
     }
   ],

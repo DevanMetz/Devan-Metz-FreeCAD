@@ -229,7 +229,7 @@ def main():
             page.keyboard.press('Enter')
             expect(page.locator('#share-message')).to_contain_text('Link copied')
             clean(page, 150)
-            expect(page.locator('#load-dimensions')).to_have_accessible_description('Drop one saved dimensions JSON or CAD/kit ZIP anywhere in this editor, or use Load dimensions.')
+            expect(page.locator('#load-dimensions')).to_have_accessible_description('Drop one dimensions JSON, versions backup or CAD/kit ZIP anywhere in this editor. The file choosers also work.')
             assert page.locator('#download').is_enabled() and not jobs
 
         for test in (keyboard_save_supersedes_late_valid_import,

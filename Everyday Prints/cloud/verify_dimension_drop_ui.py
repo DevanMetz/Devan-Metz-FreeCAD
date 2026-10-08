@@ -324,7 +324,7 @@ def main():
             custom(page)
             assert download(page,'download-cad')[1] == archive
             reads = page.evaluate('window.jsonReads+window.zipSlices')
-            for name,mime,size,message in [('huge.json','application/json',16385,'exceeds 16 KiB'),
+            for name,mime,size,message in [('huge.json','application/json',65537,'exceeds 64 KiB'),
                                             ('huge.zip','application/zip',8*1024*1024+1,'exceeds 8 MiB')]:
                 assert dispatch(page,[chosen(name=name,mime=mime,size=size)])['prevented']
                 expect(page.locator('#dimensions-error')).to_contain_text(message)

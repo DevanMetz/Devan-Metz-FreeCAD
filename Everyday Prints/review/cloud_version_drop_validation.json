@@ -1,0 +1,197 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "native_selected_and_whole_exports_restore_without_changing_invalid_drafts",
+    "content_detection_bom_and_both_limits_stay_bounded",
+    "all_six_assemblies_merge_canonical_inventory_and_undo_without_building",
+    "conflicts_repeats_invalid_records_and_storage_failures_keep_atomic_data",
+    "newer_actions_release_wait_and_deadline_before_late_dropped_bytes",
+    "timeouts_and_newer_files_keep_only_current_read_and_recover",
+    "dimensions_drops_keep_exact_files_and_existing_chooser_behavior",
+    "busy_builds_closed_editor_and_text_drags_never_read_backups",
+    "short_phone_backup_feedback_and_keyboard_download_work_without_graphics"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "native_export",
+      "file": "everyday-prints-version.json",
+      "target": "#param-length",
+      "entries": 1,
+      "native_drop": [
+        {
+          "trusted": true,
+          "files": [
+            "everyday-prints-version.json"
+          ]
+        }
+      ],
+      "json_reads": 1,
+      "invalid_draft_kept": true,
+      "undo_kept_fields": true,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "native_export",
+      "file": "everyday-prints-versions.json",
+      "target": "#viewer",
+      "entries": 2,
+      "native_drop": [
+        {
+          "trusted": true,
+          "files": [
+            "everyday-prints-versions.json"
+          ]
+        }
+      ],
+      "json_reads": 1,
+      "invalid_draft_kept": true,
+      "undo_kept_fields": true,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "bounds",
+      "backup_bytes": 65536,
+      "backup_reads": 1,
+      "oversize_drop_reads": 0,
+      "oversize_dimensions_drop_reads": 1,
+      "dimensions_chooser_oversize_reads": 0,
+      "draft_kept": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "kits",
+      "canonical_assemblies": 6,
+      "undo_restored_empty_library": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "atomic",
+      "conflict_numbered": true,
+      "repeat_without_write": true,
+      "invalid_mixed_capacity_and_quota_preserved": true,
+      "fields_kept": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "discarded_read",
+      "action": "field",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "save_dimensions",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "copy",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "reset",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "save_version",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "rename",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "replace",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "remove",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "open",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "export",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "undo",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "build",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "retry",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "discarded_read",
+      "action": "close",
+      "deadlines_after_action": 0,
+      "late_storage_unchanged": true
+    },
+    {
+      "check": "deadlines",
+      "expired_and_old_bytes_ignored": true,
+      "only_current_timer_retained": true,
+      "new_file_recovered": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "dimensions",
+      "json_drop_exact_files": true,
+      "backup_chooser_invalid_draft_kept": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "inactive",
+      "backup_reads": 0,
+      "stop_focus_kept": true,
+      "exact_pending_cad": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "feedback_visible": true,
+      "keyboard_export_visible": true,
+      "graphics_required": false,
+      "draft_kept": true,
+      "exact_original_stl": true,
+      "native_jobs": 0
+    }
+  ],
+  "transport": "Compiled production CSP/assets, exported native downloads, trusted Chromium file drops, real CAD fixtures and controlled local reads."
+}

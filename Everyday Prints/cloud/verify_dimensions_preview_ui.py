@@ -201,18 +201,18 @@ def main():
               for (const name of ['first.json', 'second.json']) data.items.add(new File(['{}'], name, {type:'application/json'}));
               document.querySelector('#dimension-drop').dispatchEvent(new DragEvent('drop', {bubbles:true, cancelable:true, dataTransfer:data}));
             }""")
-            expect(page.locator("#dimensions-error")).to_have_text("Drop one saved dimensions JSON file or CAD/kit ZIP at a time.")
-            expect(page.locator("#form-message")).to_have_text("Drop one saved dimensions JSON file or CAD/kit ZIP at a time.")
+            expect(page.locator("#dimensions-error")).to_have_text("Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.")
+            expect(page.locator("#form-message")).to_have_text("Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time.")
             page.locator("#load-dimensions").focus()
             return values
 
         def retained_drop_error(page, values):
-            text = "Drop one saved dimensions JSON file or CAD/kit ZIP at a time."
+            text = "Drop one dimensions JSON, versions backup or CAD/kit ZIP at a time."
             expect(page.locator("#dimensions-error")).to_have_text(text)
             expect(page.locator("#form-message")).to_have_text(text)
             expect(page.locator("#form-message")).to_have_class("form-message error")
             expect(page.locator("#load-dimensions")).to_be_focused()
-            expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP anywhere in this editor, or use Load dimensions. " + text)
+            expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one dimensions JSON, versions backup or CAD/kit ZIP anywhere in this editor. The file choosers also work. " + text)
             assert page.locator("#parameter-fields input").evaluate_all("inputs => inputs.map(input => [input.id, input.value])") == values
 
         def late_original_success_keeps_multiple_drop_rejection(page):

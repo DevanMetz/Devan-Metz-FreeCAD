@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest selected-version export build passes **270 focused browser checks across
-twenty affected suites**, the **53-model catalog and image smoke test**,
+The latest version backup drop build passes **279 focused browser checks across
+twenty-one affected suites**, the **53-model catalog and image smoke test**,
 **107 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -28,6 +28,29 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Selected and whole-library version backups can now be dropped anywhere in an
+open editor, including its preview and measurement fields. The baseline rejected
+both exported files as dimensions records and restored no versions. A content
+check now routes backups through the existing atomic merge and Undo, keeping
+current measurements, validation errors, history and verified STL/CAD files.
+Names and canonical measurements are restored for later explicit opening.
+
+Dropped JSON is read once within 64 KiB, including BOM files and renamed or
+reordered backups. Dimensions records retain their 16 KiB validation limit;
+their chooser still rejects oversized files before reading. An ambiguous
+dropped read is guarded by both import channels until its content is known.
+Edits, named actions, newer files, builds, retry and closing promptly release
+the wait and deadline. Fourteen action cases ignore late bytes; deadlines
+recover and newer files retain only their own timer. Normal backup chooser
+imports remain independent of same-model editing and dimensions imports.
+
+Nine browser checks verify trusted drops of actual exported files in a fresh
+browser, invalid drafts, exact retained STL/CAD bytes and dimensional names,
+all six canonical kit inventories, conflicts/repeats, atomic invalid/capacity/
+quota failures, both byte limits, cancellation, inactive drops and short-phone
+keyboard use without graphics. Desktop and phone layouts were visually
+reviewed. Evidence is under `review/cloud_version_drop_*`.
 
 Export selected now downloads one saved version as `everyday-prints-version.json`,
 keeping its name and canonical measurements without opening it or changing

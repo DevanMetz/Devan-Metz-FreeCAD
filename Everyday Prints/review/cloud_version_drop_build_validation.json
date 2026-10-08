@@ -1,0 +1,139 @@
+{
+  "baseline_head": "4ecc8d68f04e7af8d065da6b503ff3eaee209d95",
+  "unit_tests": {
+    "passed": 107,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\index.html": "444ebe9bdab3e45be9a491c82f391a2bcd59fe8a07f8f19a3825fe8106690366",
+      "assets\\assets\\index-DqRIMiRv.css": "f027965f7ab7b34357af7a2dd3a16d73eba109c30b0e245199a971e6f1566181",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\assets\\zip-ErgwT8hT.js": "70226f8d770404b79cc33bfb6be2b1407b15eb15f5d67f82f9d3eae49851945d",
+      "assets\\assets\\index-AD2R7Oa9.js": "092df213cdc20fd585e2b05ae876d4625aa568189e20238d3f66f277b79edf8a"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 279,
+    "suites_current_build": 21,
+    "fresh_reports_current_build": 22,
+    "reports": {
+      "cloud_version_backups_validation.json": 17,
+      "cloud_versions_validation.json": 12,
+      "cloud_version_edits_validation.json": 14,
+      "cloud_versions_undo_validation.json": 13,
+      "cloud_versions_sync_validation.json": 12,
+      "cloud_field_revert_validation.json": 13,
+      "cloud_history_downloads_validation.json": 16,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_zip_dimensions_validation.json": 13,
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_original_retry_ui_validation.json": 23,
+      "cloud_original_idle_validation.json": 11,
+      "cloud_transfer_progress_validation.json": 15,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23,
+      "cloud_build_recovery_validation.json": 10,
+      "cloud_selected_version_validation.json": 8,
+      "cloud_version_drop_validation.json": 9
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets and CSP, exported native downloads, trusted Chromium file drops, real CAD fixtures, controlled local reads and deadlines, cross-tab storage and keyboard use with and without graphics."
+  },
+  "previous_focused_browser_checkpoint": {
+    "head": "4ecc8d68f04e7af8d065da6b503ff3eaee209d95",
+    "focused_checks": 270,
+    "suites": 20
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "retained_browser_evidence": {
+    "checks_mixed_builds": 453,
+    "suites_mixed_builds": 36
+  },
+  "version_drops": {
+    "baseline_rejected_native_exports": 2,
+    "verified_browser_checks": 9,
+    "measured_cases": 23,
+    "native_exports": [
+      "everyday-prints-version.json",
+      "everyday-prints-versions.json"
+    ],
+    "native_targets": [
+      "#param-length",
+      "#viewer"
+    ],
+    "native_entries_restored": [
+      1,
+      2
+    ],
+    "bounded_json_reads_per_drop": 1,
+    "dropped_json_limit_bytes": 65536,
+    "dimensions_record_limit_bytes": 16384,
+    "oversized_dropped_json_reads": 0,
+    "oversized_dimensions_record_reads_after_classification": 1,
+    "oversized_dimensions_chooser_reads": 0,
+    "exact_boundary_bom_renamed_and_reordered_backups": true,
+    "names_and_canonical_measurements_restored_for_explicit_opening": true,
+    "invalid_fields_feedback_history_and_verified_files_kept": true,
+    "exact_stl_cad_and_dimensional_names_retained": true,
+    "canonical_assembly_inventories": 6,
+    "existing_atomic_merge_conflicts_repeats_capacity_and_storage_guards": true,
+    "undo_restores_prior_library_without_applying_fields": true,
+    "discarded_read_actions": 14,
+    "discarded_deadlines_cleared_before_late_bytes": true,
+    "expired_and_superseded_bytes_ignored": true,
+    "newer_files_keep_only_current_timer": true,
+    "active_builds_closed_editor_and_text_drags_never_read_backups": true,
+    "original_dimensions_json_zip_and_backup_choosers_regression_checked": true,
+    "short_phone": {
+      "width": 390,
+      "height": 600,
+      "feedback_visible": true,
+      "keyboard_export_visible": true,
+      "graphics_required": false,
+      "horizontal_overflow": false
+    },
+    "report": "cloud_version_drop_validation.json",
+    "baseline": "cloud_version_drop_baseline.json"
+  },
+  "verification_adjustments": [
+    {
+      "files": [
+        "cloud/verify_dimensions_preview_ui.py",
+        "cloud/verify_import_actions_ui.py",
+        "cloud/verify_field_feedback_ui.py"
+      ],
+      "change": "Updated exact rejection and accessible-description expectations to include version backups. The checks still require retained feedback, focus, field values and exact downloads after later actions or original previews."
+    },
+    {
+      "file": "cloud/verify_dimension_drop_ui.py",
+      "change": "The generic JSON drop pre-read boundary is now 64 KiB. The new suite independently verifies rejection of dimensions records above 16 KiB and the unchanged 16 KiB chooser pre-read cap."
+    }
+  ],
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_version_drop_desktop.png",
+    "cloud_version_drop_mobile.png"
+  ]
+}
