@@ -5,7 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
-import { MAX_VERSIONS_BYTES, importVersionBackup, readVersions, removeVersion, saveVersion, versionBackup, versionName } from './versions.js';
+import { MAX_VERSIONS_BYTES, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -734,9 +734,11 @@ function dimensionsLoaded() {
 }
 
 function versionControls() {
-  const selected = versions.some(version => version.id === $('version-choice').value);
+  const selected = versions.find(version => version.id === $('version-choice').value);
   $('load-version').disabled = state.busy || !selected;
   $('remove-version').disabled = state.busy || !selected;
+  $('rename-version').disabled = state.busy || !selected;
+  $('replace-version').disabled = state.busy || !selected || selected.dimensions.model !== state.item?.name;
   $('export-versions').disabled = state.busy || !versions.length;
   $('import-versions').disabled = state.busy;
 }
@@ -829,17 +831,17 @@ async function loadVersionBackup(file) {
   }
 }
 
-async function applyDimensions(item, parameters, { read = ++dimensionsRead, name } = {}) {
+async function applyDimensions(item, parameters, { read = ++dimensionsRead, name, versionId } = {}) {
   const epoch = state.epoch;
   if (item.name !== state.item.name) {
-    appliedDimensions = { epoch: epoch + 1, read, name };
+    appliedDimensions = { epoch: epoch + 1, read, name, versionId };
     await openModel(item.name, parameters, { fromFile: true });
     return;
   }
   fields(parameters);
   markDirty();
   rememberPage(true);
-  appliedDimensions = { epoch, read, name };
+  appliedDimensions = { epoch, read, name, versionId };
   dimensionsLoaded();
   $('parameter-fields').querySelector('input')?.focus();
 }
@@ -1073,9 +1075,49 @@ $('load-version').addEventListener('click', async () => {
     supersedeDimensionsRead();
     clearShare();
     versionMessage(`Version “${version.name}” opened. Update preview to build changed dimensions.`);
-    await applyDimensions(state.models.find(item => item.name === version.dimensions.model), version.dimensions.parameters, { name: version.name });
+    await applyDimensions(state.models.find(item => item.name === version.dimensions.model), version.dimensions.parameters, { name: version.name, versionId: version.id });
   } catch (error) {
     versionMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser. Use Load dimensions to reopen a file.' : error.message, true);
+  }
+});
+$('rename-version').addEventListener('click', () => {
+  if (state.busy) return;
+  supersedeVersionRead();
+  let name;
+  try { name = versionName($('version-name').value); }
+  catch (error) {
+    $('version-name').setAttribute('aria-invalid', 'true');
+    versionMessage(error.message, true);
+    $('version-name').focus();
+    return;
+  }
+  const id = $('version-choice').value;
+  try {
+    versions = renameVersion(localStorage, state.models, id, name);
+    renderVersions(id);
+    if (appliedDimensions?.versionId === id) appliedDimensions.name = name;
+    $('version-name').value = '';
+    $('version-name').setAttribute('aria-invalid', 'false');
+    versionMessage(`Version renamed to “${name}”. Its saved dimensions and your current measurements are kept.`);
+  } catch (error) {
+    versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'This version could not be renamed. Browser storage is unavailable. Existing versions are kept.' : error.message, true);
+  }
+});
+$('replace-version').addEventListener('click', () => {
+  if (state.busy || !state.item) return;
+  supersedeVersionRead();
+  let parameters;
+  try { parameters = readParameters(); }
+  catch (error) { invalidParameters(error, true); return; }
+  if (supersedeDimensionsRead()) markDirty();
+  const id = $('version-choice').value;
+  try {
+    versions = replaceVersion(localStorage, state.models, id, state.item, parameters);
+    renderVersions(id);
+    const version = versions.find(record => record.id === id);
+    versionMessage(`Dimensions replaced in “${version.name}”. ${sameParameters(parameters, state.previewParameters) ? 'These measurements match the verified preview.' : 'Update preview to build changed measurements.'}`);
+  } catch (error) {
+    versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'Saved dimensions could not be replaced. Browser storage is unavailable. Existing versions are kept. Use Save dimensions to keep a file.' : error.message, true);
   }
 });
 $('remove-version').addEventListener('click', () => {

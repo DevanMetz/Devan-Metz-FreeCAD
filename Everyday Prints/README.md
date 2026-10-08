@@ -22,6 +22,10 @@ measurements before building, reopen a part or assembly version, or remove a
 version while keeping current fields and files. Changed versions require Update
 preview; matching versions can reuse verified STL and cached CAD downloads.
 Save dimensions keeps a portable backup outside browser storage.
+Rename version uses the name above the saved-version list. Replace dimensions
+saves the current measurements into the selected version of the open model.
+Both keep its identity and current preview files; changed dimensions still need
+Update preview.
 Export versions saves all version names and measurements in one JSON backup.
 Import versions merges that file into another browser, keeps existing entries,
 numbers conflicting names and skips already saved versions. Imports leave the

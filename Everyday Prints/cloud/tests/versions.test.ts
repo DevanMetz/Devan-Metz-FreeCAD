@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { MAX_VERSIONS, MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, saveVersion, versionBackup } from '../web/versions.js';
+import { MAX_VERSIONS, MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, versionBackup } from '../web/versions.js';
 
 const cloud = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const models = JSON.parse(readFileSync(resolve(cloud, 'public/catalog.json'), 'utf8')).models;
@@ -12,6 +12,94 @@ function memory(text: string | null = null) {
   return { text, getItem(key: string) { assert.equal(key, VERSIONS_KEY); return this.text; },
     setItem(key: string, value: string) { assert.equal(key, VERSIONS_KEY); this.text = value; } };
 }
+
+test('renaming every catalog model retains its identity, dimensions and canonical assembly inventory', () => {
+  for (const item of models) {
+    const storage = memory();
+    const original = saveVersion(storage, models, item, item.defaults, 'Original');
+    const renamed = renameVersion(storage, models, original[0].id, ' Shelf <wide> 🧰 ');
+    assert.deepEqual(renamed, [{ ...original[0], name: 'Shelf <wide> 🧰' }]);
+    assert.deepEqual(readVersions(storage, models), renamed);
+  }
+});
+
+test('replacing real decimal and list dimensions works in a full library without changing names, identities or order', () => {
+  const storage = memory();
+  const cable = models.find((item: any) => item.name === 'cable_comb');
+  saveVersion(storage, models, cable, cable.defaults, 'Routing');
+  for (let i = 0; i < 19; i++) saveVersion(storage, models, tray, tray.defaults, 'Tray ' + i);
+  const original = readVersions(storage, models);
+  for (const item of [tray, cable]) {
+    const selected = original.find((record: any) => record.dimensions.model === item.name)!;
+    const exported = JSON.parse(readFileSync(resolve(cloud, '../review/cloud_export_samples', item.name, 'parameters.json'), 'utf8'));
+    const before = readVersions(storage, models);
+    const updated = replaceVersion(storage, models, selected.id, item, exported.parameters);
+    assert.equal(updated.length, MAX_VERSIONS);
+    assert.deepEqual(updated.map((record: any) => [record.id, record.name]), original.map((record: any) => [record.id, record.name]));
+    assert.deepEqual(updated.find((record: any) => record.id === selected.id)?.dimensions.parameters, exported.parameters);
+    assert.deepEqual(updated.filter((record: any) => record.id !== selected.id), before.filter((record: any) => record.id !== selected.id));
+    assert.equal(Object.hasOwn(updated.find((record: any) => record.id === selected.id)!.dimensions, 'mesh_sha256'), false);
+  }
+  const source = readVersions(storage, models);
+  const restored = importVersionBackup(memory(), models, versionBackup(storage, models)).records;
+  assert.deepEqual(restored.map(({ name, dimensions }: any) => ({ name, dimensions })), source.map(({ name, dimensions }: any) => ({ name, dimensions })));
+});
+
+test('rename checks fresh model-specific name conflicts and replacement preserves entries from another view', () => {
+  const storage = memory();
+  const selected = saveVersion(storage, models, tray, tray.defaults, 'First')[0];
+  const cable = models.find((item: any) => item.name === 'cable_comb');
+  saveVersion(storage, models, cable, cable.defaults, 'Other');
+  const before = saveVersion(storage, models, tray, tray.defaults, 'Second');
+  const text = storage.text;
+  for (const name of ['', ' ', 'x'.repeat(81), ' SECOND ']) assert.throws(() => renameVersion(storage, models, selected.id, name));
+  assert.equal(storage.text, text);
+  const renamed = renameVersion(storage, models, selected.id, 'Other');
+  assert.deepEqual(renamed.filter((record: any) => record.id !== selected.id), before.filter((record: any) => record.id !== selected.id));
+  const newest = saveVersion(storage, models, tray, tray.defaults, 'New elsewhere');
+  const updated = replaceVersion(storage, models, selected.id, tray, { ...tray.defaults, length: 180.555 });
+  assert.deepEqual(updated.filter((record: any) => record.id !== selected.id), newest.filter((record: any) => record.id !== selected.id));
+  removeVersion(storage, models, selected.id);
+  const remaining = storage.text;
+  assert.throws(() => renameVersion(storage, models, selected.id, 'Missing'), /no longer saved/);
+  assert.throws(() => replaceVersion(storage, models, selected.id, tray, tray.defaults), /no longer saved/);
+  assert.equal(storage.text, remaining);
+});
+
+test('invalid measurements, cross-model replacements and unreadable storage cannot change saved entries', () => {
+  const storage = memory();
+  const selected = saveVersion(storage, models, tray, tray.defaults, 'Original')[0];
+  const text = storage.text;
+  const cable = models.find((item: any) => item.name === 'cable_comb');
+  assert.throws(() => replaceVersion(storage, models, selected.id, cable, cable.defaults), /Open this version/);
+  for (const parameters of [{ ...tray.defaults, length: NaN }, { ...tray.defaults, length: 1001 }, { ...tray.defaults, length: '180' }, { ...tray.defaults, columns: 1.5 }, { ...tray.defaults, unknown: 5 }]) {
+    assert.throws(() => replaceVersion(storage, models, selected.id, tray, parameters));
+  }
+  assert.equal(storage.text, text);
+  for (const corrupted of ['broken', '{}', JSON.stringify([selected, selected])]) {
+    storage.text = corrupted;
+    assert.throws(() => renameVersion(storage, models, selected.id, 'Changed'));
+    assert.throws(() => replaceVersion(storage, models, selected.id, tray, tray.defaults));
+    assert.equal(storage.text, corrupted);
+  }
+});
+
+test('failed writes keep old versions while unchanged rename and replacement work without a storage write', () => {
+  const storage = memory();
+  const original = saveVersion(storage, models, tray, tray.defaults, 'Original');
+  const text = storage.text;
+  let writes = 0;
+  storage.setItem = () => { writes++; throw new DOMException('Full', 'QuotaExceededError'); };
+  assert.deepEqual(renameVersion(storage, models, original[0].id, ' Original '), original);
+  assert.deepEqual(replaceVersion(storage, models, original[0].id, tray, tray.defaults), original);
+  assert.equal(writes, 0);
+  assert.throws(() => renameVersion(storage, models, original[0].id, 'Changed'), /Full/);
+  assert.throws(() => replaceVersion(storage, models, original[0].id, tray, { ...tray.defaults, length: 180.5 }), /Full/);
+  assert.equal(storage.text, text);
+  storage.getItem = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.throws(() => renameVersion(storage, models, original[0].id, 'Changed'), /Denied/);
+  assert.throws(() => replaceVersion(storage, models, original[0].id, tray, tray.defaults), /Denied/);
+});
 
 test('all 53 models retain exact default dimensions and canonical kit quantities as named versions', () => {
   assert.equal(models.length, 53);

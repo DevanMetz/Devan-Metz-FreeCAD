@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "rename_keeps_invalid_drafts_preview_and_cached_cad",
+    "replacement_in_full_library_keeps_identity_and_builds_exact_decimal_files",
+    "ordered_lists_and_renamed_backup_keep_precise_values",
+    "invalid_names_duplicates_and_invalid_fields_leave_records_untouched",
+    "cross_model_selection_can_be_renamed_but_cannot_replace_measurements",
+    "fresh_records_and_removed_selections_are_respected",
+    "denied_writes_and_unchanged_actions_preserve_records_and_downloads",
+    "corrupt_storage_is_kept_and_portable_dimensions_remain_available",
+    "assembly_replacement_derives_canonical_inventory_without_geometry_claims",
+    "new_edits_supersede_pending_backups_without_late_merges",
+    "replacement_cancels_pending_dimensions_while_rename_keeps_independent_file_feedback",
+    "active_cad_work_guards_edits_and_keeps_retry_focus",
+    "late_original_preview_uses_the_renamed_open_version",
+    "mobile_keyboard_edits_keep_reachable_controls_and_exact_downloads"
+  ],
+  "failures": [],
+  "transport": "compiled assets and real CAD fixtures"
+}

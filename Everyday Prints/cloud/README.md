@@ -89,6 +89,24 @@ persistence, fine decimals, lists, assemblies, history, exact STL/CAD reuse,
 validation, limits, storage failures, late previews/imports and mobile keyboard
 controls. Evidence and reviewed layouts are under `../review/cloud_versions_*`.
 
+Rename version changes the selected entry’s name using the name field above.
+Replace dimensions stores the current validated measurements in the selected
+entry, retaining its name, identity and position. It is enabled only for a
+version of the open model. Replacements work with twenty saved entries, while
+unchanged actions avoid writes and remain usable when storage is full. Names
+still reject same-model conflicts, including changes saved by another view.
+Failed reads, writes, missing entries and invalid fields keep existing data.
+
+These actions keep current fields, preview files, CAD caches and history.
+Changed measurements still require Update preview. Both supersede older backup
+imports; replacement also supersedes a pending dimensions-file read. Renaming
+keeps that independent file read and its feedback. An opened version’s new name
+survives a late original preview. Active CAD work disables both controls.
+Fourteen compiled-browser checks cover precise decimals/lists, full libraries,
+canonical assemblies, exact downloads, cached CAD reuse, storage failures,
+late reads, Stop recovery and mobile keyboard use. Evidence and reviewed layouts
+are under `../review/cloud_version_edits_*`.
+
 Export versions downloads `everyday-prints-versions.json`, containing all names
 and canonical dimensions with format `everyday-prints-versions` and version 1.
 Import versions validates the whole backup before merging it into current browser
@@ -180,6 +198,7 @@ python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
 python verify_versions_ui.py
 python verify_version_backups_ui.py
+python verify_version_edits_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py
@@ -672,7 +691,10 @@ decimals and lists, canonical assembly inventory, duplicate names, storage caps,
 corrupt records, failed writes and changes saved by another view. Six more checks
 cover portable backups for all 53 models, conflict numbering and repeated imports,
 Unicode names, exact decimals/lists, canonical inventory, atomic rejection,
-UTF-8/BOM boundaries, capacity and failed writes. All sixty-nine unit tests pass.
+UTF-8/BOM boundaries, capacity and failed writes. Five additional checks cover
+in-place renaming for every model, decimal/list replacement in full libraries,
+fresh records, invalid fields, model mismatches, corrupt data and unchanged
+actions during quota failures. All seventy-four unit tests pass.
 
 ## API
 

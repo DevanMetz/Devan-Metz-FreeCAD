@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **282 focused browser
-checks across twenty-four suites**, the **53-model catalog and image smoke test**,
-**69 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **296 focused browser
+checks across twenty-five suites**, the **53-model catalog and image smoke test**,
+**74 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -96,6 +96,22 @@ meshes, all fifty-three defaults, storage failures and Unicode/BOM boundaries.
 The malformed-file test now clones its records, preventing contaminated defaults
 from reaching later checks. Desktop and mobile backup controls were visually
 reviewed. Evidence is under `review/cloud_version_backups_*`.
+
+Saved versions can now be renamed and their dimensions replaced in place.
+Rename uses the name above the version list; replacement applies the current
+validated parameters only to a selected entry of the open model. Both preserve
+identity, order, current fields, history and preview/CAD files. Replacement works
+in a full twenty-entry library, and unchanged edits avoid storage writes.
+Duplicate names, invalid measurements, missing entries, corrupted records and
+failed writes preserve saved data. Actions read current storage and keep entries
+saved by another view. New actions discard pending backup imports; replacement
+also cancels pending dimensions-file reads, while renaming keeps independent
+file feedback. Late original previews use the renamed entry’s current name.
+Fourteen browser checks and five unit checks cover these paths, exact decimal
+and ordered-list STL/CAD downloads, cached CAD reuse, canonical assembly
+inventory, storage denial, late reads, Stop recovery and keyboard/mobile use.
+Desktop and mobile layouts were reviewed. Evidence is under
+`review/cloud_version_edits_*`.
 
 ## Complete design inventory
 

@@ -58,6 +58,28 @@ export function removeVersion(storage, models, id) {
   return writeVersions(storage, records.filter(record => record.id !== id));
 }
 
+export function renameVersion(storage, models, id, label) {
+  const name = versionName(label);
+  const records = readVersions(storage, models);
+  const selected = records.find(record => record.id === id);
+  if (!selected) throw new Error('This version is no longer saved. Choose another version.');
+  if (records.some(record => record.id !== id && record.dimensions.model === selected.dimensions.model && record.name.toLowerCase() === name.toLowerCase())) {
+    throw new Error('This model already has a version with that name. Choose another name.');
+  }
+  if (selected.name === name) return records;
+  return writeVersions(storage, records.map(record => record.id === id ? { ...record, name } : record));
+}
+
+export function replaceVersion(storage, models, id, item, parameters) {
+  const records = readVersions(storage, models);
+  const selected = records.find(record => record.id === id);
+  if (!selected) throw new Error('This version is no longer saved. Choose another version.');
+  if (selected.dimensions.model !== item.name) throw new Error('Open this version’s model before replacing its dimensions.');
+  const dimensions = dimensionRecord(item, parameters);
+  if (JSON.stringify(selected.dimensions.parameters) === JSON.stringify(dimensions.parameters)) return records;
+  return writeVersions(storage, records.map(record => record.id === id ? { ...record, dimensions } : record));
+}
+
 export function versionBackup(storage, models) {
   const versions = readVersions(storage, models).map(({ name, dimensions }) => ({ name, dimensions }));
   if (!versions.length) throw new Error('Save a named version before exporting a backup.');

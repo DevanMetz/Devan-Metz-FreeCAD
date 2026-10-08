@@ -377,3 +377,15 @@ fields, preview correspondence, cached CAD and dimensions-file feedback. Bound
 local reads to fifteen seconds, supersede them through newer named actions and
 file selections, and discard late results after navigation, close or CAD work.
 Keep backup controls disabled during CAD work and review keyboard/mobile use.
+
+Allow renaming a selected saved version and replacing its dimensions without
+removing and recreating it. Retain its identity, name on replacement, order and
+other entries; use current storage and enforce existing name/schema limits.
+Replacement must use validated measurements of the open model and work in a full
+library. Avoid writes for unchanged edits. Keep current editor fields, history,
+verified mesh and cached CAD; unbuilt measurements still require Update preview.
+Preserve data on missing entries, malformed storage and failed reads/writes.
+Supersede pending backup imports through either edit, cancel pending dimensions
+reads on replacement, and keep unrelated file feedback when renaming. Use the
+updated name if an opened version’s original preview arrives later. Disable both
+controls during CAD work and review keyboard/mobile layouts.
