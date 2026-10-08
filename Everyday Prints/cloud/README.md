@@ -726,13 +726,22 @@ drafts, missing previews, and a reachable keyboard-operated mobile stop button.
 A virtual clock tests the waiting deadline without a real 15-minute wait.
 Results are in `../review/cloud_build_recovery_validation.json`.
 
-Update preview also reuses a retained complete CAD/kit download from another
-remembered view when its model and canonical parameters match. The stored mesh
-passes the normal hash, metadata and geometry verification before its ZIP is
-attached. This avoids duplicate builds after reopening an original library card
-or reapplying a previously downloaded named version or dimensions file.
-ZIP reuse with an already verified preview also requires the exact mesh hash.
-Changed parameters use the normal service build when no matching download exists.
+Update preview reuses a retained verified native preview from another remembered
+view when its model and canonical parameters match, including previews without
+a CAD ZIP. The stored mesh passes normal hash, metadata and geometry verification;
+a retained matching ZIP is then attached if available. This avoids duplicate builds
+after reopening a library card or reapplying a named version or dimensions file.
+ZIP reuse with an already verified preview requires both an archive and the exact
+mesh hash. Without a retained ZIP, the first CAD download builds and verifies one
+against the current preview. Catalog meshes still receive the usual native refresh.
+Changed parameters use the normal service build when no matching preview exists.
+
+Four preview-only browser checks cover STL-only named versions, exact files and
+dimension-bearing names, native default previews, reference assemblies, first CAD
+and kit exports, failed CAD requests, dimensions files, invalid drafts, changed
+parameters, Stop with delayed verification and mobile keyboard focus. The baseline
+repeated the same native preview request after reopening an STL-only named version.
+Evidence and reviewed desktop/phone layouts are under `../review/cloud_preview_reuse_*`.
 
 Local restoration uses the existing Stop and 15-minute deadline controls, preserves
 newer edits and focus, and ignores completion after Stop or model navigation.
@@ -757,7 +766,7 @@ repeatedly. Separately allocated files still count individually. Evicting an
 older ZIP keeps its retained preview available; downloading that ZIP again uses
 the normal verified CAD request.
 
-`verify_history_downloads_ui.py --offline` has twelve browser checks for customized
+`verify_history_downloads_ui.py --offline` has sixteen browser checks for customized
 and original downloads, one-time original CAD refreshes, repeated history,
 invalid and dirty drafts, Revert edits and replacement previews, reference kits
 and component navigation, delayed verification superseded by another view,

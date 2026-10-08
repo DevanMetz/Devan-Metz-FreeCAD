@@ -115,8 +115,9 @@ its camera angle, zoom, pan and Edges setting. Framing follows the new mesh size
 and center; opening another model or reopening the editor starts the usual 3D view.
 
 Reopening a library model or updating a previously downloaded version can reuse
-its retained preview and CAD/kit files when the model and measurements match.
-The preview is verified again, with Stop waiting available during restoration.
+its retained preview when the model and measurements match, including STL-only
+downloads. Matching CAD/kit files are also reused when retained. The preview is
+verified again, with Stop waiting available during restoration.
 
 Back and Forward also reuse retained CAD and parts-kit downloads with their
 verified preview dimensions and filenames. History shares a 32 MiB file cache;

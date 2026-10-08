@@ -10,6 +10,10 @@
     "reopened_named_versions_reuse_custom_files_but_changed_parameters_build",
     "reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries",
     "cached_preview_verification_respects_stop_edits_deadlines_and_navigation",
+    "preview_only_named_versions_reuse_exact_stl_and_keep_stop_and_mobile_focus",
+    "preview_only_dimensions_files_keep_mesh_after_failed_cad_and_reopen",
+    "preview_only_native_defaults_reuse_without_skipping_static_mesh_refresh",
+    "preview_only_reference_reuses_before_first_kit_and_keeps_model_boundaries",
     "shared_cad_references_do_not_evict_older_distinct_downloads",
     "shared_dense_meshes_and_cad_survive_twenty_reopened_views",
     "archive_budget_evicts_old_zips_without_discarding_verified_previews"
@@ -17,7 +21,7 @@
   "failures": [],
   "history_cache_bytes": 33554432,
   "padded_zip_bytes": 6291580,
-  "padded_zip_sha256": "85da7c566d3c2b6e3cea3211e82a8260ff4ae86b5353f31ec8b3a64a3de0eec0",
+  "padded_zip_sha256": "887cb52672336dea818faa9bf35243405de792c35066a94942ec78ff75a8ab7e",
   "shared_file_retention": [
     {
       "repeated_dense_views": 6,

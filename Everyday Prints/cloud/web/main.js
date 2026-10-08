@@ -724,10 +724,10 @@ function retryOriginal() {
 }
 
 function cachedFiles(parameters, meshHash) {
-  const saved = [...savedPages.values()].reverse().find(page => page.buffer && page.cad &&
+  const saved = [...savedPages.values()].reverse().find(page => page.buffer &&
     page.metadata?.format === 'stl' && page.metadata.model === state.item.name &&
-    sameParameters(page.previewParameters, parameters) && (!meshHash || page.metadata.mesh_sha256 === meshHash));
-  return saved && { buffer: saved.buffer, metadata: saved.metadata, cad: saved.cad };
+    sameParameters(page.previewParameters, parameters) && (!meshHash || page.cad && page.metadata.mesh_sha256 === meshHash));
+  return saved && { buffer: saved.buffer, metadata: saved.metadata, cad: saved.cad || null };
 }
 
 async function rebuild(event) {

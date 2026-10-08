@@ -1,0 +1,19 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "native_requests": [
+    [
+      "parts_tray",
+      "stl"
+    ],
+    [
+      "parts_tray",
+      "stl"
+    ]
+  ],
+  "stl_bytes": 358284,
+  "stl_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "filename": "parts_tray-custom-180.5x100x24mm-6f7e6198de7a.stl",
+  "cad_downloads_requested": 0,
+  "observed": "Reopening a named STL-only version repeated its already verified preview build.",
+  "transport": "compiled application and exact native STL fixture"
+}

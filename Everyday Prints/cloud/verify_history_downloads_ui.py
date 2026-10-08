@@ -387,6 +387,158 @@ def main():
             assert download(page, original[0]) == 'parts_tray-cad.zip'
             assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2
 
+        def preview_only_named_versions_reuse_exact_stl_and_keep_stop_and_mobile_focus(page):
+            jobs = setup(page)
+            open_tray(page, customized=True)
+            filename = download(page, custom[2], 'download')
+            page.locator('.saved-dimensions').evaluate('element => { element.open = true; }')
+            page.locator('#version-name').fill('STL-only tray')
+            page.locator('#save-version').click()
+            version = page.locator('#version-choice').input_value()
+
+            def reopen_version():
+                page.locator('#close-editor').click()
+                page.wait_for_function("() => !document.querySelector('#editor').open")
+                open_tray(page)
+                page.locator('#version-choice').select_option(version)
+                page.locator('#load-version').click()
+                assert page.locator('#download').is_disabled() and page.locator('#download-cad').is_disabled()
+
+            reopen_version()
+            page.locator('#rebuild').focus()
+            page.keyboard.press('Space')
+            ready(page)
+            assert download(page, custom[2], 'download') == filename
+            assert jobs == [('parts_tray', 'stl')]
+            page.screenshot(path=str(ROOT / 'review/cloud_preview_reuse_desktop.png'))
+            page.set_viewport_size({'width': 390, 'height': 844})
+            reopen_version()
+            page.evaluate("""() => {
+              const digest = crypto.subtle.digest.bind(crypto.subtle);
+              window.holdPreviewOnly = true;
+              crypto.subtle.digest = async (...args) => {
+                const value = await digest(...args);
+                if (!window.holdPreviewOnly) return value;
+                return new Promise(resolve => { window.releasePreviewOnly = () => resolve(value); });
+              };
+            }""")
+            page.locator('#rebuild').focus()
+            page.keyboard.press('Space')
+            page.wait_for_function("() => typeof window.releasePreviewOnly === 'function'")
+            assert 'Restoring' in page.locator('#form-message').inner_text()
+            assert page.locator('#stop-build').evaluate('element => element === document.activeElement')
+            page.keyboard.press('Space')
+            assert 'Stopped waiting.' in page.locator('#form-message').inner_text()
+            assert 'service' not in page.locator('#form-message').inner_text()
+            page.evaluate('() => { window.holdPreviewOnly = false; window.releasePreviewOnly(); }')
+            page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+            assert page.locator('#model-size').inner_text() == '150 × 100 × 24'
+            assert page.locator('#download').is_disabled()
+            page.locator('#rebuild').focus()
+            page.keyboard.press('Space')
+            ready(page)
+            assert download(page, custom[2], 'download', keyboard=True) == filename
+            assert page.locator('#download').evaluate('element => element === document.activeElement')
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            assert jobs == [('parts_tray', 'stl')]
+            page.screenshot(path=str(ROOT / 'review/cloud_preview_reuse_mobile.png'))
+            assert download(page, custom[0])
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+            page.locator('[data-parameter="length"]').fill('150')
+            page.locator('#rebuild').click()
+            ready(page)
+            assert download(page, original[2], 'download') == 'parts_tray.stl'
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad'), ('parts_tray', 'stl')]
+
+        def preview_only_dimensions_files_keep_mesh_after_failed_cad_and_reopen(page):
+            jobs = setup(page)
+            open_tray(page, customized=True)
+            filename = download(page, custom[2], 'download')
+
+            def reopen_file():
+                page.locator('#close-editor').click()
+                page.wait_for_function("() => !document.querySelector('#editor').open")
+                open_tray(page)
+                page.locator('#dimensions-file').set_input_files({'name': 'parameters.json',
+                    'mimeType': 'application/json', 'buffer': json.dumps(custom[1]).encode('utf-8')})
+                page.wait_for_function("() => document.querySelector('#param-length').value === '180.5'")
+                page.locator('#rebuild').click()
+                ready(page)
+                assert download(page, custom[2], 'download') == filename
+
+            reopen_file()
+            assert jobs == [('parts_tray', 'stl')]
+            reject = [True]
+
+            def failed_cad(route):
+                if route.request.post_data_json.get('format') == 'cad' and reject[0]:
+                    reject[0] = False
+                    jobs.append(('parts_tray', 'cad'))
+                    route.fulfill(status=503, content_type='application/json', body='{"error":"CAD service is temporarily unavailable. Try again."}')
+                else:
+                    route.fallback()
+
+            page.route('**/api/generate', failed_cad)
+            page.locator('#download-cad').click()
+            page.wait_for_function("() => !document.querySelector('#rebuild').disabled && document.querySelector('#form-message').classList.contains('error')")
+            assert 'temporarily unavailable' in page.locator('#form-message').inner_text()
+            assert download(page, custom[2], 'download') == filename
+            page.locator('[data-parameter="height"]').fill('')
+            assert page.locator('#download').is_disabled() and page.locator('#download-cad').is_disabled()
+            page.locator('#revert-parameters').click()
+            assert download(page, custom[2], 'download') == filename
+            reopen_file()
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+            assert download(page, custom[0])
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad'), ('parts_tray', 'cad')]
+
+        def preview_only_native_defaults_reuse_without_skipping_static_mesh_refresh(page):
+            jobs = setup(page)
+            open_tray(page)
+            static_mesh = (CLOUD / 'public/models/parts_tray.stl').read_bytes()
+            assert static_mesh != original[2]
+            assert download(page, static_mesh, 'download') == 'parts_tray.stl'
+            assert not jobs
+            page.locator('#rebuild').click()
+            ready(page)
+            assert download(page, original[2], 'download') == 'parts_tray.stl'
+            assert jobs == [('parts_tray', 'stl')]
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            assert download(page, static_mesh, 'download') == 'parts_tray.stl'
+            page.locator('#rebuild').click()
+            ready(page)
+            assert download(page, original[2], 'download') == 'parts_tray.stl'
+            assert jobs == [('parts_tray', 'stl')]
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+
+        def preview_only_reference_reuses_before_first_kit_and_keeps_model_boundaries(page):
+            jobs = setup(page)
+            page.locator('[data-model="soap_dish_assembly"]').click()
+            wait_model(page, 'soap_dish_assembly')
+            for key, value in assembly[1]['parameters'].items():
+                page.locator(f'[data-parameter="{key}"]').fill(str(value))
+            page.locator('#rebuild').click()
+            ready(page)
+            assert page.locator('#download').is_hidden()
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page, customized=True)
+            assert download(page, custom[2], 'download').startswith('parts_tray-custom-180.5x100x24mm-')
+            page.locator('#dimensions-file').set_input_files({'name': 'parameters.json',
+                'mimeType': 'application/json', 'buffer': json.dumps(assembly[1]).encode('utf-8')})
+            wait_model(page, 'soap_dish_assembly')
+            page.locator('#rebuild').click()
+            ready(page)
+            assert page.locator('#download').is_hidden()
+            assert page.locator('#model-size').inner_text() == '160 × 84 × 14'
+            assert jobs == [('soap_dish_assembly', 'stl'), ('parts_tray', 'stl')]
+            filename = download(page, assembly[0])
+            assert filename.endswith('-kit.zip') and '160x84x14mm-' in filename
+            assert jobs == [('soap_dish_assembly', 'stl'), ('parts_tray', 'stl'), ('soap_dish_assembly', 'cad')]
+
         def shared_files_survive_repeated_views(page, visits):
             jobs = setup(page, file_variants=shared_variants)
             page.evaluate("""() => {
@@ -533,6 +685,10 @@ def main():
                      reopened_named_versions_reuse_custom_files_but_changed_parameters_build,
                      reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries,
                      cached_preview_verification_respects_stop_edits_deadlines_and_navigation,
+                     preview_only_named_versions_reuse_exact_stl_and_keep_stop_and_mobile_focus,
+                     preview_only_dimensions_files_keep_mesh_after_failed_cad_and_reopen,
+                     preview_only_native_defaults_reuse_without_skipping_static_mesh_refresh,
+                     preview_only_reference_reuses_before_first_kit_and_keeps_model_boundaries,
                      shared_cad_references_do_not_evict_older_distinct_downloads,
                      shared_dense_meshes_and_cad_survive_twenty_reopened_views,
                      archive_budget_evicts_old_zips_without_discarding_verified_previews):

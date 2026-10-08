@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **385 focused browser
+The latest local customizer and download build passes **389 focused browser
 checks across thirty-one suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,15 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Verified native previews now reuse matching retained meshes before any CAD or
+kit download. The STL-only baseline rebuilt an identical named version twice.
+Four added browser checks verify exact STL reuse, saved versions and dimensions
+files, first CAD/kit exports, failed CAD recovery, native default previews, model
+boundaries, changed and invalid fields, Stop during verification and mobile
+keyboard downloads. Reused previews still pass metadata, hash and geometry checks;
+ZIP lookup requires an archive and the exact current mesh hash. Evidence and
+reviewed desktop/phone layouts are under `review/cloud_preview_reuse_*`.
 
 The history budget now counts each shared preview ArrayBuffer and CAD Blob
 once, keeping room for distinct downloads when the same version appears in
@@ -47,7 +56,7 @@ for an identical original download. Four additional browser checks cover
 reopened original cards, named versions, dimensions files, assembly kits, changed
 parameters, Stop, the 15-minute deadline, edits during verification and late
 completion after navigation. Local-restoration feedback describes its work and
-preserves keyboard focus. The history-download report has twelve passing checks;
+preserves keyboard focus. The history-download report has sixteen passing checks;
 its budget scenario now uses six distinct native CAD variants with valid padded
 ZIPs. Desktop and phone layouts were visually reviewed. Evidence is under
 `review/cloud_download_reuse_*`; the saved-file focus probe verified all four
