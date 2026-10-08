@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **222 focused browser
+The latest local customizer and download build passes **227 focused browser
 checks across nineteen suites**, the **53-model catalog and image smoke test**,
 **50 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -28,6 +28,12 @@ limits before editing, with accessible descriptions and reviewed mobile layouts.
 The transfer verifier now waits for the current request's reader and always
 resumes its virtual clock after the five-second error-boundary check, preventing
 an earlier reader or failed assertion from stalling later checks.
+Browser graphics loss now shows the original catalog image while preserving
+verified mesh dimensions, files, edits and pending requests. Graphics restoration
+redraws the current mesh with the same camera and edge display, including after
+model navigation or builds completed during the interruption. Five additional
+checks use real WebGL loss and restoration with exported CAD fixtures; mobile
+fallback and restored previews were visually reviewed.
 
 ## Complete design inventory
 

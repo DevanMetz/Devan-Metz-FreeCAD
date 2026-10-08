@@ -3,7 +3,7 @@ import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export class ModelViewer {
-  constructor(element) {
+  constructor(element, onContextChange) {
     this.element = element;
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color('#f6f8f3');
@@ -12,6 +12,12 @@ export class ModelViewer {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+    this.contextChange = () => {
+      this.render();
+      onContextChange?.();
+    };
+    this.renderer.domElement.addEventListener('webglcontextlost', this.contextChange);
+    this.renderer.domElement.addEventListener('webglcontextrestored', this.contextChange);
     element.prepend(this.renderer.domElement);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = false;
@@ -84,9 +90,13 @@ export class ModelViewer {
     return this.wireframe;
   }
 
-  render() { this.renderer.render(this.scene, this.camera); }
+  get available() { return !this.renderer.getContext().isContextLost(); }
+
+  render() { if (this.available) this.renderer.render(this.scene, this.camera); }
 
   dispose() {
+    this.renderer.domElement.removeEventListener('webglcontextlost', this.contextChange);
+    this.renderer.domElement.removeEventListener('webglcontextrestored', this.contextChange);
     this.resizeObserver.disconnect();
     this.controls.dispose();
     this.clear();

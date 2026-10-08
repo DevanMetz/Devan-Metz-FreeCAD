@@ -8,7 +8,12 @@
     "failed_module_keeps_downloads",
     "no_webgl_keeps_downloads",
     "failed_renderer_keeps_verified_files",
-    "corrupt_mesh_stays_blocked"
+    "corrupt_mesh_stays_blocked",
+    "lost_original_graphics_keep_exact_stl_and_view",
+    "graphics_recovery_keeps_invalid_draft_and_cached_cad",
+    "builds_while_graphics_lost_restore_latest_mesh",
+    "graphics_recovery_after_close_and_navigation",
+    "mobile_graphics_changes_keep_pending_cad_and_focus"
   ],
   "failures": [],
   "fixture_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",

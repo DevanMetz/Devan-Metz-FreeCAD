@@ -62,6 +62,9 @@ Unavailable model links explain the problem and recover to the library, where
 visitors can choose another part without carrying over the unavailable model's measurements.
 Parameter hints show declared ranges, whole-number rules and the numeric-list
 limit before editing, and are included in each input's accessible description.
+If browser graphics are interrupted, the editor shows the original image while
+keeping verified files and dimensions. Graphics recovery redraws the current
+mesh and retains its camera view, edge display, edits and pending downloads.
 
 ![CAD previews of the collection](preview.png)
 

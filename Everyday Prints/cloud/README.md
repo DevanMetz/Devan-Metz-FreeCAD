@@ -493,11 +493,24 @@ current verified mesh, including after a CAD download. Script or graphics
 failures retain the files and image fallback; failed renderers release their
 canvas and resources.
 
-`verify_viewer_loading.py` has eight browser checks for delayed viewer loading,
+If graphics are interrupted after loading, the editor shows the original catalog
+image while keeping verified mesh dimensions and files. When graphics return, it
+redraws the current mesh with the same camera and edge display. Builds and CAD
+downloads can continue during the interruption; invalid drafts, keyboard focus,
+pending requests and cached CAD files are preserved. Recovery also follows model
+navigation and does not open a closed editor or start another CAD build.
+
+`verify_viewer_loading.py` has thirteen browser checks for delayed viewer loading,
 original and customized STL/CAD downloads, late 3D upgrades, model switches,
 closed editors, module failures, missing WebGL, rendering failures, and blocked
-corrupt meshes. It uses real exported CAD fixtures and compiled viewer code;
-its report is `../review/cloud_viewer_loading_validation.json`.
+corrupt meshes, plus graphics loss and restoration during editing, builds,
+navigation and mobile CAD downloads. The latter use the browser's real
+[WebGL loss and restoration extension](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context)
+with exported CAD fixtures and compiled viewer code. Its report is
+`../review/cloud_viewer_loading_validation.json`; the before-fix evidence is
+`../review/cloud_viewer_context_baseline.json`. Reviewed mobile images are
+`../review/cloud_viewer_context_mobile.png` and
+`../review/cloud_viewer_context_mobile_restored.png`.
 
 `verify_transfer_ui.py` checks oversized original previews, custom previews and
 CAD ZIPs, interrupted and empty transfers, cancellation during a pending read,

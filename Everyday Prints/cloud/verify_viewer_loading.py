@@ -83,7 +83,9 @@ def main():
             assert badge == "Original catalog image", badge
             assert page.locator(".view-tools").is_hidden()
             assert page.locator("#viewer").get_attribute("aria-busy") == str(loading).lower()
-            assert "original model" in page.locator("#download-note").inner_text()
+            assert 'The catalog image shows original dimensions.' in page.locator('.viewer-help').inner_text()
+            note = page.locator('#download-note').inner_text()
+            assert ('original model' if page.locator('#download').is_visible() else 'Print the kit components separately') in note
 
         def download(page, button="download"):
             with page.expect_download() as event:
@@ -101,6 +103,41 @@ def main():
             deliver(waiting.pop())
             page.wait_for_function("() => window.viewerModuleLoaded === true")
             page.evaluate("() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))")
+
+        def graphics(page, lost):
+            page.evaluate("""lost => {
+              const canvas = document.querySelector('#viewer canvas');
+              if (lost) {
+                window.graphicsExtension = canvas.getContext('webgl2').getExtension('WEBGL_lose_context');
+                if (!window.graphicsExtension) throw new Error('Missing real WebGL context-loss extension');
+              }
+              const name = lost ? 'webglcontextlost' : 'webglcontextrestored';
+              window.graphicsEvent = null;
+              canvas.addEventListener(name, () => { window.graphicsEvent = name; }, { once: true });
+              window.graphicsExtension[lost ? 'loseContext' : 'restoreContext']();
+            }""", lost)
+            page.wait_for_function("name => window.graphicsEvent === name",
+                arg="webglcontextlost" if lost else "webglcontextrestored", timeout=5000)
+            assert page.evaluate("() => document.querySelector('#viewer canvas').getContext('webgl2').isContextLost()") == lost
+
+        def observe_rendered_model(page, url):
+            page.evaluate("""async url => {
+              const { ModelViewer } = await import(url);
+              const render = ModelViewer.prototype.render;
+              ModelViewer.prototype.render = function() {
+                const result = render.call(this);
+                if (this.mesh && !this.renderer.getContext().isContextLost()) {
+                  window.graphicsRenders = (window.graphicsRenders || 0) + 1;
+                  const box = this.mesh.geometry.boundingBox;
+                  window.renderedPreview = {
+                    size: ['x', 'y', 'z'].map(axis => Math.round((box.max[axis] - box.min[axis]) * 100) / 100),
+                    camera: this.camera.position.toArray(), target: this.controls.target.toArray(),
+                    edges: this.mesh.material.wireframe,
+                  };
+                }
+                return result;
+              };
+            }""", url)
 
         def held_original_download_and_export(page):
             waiting, _, jobs = setup(page)
@@ -218,6 +255,144 @@ def main():
             assert download(page) == custom[2]
             assert download(page, "download-cad") == custom[0]
 
+        def lost_original_graphics_keep_exact_stl_and_view(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="front"]').click()
+            page.locator('#wireframe').click()
+            before = page.evaluate('window.renderedPreview')
+            renders = page.evaluate('window.graphicsRenders')
+            graphics(page, True)
+            fallback(page)
+            assert download(page) == (CLOUD / 'public/models/parts_tray.stl').read_bytes()
+            assert not jobs, 'Losing graphics started a CAD job'
+            page.screenshot(path=str(ROOT / 'review/cloud_viewer_context_fallback.png'))
+            graphics(page, False)
+            viewer_ready(page)
+            assert page.evaluate('window.graphicsRenders') > renders, 'Restored context did not redraw the model'
+            assert page.evaluate('window.renderedPreview') == before, 'Graphics recovery changed the view or edges'
+            assert page.locator('#wireframe').get_attribute('aria-pressed') == 'true'
+            assert download(page) == (CLOUD / 'public/models/parts_tray.stl').read_bytes()
+            assert not jobs
+
+        def graphics_recovery_keeps_invalid_draft_and_cached_cad(page):
+            _, _, jobs = setup(page, hold_viewer=False)
+            open_custom(page)
+            viewer_ready(page)
+            assert download(page, 'download-cad') == custom[0]
+            field = page.locator('[data-parameter="length"]')
+            field.fill('')
+            error = page.locator('#form-message').inner_text()
+            graphics(page, True)
+            fallback(page)
+            assert field.evaluate('element => element === document.activeElement')
+            assert page.locator('#download').is_disabled()
+            assert page.locator('#download-cad').is_disabled()
+            graphics(page, False)
+            viewer_ready(page)
+            assert field.input_value() == ''
+            assert field.evaluate('element => element === document.activeElement')
+            assert field.get_attribute('aria-invalid') == 'true'
+            assert page.locator('#form-message').inner_text() == error
+            assert page.locator('#download').is_disabled()
+            page.locator('#revert-parameters').click()
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            assert jobs == ['stl', 'cad'], 'Graphics recovery discarded the matching CAD cache'
+
+        def builds_while_graphics_lost_restore_latest_mesh(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            graphics(page, True)
+            fallback(page)
+            open_custom(page)
+            fallback(page)
+            assert page.locator('#model-size').inner_text() == '180.5 × 100 × 24'
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            assert jobs == ['stl', 'cad']
+            graphics(page, False)
+            viewer_ready(page)
+            assert page.evaluate('window.renderedPreview.size') == [180.5, 100, 24]
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            assert jobs == ['stl', 'cad']
+            page.screenshot(path=str(ROOT / 'review/cloud_viewer_context_custom_restored.png'))
+
+        def graphics_recovery_after_close_and_navigation(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            graphics(page, True)
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !new URL(location.href).searchParams.has('model')")
+            graphics(page, False)
+            assert not page.locator('#editor').evaluate('element => element.open')
+            page.locator('[data-model="cable_comb"]').click()
+            ready(page)
+            viewer_ready(page)
+            assert page.evaluate('window.renderedPreview.size') == [59, 32, 4]
+            graphics(page, True)
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !new URL(location.href).searchParams.has('model')")
+            page.locator('[data-model="soap_dish_assembly"]').click()
+            page.wait_for_function("() => !document.querySelector('#download-cad').disabled")
+            fallback(page)
+            assert page.locator('#download').is_hidden()
+            graphics(page, False)
+            viewer_ready(page)
+            assert page.evaluate('window.renderedPreview.size') == [120, 84, 14]
+            assert page.locator('#preview-badge').text_content() == 'Reference assembly'
+            assert page.locator('#download-cad').inner_text().startswith('Download parts kit')
+            assert not jobs
+
+        def mobile_graphics_changes_keep_pending_cad_and_focus(page):
+            page.set_viewport_size({'width': 390, 'height': 844})
+            waiting, _, jobs = setup(page, hold_viewer=False)
+            open_custom(page)
+            viewer_ready(page)
+
+            def hold_cad(route):
+                assert route.request.post_data_json['format'] == 'cad'
+                assert route.request.post_data_json['parameters']['length'] == 180.5
+                jobs.append('cad')
+                waiting.append(route)
+
+            page.route('**/api/generate', hold_cad)
+            with page.expect_download() as event:
+                page.locator('#download-cad').focus()
+                page.keyboard.press('Space')
+                page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+                assert len(waiting) == 1
+                stop = page.locator('#stop-build')
+                assert stop.evaluate('element => element === document.activeElement')
+                graphics(page, True)
+                fallback(page)
+                assert stop.evaluate('element => element === document.activeElement')
+                assert stop.is_visible() and stop.bounding_box()['height'] >= 44
+                assert page.locator('#download').is_disabled()
+                assert page.locator('#download-cad').is_disabled()
+                page.locator('.editor-layout').evaluate('element => { element.scrollTop = 0; }')
+                page.screenshot(path=str(ROOT / 'review/cloud_viewer_context_mobile.png'))
+                graphics(page, False)
+                viewer_ready(page)
+                assert stop.evaluate('element => element === document.activeElement')
+                assert stop.is_visible()
+                assert page.locator('#download').is_disabled()
+                assert page.locator('#download-cad').is_disabled()
+                waiting.pop().fulfill(body=custom[0], headers=headers(custom[1]))
+            assert Path(event.value.path()).read_bytes() == custom[0]
+            ready(page)
+            assert download(page) == custom[2]
+            assert jobs == ['stl', 'cad']
+            page.locator('.editor-layout').evaluate('element => { element.scrollTop = 0; }')
+            page.screenshot(path=str(ROOT / 'review/cloud_viewer_context_mobile_restored.png'))
+
         def corrupt_mesh_stays_blocked(page):
             mesh = bytearray((CLOUD / "public/models/parts_tray.stl").read_bytes())
             mesh[0] ^= 1
@@ -232,11 +407,17 @@ def main():
         for test in (held_original_download_and_export, held_custom_files_and_late_upgrade,
                      close_before_module_initialization, switch_models_during_load,
                      failed_module_keeps_downloads, no_webgl_keeps_downloads,
-                     failed_renderer_keeps_verified_files, corrupt_mesh_stays_blocked):
+                     failed_renderer_keeps_verified_files, corrupt_mesh_stays_blocked,
+                     lost_original_graphics_keep_exact_stl_and_view,
+                     graphics_recovery_keeps_invalid_draft_and_cached_cad,
+                     builds_while_graphics_lost_restore_latest_mesh,
+                     graphics_recovery_after_close_and_navigation,
+                     mobile_graphics_changes_keep_pending_cad_and_focus):
             page = context.new_page()
             errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))
             try:
+                print(f"START {test.__name__}", flush=True)
                 test(page)
                 assert not errors, errors
                 passed.append(test.__name__)

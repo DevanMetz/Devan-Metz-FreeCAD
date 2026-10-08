@@ -381,14 +381,16 @@ function previewDisplay(ready, loading = false) {
 function updateViewer(buffer, module) {
   if (!dialog.open || state.buffer !== buffer) return;
   try {
-    if (!viewer && module) viewer = new module.ModelViewer($('viewer'));
+    if (!viewer && module) viewer = new module.ModelViewer($('viewer'), () => {
+      if (dialog.open && state.buffer) previewDisplay(!!viewer && viewer.available);
+    });
     viewer?.load(buffer, state.item.kind === 'assembly');
   } catch {
     viewer?.dispose();
     viewer = null;
     viewerPromise = Promise.resolve(null);
   }
-  previewDisplay(!!viewer);
+  previewDisplay(!!viewer && viewer.available);
 }
 
 async function displayMesh(buffer, metadata, parameters, epoch, preserveFileError = false) {

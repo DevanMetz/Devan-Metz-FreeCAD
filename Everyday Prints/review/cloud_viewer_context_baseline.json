@@ -1,0 +1,52 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "held_original_download_and_export",
+    "held_custom_files_and_late_upgrade",
+    "close_before_module_initialization",
+    "switch_models_during_load",
+    "failed_module_keeps_downloads",
+    "no_webgl_keeps_downloads",
+    "failed_renderer_keeps_verified_files",
+    "corrupt_mesh_stays_blocked"
+  ],
+  "failures": [
+    {
+      "test": "lost_original_graphics_keep_exact_stl_and_view",
+      "error": "",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 420, in main\n    test(page)\n    ~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 266, in lost_original_graphics_keep_exact_stl_and_view\n    fallback(page)\n    ~~~~~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 81, in fallback\n    assert page.locator(\"#fallback-image\").is_visible()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+      "browser_errors": []
+    },
+    {
+      "test": "graphics_recovery_keeps_invalid_draft_and_cached_cad",
+      "error": "",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 420, in main\n    test(page)\n    ~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 287, in graphics_recovery_keeps_invalid_draft_and_cached_cad\n    fallback(page)\n    ~~~~~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 81, in fallback\n    assert page.locator(\"#fallback-image\").is_visible()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+      "browser_errors": []
+    },
+    {
+      "test": "builds_while_graphics_lost_restore_latest_mesh",
+      "error": "",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 420, in main\n    test(page)\n    ~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 309, in builds_while_graphics_lost_restore_latest_mesh\n    fallback(page)\n    ~~~~~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 81, in fallback\n    assert page.locator(\"#fallback-image\").is_visible()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+      "browser_errors": []
+    },
+    {
+      "test": "graphics_recovery_after_close_and_navigation",
+      "error": "",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 420, in main\n    test(page)\n    ~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 343, in graphics_recovery_after_close_and_navigation\n    fallback(page)\n    ~~~~~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 81, in fallback\n    assert page.locator(\"#fallback-image\").is_visible()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+      "browser_errors": []
+    },
+    {
+      "test": "mobile_graphics_changes_keep_pending_cad_and_focus",
+      "error": "",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 420, in main\n    test(page)\n    ~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 374, in mobile_graphics_changes_keep_pending_cad_and_focus\n    fallback(page)\n    ~~~~~~~~^^^^^^\n  File \"C:\\Users\\metzd\\Documents\\GitHub\\FreeCAD\\Everyday Prints\\cloud\\verify_viewer_loading.py\", line 81, in fallback\n    assert page.locator(\"#fallback-image\").is_visible()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+      "browser_errors": []
+    }
+  ],
+  "fixture_archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "transport": "compiled assets and real CAD fixtures with controlled viewer loading",
+  "observed_problem": "Real WebGL context loss leaves the original image hidden and the preview marked ready.",
+  "pre_fix_sources_sha256": {
+    "cloud/web/main.js": "8f875b17cbf08950d3907536cd709d1aaa7897c662c914ef80675760266cf9db",
+    "cloud/web/viewer.js": "92d346895f5ef3dc5fb23cfdac69fb8ca83eb0e54815417f9bf0d4f1e45a6c56"
+  }
+}
