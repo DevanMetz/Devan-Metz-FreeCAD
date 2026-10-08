@@ -552,11 +552,15 @@ loads only for ZIP selection and uses browser decompression; JSON imports stay
 available when ZIP reading is unavailable. Its BSD notice is in
 `THIRD_PARTY_NOTICES.md`.
 
-`verify_zip_dimensions_ui.py --offline` records twelve checks for real CAD and
+`verify_zip_dimensions_ui.py --offline` records thirteen checks for real CAD and
 all six kit ZIPs, exact decimal/list parameters, chooser labels, cached STL/CAD
 bytes and names, history, malformed archives, caps, late reads, deadlines,
 newer actions, busy downloads, unavailable graphics and ZIP reading, and phone
 keyboard focus. These run under the production content security policy.
+Eleven held-read cases verify that discarded imports start no further ZIP reads
+after edits, Save, Copy, Reset, Revert, newer files, builds, original retry,
+individual field revert, closing or the deadline. They preserve measurements,
+focus and exact cached files; a chooser completing after closing reads nothing.
 Evidence and reviewed layouts are under `../review/cloud_zip_dimensions_*`.
 
 Local file reads also have a 15-second deadline. A stalled read shows retry
@@ -564,7 +568,10 @@ guidance beside Load dimensions and preserves the current fields and verified
 downloads. Late file results and older deadlines cannot replace newer selections
 or CAD progress. Save dimensions and Copy link supersede a pending import,
 keeping the measurements used by the new action; Copy link also clears completed
-import errors. Finished imports keep their existing confirmation and preview
+import errors. Discarded imports release their wait for JSON bytes, the optional
+ZIP reader or archive bytes and stop further ZIP reads. Editing, Reset, Revert,
+starting a build or original retry, and closing the editor also cancel the old
+import. Finished imports keep their existing confirmation and preview
 behavior when no read is pending.
 
 `verify_import_actions_ui.py` records seven browser checks for keyboard Save,
@@ -990,11 +997,14 @@ fresh records, invalid fields, model mismatches, corrupt data and unchanged
 actions during quota failures. Five Undo checks cover restoration for all 53
 models, exact values/order through every mutation, guards against newer entries,
 invalid snapshots, corrupt storage, failed writes/retries and canonical inventory.
-Nine ZIP dimensions checks cover all real exported CAD/kit fixtures, stored
+Eleven ZIP dimensions checks cover all real exported CAD/kit fixtures, stored
 and deflated records, UTF-8/BOM boundaries, ZIP/JSON caps, missing/nested/duplicate
 and contradictory records, CRC corruption, archive/record expansion, falsely
-small size fields, encryption/compression recovery, cancellation and unavailable decompression with JSON recovery.
-All 102 unit tests pass.
+small size fields, encryption/compression recovery, cancellation and unavailable
+decompression with JSON recovery. Pending ZIP reads reject before late bytes
+arrive and start no further reads; abort listeners are removed. Cancelled JSON
+reads ignore late failures and leave new files readable.
+All 104 unit tests pass.
 
 ## API
 

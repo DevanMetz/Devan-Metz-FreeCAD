@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import test from 'node:test';
+import { getEventListeners } from 'node:events';
 import { ZipWriter, Uint8ArrayWriter, Uint8ArrayReader } from '@zip.js/zip.js/lib/zip-core-custom.js';
 import { checkDimensionsFile, MAX_DIMENSIONS_ZIP_BYTES, readDimensionsFile } from '../web/dimension-files.js';
 import { MAX_DIMENSIONS_BYTES, savedDimensions } from '../web/dimensions.js';
@@ -133,4 +134,45 @@ test('cancelled ZIP reads and missing browser decompression leave JSON imports a
     await assert.rejects(readDimensionsFile(file(bytes)), /unavailable in this browser/);
     assert.equal(await readDimensionsFile(file(encode(record), 'parameters.json', 'application/json')), record);
   } finally { globalThis.DecompressionStream = real; }
+});
+
+test('cancelling a pending ZIP directory read rejects before late bytes and starts no further reads', { timeout: 2000 }, async () => {
+  const source = file(readFileSync(new URL('parts_tray/download.zip', sampleRoot)));
+  const slice = source.slice.bind(source);
+  let reads = 0, start, release;
+  const reached = new Promise(resolve => { start = resolve; });
+  source.slice = (...args) => {
+    reads++;
+    const blob = slice(...args), read = blob.arrayBuffer.bind(blob);
+    blob.arrayBuffer = () => new Promise(resolve => { release = () => read().then(resolve); start(); });
+    return blob;
+  };
+  const controller = new AbortController(), reason = new Error('Discarded ZIP');
+  const pending = readDimensionsFile(source, controller.signal);
+  await reached;
+  controller.abort(reason);
+  await assert.rejects(pending, error => error === reason);
+  assert.equal(reads, 1);
+  assert.equal(getEventListeners(controller.signal, 'abort').length, 0);
+  await release();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(reads, 1);
+  assert.equal(getEventListeners(controller.signal, 'abort').length, 0);
+});
+
+test('cancelled JSON reads ignore late failure, remove listeners and leave new files readable', { timeout: 2000 }, async () => {
+  const source = file(encode(record), 'parameters.json', 'application/json');
+  let rejectLate, reads = 0;
+  source.text = () => { reads++; return new Promise((_, reject) => { rejectLate = reject; }); };
+  const controller = new AbortController(), reason = new Error('Discarded JSON');
+  const pending = readDimensionsFile(source, controller.signal);
+  controller.abort(reason);
+  await assert.rejects(pending, error => error === reason);
+  assert.equal(reads, 1);
+  assert.equal(getEventListeners(controller.signal, 'abort').length, 0);
+  rejectLate(new DOMException('Late unreadable file', 'NotReadableError'));
+  await new Promise(resolve => setImmediate(resolve));
+  await assert.rejects(readDimensionsFile(source, controller.signal), error => error === reason);
+  assert.equal(reads, 1);
+  assert.equal(await readDimensionsFile(file(encode(record), 'new.json', 'application/json')), record);
 });

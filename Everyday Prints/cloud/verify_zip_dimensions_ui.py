@@ -18,12 +18,13 @@ OFFLINE = '--offline' in sys.argv
 BASE = OFFLINE_BASE if OFFLINE else (sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:5178')
 os.environ.setdefault('PLAYWRIGHT_BROWSERS_PATH', str(ROOT.parent / '.cad-cache/browsers'))
 
-READS = """window.zipSlices=0; window.pendingZipReads=[]; window.holdZipReads=false;
+READS = """window.zipSlices=0; window.zipReadsByName={}; window.pendingZipReads=[]; window.holdZipReads=false;
 const fileSlice=File.prototype.slice;
 File.prototype.slice=function(...args){
   const blob=fileSlice.apply(this,args);
   if(!this.name.toLowerCase().endsWith('.zip')) return blob;
   window.zipSlices++;
+  window.zipReadsByName[this.name]=(window.zipReadsByName[this.name]||0)+1;
   const arrayBuffer=blob.arrayBuffer.bind(blob);
   if(this.name==='unreadable.zip') blob.arrayBuffer=()=>Promise.reject(new DOMException('Controlled unreadable ZIP','NotReadableError'));
   else if(this.name.startsWith('slow') && window.holdZipReads)
@@ -51,7 +52,7 @@ def main():
     archive, metadata, mesh = fixtures['parts_tray']
     catalog = {item['name']: item for item in json.loads((ASSETS/'catalog.json').read_text(encoding='utf-8'))['models']}
     csp = next(line.split(':',1)[1].strip() for line in (CLOUD/'public/_headers').read_text().splitlines() if 'Content-Security-Policy:' in line)
-    passed, failures, cases, pending_routes = [], [], [], {}
+    passed, failures, cases, discarded_reads, pending_routes = [], [], [], [], {}
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
         context = browser.new_context(viewport={'width':1440,'height':1080}, accept_downloads=True)
@@ -59,7 +60,7 @@ def main():
         if OFFLINE:
             attach_assets(context)
 
-        def setup(page, hold_module=False, fail_module=False, clock=False):
+        def setup(page, hold_module=False, fail_module=False, clock=False, fail_original=False):
             page.add_init_script(READS)
             if clock:
                 page.clock.install()
@@ -89,12 +90,17 @@ def main():
                     route.fulfill(body=preview, headers=headers(details, 'model/stl'))
 
             page.route('**/api/generate', generate)
+            if fail_original:
+                page.route('**/models/parts_tray.stl', lambda route: route.fulfill(status=503,body='Controlled missing preview'))
             if OFFLINE:
                 page.route(BASE+'/', lambda route: route.fulfill(body=(ASSETS/'index.html').read_bytes(), headers={'Content-Type':'text/html', 'Content-Security-Policy':csp}))
             page.goto(BASE)
             page.wait_for_function("() => document.querySelectorAll('.card').length===53")
             page.locator('[data-model="parts_tray"]').click()
-            ready(page)
+            if fail_original:
+                expect(page.locator('#retry-original')).to_be_visible()
+            else:
+                ready(page)
             page.locator('.saved-dimensions summary').click()
             assert not modules, 'Opening the editor loaded the optional ZIP module'
             return jobs, modules, waiting
@@ -134,6 +140,9 @@ def main():
         def release_file(page):
             page.evaluate('''() => {window.holdZipReads=false; window.pendingZipReads.splice(0).forEach(release=>release());}''')
             page.evaluate('() => new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+
+        def read_count(page, name):
+            return page.evaluate('name=>window.zipReadsByName[name]||0', name)
 
         def release_module(waiting):
             for route in waiting[:]:
@@ -262,6 +271,7 @@ def main():
                 page.evaluate('window.holdZipReads=true')
                 select(page,fixtures['cable_comb'][0],'slow-'+action+'.zip')
                 page.wait_for_function('() => window.pendingZipReads.length>0')
+                before = read_count(page,'slow-'+action+'.zip')
                 if action=='edit':
                     page.locator('#param-length').fill('200.25')
                 elif action=='save':
@@ -274,11 +284,66 @@ def main():
                 expected={'edit':'200.25','save':'190.55','copy':'190.55','reset':'150','revert':'180.5'}[action]
                 page.locator('#param-width').focus()
                 release_file(page)
+                after = read_count(page,'slow-'+action+'.zip')
+                assert before == after == 1, (action,before,after)
+                discarded_reads.append({'action':action,'reads_before_discard':before,'reads_after_late_bytes':after})
                 expect(page.locator('#param-width')).to_be_focused()
                 assert page.locator('#param-length').input_value()==expected
                 assert page.locator('#model-title').inner_text()==catalog['parts_tray']['title']
                 expect(page.locator('#dimensions-error')).to_be_hidden()
             assert len(jobs)==2 and download(page,'download')[1]==mesh and download(page,'download-cad')[1]==archive
+
+        def discarded_zip_reads_stop_for_new_files_builds_retry_and_close(page):
+            for action in ['new_file','close','build','retry','field_revert']:
+                other = page if action=='new_file' else context.new_page()
+                errors=[]
+                other.on('pageerror',lambda error:errors.append(str(error)))
+                try:
+                    jobs,_,_=setup(other,fail_original=action=='retry')
+                    if action!='retry':
+                        custom(other)
+                        assert download(other,'download-cad')[1]==archive
+                    if action=='build':
+                        select_json(other,180.5)
+                        loaded(other,matches=True)
+                    if action!='build':
+                        other.locator('#param-length').fill('190.55')
+                    other.evaluate('window.holdZipReads=true')
+                    name='slow-'+action+'.zip'
+                    select(other,fixtures['cable_comb'][0],name)
+                    other.wait_for_function('() => window.pendingZipReads.length>0')
+                    before=read_count(other,name)
+                    if action=='new_file':
+                        select_json(other,180.5)
+                        loaded(other,matches=True)
+                    elif action=='close':
+                        other.locator('#close-editor').click()
+                        other.wait_for_function("() => !document.querySelector('#editor').open")
+                        select(other,name='late-closed.zip')
+                        assert read_count(other,'late-closed.zip')==0
+                    elif action=='build':
+                        other.locator('#rebuild').click()
+                        ready(other)
+                    elif action=='retry':
+                        other.locator('#retry-original').click()
+                        expect(other.locator('#retry-original')).to_be_visible()
+                    else:
+                        other.locator('#revert-field-length').click()
+                    release_file(other)
+                    after=read_count(other,name)
+                    assert before==after==1,(action,before,after)
+                    assert other.locator('#model-title').inner_text()==catalog['parts_tray']['title']
+                    expected='190.55' if action in ['close','retry'] else '180.5'
+                    expect(other.locator('#param-length')).to_have_value(expected)
+                    assert not errors and other.locator('#dimensions-error').is_hidden()
+                    if action not in ['close','retry']:
+                        assert download(other,'download')[1]==mesh and download(other,'download-cad')[1]==archive
+                    assert len(jobs)==(0 if action=='retry' else 2),(action,jobs)
+                    discarded_reads.append({'action':action,'reads_before_discard':before,'reads_after_late_bytes':after,
+                                            'native_jobs':len(jobs),'late_closed_chooser_reads':0 if action=='close' else None})
+                finally:
+                    if other is not page:
+                        other.close()
 
         def zip_read_deadline_and_newer_json_discard_late_metadata(page):
             jobs, _, _ = setup(page,clock=True)
@@ -287,6 +352,7 @@ def main():
                 page.evaluate('window.holdZipReads=true')
                 select(page,name='slow-deadline.zip')
                 page.wait_for_function('() => window.pendingZipReads.length>0')
+                before = read_count(page,'slow-deadline.zip')
                 page.clock.fast_forward(14999)
                 expect(page.locator('#form-message')).to_have_text('Loading saved dimensions…')
                 page.clock.fast_forward(2)
@@ -295,6 +361,9 @@ def main():
                 select_json(page)
                 page.locator('#param-width').focus()
                 release_file(page)
+                after = read_count(page,'slow-deadline.zip')
+                assert before==after==1
+                discarded_reads.append({'action':'deadline','reads_before_discard':before,'reads_after_late_bytes':after})
                 expect(page.locator('#param-width')).to_be_focused()
                 assert page.locator('#param-length').input_value()=='170.25' and not jobs
             finally:
@@ -388,6 +457,7 @@ def main():
                  list_zip_switches_models_and_restores_history,all_six_kit_zips_load_canonical_inventories_without_building,
                  malformed_zips_preserve_current_model_and_exact_cached_files,zip_limits_preserve_measurements_and_json_recovery,
                  newer_edit_save_copy_reset_and_revert_supersede_held_zip_reads,zip_read_deadline_and_newer_json_discard_late_metadata,
+                 discarded_zip_reads_stop_for_new_files_builds_retry_and_close,
                  pending_cad_ignores_zip_selection_and_keeps_its_exact_download,zip_loading_and_verified_downloads_work_without_graphics,
                  unavailable_or_delayed_zip_reader_keeps_json_and_newer_actions,mobile_keyboard_zip_chooser_keeps_visible_focus_and_exact_files]
         for test in tests:
@@ -407,7 +477,7 @@ def main():
                 release_module(pending_routes.get(page,[]))
                 page.close()
         browser.close()
-    report={'endpoint':BASE,'passed':passed,'failures':failures,'cases':cases,
+    report={'endpoint':BASE,'passed':passed,'failures':failures,'cases':cases,'discarded_reads':discarded_reads,
             'archive_sha256':hashlib.sha256(archive).hexdigest(),'transport':'compiled assets and real exported CAD ZIP fixtures'}
     (ROOT/'review/cloud_zip_dimensions_validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     if failures:

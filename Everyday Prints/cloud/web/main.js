@@ -439,7 +439,7 @@ function setBusy(busy) {
   const focused = document.activeElement;
   const restoreFocus = !busy && focused === $('stop-build') && buildFocus?.item === state.item;
   if (busy) buildFocus = { element: focused, item: state.item };
-  if (busy) { clearShare(); clearDimensionsError(); clearTransfer(); supersedeVersionRead(); }
+  if (busy) { cancelDimensionsRead(); clearShare(); clearDimensionsError(); clearTransfer(); supersedeVersionRead(); }
   state.busy = busy;
   state.restoring = false;
   $('rebuild').disabled = busy;
@@ -522,6 +522,7 @@ function parameterHint(field) {
 }
 
 function fields(parameters) {
+  cancelDimensionsRead();
   clearShare();
   clearDimensionsError();
   $('parameter-fields').innerHTML = state.item.parameters.map(field => `<div class="parameter ${field.type === 'list' ? 'list' : ''}"><label for="param-${field.key}">${escape(field.label)}<span>${escape(field.unit)}</span></label><input id="param-${field.key}" data-parameter="${field.key}" aria-describedby="help-${field.key} error-${field.key} preview-field-${field.key}" ${field.type === 'list' ? 'type="text"' : `type="number" step="${field.type === 'integer' ? 1 : 'any'}" min="${field.min ?? -1000}" max="${field.max ?? 1000}"`} value="${escape(parameterText(parameters[field.key]))}" required><small id="help-${field.key}" class="parameter-help">${escape(parameterHint(field))}</small><small id="error-${field.key}" class="parameter-error" hidden></small><div class="parameter-preview" hidden><small id="preview-field-${field.key}"></small><button id="revert-field-${field.key}" data-revert-parameter="${field.key}" type="button" class="text-button" aria-label="Revert ${escape(field.label)} to preview" aria-describedby="preview-field-${field.key}" disabled>Revert value</button></div></div>`).join('');
@@ -716,6 +717,7 @@ async function loadOriginal(item, controller, epoch, { saved, feedback, reload =
 
 function retryOriginal() {
   if (!dialog.open || state.busy || state.blob) return;
+  cancelDimensionsRead();
   clearShare();
   const fromFile = loadedFileIsCurrent();
   abort?.abort();
@@ -995,11 +997,16 @@ async function applyDimensions(item, parameters, { read = ++dimensionsRead, name
   $('parameter-fields').querySelector('input')?.focus();
 }
 
+function cancelDimensionsRead() {
+  dimensionsLoading?.controller.abort();
+  dimensionsLoading = null;
+}
+
 function supersedeDimensionsRead() {
   const pending = dimensionsLoading?.read === dimensionsRead && dimensionsLoading.epoch === state.epoch;
   const feedback = pending || !$('dimensions-error').hidden;
   if (pending) ++dimensionsRead;
-  dimensionsLoading = null;
+  cancelDimensionsRead();
   clearDimensionsError();
   return feedback;
 }
@@ -1014,11 +1021,13 @@ function showDimensionsError(text) {
 }
 
 async function loadDimensions(file) {
-  if (!file || state.busy) return;
+  if (!file || !dialog.open || state.busy) return;
+  cancelDimensionsRead();
   clearDimensionsError();
   clearShare();
   const epoch = state.epoch, read = ++dimensionsRead;
-  dimensionsLoading = { epoch, read };
+  const controller = new AbortController();
+  dimensionsLoading = { epoch, read, controller };
   const draft = JSON.stringify(formValues());
   const current = () => dialog.open && state.epoch === epoch && dimensionsRead === read && !state.busy && JSON.stringify(formValues()) === draft;
   try {
@@ -1027,7 +1036,6 @@ async function loadDimensions(file) {
     let text;
     let timer;
     const timedOut = new Error('Reading the saved dimensions file took too long. Choose it again.');
-    const controller = new AbortController();
     const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
     try { text = await Promise.race([readDimensionsFile(file, controller.signal), timeout]); }
     catch (error) {
@@ -1158,6 +1166,7 @@ dialog.addEventListener('cancel', event => { event.preventDefault(); closeEditor
 dialog.addEventListener('close', () => {
   if (dialog.open) return;
   dimensionsDrop.classList.remove('is-dragging');
+  cancelDimensionsRead();
   supersedeVersionRead();
   clearShare();
   abort?.abort();
@@ -1169,13 +1178,14 @@ dialog.addEventListener('close', () => {
   viewer?.clear();
 });
 dialog.addEventListener('click', event => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeEditor(); } });
-$('parameters').addEventListener('input', () => { ++dimensionsRead; clearShare(); clearDimensionsError(); markDirty(); });
+$('parameters').addEventListener('input', () => { ++dimensionsRead; cancelDimensionsRead(); clearShare(); clearDimensionsError(); markDirty(); });
 $('parameter-fields').addEventListener('click', event => {
   const button = event.target.closest('[data-revert-parameter]');
   if (!button || button.disabled || state.busy || !state.previewParameters) return;
   const field = state.item.parameters.find(field => field.key === button.dataset.revertParameter);
   if (!field) return;
   ++dimensionsRead;
+  cancelDimensionsRead();
   clearShare();
   clearDimensionsError();
   const input = $(`param-${field.key}`);

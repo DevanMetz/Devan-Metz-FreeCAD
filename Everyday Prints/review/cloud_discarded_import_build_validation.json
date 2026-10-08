@@ -1,0 +1,79 @@
+{
+  "baseline_head": "95a79dccd7fbc42a94234e68bd5b8fc8b2f946e8",
+  "unit_tests": {
+    "passed": 104,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\index-Cw3u4ifH.css": "0485c8b0aad284d56f4a69612cea76e4ae1586d677f04742c715d4216fcc4163",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\assets\\index-BP9wBGfR.js": "9cde0d4acad8a97a3b3b319779c58a14dc72b315975e4380e404638d993e04fe",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\index.html": "190bd4b0736ad7c38b745bb6eb453e409e2aa2e8e4693647b1d2b0005a0e25bc",
+      "assets\\assets\\zip-BKJj5r9C.js": "0eb6452c58370392807b2185fd4a8e1fcb6767e593231862657da603e82f3351"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 220,
+    "suites_current_build": 15,
+    "fresh_reports_current_build": 16,
+    "reports": {
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_zip_dimensions_validation.json": 13,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23,
+      "cloud_transfer_validation.json": 35,
+      "cloud_transfer_progress_validation.json": 15,
+      "cloud_original_retry_ui_validation.json": 23,
+      "cloud_original_idle_validation.json": 11,
+      "cloud_build_recovery_validation.json": 10,
+      "cloud_export_ui_validation.json": 14,
+      "cloud_mesh_dimensions_validation.json": 6
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets, real exported CAD fixtures, controlled browser time, held ZIP byte reads and preview transfers."
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "discarded_imports": {
+    "baseline_cases": 3,
+    "baseline_reads_before_discard": 1,
+    "baseline_reads_after_late_bytes": 5,
+    "verified_cases": 11,
+    "reads_before_discard": 1,
+    "reads_after_late_bytes": 1,
+    "late_closed_chooser_reads": 0,
+    "exact_cached_stl_and_cad_preserved": true,
+    "prompt_unit_rejection_before_late_zip_bytes": true,
+    "abort_listeners_removed": true,
+    "late_json_failures_handled": true,
+    "new_json_imports_available": true,
+    "report": "cloud_zip_dimensions_validation.json",
+    "baseline": "cloud_discarded_import_baseline.json"
+  },
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_viewer_loading_fallback.png"
+  ]
+}

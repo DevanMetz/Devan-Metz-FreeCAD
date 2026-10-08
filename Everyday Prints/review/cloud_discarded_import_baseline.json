@@ -1,0 +1,30 @@
+{
+  "head": "95a79dccd7fbc42a94234e68bd5b8fc8b2f946e8",
+  "observed": [
+    {
+      "action": "edit",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 5,
+      "length": "200.25",
+      "editor_open": true,
+      "file_error_visible": false
+    },
+    {
+      "action": "new_file",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 5,
+      "length": "175.75",
+      "editor_open": true,
+      "file_error_visible": false
+    },
+    {
+      "action": "close",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 5,
+      "length": "190.55",
+      "editor_open": false,
+      "file_error_visible": false
+    }
+  ],
+  "transport": "compiled production assets, real exported CAD ZIP and controlled delayed file bytes"
+}

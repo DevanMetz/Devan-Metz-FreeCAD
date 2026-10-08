@@ -9,6 +9,7 @@
     "zip_limits_preserve_measurements_and_json_recovery",
     "newer_edit_save_copy_reset_and_revert_supersede_held_zip_reads",
     "zip_read_deadline_and_newer_json_discard_late_metadata",
+    "discarded_zip_reads_stop_for_new_files_builds_retry_and_close",
     "pending_cad_ignores_zip_selection_and_keeps_its_exact_download",
     "zip_loading_and_verified_downloads_work_without_graphics",
     "unavailable_or_delayed_zip_reader_keeps_json_and_newer_actions",
@@ -71,6 +72,73 @@
         "stl",
         "cad"
       ]
+    }
+  ],
+  "discarded_reads": [
+    {
+      "action": "edit",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "save",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "copy",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "reset",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "revert",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "deadline",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1
+    },
+    {
+      "action": "new_file",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1,
+      "native_jobs": 2,
+      "late_closed_chooser_reads": null
+    },
+    {
+      "action": "close",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1,
+      "native_jobs": 2,
+      "late_closed_chooser_reads": 0
+    },
+    {
+      "action": "build",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1,
+      "native_jobs": 2,
+      "late_closed_chooser_reads": null
+    },
+    {
+      "action": "retry",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1,
+      "native_jobs": 0,
+      "late_closed_chooser_reads": null
+    },
+    {
+      "action": "field_revert",
+      "reads_before_discard": 1,
+      "reads_after_late_bytes": 1,
+      "native_jobs": 2,
+      "late_closed_chooser_reads": null
     }
   ],
   "archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",

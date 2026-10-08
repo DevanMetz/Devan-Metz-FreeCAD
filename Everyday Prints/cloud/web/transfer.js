@@ -1,13 +1,13 @@
 export const MAX_FILE_BYTES = 8 * 1024 * 1024;
 
-function readChunk(reader, signal) {
+export function readWithSignal(read, signal) {
   return new Promise((resolve, reject) => {
-    const clear = () => signal.removeEventListener('abort', stop);
+    const clear = () => signal?.removeEventListener('abort', stop);
     const stop = () => { clear(); reject(signal.reason); };
-    signal.addEventListener('abort', stop, { once: true });
-    if (signal.aborted) { stop(); return; }
+    signal?.addEventListener('abort', stop, { once: true });
+    if (signal?.aborted) { stop(); return; }
     try {
-      reader.read().then(
+      Promise.resolve(read()).then(
         chunk => { clear(); resolve(chunk); },
         error => { clear(); reject(error); }
       );
@@ -28,7 +28,7 @@ export async function readFile(response, signal, maxBytes = MAX_FILE_BYTES, onPr
     for (;;) {
       let chunk;
       // A transport may ignore cancellation; the caller must still recover.
-      try { chunk = await readChunk(reader, signal); }
+      try { chunk = await readWithSignal(() => reader.read(), signal); }
       catch (error) {
         signal.throwIfAborted();
         if (error.name === 'AbortError') throw error;

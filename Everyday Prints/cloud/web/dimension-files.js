@@ -1,5 +1,5 @@
 import { MAX_DIMENSIONS_BYTES } from './dimensions.js';
-import { MAX_FILE_BYTES } from './transfer.js';
+import { MAX_FILE_BYTES, readWithSignal } from './transfer.js';
 
 export const MAX_DIMENSIONS_ZIP_BYTES = MAX_FILE_BYTES;
 const zipFile = file => /\.zip$/i.test(file.name) || ['application/zip', 'application/x-zip-compressed'].includes(file.type);
@@ -14,13 +14,18 @@ export function checkDimensionsFile(file) {
 }
 
 export async function readDimensionsFile(file, signal) {
-  checkDimensionsFile(file);
-  if (!zipFile(file)) return file.text();
-  let ZipReader, BlobReader;
-  try { ({ ZipReader, BlobReader } = await import('./zip.js')); }
-  catch { throw archiveError('ZIP reading is unavailable. Extract parameters.json from the ZIP and choose that file instead.'); }
   signal?.throwIfAborted();
-  const reader = new ZipReader(new BlobReader(file), {
+  checkDimensionsFile(file);
+  if (!zipFile(file)) return readWithSignal(() => file.text(), signal);
+  let ZipReader, BlobReader;
+  try { ({ ZipReader, BlobReader } = await readWithSignal(() => import('./zip.js'), signal)); }
+  catch { signal?.throwIfAborted(); throw archiveError('ZIP reading is unavailable. Extract parameters.json from the ZIP and choose that file instead.'); }
+  signal?.throwIfAborted();
+  const blob = new BlobReader(file);
+  const read = blob.readUint8Array.bind(blob);
+  // ZIP directory reads use arrayBuffer(), which does not accept an AbortSignal.
+  blob.readUint8Array = (offset, length) => readWithSignal(() => read(offset, length), signal);
+  const reader = new ZipReader(blob, {
     strictness: 'strict', checkCrc32: true, useWebWorkers: false, signal,
   });
   try {

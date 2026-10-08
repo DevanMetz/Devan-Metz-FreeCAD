@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest editor file-drop build passes **105 focused browser checks across
-eight affected suites**, the **53-model catalog and image smoke test**,
-**102 unit tests**, TypeScript checks and the production build. The preceding
+The latest import cancellation build passes **220 focused browser checks across
+fifteen affected suites**, the **53-model catalog and image smoke test**,
+**104 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -28,6 +28,18 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Discarded dimensions imports now release their pending wait and start no more
+ZIP byte reads. The baseline completed five reads for an obsolete CAD ZIP after
+editing measurements, choosing a newer file or closing the editor. Those cases
+now stop after the one read already started. Eleven browser cases cover edits,
+Save, Copy, Reset, Revert, newer files, builds, original retry, individual field
+revert, closing and the read deadline. Cached STL/CAD files still match their
+verified bytes, and a chooser completing after the editor closes reads no file.
+Two new unit checks verify rejection before late bytes arrive, removal of abort
+listeners, ignored late JSON failures and successful new imports. Evidence is
+under `review/cloud_discarded_import_*` and
+`review/cloud_zip_dimensions_validation.json`.
 
 Saved dimensions JSON and CAD/kit ZIP files can now be dropped anywhere in
 an open model editor, including the preview and measurement fields while
