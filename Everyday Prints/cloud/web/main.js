@@ -14,6 +14,7 @@ const state = { models: [], kind: '', item: null, parameters: null, previewParam
 let searchIndex, viewer, viewerPromise, abort;
 let activeEntry;
 let dimensionsRead = 0;
+let dimensionsLoading;
 let appliedDimensions = null;
 let originalFeedback;
 let shareRequest = 0;
@@ -647,19 +648,35 @@ function dimensionsLoaded() {
   message(sameParameters(state.parameters, state.previewParameters) ? 'Saved dimensions match the verified preview.' : 'Saved dimensions loaded. Update the preview to build this version.');
 }
 
+function supersedeDimensionsRead() {
+  const pending = dimensionsLoading?.read === dimensionsRead && dimensionsLoading.epoch === state.epoch;
+  const feedback = pending || !$('dimensions-error').hidden;
+  if (pending) ++dimensionsRead;
+  dimensionsLoading = null;
+  clearDimensionsError();
+  return feedback;
+}
+
 async function loadDimensions(file) {
   if (!file || state.busy) return;
   clearDimensionsError();
   clearShare();
   const epoch = state.epoch, read = ++dimensionsRead;
+  dimensionsLoading = { epoch, read };
   const draft = JSON.stringify(formValues());
   const current = () => dialog.open && state.epoch === epoch && dimensionsRead === read && !state.busy && JSON.stringify(formValues()) === draft;
   try {
     if (file.size > MAX_DIMENSIONS_BYTES) throw new Error('The saved dimensions file exceeds 16 KiB. Choose a parameters.json file.');
     message('Loading saved dimensions…');
     let text;
-    try { text = await file.text(); }
-    catch { throw new Error('The saved dimensions file could not be read. Choose it again.'); }
+    let timer;
+    const timedOut = new Error('Reading the saved dimensions file took too long. Choose it again.');
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(timedOut), 15000); });
+    try { text = await Promise.race([file.text(), timeout]); }
+    catch (error) {
+      if (error === timedOut) throw error;
+      throw new Error('The saved dimensions file could not be read. Choose it again.');
+    } finally { clearTimeout(timer); }
     if (!current()) return;
     const { item, parameters } = savedDimensions(text, state.models);
     if (item.name !== state.item.name) {
@@ -682,6 +699,8 @@ async function loadDimensions(file) {
       message(text, true);
       $('dimensions-error').scrollIntoView({ block: 'nearest' });
     }
+  } finally {
+    if (dimensionsLoading?.read === read) dimensionsLoading = null;
   }
 }
 
@@ -830,7 +849,7 @@ $('download').addEventListener('click', () => {
 $('download-cad').addEventListener('click', downloadCad);
 $('save-dimensions').addEventListener('click', () => {
   if (state.busy) return;
-  clearDimensionsError();
+  supersedeDimensionsRead();
   try {
     const record = dimensionRecord(state.item, readParameters());
     saveDownload(new Blob([JSON.stringify(record, null, 2) + '\n'], { type: 'application/json' }), `${state.item.name}-dimensions.json`);
@@ -844,6 +863,7 @@ $('dimensions-file').addEventListener('change', event => {
   loadDimensions(file);
 });
 $('share').addEventListener('click', async () => {
+  if (supersedeDimensionsRead() && !state.busy) markDirty();
   clearShare();
   let parameters;
   try { parameters = readParameters(); }

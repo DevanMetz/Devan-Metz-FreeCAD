@@ -23,6 +23,9 @@ Update preview. Save dimensions keeps a portable file.
 Valid files confirm their dimensions and focus the first field immediately,
 including when the original preview is slow or unavailable. Update preview can
 build that saved version; downloads require a verified mesh matching the inputs.
+Save dimensions and Copy link supersede pending imports, preserving the values
+used by the action. Stalled file reads recover after 15 seconds and keep verified
+downloads available; old file results cannot overwrite a newer selection.
 Retry original preview reloads a missing or stalled catalog mesh without a CAD
 build, keeping current measurements and browser history. Edited dimensions still
 need Update preview before downloading their version.

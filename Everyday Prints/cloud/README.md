@@ -122,6 +122,7 @@ python verify_transfer_ui.py
 python verify_transfer_progress_ui.py
 python verify_revert_ui.py
 python verify_dimensions_ui.py
+python verify_import_actions_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py
@@ -309,6 +310,22 @@ for changed dimensions; matching inputs retain the verified STL and cached ZIP.
 
 Files are limited to 16 KiB. Model and parameter names, units, numeric types,
 counts, list lengths and numeric bounds are validated before the form changes.
+Local file reads also have a 15-second deadline. A stalled read shows retry
+guidance beside Load dimensions and preserves the current fields and verified
+downloads. Late file results and older deadlines cannot replace newer selections
+or CAD progress. Save dimensions and Copy link supersede a pending import,
+keeping the measurements used by the new action; Copy link also clears completed
+import errors. Finished imports keep their existing confirmation and preview
+behavior when no read is pending.
+
+`verify_import_actions_ui.py` records seven browser checks for keyboard Save,
+sharing while the clipboard waits, late invalid imports, both sides of the read
+deadline, newer files and build progress, verified STL/CAD reuse, and mobile
+timeout recovery. Current and before-fix evidence is in
+`../review/cloud_import_actions_validation.json` and
+`../review/cloud_import_actions_baseline.json`; the reviewed mobile state is
+`../review/cloud_import_actions_mobile.png`.
+
 Geometry and kit metadata supplied by the file cannot replace verified meshes or
 the catalog's quantities. Rejected files preserve the draft and last preview.
 Late reads after edits, navigation, newer selections or builds are discarded,

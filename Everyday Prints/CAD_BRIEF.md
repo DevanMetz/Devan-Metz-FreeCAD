@@ -321,6 +321,12 @@ current edits and files without hiding newer errors or replacing newer builds.
 Loading a file must preserve verified files until a new preview succeeds,
 require explicit building for changed dimensions, and ignore late reads after
 edits, model navigation, newer files, or a build. Bound local files to 16 KiB.
+Give local reads a 15-second deadline and preserve current fields and verified
+files when reading stalls. Older deadlines and late bytes must not change newer
+selections, CAD progress or cached downloads. Save dimensions and Copy link must
+supersede a pending import without changing the measurements used by the new
+action. Sharing must clear obsolete import errors; completed file confirmations
+must retain their normal behavior when no read is pending.
 Keep Copy link feedback current through edits, imports, Reset/Revert and model
 navigation. Serialize clipboard writes and retain only the latest queued request
 so overlapping copies finish with the last requested link. Provide a page-URL

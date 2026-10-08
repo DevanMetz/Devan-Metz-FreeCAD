@@ -1,0 +1,52 @@
+{
+  "tested_commit": "d7f80d60dfba1e30e6431c9e7b49d0ebdf20d0ba",
+  "observations": [
+    {
+      "action": "save",
+      "imported_length": 180.5,
+      "saved_length": 190.55,
+      "after": {
+        "length": "180.5",
+        "message": "Saved dimensions loaded. Update the preview to build this version.",
+        "error": "",
+        "error_hidden": true
+      },
+      "browser_errors": []
+    },
+    {
+      "action": "share",
+      "imported_length": 180.5,
+      "copied_length": 190.55,
+      "after": {
+        "length": "180.5",
+        "message": "Saved dimensions loaded. Update the preview to build this version.",
+        "error": "",
+        "error_hidden": true
+      },
+      "browser_errors": []
+    },
+    {
+      "action": "save-invalid",
+      "imported_length": 251,
+      "saved_length": 190.55,
+      "after": {
+        "length": "190.55",
+        "message": "Saved dimensions could not be loaded. Length: use a number between 30 and 250.",
+        "error": "Saved dimensions could not be loaded. Length: use a number between 30 and 250.",
+        "error_hidden": false
+      },
+      "browser_errors": []
+    },
+    {
+      "action": "timeout",
+      "imported_length": 180.5,
+      "after": {
+        "length": "190.55",
+        "message": "Loading saved dimensions\u2026",
+        "error": "",
+        "error_hidden": true
+      },
+      "browser_errors": []
+    }
+  ]
+}

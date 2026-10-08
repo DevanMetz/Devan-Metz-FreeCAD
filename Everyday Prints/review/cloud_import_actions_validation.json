@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "keyboard_save_supersedes_late_valid_import",
+    "copy_supersedes_cross_model_import_while_clipboard_waits",
+    "newer_actions_discard_late_invalid_file_feedback",
+    "stalled_read_deadline_keeps_new_selection_and_late_bytes_obsolete",
+    "old_deadline_cannot_replace_new_read_or_build_progress",
+    "mobile_timeout_preserves_verified_stl_and_cached_cad",
+    "copy_clears_completed_import_errors_and_keeps_downloads"
+  ],
+  "failures": [],
+  "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "read_deadline_ms": 15000,
+  "transport": "compiled assets and real CAD fixtures with controlled file reads"
+}
