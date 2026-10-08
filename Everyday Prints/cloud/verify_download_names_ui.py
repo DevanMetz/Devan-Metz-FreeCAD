@@ -16,6 +16,7 @@ CLOUD = Path(__file__).resolve().parent
 ROOT = CLOUD.parent
 OFFLINE = '--offline' in sys.argv
 BASE = OFFLINE_BASE if OFFLINE else (sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:5178')
+sys.stdout.reconfigure(encoding='utf-8')
 os.environ.setdefault('PLAYWRIGHT_BROWSERS_PATH', str(ROOT.parent / '.cad-cache/browsers'))
 
 
@@ -35,7 +36,8 @@ def main():
 
         def rebuild(page):
             page.locator('#rebuild').click()
-            expect(page.locator('#download')).to_be_enabled()
+            # Native jobs allow 90 seconds; assertion waits do not inherit the context timeout.
+            expect(page.locator('#download')).to_be_enabled(timeout=120000)
 
         def download(page, button='download'):
             with page.expect_download() as event:

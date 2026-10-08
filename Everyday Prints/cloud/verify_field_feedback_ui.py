@@ -143,7 +143,7 @@ def main():
             flagged(page, "cable_diameters", "numbers between", focused=True)
             field(page, "cable_diameters").fill("9, 2, 3.55")
             clean(page)
-            expect(field(page, "cable_diameters")).to_have_accessible_description("1 to 16 numbers, separated by commas; order is kept.")
+            expect(field(page, "cable_diameters")).to_have_accessible_description("1 to 16 numbers, separated by commas; order is kept. Preview: 3, 4, 5, 6, 8 mm")
             assert not jobs and not downloads
 
         def correcting_resetting_and_reverting_clear_field_errors(page):

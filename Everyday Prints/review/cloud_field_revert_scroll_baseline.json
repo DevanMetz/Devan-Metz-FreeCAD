@@ -1,0 +1,26 @@
+{
+  "before": {
+    "input": 45.375,
+    "layout": 104,
+    "button": 108.875
+  },
+  "after": {
+    "focused": "param-length",
+    "input": 45.375,
+    "layout": 104
+  },
+  "focused_input_visible": false,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "transport": "compiled assets",
+  "tested_assets": {
+    "assets/index.html": "3b3d45ef3c6ecda4cf4fb4aacd9d9ae9238c025b08c5d539aaedd82af0aee8b7",
+    "assets/catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+    "bundle/index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+    "assets/assets/index-BCss5fzg.js": "a5d6a5ecd1e623b6f9440363bc2c8121d1eb6f35011628b8447df3b82537ab63",
+    "assets/assets/index-QDS8kDSM.css": "d7120cc38ce57797a25d5d82f3bf7f1a01f9e662a2ec802246e1fa4ab03c9295",
+    "assets/assets/viewer-Byz6d1gF.js": "2e46a1b9fa438a41871d7d9edff3b77d1047e31780dd986eeaabc8de486b0da0"
+  }
+}

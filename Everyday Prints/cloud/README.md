@@ -237,6 +237,7 @@ python verify_viewer_loading.py
 python verify_transfer_ui.py
 python verify_transfer_progress_ui.py
 python verify_revert_ui.py
+python verify_field_revert_ui.py
 python verify_dimensions_ui.py
 python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
@@ -420,6 +421,28 @@ to the first field.
 kit reuse, original defaults, stopping and late responses, missing previews,
 history and shared URLs, assembly component dimensions, and mobile keyboard use.
 It uses real CAD fixtures; results are in `../review/cloud_revert_validation.json`.
+
+Each changed measurement also shows its exact last verified preview value and a
+Revert value action. Restoring it changes only that input and returns focus to
+it, keeping other raw drafts, including invalid values, and saved-version names.
+Numeric formatting alone does not count as a change; list order does. The preview
+note includes the field's units and its accessible description. Invalid drafts
+can return to the verified value. No action appears until a preview is verified,
+and individual actions stay disabled while CAD work is active.
+
+The baseline follows the latest verified preview, including after successful
+custom builds, failed requests, Stop and original-preview recovery. Restoring
+one input discards older dimensions-file reads while independent library backups
+can complete. History and same-tab draft recovery retain the remaining edits.
+STL and cached CAD/kit downloads are reused only when the entire form matches the
+verified preview. Revert edits continues to restore all measurements together.
+
+`verify_field_revert_ui.py` has thirteen compiled-browser checks covering all 53
+model schemas, scalar/list/count formatting, invalid drafts, exact custom STL and
+cached CAD reuse, new and failed previews, delayed files, library Undo, history,
+assemblies, unavailable graphics and mobile keyboard controls. The baseline
+records the earlier all-fields-only recovery. Results and reviewed layouts are
+under `../review/cloud_field_revert_*`.
 
 Open Saved dimensions above the parameter form to save or load measurements.
 Save dimensions downloads `<model>-dimensions.json` with the current inputs,

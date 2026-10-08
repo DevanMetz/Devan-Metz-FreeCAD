@@ -15,6 +15,9 @@ It accepts fine decimal measurements and preserves kit quantities and fit-coupon
 labels when rebuilding downloaded sources.
 Revert edits restores the last verified preview's dimensions for immediate
 downloads, including cached CAD kits.
+Changed measurements now show their last verified preview value. Revert value
+restores just that measurement while keeping the other edits. Downloads become
+available when all fields match the verified preview again.
 Saved dimensions can be exported as JSON and loaded back into the customizer,
 including parameters.json from CAD downloads, without starting a build.
 Saved dimensions also keeps up to 20 named versions in this browser. Save valid

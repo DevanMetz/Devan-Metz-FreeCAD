@@ -299,25 +299,45 @@ function clearShare() {
   shareMessage('');
 }
 
-function readParameters() {
-  const parameters = {};
-  for (const field of state.item.parameters) {
-    const input = document.querySelector(`[data-parameter="${field.key}"]`);
-    if (field.type === 'list') {
-      const text = input.value.trim();
-      let numbers;
-      try { numbers = text.startsWith('[') ? JSON.parse(text) : text.split(',').map(value => value.trim() === '' ? NaN : Number(value)); }
-      catch { throw parameterError(field, 'enter numbers separated by commas.'); }
-      if (!Array.isArray(numbers) || !numbers.length || numbers.length > 16 || numbers.some(number => typeof number !== 'number' || !Number.isFinite(number))) throw parameterError(field, 'enter 1 to 16 numbers separated by commas.');
-      parameters[field.key] = numbers;
-    } else {
-      const value = input.value.trim() === '' ? NaN : Number(input.value);
-      if (!Number.isFinite(value)) throw parameterError(field, 'enter a number.');
-      if (field.type === 'integer' && !Number.isInteger(value)) throw parameterError(field, 'enter a whole number.');
-      parameters[field.key] = value;
-    }
+function readParameter(field) {
+  const input = $(`param-${field.key}`);
+  if (field.type === 'list') {
+    const text = input.value.trim();
+    let numbers;
+    try { numbers = text.startsWith('[') ? JSON.parse(text) : text.split(',').map(value => value.trim() === '' ? NaN : Number(value)); }
+    catch { throw parameterError(field, 'enter numbers separated by commas.'); }
+    if (!Array.isArray(numbers) || !numbers.length || numbers.length > 16 || numbers.some(number => typeof number !== 'number' || !Number.isFinite(number))) throw parameterError(field, 'enter 1 to 16 numbers separated by commas.');
+    return numbers;
   }
+  const value = input.value.trim() === '' ? NaN : Number(input.value);
+  if (!Number.isFinite(value)) throw parameterError(field, 'enter a number.');
+  if (field.type === 'integer' && !Number.isInteger(value)) throw parameterError(field, 'enter a whole number.');
+  return value;
+}
+
+function readParameters() {
+  const parameters = Object.fromEntries(state.item.parameters.map(field => [field.key, readParameter(field)]));
   return dimensionParameters(state.item, parameters);
+}
+
+function parameterText(value) {
+  return Array.isArray(value) ? value.join(', ') : String(value);
+}
+
+function fieldReverts() {
+  for (const field of state.item?.parameters || []) {
+    const note = $(`preview-field-${field.key}`), button = $(`revert-field-${field.key}`);
+    if (!note || !button) continue;
+    const preview = state.previewParameters?.[field.key];
+    let changed = preview !== undefined;
+    if (changed) {
+      try { changed = JSON.stringify(readParameter(field)) !== JSON.stringify(preview); }
+      catch { /* Invalid drafts can also return to a verified value. */ }
+    }
+    note.parentElement.hidden = !changed;
+    note.textContent = changed ? `Preview: ${parameterText(preview)}${field.unit ? ` ${field.unit}` : ''}` : '';
+    button.disabled = state.busy || !changed;
+  }
 }
 
 function formValues() {
@@ -357,6 +377,7 @@ function setBusy(busy) {
   $('save-dimensions').disabled = $('load-dimensions').disabled = busy;
   $('save-version').disabled = busy;
   versionControls();
+  fieldReverts();
   if (!state.previewParameters) $('revert-parameters').hidden = true;
   setDownloads();
   if (busy && dialog.open && focused.disabled) $('stop-build').focus();
@@ -407,6 +428,7 @@ function markDirty(report = true) {
     invalidParameters(error, false, report);
     return false;
   } finally {
+    fieldReverts();
     updatePrinterFit();
   }
 }
@@ -430,7 +452,8 @@ function parameterHint(field) {
 function fields(parameters) {
   clearShare();
   clearDimensionsError();
-  $('parameter-fields').innerHTML = state.item.parameters.map(field => `<div class="parameter ${field.type === 'list' ? 'list' : ''}"><label for="param-${field.key}">${escape(field.label)}<span>${escape(field.unit)}</span></label><input id="param-${field.key}" data-parameter="${field.key}" aria-describedby="help-${field.key} error-${field.key}" ${field.type === 'list' ? 'type="text"' : `type="number" step="${field.type === 'integer' ? 1 : 'any'}" min="${field.min ?? -1000}" max="${field.max ?? 1000}"`} value="${escape(Array.isArray(parameters[field.key]) ? parameters[field.key].join(', ') : parameters[field.key])}" required><small id="help-${field.key}" class="parameter-help">${escape(parameterHint(field))}</small><small id="error-${field.key}" class="parameter-error" hidden></small></div>`).join('');
+  $('parameter-fields').innerHTML = state.item.parameters.map(field => `<div class="parameter ${field.type === 'list' ? 'list' : ''}"><label for="param-${field.key}">${escape(field.label)}<span>${escape(field.unit)}</span></label><input id="param-${field.key}" data-parameter="${field.key}" aria-describedby="help-${field.key} error-${field.key} preview-field-${field.key}" ${field.type === 'list' ? 'type="text"' : `type="number" step="${field.type === 'integer' ? 1 : 'any'}" min="${field.min ?? -1000}" max="${field.max ?? 1000}"`} value="${escape(parameterText(parameters[field.key]))}" required><small id="help-${field.key}" class="parameter-help">${escape(parameterHint(field))}</small><small id="error-${field.key}" class="parameter-error" hidden></small><div class="parameter-preview" hidden><small id="preview-field-${field.key}"></small><button id="revert-field-${field.key}" data-revert-parameter="${field.key}" type="button" class="text-button" aria-label="Revert ${escape(field.label)} to preview" aria-describedby="preview-field-${field.key}" disabled>Revert value</button></div></div>`).join('');
+  fieldReverts();
 }
 
 function checkMetadata(metadata, parameters) {
@@ -1038,6 +1061,20 @@ dialog.addEventListener('close', () => {
 });
 dialog.addEventListener('click', event => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeEditor(); } });
 $('parameters').addEventListener('input', () => { ++dimensionsRead; clearShare(); clearDimensionsError(); markDirty(); });
+$('parameter-fields').addEventListener('click', event => {
+  const button = event.target.closest('[data-revert-parameter]');
+  if (!button || button.disabled || state.busy || !state.previewParameters) return;
+  const field = state.item.parameters.find(field => field.key === button.dataset.revertParameter);
+  if (!field) return;
+  ++dimensionsRead;
+  clearShare();
+  clearDimensionsError();
+  const input = $(`param-${field.key}`);
+  input.value = parameterText(state.previewParameters[field.key]);
+  markDirty();
+  rememberPage(true);
+  input.focus();
+});
 $('parameters').addEventListener('submit', rebuild);
 printerInputs.forEach(input => input.addEventListener('input', savePrinterVolume));
 $('clear-printer').addEventListener('click', () => {

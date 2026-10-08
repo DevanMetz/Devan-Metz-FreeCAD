@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "one_field_restore_keeps_other_edits_and_exact_original_file",
+    "semantic_numbers_lists_counts_and_invalid_drafts_have_exact_preview_values",
+    "verified_custom_baseline_restores_precise_values_and_cached_cad",
+    "all_53_model_schemas_restore_without_building",
+    "pending_build_guards_actions_and_publishes_the_new_baseline",
+    "stop_and_failed_preview_keep_last_verified_values",
+    "unavailable_preview_never_offers_unverified_reverts",
+    "graphics_failure_keeps_comparison_and_exact_files_available",
+    "field_revert_discards_late_dimensions_but_keeps_library_imports",
+    "save_share_versions_and_library_undo_keep_independent_measurements",
+    "history_refresh_and_component_navigation_keep_other_drafts",
+    "scrolled_keyboard_restore_brings_the_input_back_into_view",
+    "mobile_keyboard_actions_keep_focus_and_reachable_layout"
+  ],
+  "failures": [],
+  "model_schemas": 53,
+  "transport": "compiled assets and real CAD fixtures"
+}

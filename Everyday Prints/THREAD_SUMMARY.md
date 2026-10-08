@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **321 focused browser
-checks across twenty-seven suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **334 focused browser
+checks across twenty-eight suites**, the **53-model catalog and image smoke test**,
 **79 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -145,6 +145,22 @@ Thirteen browser checks and five unit checks cover these paths, full libraries,
 all fifty-three model schemas, exact STL/CAD files, canonical assemblies, storage
 failures/retries, newer data, pending work and mobile keyboard use. Reviewed
 layouts and evidence are under `review/cloud_versions_undo_*`.
+
+Changed measurements now offer their exact last verified preview value and an
+individual Revert value action. Restoring one input retains every other raw edit,
+including invalid drafts, and restores keyboard focus to that field. Numeric
+formatting alone is ignored, list order is preserved and notes include field
+units and accessible descriptions. Actions require a verified preview and remain
+guarded during CAD work. Successful builds update the reference; Stop and failed
+requests keep the last verified values. Older dimensions-file reads are discarded
+while independent version-library imports and Undo keep their normal scope.
+Current STL and cached CAD/kit files return only after all inputs match the
+preview. History, refresh and assembly navigation preserve the remaining drafts.
+Thirteen compiled-browser checks cover these paths and all 53 model schemas; the
+baseline records the earlier all-fields-only recovery. Layouts and evidence are
+under `review/cloud_field_revert_*`.
+The scrolling baseline reproduced focus hidden behind the editor header;
+individual restoration now brings its input back into view.
 
 ## Complete design inventory
 

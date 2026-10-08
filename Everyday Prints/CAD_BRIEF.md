@@ -416,3 +416,15 @@ Allow retry after a failed Undo write, supersede pending backups, preserve
 independent file feedback, guard active CAD work and review mobile keyboard use.
 Capture the snapshot from the mutation’s own storage read, so a separate earlier
 read cannot omit entries that the mutation preserved.
+
+Show each changed measurement's exact last verified preview value and offer an
+individual Revert action. Restore only that input, retain other raw and invalid
+drafts, and return reachable keyboard focus to it. Ignore equivalent numeric
+formatting while preserving list order. Include field units and accessible
+preview descriptions. Require a verified preview, guard active CAD work and use
+the newest verified values after a successful build. Keep earlier values after
+Stop, failed builds and graphics interruption. Discard older dimensions-file
+reads without cancelling independent version backups or changing library Undo.
+Preserve history, same-tab recovery and assembly component drafts. Reuse exact
+STL and cached CAD/kit downloads only when every current input matches the
+preview. Verify all model schemas and review 44 px mobile keyboard controls.
