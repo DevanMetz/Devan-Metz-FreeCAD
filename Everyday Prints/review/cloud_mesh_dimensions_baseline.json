@@ -1,0 +1,21 @@
+{
+  "tested_commit": "430a92f390e186a1caec01a551719537c0ea69ac",
+  "fixture_dimensions": [
+    180.5,
+    100.00000000000452,
+    24.0
+  ],
+  "incorrect_reported_dimensions": [
+    190.5,
+    100.00000000000452,
+    24.0
+  ],
+  "observed": {
+    "dimensions": "190.5 \u00d7 100 \u00d7 24",
+    "download_enabled": true,
+    "message": "Preview updated. Your STL is ready.",
+    "filename": "parts_tray-custom-190.5x100x24mm-6f7e6198de7a.stl",
+    "download_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f"
+  },
+  "browser_errors": []
+}

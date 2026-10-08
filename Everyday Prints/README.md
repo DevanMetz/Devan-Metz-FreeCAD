@@ -68,6 +68,9 @@ mesh and retains its camera view, edge display, edits and pending downloads.
 Library transfers recover with Try again after stalled headers or bodies,
 oversized responses, or invalid text. Retry preserves searches, filters and
 shared dimensions, and late responses cannot replace a newer attempt.
+Verified previews also check the STL's facet records and measured dimensions,
+including when 3D graphics are unavailable. Inconsistent files preserve the last
+verified preview and offer a working retry.
 
 ![CAD previews of the collection](preview.png)
 

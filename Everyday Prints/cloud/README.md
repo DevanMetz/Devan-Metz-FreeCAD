@@ -115,6 +115,7 @@ python verify_ui_state.py
 python verify_catalog.py
 python verify_navigation.py
 python verify_export_ui.py
+python verify_mesh_ui.py
 python verify_build_recovery.py
 python verify_viewer_loading.py
 python verify_transfer_ui.py
@@ -446,6 +447,23 @@ would stall. Unused responses are cancelled after rejected details, Stop, or
 superseding requests; cleanup never waits for an unresponsive cancellation.
 Complete files still pass the existing mesh/archive hash checks before becoming
 downloads. Rejected responses preserve the current inputs and verified files.
+
+Preview meshes also validate their binary STL facet count, exact record length,
+finite normals and vertices, and positive extent on every axis. Measured bounds
+must match the reported CAD dimensions within 0.05 mm plus one part per million
+for single-precision coordinates. This covers the small tessellation differences
+in the original catalog. Validation happens before replacing a verified preview
+and works without the optional 3D viewer. CAD response dimensions are checked
+against the verified mesh before reading an archive body.
+
+`verify_mesh_ui.py` records six browser checks for inconsistent dimensions,
+malformed facets with matching hashes, unavailable graphics, original-preview
+recovery, rejected CAD details with an unresponsive body, cached downloads,
+working retries, and mobile keyboard Revert/download actions. Evidence is in
+`../review/cloud_mesh_dimensions_validation.json` and
+`../review/cloud_mesh_dimensions_baseline.json`; the reviewed mobile error state
+is `../review/cloud_mesh_dimensions_mobile.png`.
+
 Before the first verified mesh, failures or Stop show the catalog image with
 accurate viewer hints and retain invalid-field messages and the corresponding
 mesh status. Original-preview retry remains available.
@@ -546,15 +564,7 @@ response size. Results are in `../review/cloud_transfer_validation.json`.
 
 For environments without loopback networking, `verify_runtime.py --native` and
 `verify_exports.py --native` run the actual isolated native job directly.
-All browser verifiers (`verify_ui.py`, `verify_ui_state.py`, `verify_catalog.py`,
-`verify_navigation.py`, `verify_export_ui.py`, `verify_build_recovery.py`,
-`verify_viewer_loading.py`, `verify_transfer_ui.py`,
-`verify_transfer_progress_ui.py`, `verify_revert_ui.py`,
-`verify_dimensions_ui.py`, `verify_dimensions_preview_ui.py`,
-`verify_original_retry_ui.py`,
-`verify_share_ui.py`, `verify_parameters_ui.py`, and
-`verify_field_feedback_ui.py`, `verify_draft_recovery_ui.py`)
-accept `--offline` to serve the
+The browser verifiers accept `--offline` to serve the
 compiled production assets through Playwright routes at a secure `.test` origin,
 backed by those native CAD jobs or their exported fixtures for controlled failures.
 These modes verify the runtime and browser behavior; they do not exercise the
@@ -580,7 +590,10 @@ and asynchronous failures, and a stalled writer holding only the latest request.
 Ten error-response checks cover readable service messages, malformed roots and
 fields, the 16 KiB stream cap, interrupted and empty bodies, split UTF-8, stopped
 reads and late bytes, a short error deadline, and prompt release even when a
-reader ignores cancellation. All fifty unit tests pass.
+reader ignores cancellation. Six mesh checks cover all catalog previews and
+real custom/kit files, binary facet layout, finite values, positive extents,
+dimension agreement, tessellation tolerance, and valid binary headers and
+attribute bytes. All fifty-six unit tests pass.
 
 ## API
 

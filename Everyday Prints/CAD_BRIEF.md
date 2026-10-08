@@ -271,6 +271,12 @@ after rejected details and after Stop or newer requests, without waiting for
 cancellation to settle or changing newer UI state. Complete files must still
 match their advertised hashes before becoming downloads. Invalid-field feedback
 and mesh status must survive recovery before the first verified preview.
+Validate binary STL record counts and lengths, finite normals and vertices, and
+positive mesh extents before publishing a preview. Compare measured dimensions
+with advertised CAD bounds, allowing 0.05 mm plus one part per million for
+tessellation and single-precision coordinates. Apply these checks without the
+optional renderer and preserve earlier verified files when they fail. CAD
+response dimensions must agree with the verified mesh before its body is read.
 Match generated STL and ZIP media types exactly after ignoring case and
 semicolon-delimited parameters. Type names occurring only in parameters or
 subtype suffixes must not authorize a body read. Recognize HTML catalog fallback

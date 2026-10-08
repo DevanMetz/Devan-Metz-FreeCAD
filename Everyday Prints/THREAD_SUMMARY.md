@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **233 focused browser
-checks across nineteen suites**, the **53-model catalog and image smoke test**,
-**50 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **239 focused browser
+checks across twenty suites**, the **53-model catalog and image smoke test**,
+**56 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -42,6 +42,14 @@ checks cover stalled bodies, late headers, oversized transfers, the exact size
 boundary with a UTF-8 BOM, split Unicode in reused buffers, and invalid UTF-8.
 The catalog report records fourteen passing checks, with before-fix evidence
 and a reviewed mobile retry layout under `review/cloud_catalog_transfer_*`.
+Preview files now verify their binary STL records, finite normals and vertices,
+positive mesh extents, and agreement with reported CAD bounds before replacing
+the last verified preview. CAD details are checked against that mesh before
+reading the archive body. Six browser checks cover incorrect dimensions,
+matching hashes on malformed meshes, unavailable graphics, original recovery,
+cached CAD downloads, retries and mobile keyboard use. The before-fix probe
+downloaded a 180.5 mm tray with 190.5 mm in its filename; current checks reject
+that response. Evidence is under `review/cloud_mesh_dimensions_*`.
 
 ## Complete design inventory
 
@@ -381,9 +389,9 @@ stale edits, model switches, transfer corruption, incorrect metadata, service
 recovery, reference assemblies, kit quantities and fit coupons, malformed kit
 inventories and catalogs, mobile layout, no WebGL, and a reachable close control
 after scrolling long forms. The editor keeps its header visible while the preview
-and parameter form scroll beneath it. The compiled app passes 233 focused browser
-checks across nineteen suites, plus the full 53-model catalog and image smoke test.
-The TypeScript check, fifty request/transfer/dimension/clipboard/error tests,
+and parameter form scroll beneath it. The compiled app passes 239 focused browser
+checks across twenty suites, plus the full 53-model catalog and image smoke test.
+The TypeScript check, fifty-six request/transfer/dimension/clipboard/error/mesh tests,
 and production build pass. The native
 runtime report records 54 successful mesh jobs and seven rejected inputs.
 

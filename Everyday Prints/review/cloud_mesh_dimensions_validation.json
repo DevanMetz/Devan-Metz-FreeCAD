@@ -1,0 +1,15 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "incorrect_bounds_reject_then_retry_exact_files",
+    "malformed_facets_preserve_the_previous_preview",
+    "no_webgl_rejects_bad_mesh_without_discarding_cached_cad",
+    "original_bounds_mismatch_keeps_build_recovery",
+    "cad_bounds_reject_before_read_and_allow_retry",
+    "mobile_bounds_failure_preserves_revert_and_keyboard_download"
+  ],
+  "failures": [],
+  "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "malformed_mesh_variants": 6,
+  "transport": "compiled assets and real CAD fixtures"
+}

@@ -4,6 +4,7 @@ import { responseProblem } from './problems.js';
 import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
+import { verifyMesh } from './mesh.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -401,6 +402,7 @@ async function displayMesh(buffer, metadata, parameters, epoch, preserveFileErro
   const digest = await sha256(buffer);
   if (epoch !== state.epoch) return;
   if (digest !== metadata.mesh_sha256) throw new Error('The mesh transfer could not be verified. Update the preview to try again.');
+  verifyMesh(buffer, metadata.bounds_mm);
   state.blob = new Blob([buffer], { type: 'model/stl' });
   state.buffer = buffer;
   state.metadata = metadata;
@@ -736,6 +738,7 @@ async function downloadCad() {
       throw new Error('The parts kit does not match this assembly. Try again.');
     }
     if (metadata.format !== 'cad' || metadata.mesh_sha256 !== previewHash) throw new Error('The CAD files do not match the preview. Update the preview and try again.');
+    verifyMesh(state.buffer, metadata.bounds_mm);
     if (!validHash(metadata.file_sha256)) throw new Error('The CAD download transfer could not be verified. Try again.');
     if (mediaType(response) !== 'application/zip') throw new Error('The CAD service returned an unreadable download. Try again.');
     clearTimeout(timer);
