@@ -70,6 +70,9 @@ Original preview transfers recover after 15 seconds without new headers or file
 bytes. Active receipts reset that timer. Retry original preview keeps your
 measurements and reloads the static file; expired replies cannot replace newer
 previews or interrupt CAD work.
+Keyboard retry returns focus to a visible measurement, including after the 3D
+toolbar loads. Moving to another field during recovery keeps your chosen focus.
+
 Received bytes are copied immediately, preserving exact files when a transport
 reuses its chunk buffers or includes empty chunks.
 Preview and CAD response details are checked before transferring files. Invalid

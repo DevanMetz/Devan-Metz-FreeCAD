@@ -19,6 +19,10 @@
     "custom_build_supersedes_pending_retry",
     "model_switch_discards_pending_retry",
     "reference_assembly_recovers_without_printable_stl",
+    "short_desktop_retry_centers_a_measurement_after_the_control_disappears",
+    "delayed_graphics_keep_recovered_focus_visible_at_multiple_mobile_heights",
+    "completion_keeps_focus_on_a_new_field_and_preserves_invalid_drafts",
+    "closed_editor_and_new_model_ignore_late_retry_focus",
     "mobile_keyboard_retry_restores_reachable_focus"
   ],
   "failures": []

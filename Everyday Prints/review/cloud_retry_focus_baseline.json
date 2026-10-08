@@ -1,0 +1,42 @@
+[
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "input": {
+      "x": 34,
+      "y": 859.375,
+      "width": 154.5,
+      "height": 39
+    },
+    "clip": {
+      "x": 12,
+      "y": 104,
+      "width": 366,
+      "height": 728
+    },
+    "scroll_top": 0,
+    "visible": false
+  },
+  {
+    "viewport": [
+      1440,
+      660
+    ],
+    "input": {
+      "x": 831.25,
+      "y": 391.375,
+      "width": 203.875,
+      "height": 39
+    },
+    "clip": {
+      "x": 161,
+      "y": 138,
+      "width": 1118,
+      "height": 493
+    },
+    "scroll_top": 14,
+    "visible": true
+  }
+]

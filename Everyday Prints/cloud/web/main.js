@@ -397,7 +397,11 @@ function setDownloads(matches = false) {
   const retryFocused = document.activeElement === $('retry-original');
   $('original-recovery').hidden = !!state.blob;
   $('retry-original').disabled = state.busy;
-  if (state.blob && retryFocused) $('parameter-fields').querySelector('input')?.focus({ preventScroll: true });
+  if (state.blob && retryFocused) {
+    const input = $('parameter-fields').querySelector('input');
+    input?.focus();
+    input?.scrollIntoView({ block: 'center' });
+  }
 }
 
 function cadButton() {

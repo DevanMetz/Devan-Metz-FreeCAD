@@ -597,7 +597,13 @@ replace newer models, custom builds, edits, or errors. The retry disappears once
 a mesh is verified, returning keyboard focus to the first measurement only if
 the retry still has focus. Image fallback hints describe the unavailable viewer.
 
-`verify_original_retry_ui.py` has nineteen browser checks for missing, HTML,
+When recovery hides the focused Retry original preview button, the first
+measurement receives focus near the center of the visible editor. It stays
+visible when the optional 3D toolbar appears and in short phone or desktop
+windows. Moving to another control during the request keeps that control’s
+focus, and closing or changing models discards late restoration.
+
+`verify_original_retry_ui.py` has twenty-three browser checks for missing, HTML,
 corrupt, oversized, stalled and repeated catalog transfers; exact raw drafts;
 saved dimensions across models; rejected files and links; browser history;
 newer edits, builds and navigation; verified CAD reuse; reference assemblies;

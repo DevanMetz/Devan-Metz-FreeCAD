@@ -129,6 +129,17 @@ def main():
                 page.locator("#" + button).click()
             return Path(event.value.path()).read_bytes()
 
+        def visible_field(page, selector="#param-length"):
+            field = page.locator(selector).bounding_box()
+            clip = page.locator(".editor-layout").bounding_box()
+            assert field and clip, (field, clip)
+            assert field["y"] >= clip["y"] and field["y"] + field["height"] <= clip["y"] + clip["height"], (field, clip)
+            assert field["x"] >= clip["x"] and field["x"] + field["width"] <= clip["x"] + clip["width"], (field, clip)
+
+        def wait_for_graphics(page):
+            expect(page.locator(".view-tools")).to_be_visible()
+            page.evaluate("() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))")
+
         def failure_retries_static_asset_and_preserves_history(page):
             jobs = setup(page, neverCancel=True)
             assert page.evaluate("window.originalTransfers[0].cancelled") == 1
@@ -334,6 +345,81 @@ def main():
             expect(page.locator("#reference-note")).to_be_visible()
             assert page.locator("#part-links button").count() > 0 and not jobs
 
+        def short_desktop_retry_centers_a_measurement_after_the_control_disappears(page):
+            page.set_viewport_size({"width": 1440, "height": 440})
+            jobs = setup(page)
+            before = history_state(page)
+            page.locator("#retry-original").focus()
+            page.keyboard.press("Enter")
+            settled(page)
+            wait_for_graphics(page)
+            expect(page.locator("#param-length")).to_be_focused()
+            visible_field(page)
+            assert history_state(page) == before
+            page.screenshot(path=str(ROOT / "review/cloud_retry_focus_desktop.png"))
+            assert download(page) == (CLOUD / "public/models/parts_tray.stl").read_bytes() and not jobs
+
+        def delayed_graphics_keep_recovered_focus_visible_at_multiple_mobile_heights(page):
+            jobs = setup(page)
+            waiting = []
+            page.route("**/assets/viewer-*.js", lambda route: waiting.append(route))
+            page.set_viewport_size({"width": 390, "height": 880})
+            page.locator("#retry-original").focus()
+            page.keyboard.press("Enter")
+            settled(page)
+            expect(page.locator("#param-length")).to_be_focused()
+            visible_field(page)
+            while not waiting:
+                page.wait_for_timeout(20)
+            waiting[0].fallback()
+            wait_for_graphics(page)
+            for height in (844, 880, 900):
+                page.set_viewport_size({"width": 390, "height": height})
+                expect(page.locator("#param-length")).to_be_focused()
+                visible_field(page)
+            page.set_viewport_size({"width": 390, "height": 844})
+            page.screenshot(path=str(ROOT / "review/cloud_retry_focus_mobile.png"))
+            assert download(page) == (CLOUD / "public/models/parts_tray.stl").read_bytes() and not jobs
+
+        def completion_keeps_focus_on_a_new_field_and_preserves_invalid_drafts(page):
+            page.set_viewport_size({"width": 390, "height": 844})
+            jobs = setup(page)
+            page.evaluate("window.originalFaults.push({mode:'body'})")
+            page.locator("#retry-original").focus()
+            page.keyboard.press("Enter")
+            page.wait_for_function("() => typeof window.originalTransfers[1]?.release === 'function'")
+            page.locator("#param-length").fill("")
+            page.locator("#param-width").fill("100.00")
+            page.evaluate("window.keptRetryField = document.getElementById('param-width')")
+            before = history_state(page)
+            release(page, 1)
+            settled(page)
+            wait_for_graphics(page)
+            expect(page.locator("#param-width")).to_be_focused()
+            expect(page.locator("#param-width")).to_have_value("100.00")
+            expect(page.locator("#param-length")).to_have_value("")
+            expect(page.locator("#param-length")).to_have_attribute("aria-invalid", "true")
+            assert page.evaluate("window.keptRetryField === document.getElementById('param-width')")
+            assert history_state(page) == before and page.locator("#download").is_disabled() and not jobs
+
+        def closed_editor_and_new_model_ignore_late_retry_focus(page):
+            jobs = setup(page)
+            page.evaluate("window.originalFaults.push({mode:'body'})")
+            page.locator("#retry-original").focus()
+            page.keyboard.press("Enter")
+            page.wait_for_function("() => typeof window.originalTransfers[1]?.release === 'function'")
+            page.locator("#close-editor").click()
+            expect(page.locator("#editor")).to_be_hidden()
+            page.locator("#search").focus()
+            release(page, 1)
+            expect(page.locator("#search")).to_be_focused()
+            page.locator('[data-model="cable_comb"]').click()
+            settled(page)
+            wait_for_graphics(page)
+            page.locator("#param-cable_diameters").focus()
+            expect(page.locator("#param-cable_diameters")).to_be_focused()
+            assert download(page) == (CLOUD / "public/models/cable_comb.stl").read_bytes() and not jobs
+
         def mobile_keyboard_retry_restores_reachable_focus(page):
             page.set_viewport_size({"width": 390, "height": 844})
             jobs = setup(page)
@@ -346,7 +432,9 @@ def main():
             button.focus()
             button.press("Enter")
             settled(page)
+            wait_for_graphics(page)
             expect(page.locator("#parameter-fields input").first).to_be_focused()
+            visible_field(page)
             assert page.locator("#download").is_enabled() and not jobs
 
         for check in (
@@ -368,6 +456,10 @@ def main():
             custom_build_supersedes_pending_retry,
             model_switch_discards_pending_retry,
             reference_assembly_recovers_without_printable_stl,
+            short_desktop_retry_centers_a_measurement_after_the_control_disappears,
+            delayed_graphics_keep_recovered_focus_visible_at_multiple_mobile_heights,
+            completion_keeps_focus_on_a_new_field_and_preserves_invalid_drafts,
+            closed_editor_and_new_model_ignore_late_retry_focus,
             mobile_keyboard_retry_restores_reachable_focus,
         ):
             page = context.new_page()

@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **357 focused browser
+The latest local customizer and download build passes **361 focused browser
 checks across thirty suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,18 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Keyboard Retry original preview now places the first measurement in the center
+of the visible editor when its focused action disappears. The baseline focused
+a phone input below the scroll area. Centering also keeps that input visible
+when a delayed 3D toolbar changes the layout. Moving focus to another field,
+closing the editor or changing models prevents unwanted restoration. Four
+additional retry checks cover short desktop windows, multiple phone heights,
+delayed graphics, invalid raw drafts and late replies after navigation. The
+existing mobile check now asserts real viewport bounds. Exact original STL
+files, history and parameter values are preserved. Reviewed layouts and the
+baseline are under `review/cloud_retry_focus_*`; the retry report has twenty-three
+passing checks.
 
 The latest measurements can recover after a refresh in the same tab, including
 invalid drafts, while custom downloads still require a verified matching preview.
