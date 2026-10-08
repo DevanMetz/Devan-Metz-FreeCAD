@@ -1,0 +1,549 @@
+{
+  "advisory": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+  "baseline_head": "2006f1dc887294eb735ab1ba62c3ea4164a2f50f",
+  "baseline_lock_sha256": "478071e2690198e508a1637bb6665c67502ca2ca9ded588b3c126e5867b18928",
+  "lock_sha256": "1fda3441f0a87e4f9af00abef98bd69b4a4186acd1104c73e38ac5c30b4501c2",
+  "audit_summary": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "tool_versions": {
+    "cf": "1.0.0-beta.9",
+    "@cloudflare/vite-plugin": "2.0.0-beta.sha-ad79608dd",
+    "vite": "8.3.1",
+    "typescript": "7.0.2",
+    "miniflare": "5.20260926.0-alpha",
+    "cf/node_modules/miniflare": "5.20260930.0-alpha"
+  },
+  "native_packages": {
+    "node_modules/@img/sharp-darwin-arm64": "0.35.5",
+    "node_modules/@img/sharp-darwin-x64": "0.35.5",
+    "node_modules/@img/sharp-freebsd-wasm32": "0.35.5",
+    "node_modules/@img/sharp-libvips-darwin-arm64": "1.3.4",
+    "node_modules/@img/sharp-libvips-darwin-x64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-arm": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-arm64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-ppc64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-riscv64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-s390x": "1.3.4",
+    "node_modules/@img/sharp-libvips-linux-x64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linuxmusl-arm64": "1.3.4",
+    "node_modules/@img/sharp-libvips-linuxmusl-x64": "1.3.4",
+    "node_modules/@img/sharp-linux-arm": "0.35.5",
+    "node_modules/@img/sharp-linux-arm64": "0.35.5",
+    "node_modules/@img/sharp-linux-ppc64": "0.35.5",
+    "node_modules/@img/sharp-linux-riscv64": "0.35.5",
+    "node_modules/@img/sharp-linux-s390x": "0.35.5",
+    "node_modules/@img/sharp-linux-x64": "0.35.5",
+    "node_modules/@img/sharp-linuxmusl-arm64": "0.35.5",
+    "node_modules/@img/sharp-linuxmusl-x64": "0.35.5",
+    "node_modules/@img/sharp-wasm32": "0.35.5",
+    "node_modules/@img/sharp-webcontainers-wasm32": "0.35.5",
+    "node_modules/@img/sharp-win32-arm64": "0.35.5",
+    "node_modules/@img/sharp-win32-ia32": "0.35.5",
+    "node_modules/@img/sharp-win32-x64": "0.35.5"
+  },
+  "native": {
+    "versions": {
+      "aom": "3.15.1",
+      "archive": "3.8.9",
+      "cairo": "1.18.6",
+      "cgif": "0.5.4",
+      "exif": "0.6.26",
+      "expat": "2.8.5",
+      "ffi": "3.8.0",
+      "fontconfig": "2.18.3",
+      "freetype": "2.14.3",
+      "fribidi": "1.0.17",
+      "glib": "2.90.0",
+      "harfbuzz": "14.5.0",
+      "heif": "1.23.5",
+      "highway": "1.4.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.19.1",
+      "mozjpeg": "0826579",
+      "pango": "1.58.2",
+      "pixman": "0.46.4",
+      "png": "1.6.58",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.63.2",
+      "tiff": "4.7.2",
+      "uhdr": "2.0.2",
+      "vips": "8.18.7",
+      "webp": "1.6.0",
+      "xml2": "2.15.4",
+      "zlib-ng": "2.3.3",
+      "sharp": "0.35.5"
+    },
+    "svg_rgba": [
+      40,
+      116,
+      104,
+      255
+    ],
+    "formats": [
+      {
+        "format": "png",
+        "decoded_format": "png",
+        "width": 17,
+        "height": 11
+      },
+      {
+        "format": "jpeg",
+        "decoded_format": "jpeg",
+        "width": 17,
+        "height": 11
+      },
+      {
+        "format": "webp",
+        "decoded_format": "webp",
+        "width": 17,
+        "height": 11
+      },
+      {
+        "format": "avif",
+        "decoded_format": "heif",
+        "width": 17,
+        "height": 11
+      }
+    ],
+    "images": [
+      {
+        "model": "parts_tray",
+        "source_sha256": "89cbeec323b43241ba17542313bee44420d4c8db1e2cd9d08dcd9589a9adc0f5",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "cable_comb",
+        "source_sha256": "8458b080470340fe5cb4bbec2a088d6d56f9a416e88c65ec2072598f45a60ecf",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "divider_foot",
+        "source_sha256": "ec02db589a6f823f9d5e598437624a4725182c2eee250c70c26ed9d08e104967",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "divider_fit_coupon",
+        "source_sha256": "a95ae1261f21c04b62c1d6e7bc915787a79888968ae99082277a6c62c73f10a8",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "phone_stand",
+        "source_sha256": "191d056a7c10775b58896ef92d995f705647cd7d76221aaf740cd7fc8870ee84",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "corner_square",
+        "source_sha256": "5c121c6ab87d2f82613b244ff1e191516f25a4d5c28161a390fa0b1bcfe2d6a3",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "handle_marking_jig",
+        "source_sha256": "457ec83f64f30f1a885cab14767078a3fd94ff4403d61d70081c1461e6c2eb81",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "tube_squeezer",
+        "source_sha256": "9095fa0bbfa3cf1cb7ca9c794dbf6f9d6ce23ab18c2c955a776ffbfb3e09d078",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "soap_dish_tray",
+        "source_sha256": "1dc14e0692c15e2eae45fa395c7b6d65776fa6912d721040682da6810f3b3dd9",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "soap_dish_insert",
+        "source_sha256": "9329255fd9580138fc3a88fde95ada1a5949c09d31c8a35e896a03fcd1e35f98",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "label_stand",
+        "source_sha256": "b11522e6242e5f43b4a9e1068cd8c809ce8015a60a3dd9ba38f89d066d0df139",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "paint_pyramid",
+        "source_sha256": "95459f2fb16684c3e232d2f8b913eb05dce4a75fd6a911f55cc06ba0383f4188",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "cable_winder",
+        "source_sha256": "c667b6985b8a6e3943300cf81469190beef6af92178704f0081e21a1c8bf08dd",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "hex_bit_rack",
+        "source_sha256": "59fc3ebc898cfacd86d913fcf7d033c3d24e30d7ad0ea0cb7948b016e555bef1",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "hex_bit_fit_coupon",
+        "source_sha256": "8eac33f6d58a366a2329db5b99e812de7327c20bdf08434dd8c7e3c99d090b3f",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sanding_block",
+        "source_sha256": "65631b98bdd8c8160505bbefceeb4a3fe6926611bf906b9ca50bfe3eedf14daa",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sanding_wedge",
+        "source_sha256": "314c9d12b7e21845a749c22d02ec9afa7dec4314fd9d902ba54c3458c09ac236",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "cable_grommet",
+        "source_sha256": "f607671afcc565be50aaf0870842d8a7e3fb44ee8c51fe0fc81a0743c87d4f0a",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "radius_template",
+        "source_sha256": "d08968fea9193253ae2b6a4319bfa4388102080368c996ddec6290319b0a0e26",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "center_finder",
+        "source_sha256": "6b7654f6c5c9bc11ae8bf5cef3e74bdc43f0fe8c508abc1ace4006c2c457efa0",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "brush_rest",
+        "source_sha256": "e2863d5c4078c549ce36203e6e7507971788e8ea29369f64a5ea2093d0ad5c95",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "utility_peg",
+        "source_sha256": "c4a7a9b76efe6c5f318c1885f6cbe253887c3606f837462d67ea8d3b8ffc3568",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sliding_box",
+        "source_sha256": "79cb13141d5fc2311e83ae051d647f489f5da55630fc1799e7943b00c5fea8bb",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sliding_lid",
+        "source_sha256": "65661f7989c7c70894d473d449893f7749292277bcc810a5f43dc56a00da773b",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sliding_fit_channel",
+        "source_sha256": "3c9c7b8c720b3e49b0b3b02b796c57fe29ed5d823e4d1142adf07978ac37a3c9",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sliding_fit_slider",
+        "source_sha256": "ff16b1f924053ab12443d1497525cd9dbf72c5991e6574459795042fe41315f7",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "round_stock_cradle",
+        "source_sha256": "f005a71dcabd863f6961991a6d7d5219387bb470486cc37618e2eb1113084b76",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "tie_anchor",
+        "source_sha256": "a8246f85b52779d1e7df84ccbad71a52a368be9c32e8d4601e2923c892755181",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "workshop_funnel",
+        "source_sha256": "d496e67f577295ee87955593f66d407a6d25f721326de811ed225f8b827851b4",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "fold_clip",
+        "source_sha256": "0ad91f7b10e61b3313784123d639d53217b6ae5392b846e10cccf7ea7e4c86f1",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "cord_clip",
+        "source_sha256": "f58ac0c8fd9a1dbfe8edb4754a33886c6a2a7fff6e7b7c023257ba81dd9d9cfb",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "hand_knob",
+        "source_sha256": "777aed711e171e61e7444cc47cbf2b398b0a997b9e130d7c84df1cd8d2c68a50",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "slotted_shim",
+        "source_sha256": "d0a52b61423e375eb8b69b2050f2b7914ee67bafca818851ecb2d66e97850446",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "marking_saddle",
+        "source_sha256": "15ea9f464252dcfeda299ed10f5f0bfb644017d8f201ab95dc02788ea020134b",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "roll_adapter",
+        "source_sha256": "14ca8b4316498555c3bac25c6e423bc69b6f9c8bb8dea8390df04f2637d7f479",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "bookend",
+        "source_sha256": "306e516eebcb5acd11660f7a4f8a41b4d128e8b4413389396d89c251d14e2585",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "corner_cable_guide",
+        "source_sha256": "060455e187a5dffc06e074eddcd999f1887d948c4830703c37f7ac6bff40a0c6",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "workshop_scoop",
+        "source_sha256": "2dca57e2c4eaba219778dd2b3301de98f76cd24a6793806ac92f21fcb7fbaefd",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "plant_marker",
+        "source_sha256": "b285368bfec1320c4d8fdc920db6a5050f86b6658f885240b2c182796d9e4935",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "ruler_stop",
+        "source_sha256": "e2c32198e9b8e17aa4247985ddad0b791ec00995f6e7fe3079b1105ef057df1a",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "ruler_wedge",
+        "source_sha256": "a0b357877462cfde8382f38fab67041b3308e5e91d2ba9b1816e8299747e680e",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "tube_reducer",
+        "source_sha256": "cb338f9b2d757ceca8282c7e52447096a99e296cda3516aa6d6f732bf2c72e43",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "socket_fit_ring",
+        "source_sha256": "54e2d37d6b49b6b23dd62234f83f9f1b0cda1224690eeff19cbba0993cf9d9d2",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "strap_corner",
+        "source_sha256": "36e915bf088e48ed8d26feb66a2039d1d9ad31a27911b389316d13e048dc9a75",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sorting_sieve",
+        "source_sha256": "72a4fcb27d8ffa8b41c57777dc6f12dad4e63f526c5d7297a341145b5e800261",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sieve_aperture_coupon",
+        "source_sha256": "14323af7200eb5d52a2dace62c4b4eb4c6c2e146f7581d9f7a674bac5cd40a1e",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "divider_joint",
+        "source_sha256": "9a29ae8e3ae10a13b04c6dc60cbc64b080babd8ed19f2ced1fe13cdc963cece4",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "soap_dish_assembly",
+        "source_sha256": "a5ce54f353463fb7dd654589126c43275ce452ecc92945ee62de375294aaa442",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sanding_assembly",
+        "source_sha256": "de53d1c7948244e3e2456838a8e8ace5f4650cd208d7ad686aa812fdcdf60d6f",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "sliding_box_assembly",
+        "source_sha256": "8d9a1ad697590cadbf33a58965e4550d22c4203999135b19d8e6a4180aa833a7",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "ruler_stop_assembly",
+        "source_sha256": "376179b0085be5a13f81fdecc1081fee9453a5c85f328cda8f5ec1029f89f2da",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "strap_clamp_assembly",
+        "source_sha256": "b150c6a6394d87ba3d462678842a44254804001e449f4533d51c93a827aea242",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      },
+      {
+        "model": "divider_joint_assembly",
+        "source_sha256": "656f177ea6c535c19cc34fe306db2cf34b17d2c52c97cd5deaced91d880e0660",
+        "width": 1600,
+        "height": 1200,
+        "decoded_width": 48,
+        "decoded_height": 36
+      }
+    ]
+  },
+  "checks": [
+    "full_dependency_audit",
+    "patched_platform_lock",
+    "retained_toolchain_versions",
+    "patched_svg_decoder",
+    "four_image_output_formats",
+    "all_53_catalog_images"
+  ]
+}

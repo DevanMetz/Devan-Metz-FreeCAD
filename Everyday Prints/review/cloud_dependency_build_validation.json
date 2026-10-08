@@ -1,0 +1,61 @@
+{
+  "baseline_head": "2006f1dc887294eb735ab1ba62c3ea4164a2f50f",
+  "dependency_validation": "cloud_dependency_validation.json",
+  "clean_install": {
+    "command": "npm ci --include=dev --ignore-scripts",
+    "passed": true
+  },
+  "unit_tests": {
+    "passed": 102,
+    "failed": 0
+  },
+  "typecheck": {
+    "passed": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "assets_identical": true,
+    "baseline_assets": {
+      "assets\\assets\\index-BjTO-9TZ.js": "652a2801e152f1536b3656ff367e2c5ee1f0dd6d095c07f59c8cb4c8c3ef3d3b",
+      "assets\\assets\\index-BL4L_5YT.css": "d5dd4e0145b028e470fe23f480d521f6986dc581eeafbad7f6acb9e4dbb5f700",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\assets\\zip-ClPs1R5M.js": "961d4b237482187e6144849e73597fe43b504b3e58cbe3363a1b0796134f43b5",
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\index.html": "f017e8a9897a7cd0ab1b3e5965ad5b733c6ac016a57f35f998e8843f3a244aa9",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76"
+    },
+    "patched_assets": {
+      "assets\\assets\\index-BjTO-9TZ.js": "652a2801e152f1536b3656ff367e2c5ee1f0dd6d095c07f59c8cb4c8c3ef3d3b",
+      "assets\\assets\\index-BL4L_5YT.css": "d5dd4e0145b028e470fe23f480d521f6986dc581eeafbad7f6acb9e4dbb5f700",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\assets\\zip-ClPs1R5M.js": "961d4b237482187e6144849e73597fe43b504b3e58cbe3363a1b0796134f43b5",
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\index.html": "f017e8a9897a7cd0ab1b3e5965ad5b733c6ac016a57f35f998e8843f3a244aa9",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76"
+    }
+  },
+  "fresh_browser_checks": {
+    "catalog": {
+      "report": "cloud_ui_validation.json",
+      "models": 53,
+      "images": 53,
+      "passed": true
+    },
+    "zip_dimensions": {
+      "report": "cloud_zip_dimensions_validation.json",
+      "passed": 12,
+      "failures": 0
+    }
+  },
+  "retained_browser_evidence": {
+    "checks": 417,
+    "suites": 33,
+    "basis": "The seven application asset SHA-256 digests are identical to the previously verified build; the dependency update changes build tooling only."
+  },
+  "unchanged_geometry": {
+    "files": 206,
+    "cad_inspection_records": 44,
+    "reviewed_steps": 22
+  }
+}

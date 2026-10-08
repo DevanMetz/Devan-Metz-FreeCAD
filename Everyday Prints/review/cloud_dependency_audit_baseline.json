@@ -1,0 +1,164 @@
+{
+  "head": "2006f1dc887294eb735ab1ba62c3ea4164a2f50f",
+  "advisory": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+  "audit_summary": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 5,
+    "critical": 0,
+    "total": 5
+  },
+  "vulnerabilities": {
+    "@cloudflare/runtime-types": {
+      "name": "@cloudflare/runtime-types",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "miniflare"
+      ],
+      "effects": [
+        "@cloudflare/vite-plugin",
+        "cf"
+      ],
+      "range": ">=0.1.0",
+      "nodes": [
+        "node_modules/@cloudflare/runtime-types",
+        "node_modules/cf/node_modules/@cloudflare/runtime-types"
+      ],
+      "fixAvailable": {
+        "name": "@cloudflare/vite-plugin",
+        "version": "1.2.2",
+        "isSemVerMajor": true
+      }
+    },
+    "@cloudflare/vite-plugin": {
+      "name": "@cloudflare/vite-plugin",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@cloudflare/runtime-types",
+        "miniflare"
+      ],
+      "effects": [],
+      "range": "<=0.0.0-7ae5dd357 || >=1.2.3",
+      "nodes": [
+        "node_modules/@cloudflare/vite-plugin"
+      ],
+      "fixAvailable": {
+        "name": "@cloudflare/vite-plugin",
+        "version": "1.2.2",
+        "isSemVerMajor": true
+      }
+    },
+    "cf": {
+      "name": "cf",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@cloudflare/runtime-types",
+        "miniflare"
+      ],
+      "effects": [],
+      "range": ">=0.9.0",
+      "nodes": [
+        "node_modules/cf"
+      ],
+      "fixAvailable": {
+        "name": "cf",
+        "version": "0.8.0",
+        "isSemVerMajor": true
+      }
+    },
+    "miniflare": {
+      "name": "miniflare",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "sharp"
+      ],
+      "effects": [
+        "@cloudflare/runtime-types",
+        "@cloudflare/vite-plugin",
+        "cf"
+      ],
+      "range": "<=0.0.0-fec45ed61 || >=4.20250508.3",
+      "nodes": [
+        "node_modules/cf/node_modules/miniflare",
+        "node_modules/miniflare"
+      ],
+      "fixAvailable": {
+        "name": "cf",
+        "version": "0.8.0",
+        "isSemVerMajor": true
+      }
+    },
+    "sharp": {
+      "name": "sharp",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1241331,
+          "name": "sharp",
+          "dependency": "sharp",
+          "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+          "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+          "severity": "high",
+          "cwe": [
+            "CWE-416",
+            "CWE-1395"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.35.5"
+        }
+      ],
+      "effects": [
+        "miniflare"
+      ],
+      "range": "<0.35.5",
+      "nodes": [
+        "node_modules/sharp"
+      ],
+      "fixAvailable": {
+        "name": "cf",
+        "version": "0.8.0",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "native_versions": {
+    "aom": "3.14.1",
+    "archive": "3.8.9",
+    "cairo": "1.18.4",
+    "cgif": "0.5.3",
+    "exif": "0.6.26",
+    "expat": "2.8.3",
+    "ffi": "3.8.0",
+    "fontconfig": "2.18.3",
+    "freetype": "2.14.3",
+    "fribidi": "1.0.16",
+    "glib": "2.89.4",
+    "harfbuzz": "14.3.1",
+    "heif": "1.23.2",
+    "highway": "1.4.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.19.1",
+    "mozjpeg": "0826579",
+    "pango": "1.58.2",
+    "pixman": "0.46.4",
+    "png": "1.6.58",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.62.91",
+    "tiff": "4.7.2",
+    "uhdr": "2.0.2",
+    "vips": "8.18.6",
+    "webp": "1.6.0",
+    "xml2": "2.15.3",
+    "zlib-ng": "2.3.3",
+    "sharp": "0.35.4"
+  }
+}

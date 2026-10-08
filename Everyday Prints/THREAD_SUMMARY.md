@@ -28,6 +28,21 @@ minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
 
+Patched both Miniflare toolchain paths to Sharp 0.35.5 with librsvg 2.63.2,
+resolving the five high npm audit findings in
+[GHSA-wq5f-xc86-pv6w](https://github.com/advisories/GHSA-wq5f-xc86-pv6w).
+A clean lockfile install reports zero findings, including development
+dependencies. Cloudflare, Vite and TypeScript versions remain unchanged.
+The installed native decoder passes SVG conversion into PNG, JPEG, WebP and
+AVIF, and decodes and resizes all 53 catalog PNGs without modifying them.
+
+The patched toolchain passes all 102 unit tests, TypeScript checks and the
+production build. Its seven application asset hashes exactly match the previous
+417-check checkpoint, retaining that browser evidence. The 53-model catalog and
+image smoke test and all twelve direct ZIP-loading checks also passed again.
+The 206 geometry files, 44 CAD inspection records and 22 reviewed STEP hashes
+remain unchanged. Evidence is under `review/cloud_dependency_*`.
+
 Load dimensions now accepts downloaded CAD and kit ZIPs directly, alongside
 JSON files. The baseline rejected a real 214,046-byte CAD ZIP under the JSON
 limit. ZIP loading reads its top-level parameters.json within bounded archive

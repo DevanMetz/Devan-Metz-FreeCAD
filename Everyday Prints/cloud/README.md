@@ -243,6 +243,17 @@ copies, and `src/generated/runtime.json`; these outputs are intentionally ignore
 by Git. Rebuild and validate the parent collection before preparing changed CAD
 sources. `package-lock.json` records the CLI, frontend, and build dependencies.
 
+The lockfile overrides Sharp to `^0.35.5` to patch the SVG decoder described in
+[the maintainer advisory](https://github.com/advisories/GHSA-wq5f-xc86-pv6w).
+Both Miniflare dependency paths receive the patch while the Cloudflare, Vite
+and TypeScript versions stay unchanged. The clean install reports zero npm audit
+findings, including development dependencies.
+
+For this checkpoint, `python verify_dependencies.py` verifies the full audit,
+the installed native decoder, SVG conversion into four image formats and all
+53 catalog PNGs. Reports are under `../review/cloud_dependency_*`; the build
+report records unchanged application hashes and the rechecked browser flows.
+
 `cf auth login` is only needed on a machine without an authenticated account.
 The Worker is named `everyday-prints` and its Container application is
 `everyday-prints-cad`. Deploying the same project updates those resources.

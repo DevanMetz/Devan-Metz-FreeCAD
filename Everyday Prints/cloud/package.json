@@ -12,7 +12,8 @@
 		"typecheck": "cf workers types && tsc"
 	},
 	"overrides": {
-		"undici": "^7.29.1"
+		"undici": "^7.29.1",
+		"sharp": "^0.35.5"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "beta",
