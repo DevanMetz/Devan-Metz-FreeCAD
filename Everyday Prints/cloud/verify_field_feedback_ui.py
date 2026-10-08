@@ -199,7 +199,7 @@ def main():
                 else:
                     page.locator("#reset-parameters" if action == "reset" else "#save-dimensions").click()
                 assert page.locator("#dimensions-error").is_hidden()
-                expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP here, or use Load dimensions.")
+                expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP anywhere in this editor, or use Load dimensions.")
             assert not jobs
 
         def long_import_errors_stay_bounded_and_fit_mobile_layout(page):

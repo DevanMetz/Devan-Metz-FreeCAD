@@ -212,7 +212,7 @@ def main():
             expect(page.locator("#form-message")).to_have_text(text)
             expect(page.locator("#form-message")).to_have_class("form-message error")
             expect(page.locator("#load-dimensions")).to_be_focused()
-            expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP here, or use Load dimensions. " + text)
+            expect(page.locator("#load-dimensions")).to_have_accessible_description("Drop one saved dimensions JSON or CAD/kit ZIP anywhere in this editor, or use Load dimensions. " + text)
             assert page.locator("#parameter-fields input").evaluate_all("inputs => inputs.map(input => [input.id, input.value])") == values
 
         def late_original_success_keeps_multiple_drop_rejection(page):

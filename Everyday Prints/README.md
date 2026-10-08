@@ -20,8 +20,10 @@ restores just that measurement while keeping the other edits. Downloads become
 available when all fields match the verified preview again.
 Saved dimensions can be exported as JSON and loaded back into the customizer,
 including CAD and kit ZIPs or their parameters.json, without starting a build.
-The local customizer also accepts a single JSON file or CAD/kit ZIP dropped into
-the file box in Saved dimensions. Load dimensions works with keyboard and touch.
+The local customizer also accepts a single JSON file or CAD/kit ZIP dropped
+anywhere in the open editor, including its preview and measurement fields.
+Saved dimensions opens for file feedback. Load dimensions works with keyboard
+and touch.
 
 Saved dimensions also keeps up to 20 named versions in this browser. Save valid
 measurements before building, reopen a part or assembly version, or remove a

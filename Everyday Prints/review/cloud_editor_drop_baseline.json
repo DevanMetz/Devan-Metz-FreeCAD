@@ -1,0 +1,63 @@
+{
+  "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+  "observed": [
+    {
+      "target": "measurement_json",
+      "model": "Divided parts tray",
+      "length": "190.55",
+      "message": "Your edits are ready. Update the preview to build this version.",
+      "saved_open": false,
+      "events": [
+        {
+          "trusted": true,
+          "target": "param-length",
+          "files": [
+            {
+              "name": "parameters.json",
+              "size": 565
+            }
+          ],
+          "prevented": false
+        }
+      ],
+      "unexpected_downloads": [],
+      "native_jobs": 0,
+      "editor_retained": true
+    },
+    {
+      "target": "preview_zip",
+      "model": "Divided parts tray",
+      "length": "190.55",
+      "message": "Your edits are ready. Update the preview to build this version.",
+      "saved_open": false,
+      "events": [],
+      "unexpected_downloads": [],
+      "native_jobs": 0,
+      "editor_retained": true
+    },
+    {
+      "target": "file_box_json",
+      "model": "Divided parts tray",
+      "length": "180.5",
+      "message": "Saved dimensions loaded. Update the preview to build this version.",
+      "saved_open": true,
+      "events": [
+        {
+          "trusted": true,
+          "target": "dimension-drop-help",
+          "files": [
+            {
+              "name": "parameters.json",
+              "size": 565
+            }
+          ],
+          "prevented": true
+        }
+      ],
+      "unexpected_downloads": [],
+      "native_jobs": 0,
+      "editor_retained": true
+    }
+  ],
+  "transport": "compiled production assets and trusted Chromium drags of exported JSON and CAD ZIP files"
+}

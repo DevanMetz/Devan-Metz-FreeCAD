@@ -520,18 +520,22 @@ opens its model and fills the fields without starting CAD work. Partial paramete
 objects use the model's defaults for omitted fields. Update preview is required
 for changed dimensions; matching inputs retain the verified STL and cached ZIP.
 
-You can also drop one saved dimensions JSON file or CAD/kit ZIP into the file
-box in Saved dimensions. The box highlights for file drags; dropping uses the
-same bounded importer as Load dimensions. Multiple or rejected files keep the
-current measurements and verified downloads. Pending builds stay in progress.
-Load dimensions remains available for keyboard and touch use.
+You can also drop one saved dimensions JSON file or CAD/kit ZIP anywhere in the
+open model editor, including the preview and measurement fields. Saved
+dimensions opens to show the file controls and feedback. The file box highlights
+when a file is dragged over it; dropping anywhere uses the same bounded importer
+as Load dimensions. Multiple or rejected files keep the current measurements
+and verified downloads. Pending builds stay in progress. Text drags keep their
+normal behavior. Load dimensions remains available for keyboard and touch use.
 
-`verify_dimension_drop_ui.py --offline` has nine checks. Its desktop case sends
-an exported ZIP from disk through Chromium's trusted native drag pipeline.
-It covers exact dropped-file downloads,
-JSON model switches and history, kit inventories, rejected and oversized files,
-busy CAD, late reads, drag feedback and the phone chooser with unavailable 3D.
-Evidence and reviewed layouts are under `../review/cloud_dimension_drop_*`.
+`verify_dimension_drop_ui.py --offline` has twelve checks. Trusted Chromium
+drags send exported JSON onto a measurement field and a CAD ZIP onto the preview
+with Saved dimensions closed, then verify exact STL/CAD bytes and their names.
+It also covers file-box drops, JSON model switches and history, kit inventories,
+rejected and oversized files, busy CAD, late reads, drag feedback, text drags,
+closed-editor events and the phone chooser with unavailable 3D. Before-change
+evidence and reviewed layouts are under `../review/cloud_editor_drop_*`, alongside
+`../review/cloud_dimension_drop_*`.
 
 JSON files are limited to 16 KiB. Model and parameter names, units, numeric types,
 counts, list lengths and numeric bounds are validated before the form changes.

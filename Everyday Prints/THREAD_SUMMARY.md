@@ -10,9 +10,10 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **429 focused browser
-checks across thirty-four suites**, the **53-model catalog and image smoke test**,
-**102 unit tests**, TypeScript checks and the production build. File chunks are
+The latest editor file-drop build passes **105 focused browser checks across
+eight affected suites**, the **53-model catalog and image smoke test**,
+**102 unit tests**, TypeScript checks and the production build. The preceding
+full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 Original preview requests now recover after 15 seconds without response headers
@@ -27,6 +28,19 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Saved dimensions JSON and CAD/kit ZIP files can now be dropped anywhere in
+an open model editor, including the preview and measurement fields while
+Saved dimensions is closed. The baseline ignored these same exported files
+outside the file box. Accepted drops reveal Saved dimensions, validate through
+the existing bounded importer and focus the first measurement before CAD work.
+
+Twelve drop checks pass, including trusted Chromium drags of exported JSON onto
+a field and a CAD ZIP onto the preview, followed by exact STL/CAD bytes and
+dimension-bearing filenames. Rejected files reveal their feedback and keep
+measurements and cached downloads. Busy builds retain Stop focus and ignore
+file reads. Text drags and a closed editor leave imports inactive. Desktop and
+phone layouts were reviewed. Evidence is under `review/cloud_editor_drop_*`.
 
 Rejected multiple-file drops now keep their error message when an older
 original preview succeeds or fails, including after an invalid shared link.

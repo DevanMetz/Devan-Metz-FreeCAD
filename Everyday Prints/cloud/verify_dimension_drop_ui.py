@@ -121,6 +121,103 @@ def main():
             page.evaluate('''() => {window.holdZipReads=false;window.pendingZipReads.splice(0).forEach(done=>done());}''')
             page.evaluate('() => new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)))')
 
+        def closed_saved_dimensions_accept_native_editor_drops(page):
+            for target, filename in [('#param-length','parameters.json'), ('#viewer','download.zip')]:
+                other = page if filename == 'parameters.json' else context.new_page()
+                errors = []
+                other.on('pageerror', lambda error: errors.append(str(error)))
+                try:
+                    jobs = setup(other)
+                    other.locator('.saved-dimensions summary').click()
+                    other.locator('#param-length').fill('190.55')
+                    other.locator(target).scroll_into_view_if_needed()
+                    assert not other.locator('.saved-dimensions').evaluate('node=>node.open')
+                    other.evaluate('''() => { window.editorFileDrops=[];
+                      for (const type of ['dragover','drop']) document.addEventListener(type,event=>{
+                        if (event.isTrusted) window.editorFileDrops.push({type,trusted:true,prevented:event.defaultPrevented,
+                          effect:event.dataTransfer.dropEffect,files:[...event.dataTransfer.files].map(file=>({name:file.name,size:file.size}))});
+                      }); }''')
+                    rect = other.locator(target).bounding_box()
+                    path = ROOT/'review/cloud_export_samples/parts_tray'/filename
+                    drag = {'x':rect['x']+rect['width']/2,'y':rect['y']+rect['height']/2,
+                            'data':{'items':[],'files':[str(path)],'dragOperationsMask':1}}
+                    session = context.new_cdp_session(other)
+                    try:
+                        for event in ['dragEnter','dragOver','drop']:
+                            session.send('Input.dispatchDragEvent', {'type':event,**drag})
+                    finally:
+                        session.detach()
+                    loaded(other)
+                    expect(other.locator('#param-length')).to_have_value('180.5')
+                    expect(other.locator('#param-length')).to_be_focused()
+                    assert other.locator('.saved-dimensions').evaluate('node=>node.open')
+                    assert not jobs
+                    native = other.evaluate('window.editorFileDrops')
+                    assert any(event['type']=='dragover' and event['prevented'] and event['effect']=='copy' for event in native),native
+                    assert any(event['type']=='drop' and event['prevented'] and event['files']==[{'name':filename,'size':path.stat().st_size}] for event in native),native
+                    assert not other.locator('#dimension-drop').evaluate("node=>node.classList.contains('is-dragging')")
+                    if filename == 'download.zip':
+                        other.locator('#dimension-drop-help').scroll_into_view_if_needed()
+                        other.screenshot(path=str(ROOT/'review/cloud_editor_drop_desktop.png'))
+                    other.locator('#rebuild').click()
+                    ready(other)
+                    for button, expected in [('download',mesh),('download-cad',archive)]:
+                        name, body = download(other,button)
+                        assert '-180.5x100x24mm-' in name and body == expected
+                    assert len(jobs)==2 and not errors
+                    cases.append({'check':'editor_native','target':target,'file':filename,'saved_dimensions_revealed':True,
+                                  'native_drag_events':native,'jobs':['stl','cad']})
+                finally:
+                    if other is not page:
+                        other.close()
+
+        def editor_rejections_reveal_feedback_and_keep_cached_downloads(page):
+            page.set_viewport_size({'width':390,'height':600})
+            jobs = setup(page)
+            custom(page)
+            retained(page,jobs)
+            values = page.locator('#parameter-fields input').evaluate_all('nodes=>nodes.map(node=>[node.id,node.value])')
+            reads = page.evaluate('window.jsonReads+window.zipSlices')
+            page.locator('.saved-dimensions').evaluate('node=>node.open=false')
+            rejected = dispatch(page,[chosen(),chosen(json_file(),'dimensions.json','application/json')],target='#param-length')
+            assert rejected['prevented'] and not rejected['hovering']
+            expect(page.locator('#dimensions-error')).to_contain_text('Drop one')
+            assert page.locator('.saved-dimensions').evaluate('node=>node.open')
+            assert page.evaluate('window.jsonReads+window.zipSlices')==reads
+            assert page.locator('#parameter-fields input').evaluate_all('nodes=>nodes.map(node=>[node.id,node.value])')==values
+            page.locator('#dimensions-error').scroll_into_view_if_needed()
+            # Chromium rounds scroll offsets at the editor edge by a fraction of a pixel.
+            expect(page.locator('#dimensions-error')).to_be_in_viewport(ratio=.98)
+            assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+            page.locator('#dimensions-error').evaluate("node=>node.scrollIntoView({block:'center'})")
+            page.screenshot(path=str(ROOT/'review/cloud_editor_drop_mobile.png'))
+            retained(page,jobs)
+            page.locator('.saved-dimensions').evaluate('node=>node.open=false')
+            assert dispatch(page,[chosen(b'invalid JSON','invalid.json','application/json')],target='#viewer')['prevented']
+            expect(page.locator('#dimensions-error')).to_contain_text('not valid JSON')
+            assert page.locator('.saved-dimensions').evaluate('node=>node.open')
+            assert page.locator('#parameter-fields input').evaluate_all('nodes=>nodes.map(node=>[node.id,node.value])')==values
+            retained(page,jobs)
+            cases.append({'check':'editor_rejections','multiple_files_read':False,'invalid_json_reveals_error':True,'jobs':['stl','cad']})
+
+        def editor_text_drags_and_closed_editor_keep_imports_inactive(page):
+            jobs = setup(page)
+            page.locator('.saved-dimensions').evaluate('node=>node.open=false')
+            initial = page.locator('#param-length').input_value()
+            for target in ['#param-length','#viewer']:
+                for event in ['dragenter','dragover','drop']:
+                    result = dispatch(page,files=[],event=event,target=target,text='180.5')
+                    assert not result['prevented'] and not result['hovering']
+            assert page.locator('#param-length').input_value()==initial
+            assert not page.locator('.saved-dimensions').evaluate('node=>node.open')
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            for event in ['dragenter','dragover','drop']:
+                result = dispatch(page,event=event,target='#editor')
+                assert not result['prevented'] and not result['hovering']
+            assert not page.evaluate('window.jsonReads+window.zipSlices') and not jobs
+            cases.append({'check':'editor_text_and_inactive','file_reads':0,'native_jobs':0})
+
         def desktop_zip_drop_builds_exact_downloads(page):
             jobs = setup(page)
             page.locator('#dimension-drop').scroll_into_view_if_needed()
@@ -257,6 +354,12 @@ def main():
             drop(page,fixtures['cable_comb'][0],'comb.zip')
             expect(page.locator('#form-message')).to_contain_text('Finish the current build')
             expect(page.locator('#stop-build')).to_be_focused()
+            page.locator('.saved-dimensions').evaluate('node=>node.open=false')
+            hover = dispatch(page,event='dragover',target='#viewer')
+            assert hover['prevented'] and hover['effect']=='none' and not hover['hovering']
+            dispatch(page,[chosen(fixtures['cable_comb'][0],'comb.zip')],target='#viewer')
+            expect(page.locator('#stop-build')).to_be_focused()
+            assert not page.locator('.saved-dimensions').evaluate('node=>node.open')
             assert page.evaluate('window.jsonReads+window.zipSlices') == reads
             expect(page.locator('#param-length')).to_have_value('180.5')
             with page.expect_download() as event:
@@ -351,7 +454,10 @@ def main():
             page.screenshot(path=str(ROOT/'review/cloud_dimension_drop_mobile.png'))
             cases.append({'check':'mobile', 'viewport':{'width':390,'height':600}, 'button':rect, 'jobs':['stl','cad']})
 
-        tests=[desktop_zip_drop_builds_exact_downloads,json_drop_repairs_drafts_switches_models_and_history,
+        tests=[closed_saved_dimensions_accept_native_editor_drops,
+               editor_rejections_reveal_feedback_and_keep_cached_downloads,
+               editor_text_drags_and_closed_editor_keep_imports_inactive,
+               desktop_zip_drop_builds_exact_downloads,json_drop_repairs_drafts_switches_models_and_history,
                kit_drop_loads_canonical_inventory_without_a_job,unsupported_and_multiple_drops_preserve_verified_files,
                oversized_and_corrupt_drops_recover_with_the_chooser,busy_cad_drop_preserves_the_in_flight_download,
                newer_actions_supersede_held_drops,file_hover_text_drag_and_editor_close_leave_no_drop_state,

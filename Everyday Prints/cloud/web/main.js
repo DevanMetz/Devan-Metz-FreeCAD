@@ -1241,23 +1241,24 @@ $('dimensions-file').addEventListener('change', event => {
   loadDimensions(file);
 });
 const isFileDrag = event => Array.from(event.dataTransfer?.types || []).includes('Files');
-for (const type of ['dragenter', 'dragover']) dimensionsDrop.addEventListener(type, event => {
-  if (!isFileDrag(event)) return;
+for (const type of ['dragenter', 'dragover']) dialog.addEventListener(type, event => {
+  if (!dialog.open || !isFileDrag(event)) return;
   event.preventDefault();
   event.dataTransfer.dropEffect = state.busy ? 'none' : 'copy';
-  dimensionsDrop.classList.toggle('is-dragging', !state.busy);
+  dimensionsDrop.classList.toggle('is-dragging', !state.busy && dimensionsDrop.contains(event.target));
 });
 dimensionsDrop.addEventListener('dragleave', event => {
   if (!dimensionsDrop.contains(event.relatedTarget)) dimensionsDrop.classList.remove('is-dragging');
 });
-dimensionsDrop.addEventListener('drop', event => {
+dialog.addEventListener('drop', event => {
   dimensionsDrop.classList.remove('is-dragging');
-  if (!isFileDrag(event)) return;
+  if (!dialog.open || !isFileDrag(event)) return;
   event.preventDefault();
   if (state.busy) {
     message('Finish the current build or use Stop waiting before loading dimensions.', true);
     return;
   }
+  document.querySelector('.saved-dimensions').open = true;
   const files = event.dataTransfer.files;
   if (files.length !== 1) {
     supersedeDimensionsRead();

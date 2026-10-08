@@ -1,6 +1,9 @@
 {
   "endpoint": "https://everyday-prints.test",
   "passed": [
+    "closed_saved_dimensions_accept_native_editor_drops",
+    "editor_rejections_reveal_feedback_and_keep_cached_downloads",
+    "editor_text_drags_and_closed_editor_keep_imports_inactive",
     "desktop_zip_drop_builds_exact_downloads",
     "json_drop_repairs_drafts_switches_models_and_history",
     "kit_drop_loads_canonical_inventory_without_a_job",
@@ -13,6 +16,96 @@
   ],
   "failures": [],
   "cases": [
+    {
+      "check": "editor_native",
+      "target": "#param-length",
+      "file": "parameters.json",
+      "saved_dimensions_revealed": true,
+      "native_drag_events": [
+        {
+          "type": "dragover",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragover",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "drop",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": [
+            {
+              "name": "parameters.json",
+              "size": 565
+            }
+          ]
+        }
+      ],
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "editor_native",
+      "target": "#viewer",
+      "file": "download.zip",
+      "saved_dimensions_revealed": true,
+      "native_drag_events": [
+        {
+          "type": "dragover",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "dragover",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": []
+        },
+        {
+          "type": "drop",
+          "trusted": true,
+          "prevented": true,
+          "effect": "copy",
+          "files": [
+            {
+              "name": "download.zip",
+              "size": 214046
+            }
+          ]
+        }
+      ],
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "editor_rejections",
+      "multiple_files_read": false,
+      "invalid_json_reveals_error": true,
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "editor_text_and_inactive",
+      "file_reads": 0,
+      "native_jobs": 0
+    },
     {
       "check": "desktop",
       "zip_bytes": 214046,

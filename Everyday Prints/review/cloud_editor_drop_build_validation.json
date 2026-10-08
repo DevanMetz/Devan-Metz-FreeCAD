@@ -1,0 +1,68 @@
+{
+  "baseline_head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+  "unit_tests": {
+    "passed": 102,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\index-BFGg3gOx.js": "6f1cbe5eaf3167bbb903c8839f56bfa747df9cb69cb818972cb4e2108f83c92f",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\assets\\index-Cw3u4ifH.css": "0485c8b0aad284d56f4a69612cea76e4ae1586d677f04742c715d4216fcc4163",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\assets\\zip-DFWN5zeh.js": "5da7f38929a555e08323480e124e8748ae025deb211f38322434648ae32130ca",
+      "assets\\index.html": "7ab390628dfe0e0c8ef1bc74412ddf29868478273943c52516a0581331261e1e"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 105,
+    "suites_current_build": 8,
+    "fresh_reports_current_build": 9,
+    "reports": {
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_zip_dimensions_validation.json": 12,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets under the production CSP, trusted Chromium file drags, real CAD fixtures and controlled preview transfers."
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "editor_drop": {
+    "checks": 12,
+    "native_editor_targets": [
+      "#param-length",
+      "#viewer"
+    ],
+    "saved_dimensions_revealed": true,
+    "exact_original_and_rebuilt_downloads": true,
+    "report": "cloud_dimension_drop_validation.json",
+    "baseline": "cloud_editor_drop_baseline.json"
+  },
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_editor_drop_desktop.png",
+    "cloud_editor_drop_mobile.png"
+  ]
+}
