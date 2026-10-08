@@ -261,11 +261,13 @@ def main():
                 assert route.request.post_data_json['parameters']['length'] == 180.5
                 jobs.append('stl')
                 waiting.append(route)
+                page.evaluate("window.heldPreviewRequest = true")
 
             page.route('**/api/generate', hold_preview)
             page.locator('[data-parameter="length"]').fill('180.5')
             page.locator('#rebuild').click()
             page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+            page.wait_for_function("() => window.heldPreviewRequest === true")
             assert len(waiting) == 1
             page.locator('[data-view="front"]').click()
             page.locator('#wireframe').click()

@@ -1,0 +1,27 @@
+{
+  "head": "22fa8e13805c149b693f307998ce4d89c2de84e4",
+  "observed": [
+    {
+      "selected_model": "parts_tray",
+      "selected_name": "Saved parts_tray",
+      "selected_export_controls": 0,
+      "save_dimensions_model": "parts_tray",
+      "save_dimensions_length": 190.55,
+      "whole_backup_entries": 2,
+      "draft_before_open": "190.55",
+      "model_after_open": "Divided parts tray",
+      "length_after_open": "180.5"
+    },
+    {
+      "selected_model": "cable_comb",
+      "selected_name": "Saved cable_comb",
+      "selected_export_controls": 0,
+      "save_dimensions_model": "parts_tray",
+      "save_dimensions_length": 190.55,
+      "whole_backup_entries": 2,
+      "draft_before_open": "190.55",
+      "model_after_open": "Desk-edge cable comb"
+    }
+  ],
+  "transport": "compiled production assets, actual downloads and real saved decimal/list dimensions"
+}

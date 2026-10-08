@@ -1,0 +1,75 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "invalid_draft_exports_other_model_without_touching_cached_files",
+    "portable_selected_file_restores_only_one_version_and_builds_exact_list_files",
+    "all_six_assembly_exports_use_canonical_inventory_without_switching_models",
+    "stale_selection_reads_fresh_storage_and_never_exports_all_records",
+    "storage_failures_preserve_data_and_read_only_exports_work_when_writes_fail",
+    "export_stops_pending_backups_keeps_dimensions_reads_and_preserves_undo",
+    "active_cad_guards_exports_and_keeps_stop_focus_and_exact_files",
+    "short_phone_keyboard_export_has_visible_focus_without_graphics"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "invalid_draft",
+      "selected_model": "cable_comb",
+      "draft_and_history_preserved": true,
+      "exact_cached_stl_and_cad": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "portable",
+      "entries": 1,
+      "name": "Routing <wide> \u2713",
+      "fresh_identity": true,
+      "exact_list_stl_and_cad": true
+    },
+    {
+      "check": "assemblies",
+      "canonical_kit_count": 6,
+      "editor_unchanged": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "fresh_selection",
+      "fresh_name_and_decimal": true,
+      "removed_selection_downloads": 0,
+      "whole_library_fallback": false
+    },
+    {
+      "check": "storage",
+      "failure_downloads": 0,
+      "quota_independent_export": true,
+      "storage_unchanged": true
+    },
+    {
+      "check": "pending_reads",
+      "backup_deadlines_after_export": 0,
+      "late_backup_ignored": true,
+      "dimensions_read_kept": true,
+      "undo_kept": true
+    },
+    {
+      "check": "busy",
+      "forced_exports": 0,
+      "stop_focus_preserved": true,
+      "exact_cad": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "mobile",
+      "button": {
+        "x": 34,
+        "y": 183.34375,
+        "width": 322,
+        "height": 44
+      },
+      "keyboard_focus_visible": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    }
+  ],
+  "transport": "compiled production assets, real CAD fixtures, native downloads and cross-tab storage events"
+}

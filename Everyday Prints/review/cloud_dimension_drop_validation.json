@@ -134,15 +134,6 @@
           "files": []
         },
         {
-          "type": "dragenter",
-          "trusted": true,
-          "types": [
-            "Files"
-          ],
-          "effect": "copy",
-          "files": []
-        },
-        {
           "type": "dragleave",
           "trusted": true,
           "types": [
@@ -158,15 +149,6 @@
             "Files"
           ],
           "effect": "copy",
-          "files": []
-        },
-        {
-          "type": "dragleave",
-          "trusted": true,
-          "types": [
-            "Files"
-          ],
-          "effect": "none",
           "files": []
         },
         {
@@ -224,7 +206,7 @@
       },
       "button": {
         "x": 200,
-        "y": 323.53125,
+        "y": 324.125,
         "width": 143,
         "height": 44
       },

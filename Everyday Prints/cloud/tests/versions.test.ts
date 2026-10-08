@@ -304,6 +304,63 @@ test('portable backups restore every model with fresh identities and canonical k
   }
 });
 
+test('selected backups export only the chosen named version and restore every model with canonical dimensions', () => {
+  for (const item of models) {
+    const source = memory(), destination = memory();
+    saveVersion(source, models, tray, tray.defaults, 'Unrelated');
+    const selected = saveVersion(source, models, item, item.defaults, 'Étagère <wide> 🧰')[0];
+    const before = source.text;
+    source.setItem = () => { throw new Error('Export must not write'); };
+    const text = versionBackup(source, models, selected.id), backup = JSON.parse(text);
+    assert.equal(backup.versions.length, 1);
+    assert.deepEqual(backup.versions[0], { name: selected.name, dimensions: selected.dimensions });
+    assert.equal(text.endsWith('\n'), true);
+    assert.equal(source.text, before);
+    const restored = importVersionBackup(destination, models, text);
+    assert.equal(restored.added, 1);
+    assert.equal(restored.records[0].name, selected.name);
+    assert.deepEqual(restored.records[0].dimensions, selected.dimensions);
+    assert.notEqual(restored.records[0].id, selected.id);
+  }
+});
+
+test('selected backups use fresh replacements and names and never fall back to exporting the whole library', () => {
+  const storage = memory();
+  saveVersion(storage, models, tray, tray.defaults, 'Keep');
+  const selected = saveVersion(storage, models, tray, { ...tray.defaults, length: 180.5 }, 'Selected')[0];
+  renameVersion(storage, models, selected.id, 'Renamed');
+  replaceVersion(storage, models, selected.id, tray, { ...tray.defaults, length: 190.55 });
+  const row = JSON.parse(versionBackup(storage, models, selected.id)).versions[0];
+  assert.equal(row.name, 'Renamed');
+  assert.equal(row.dimensions.parameters.length, 190.55);
+  assert.equal(JSON.parse(versionBackup(storage, models)).versions.length, 2);
+  removeVersion(storage, models, selected.id);
+  const before = storage.text;
+  for (const id of [selected.id, '', null, 'unknown']) {
+    assert.throws(() => versionBackup(storage, models, id), /no longer saved/);
+    assert.equal(storage.text, before);
+  }
+});
+
+test('selected backups discard untrusted geometry and preserve corrupt or denied storage', () => {
+  const item = models.find((model: any) => model.name === 'soap_dish_assembly');
+  const storage = memory(), selected = saveVersion(storage, models, item, item.defaults, 'Set')[0];
+  const untrusted = structuredClone(selected);
+  untrusted.dimensions.kit = [{ model: 'parts_tray', quantity: 999 }];
+  untrusted.dimensions.bounds_mm = [999, 999, 999];
+  untrusted.dimensions.mesh_sha256 = 'untrusted';
+  storage.text = JSON.stringify([untrusted]);
+  const before = storage.text;
+  assert.deepEqual(JSON.parse(versionBackup(storage, models, selected.id)).versions[0].dimensions, selected.dimensions);
+  assert.equal(storage.text, before);
+  storage.text = 'broken';
+  assert.throws(() => versionBackup(storage, models, selected.id));
+  assert.equal(storage.text, 'broken');
+  storage.getItem = () => { throw new DOMException('Denied', 'SecurityError'); };
+  assert.throws(() => versionBackup(storage, models, selected.id), /Denied/);
+  assert.equal(storage.text, 'broken');
+});
+
 test('conflicting names keep both measurements and repeated imports are idempotent', () => {
   const source = memory(), target = memory();
   saveVersion(source, models, tray, { ...tray.defaults, length: 180.5 }, 'Desk drawer');

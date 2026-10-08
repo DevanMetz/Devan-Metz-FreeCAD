@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest version-backup recovery build passes **262 focused browser checks across
-nineteen affected suites**, the **53-model catalog and image smoke test**,
-**104 unit tests**, TypeScript checks and the production build. The preceding
+The latest selected-version export build passes **270 focused browser checks across
+twenty affected suites**, the **53-model catalog and image smoke test**,
+**107 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -28,6 +28,23 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Export selected now downloads one saved version as `everyday-prints-version.json`,
+keeping its name and canonical measurements without opening it or changing
+current fields, validation errors, history, Undo or verified STL/CAD caches.
+Import versions restores the file into another browser for explicit opening
+and preview updates. The selected entry can belong to another model, and
+Export versions still saves the whole library. The baseline had no selected
+export: Save dimensions kept the current 190.55 mm draft, the whole backup
+contained both entries, and opening a saved version changed the editor.
+
+Eight browser checks verify one-entry portability, exact decimal/list files,
+all six canonical assembly inventories, fresh cross-tab replacements, missing
+selections, corrupt/denied storage, pending imports, Undo and guarded CAD work.
+A short phone supports keyboard export without graphics, visible focus and
+a 44 px action. Three additional unit checks cover selected backups across
+all 53 models, stale selections and read-only storage. Desktop and phone layouts
+were visually reviewed. Evidence is under `review/cloud_selected_version_*`.
 
 Version-backup imports now stop their pending wait and deadline when a newer
 version action, file, original-preview retry, build or navigation discards them.

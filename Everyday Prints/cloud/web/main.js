@@ -863,6 +863,7 @@ function versionControls() {
   $('remove-version').disabled = state.busy || !selected;
   $('rename-version').disabled = state.busy || !selected;
   $('replace-version').disabled = state.busy || !selected || selected.dimensions.model !== state.item?.name;
+  $('export-version').disabled = state.busy || !selected;
   $('export-versions').disabled = state.busy || !versions.length;
   $('import-versions').disabled = state.busy;
   $('undo-version').disabled = state.busy || !versionUndo;
@@ -1375,6 +1376,17 @@ $('undo-version').addEventListener('click', () => {
   } catch (error) {
     if (error.versionsChanged) { versionUndo = null; refreshVersions(); $('version-choice').focus(); }
     versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'Undo could not be saved. Browser storage is unavailable. Existing versions are kept. Try again or use Save dimensions to keep a file.' : error.message, true);
+  }
+});
+$('export-version').addEventListener('click', () => {
+  if (state.busy) return;
+  supersedeVersionRead();
+  try {
+    const text = versionBackup(localStorage, state.models, $('version-choice').value);
+    saveDownload(new Blob([text], { type: 'application/json' }), 'everyday-prints-version.json');
+    versionBackupMessage('Selected version exported. Import versions restores its name and measurements. Current edits are kept.');
+  } catch (error) {
+    versionBackupMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser.' : error.message, true);
   }
 });
 $('export-versions').addEventListener('click', () => {

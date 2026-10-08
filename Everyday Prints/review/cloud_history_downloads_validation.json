@@ -21,7 +21,7 @@
   "failures": [],
   "history_cache_bytes": 33554432,
   "padded_zip_bytes": 6291580,
-  "padded_zip_sha256": "396f6cde3c897b619de8c3baa473a2776fad42f9bbaf4c6f93d93b12d9f70212",
+  "padded_zip_sha256": "981b1ef7869c2dcfc091be9584862cf0e46872989898c6bfa00bd153a7e4336c",
   "shared_file_retention": [
     {
       "repeated_dense_views": 6,

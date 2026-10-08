@@ -1,0 +1,119 @@
+{
+  "baseline_head": "22fa8e13805c149b693f307998ce4d89c2de84e4",
+  "unit_tests": {
+    "passed": 107,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\assets\\zip-BljxAE_-.js": "9468a0d6fcf94d9661521150313320ba44fb8d1c6e71eab134cbbb0378fe705d",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\assets\\index-6QdktOgF.js": "bd597619937804813fb85525e24407e1345f4f136e34819c8893c40139109fa3",
+      "assets\\index.html": "f263f9719e8fea6b85d3182573a21de063db620c526de607b5afe3341b7c9878",
+      "assets\\assets\\index-DqRIMiRv.css": "f027965f7ab7b34357af7a2dd3a16d73eba109c30b0e245199a971e6f1566181"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 270,
+    "suites_current_build": 20,
+    "fresh_reports_current_build": 21,
+    "reports": {
+      "cloud_version_backups_validation.json": 17,
+      "cloud_versions_validation.json": 12,
+      "cloud_version_edits_validation.json": 14,
+      "cloud_versions_undo_validation.json": 13,
+      "cloud_versions_sync_validation.json": 12,
+      "cloud_field_revert_validation.json": 13,
+      "cloud_history_downloads_validation.json": 16,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_zip_dimensions_validation.json": 13,
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_original_retry_ui_validation.json": 23,
+      "cloud_original_idle_validation.json": 11,
+      "cloud_transfer_progress_validation.json": 15,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23,
+      "cloud_build_recovery_validation.json": 10,
+      "cloud_selected_version_validation.json": 8
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets, real CAD fixtures, native downloads, cross-tab storage events, controlled local reads and deadlines, keyboard use with and without graphics."
+  },
+  "previous_focused_browser_checkpoint": {
+    "head": "22fa8e13805c149b693f307998ce4d89c2de84e4",
+    "focused_checks": 262,
+    "suites": 19
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "retained_browser_evidence": {
+    "checks_mixed_builds": 444,
+    "suites_mixed_builds": 35
+  },
+  "selected_export": {
+    "baseline_cases": 2,
+    "verified_browser_cases": 8,
+    "additional_unit_checks": 3,
+    "unit_models_covered": 53,
+    "filename": "everyday-prints-version.json",
+    "backup_format": "everyday-prints-versions",
+    "backup_version": 1,
+    "selected_entries_exported": 1,
+    "restores_name_and_measurements_with_fresh_identity": true,
+    "invalid_current_drafts_and_foreign_model_selections_supported": true,
+    "fields_feedback_history_storage_undo_and_verified_files_preserved": true,
+    "exact_native_stl_cad_and_dimension_filenames_retained": true,
+    "canonical_assembly_inventories": 6,
+    "fresh_cross_tab_name_and_decimal_replacements": true,
+    "removed_selection_downloads": 0,
+    "removed_selection_never_falls_back_to_whole_library": true,
+    "corrupt_oversized_denied_storage_preserved": true,
+    "quota_independent_read_only_export": true,
+    "backup_deadlines_cleared_before_late_bytes": true,
+    "independent_dimensions_read_retained": true,
+    "active_cad_guards_forced_exports_and_keeps_stop_focus": true,
+    "short_phone": {
+      "width": 390,
+      "height": 600,
+      "keyboard_focus_visible": true,
+      "action_height_px": 44,
+      "graphics_required": false,
+      "horizontal_overflow": false
+    },
+    "report": "cloud_selected_version_validation.json",
+    "baseline": "cloud_selected_version_baseline.json"
+  },
+  "verification_adjustments": [
+    {
+      "file": "cloud/verify_viewer_loading.py",
+      "check": "pending_preview_uses_latest_view_and_edges_choice",
+      "change": "Wait for the actual held preview route before asserting its count. Stop becomes visible before the request reaches its handler.",
+      "rerun": "All 23 viewer checks pass, followed by all 10 build recovery checks and the 53-model catalog/image smoke test."
+    }
+  ],
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_selected_version_desktop.png",
+    "cloud_selected_version_mobile.png"
+  ]
+}

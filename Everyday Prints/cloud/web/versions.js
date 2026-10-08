@@ -90,8 +90,11 @@ export function undoVersionChange(storage, models, change) {
   return writeVersions(storage, before);
 }
 
-export function versionBackup(storage, models) {
-  const versions = readVersions(storage, models).map(({ name, dimensions }) => ({ name, dimensions }));
+export function versionBackup(storage, models, id) {
+  const records = readVersions(storage, models);
+  const selected = id === undefined ? records : records.filter(record => record.id === id);
+  if (id !== undefined && !selected.length) throw new Error('This version is no longer saved. Choose another version.');
+  const versions = selected.map(({ name, dimensions }) => ({ name, dimensions }));
   if (!versions.length) throw new Error('Save a named version before exporting a backup.');
   const text = JSON.stringify({ format: 'everyday-prints-versions', version: 1, versions }, null, 2) + '\n';
   if (new TextEncoder().encode(text).byteLength > MAX_VERSIONS_BYTES) throw new Error('The version backup exceeds 64 KiB. Save fewer versions in this backup.');

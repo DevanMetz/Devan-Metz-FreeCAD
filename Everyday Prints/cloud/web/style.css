@@ -58,6 +58,7 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 #version-message,#versions-sync-message{overflow-wrap:anywhere}
 #undo-version{min-height:44px;margin:12px 0}
 .version-backups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+#export-version{grid-column:1/-1}
 #version-backup-message{overflow-wrap:anywhere}
 
 .parameter-preview{display:flex;align-items:center;flex-wrap:wrap;gap:0 8px;margin-top:4px}

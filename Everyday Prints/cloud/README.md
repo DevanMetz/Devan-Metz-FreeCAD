@@ -194,6 +194,21 @@ Twelve checks use two real tabs, with exact STL/CAD fixtures, malformed data,
 storage denial, queued events, pending files/builds and mobile keyboard review.
 Evidence is under `../review/cloud_versions_sync_*`.
 
+Export selected downloads `everyday-prints-version.json` with just the chosen
+saved version, including its name and canonical measurements. It uses the same
+backup format as Export versions. The selection can belong to another model,
+and the current draft can be invalid. Export keeps fields, validation errors,
+history, Undo, browser storage and verified STL/CAD files. Import versions
+restores the name and measurements; Open version and Update preview remain
+explicit actions. Fresh storage is read at export time, and a removed selection
+produces an error without downloading the whole library. Missing, corrupt or
+denied storage and active CAD work are guarded. Read-only export still works
+when writes fail, and supersedes a pending backup while keeping independent
+dimensions reads. Eight browser checks cover those states, one-version
+portability, exact list/STL/CAD files, all six kit inventories and short-phone
+keyboard use without graphics. Evidence and visually reviewed desktop/phone
+layouts are under `../review/cloud_selected_version_*`.
+
 Export versions downloads `everyday-prints-versions.json`, containing all names
 and canonical dimensions with format `everyday-prints-versions` and version 1.
 Import versions validates the whole backup before merging it into current browser
@@ -308,6 +323,7 @@ python verify_printer_fit_ui.py
 python verify_printer_sync_ui.py
 python verify_versions_ui.py
 python verify_version_backups_ui.py
+python verify_selected_version_ui.py --offline
 python verify_version_edits_ui.py
 python verify_versions_sync_ui.py
 python verify_versions_undo_ui.py
@@ -1012,7 +1028,11 @@ small size fields, encryption/compression recovery, cancellation and unavailable
 decompression with JSON recovery. Pending ZIP reads reject before late bytes
 arrive and start no further reads; abort listeners are removed. Cancelled JSON
 reads ignore late failures and leave new files readable.
-All 104 unit tests pass.
+Three selected-backup checks restore one named entry across all 53 models,
+preserve exact decimals/lists and canonical inventories, read fresh replacements
+and names, reject missing selections without exporting all entries, and keep
+corrupt/denied storage unchanged. Export does not require storage writes.
+All 107 unit tests pass.
 
 ## API
 
