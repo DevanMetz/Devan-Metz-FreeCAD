@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **379 focused browser
+The latest local customizer and download build passes **383 focused browser
 checks across thirty-one suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,20 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Reopening a library card and updating previously downloaded measurements now
+reuse complete retained CAD/kit files for the same model and parameters. Meshes
+are verified again before restoring their ZIP, and ZIP-only reuse requires the
+exact current preview hash. The baseline repeated both preview and CAD requests
+for an identical original download. Four additional browser checks cover
+reopened original cards, named versions, dimensions files, assembly kits, changed
+parameters, Stop, the 15-minute deadline, edits during verification and late
+completion after navigation. Local-restoration feedback describes its work and
+preserves keyboard focus. The history-download report has ten passing checks;
+its budget scenario now uses six distinct native CAD variants with valid padded
+ZIPs. Desktop and phone layouts were visually reviewed. Evidence is under
+`review/cloud_download_reuse_*`; the saved-file focus probe verified all four
+screen sizes without requiring a focus change.
 
 History now restores verified CAD and assembly-kit ZIPs with their matching
 preview meshes, preserving exact bytes and dimension-bearing filenames. The

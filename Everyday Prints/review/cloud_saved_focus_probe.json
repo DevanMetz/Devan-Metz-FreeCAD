@@ -1,0 +1,94 @@
+[
+  {
+    "viewport": [
+      390,
+      600
+    ],
+    "before": {
+      "focused": "param-cable_diameters",
+      "top": 453.3125,
+      "bottom": 492.3125,
+      "clip_top": 104,
+      "clip_bottom": 588,
+      "value": "2, 3.5, 9"
+    },
+    "after": {
+      "focused": "param-cable_diameters",
+      "top": 453.71875,
+      "bottom": 492.71875,
+      "clip_top": 104,
+      "clip_bottom": 588,
+      "value": "2, 3.5, 9"
+    },
+    "visible_after": true
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "before": {
+      "focused": "param-cable_diameters",
+      "top": 575.3125,
+      "bottom": 614.3125,
+      "clip_top": 104,
+      "clip_bottom": 832,
+      "value": "2, 3.5, 9"
+    },
+    "after": {
+      "focused": "param-cable_diameters",
+      "top": 575.71875,
+      "bottom": 614.71875,
+      "clip_top": 104,
+      "clip_bottom": 832,
+      "value": "2, 3.5, 9"
+    },
+    "visible_after": true
+  },
+  {
+    "viewport": [
+      360,
+      640
+    ],
+    "before": {
+      "focused": "param-cable_diameters",
+      "top": 473.3125,
+      "bottom": 512.3125,
+      "clip_top": 104,
+      "clip_bottom": 628,
+      "value": "2, 3.5, 9"
+    },
+    "after": {
+      "focused": "param-cable_diameters",
+      "top": 473.71875,
+      "bottom": 512.71875,
+      "clip_top": 104,
+      "clip_bottom": 628,
+      "value": "2, 3.5, 9"
+    },
+    "visible_after": true
+  },
+  {
+    "viewport": [
+      1440,
+      650
+    ],
+    "before": {
+      "focused": "param-cable_diameters",
+      "top": 469.9375,
+      "bottom": 508.9375,
+      "clip_top": 138,
+      "clip_bottom": 621,
+      "value": "2, 3.5, 9"
+    },
+    "after": {
+      "focused": "param-cable_diameters",
+      "top": 469.9375,
+      "bottom": 508.9375,
+      "clip_top": 138,
+      "clip_bottom": 621,
+      "value": "2, 3.5, 9"
+    },
+    "visible_after": true
+  }
+]

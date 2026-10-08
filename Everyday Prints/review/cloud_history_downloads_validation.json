@@ -6,11 +6,15 @@
     "invalid_and_dirty_history_keeps_gates_and_new_previews_discard_old_cad",
     "assembly_kit_history_keeps_reference_and_component_navigation",
     "superseded_cached_verification_cannot_restore_old_cad",
+    "reopened_library_cards_reuse_original_files_without_requests",
+    "reopened_named_versions_reuse_custom_files_but_changed_parameters_build",
+    "reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries",
+    "cached_preview_verification_respects_stop_edits_deadlines_and_navigation",
     "archive_budget_evicts_old_zips_without_discarding_verified_previews"
   ],
   "failures": [],
   "history_cache_bytes": 33554432,
   "padded_zip_bytes": 6291580,
-  "padded_zip_sha256": "645b9ca9ceff904d23796087b91c9f1c2a52aa010183979f6cfcc351f0ed0d9c",
+  "padded_zip_sha256": "0138e14e0e54ef9e6ac5d98c3ebf4ba3ca82f84a2960ce7d4d90bf6a944ffba6",
   "transport": "compiled assets and exact CAD fixtures, native assembly mesh, delayed hashes and real padded ZIPs"
 }

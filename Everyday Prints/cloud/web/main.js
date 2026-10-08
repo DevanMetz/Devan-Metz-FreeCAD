@@ -427,6 +427,7 @@ function setBusy(busy) {
   if (busy) buildFocus = { element: focused, item: state.item };
   if (busy) { clearShare(); clearDimensionsError(); clearTransfer(); supersedeVersionRead(); }
   state.busy = busy;
+  state.restoring = false;
   $('rebuild').disabled = busy;
   $('stop-build').hidden = !busy;
   $('revert-parameters').disabled = busy;
@@ -451,6 +452,7 @@ function setBusy(busy) {
 
 function stopWaiting(timedOut = false) {
   if (!state.busy) return;
+  const restoring = state.restoring;
   clearShare();
   abort?.abort();
   ++state.epoch;
@@ -463,7 +465,7 @@ function stopWaiting(timedOut = false) {
     previewDisplay(false);
   }
   const retained = state.blob ? 'Your preview and edits are kept.' : 'Your edits are kept.';
-  message(`${timedOut ? 'This request exceeded 15 minutes.' : 'Stopped waiting.'} ${retained} The service may still finish this request.${timedOut ? ' Try again later.' : ''}`, timedOut);
+  message(`${timedOut ? 'This request exceeded 15 minutes.' : 'Stopped waiting.'} ${retained}${restoring ? '' : ' The service may still finish this request.'}${timedOut ? ' Try again later.' : ''}`, timedOut);
 }
 
 function markDirty(report = true) {
@@ -710,6 +712,13 @@ function retryOriginal() {
   loadOriginal(state.item, controller, epoch, { feedback: originalFeedback, reload: true });
 }
 
+function cachedFiles(parameters, meshHash) {
+  const saved = [...savedPages.values()].reverse().find(page => page.buffer && page.cad &&
+    page.metadata?.format === 'stl' && page.metadata.model === state.item.name &&
+    sameParameters(page.previewParameters, parameters) && (!meshHash || page.metadata.mesh_sha256 === meshHash));
+  return saved && { buffer: saved.buffer, metadata: saved.metadata, cad: saved.cad };
+}
+
 async function rebuild(event) {
   event?.preventDefault();
   if (state.busy) return;
@@ -731,6 +740,21 @@ async function rebuild(event) {
   const timer = setTimeout(() => { if (state.busy && epoch === state.epoch) message('Still building. The CAD service may be starting; your request is running.'); }, 15000);
   const deadline = setTimeout(() => { if (epoch === state.epoch) stopWaiting(true); }, BUILD_WAIT_MS);
   try {
+    const cached = cachedFiles(parameters);
+    if (cached) {
+      state.restoring = true;
+      clearTimeout(timer);
+      message('Restoring your previously verified preview…');
+      $('preview-loading').textContent = 'Restoring your preview…';
+      await displayMesh(cached.buffer, cached.metadata, parameters, epoch);
+      if (epoch !== state.epoch) return;
+      state.cad = cached.cad;
+      const url = new URL(location.href);
+      url.searchParams.set('p', JSON.stringify(parameters));
+      navigationURL(url);
+      succeeded = true;
+      return;
+    }
     response = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: state.item.name, parameters }), signal: controller.signal });
     if (epoch !== state.epoch) return;
     if (!response.ok) {
@@ -1006,6 +1030,7 @@ async function downloadCad() {
   try { parameters = readParameters(); }
   catch (error) { message(error.message, true); return; }
   if (!sameParameters(parameters, state.previewParameters)) { markDirty(); return; }
+  state.cad ||= cachedFiles(parameters, state.metadata.mesh_sha256)?.cad;
   if (state.cad) { saveCadDownload(); return; }
   if (state.metadata.format !== 'stl') {
     // Catalog STLs use the original exporter's tessellation. Refresh once so

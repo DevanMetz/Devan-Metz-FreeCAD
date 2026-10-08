@@ -726,6 +726,22 @@ drafts, missing previews, and a reachable keyboard-operated mobile stop button.
 A virtual clock tests the waiting deadline without a real 15-minute wait.
 Results are in `../review/cloud_build_recovery_validation.json`.
 
+Update preview also reuses a retained complete CAD/kit download from another
+remembered view when its model and canonical parameters match. The stored mesh
+passes the normal hash, metadata and geometry verification before its ZIP is
+attached. This avoids duplicate builds after reopening an original library card
+or reapplying a previously downloaded named version or dimensions file.
+ZIP reuse with an already verified preview also requires the exact mesh hash.
+Changed parameters use the normal service build when no matching download exists.
+
+Local restoration uses the existing Stop and 15-minute deadline controls, preserves
+newer edits and focus, and ignores completion after Stop or model navigation.
+Its status describes restoration, and Stop feedback does not claim a service
+request is still running. The reopen baseline made two unnecessary requests for
+an identical original CAD ZIP; evidence and reviewed layouts are under
+`../review/cloud_download_reuse_*`. A separate four-size saved-file focus probe
+confirmed existing measurement visibility in `../review/cloud_saved_focus_probe.json`.
+
 Browser Back and Forward restore retained verified CAD and parts-kit ZIPs
 alongside their matching preview meshes. Repeat downloads keep the exact bytes
 and filenames and avoid another CAD request. Invalid or unbuilt fields still
@@ -738,11 +754,11 @@ Verified preview meshes take priority, then newer CAD/kit ZIPs fill the remainin
 budget. Evicting an older ZIP keeps its retained preview available; downloading
 that ZIP again uses the normal verified CAD request.
 
-`verify_history_downloads_ui.py --offline` has six browser checks for customized
+`verify_history_downloads_ui.py --offline` has ten browser checks for customized
 and original downloads, one-time original CAD refreshes, repeated history,
 invalid and dirty drafts, Revert edits and replacement previews, reference kits
 and component navigation, delayed verification superseded by another view,
-mobile keyboard focus and exact filenames. Six valid ZIPs padded to about 6 MiB
+mobile keyboard focus and exact filenames. Six distinct native CAD ZIPs padded to about 6 MiB
 each exercise real budget eviction while preserving their original CAD members.
 The report, duplicate-request baseline and reviewed desktop/phone layouts are
 under `../review/cloud_history_downloads_*`.

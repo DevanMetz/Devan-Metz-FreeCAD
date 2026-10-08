@@ -1,0 +1,20 @@
+{
+  "action": "Download original CAD, close the editor, reopen the library card and download again",
+  "first_filename": "parts_tray-cad.zip",
+  "second_filename": "parts_tray-cad.zip",
+  "requests_before_close": [
+    "stl",
+    "cad"
+  ],
+  "requests_after_reopen": [
+    "stl",
+    "cad"
+  ],
+  "requests_after_second_download": [
+    "stl",
+    "cad",
+    "stl",
+    "cad"
+  ],
+  "unnecessary_requests": 2
+}

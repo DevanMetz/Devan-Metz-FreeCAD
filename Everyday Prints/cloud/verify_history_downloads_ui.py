@@ -54,9 +54,9 @@ def main():
                     body, metadata = (assembly[0], assembly[1]) if kind == 'cad' else (assembly_mesh, assembly_preview)
                 else:
                     assert payload['model'] == 'parts_tray'
-                    selected = custom if payload['parameters'] == custom[1]['parameters'] else original
+                    selected = large[payload['parameters']['length']] if large else custom if payload['parameters'] == custom[1]['parameters'] else original
                     assert payload['parameters'] == selected[1]['parameters'], payload
-                    body = large_zip if large and selected is custom and kind == 'cad' else selected[0]
+                    body = selected[0]
                     metadata = {**selected[1], 'file_sha256': hashlib.sha256(body).hexdigest()}
                     if kind != 'cad':
                         body = selected[2]
@@ -226,8 +226,168 @@ def main():
             assert download(page, original[0]) == 'parts_tray-cad.zip'
             assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2
 
+        def reopened_library_cards_reuse_original_files_without_requests(page):
+            jobs = setup(page)
+            open_tray(page)
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            assert download(page, (CLOUD / 'public/models/parts_tray.stl').read_bytes(), 'download') == 'parts_tray.stl'
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            assert download(page, original[2], 'download') == 'parts_tray.stl'
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+            page.screenshot(path=str(ROOT / 'review/cloud_download_reuse_desktop.png'))
+            page.set_viewport_size({'width': 390, 'height': 600})
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            assert download(page, original[0], keyboard=True) == 'parts_tray-cad.zip'
+            assert page.locator('#download-cad').evaluate('element => element === document.activeElement')
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+            page.screenshot(path=str(ROOT / 'review/cloud_download_reuse_mobile.png'))
+
+        def reopened_named_versions_reuse_custom_files_but_changed_parameters_build(page):
+            jobs = setup(page)
+            open_tray(page, customized=True)
+            filename = download(page, custom[0])
+            page.locator('.saved-dimensions').evaluate('element => { element.open = true; }')
+            page.locator('#version-name').fill('Wide tray')
+            page.locator('#save-version').click()
+            version = page.locator('#version-choice').input_value()
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            page.locator('#version-choice').select_option(version)
+            page.locator('#load-version').click()
+            assert page.locator('[data-parameter="length"]').input_value() == '180.5'
+            assert page.locator('#download').is_disabled() and page.locator('#download-cad').is_disabled()
+            page.locator('#rebuild').focus()
+            page.keyboard.press('Space')
+            ready(page)
+            assert download(page, custom[0]) == filename
+            assert download(page, custom[2], 'download').startswith('parts_tray-custom-180.5x100x24mm-')
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+            page.locator('[data-parameter="length"]').fill('150')
+            page.locator('#rebuild').click()
+            ready(page)
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2
+
+        def reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries(page):
+            jobs = setup(page)
+            page.locator('[data-model="soap_dish_assembly"]').click()
+            wait_model(page, 'soap_dish_assembly')
+            for key, value in assembly[1]['parameters'].items():
+                page.locator(f'[data-parameter="{key}"]').fill(str(value))
+            page.locator('#rebuild').click()
+            ready(page)
+            filename = download(page, assembly[0])
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            page.locator('[data-model="soap_dish_assembly"]').click()
+            wait_model(page, 'soap_dish_assembly')
+            page.locator('#dimensions-file').set_input_files({'name': 'parameters.json',
+                'mimeType': 'application/json', 'buffer': json.dumps(assembly[1]).encode('utf-8')})
+            page.wait_for_function("() => document.querySelector('#param-length').value === '160'")
+            page.locator('#rebuild').click()
+            ready(page)
+            assert download(page, assembly[0]) == filename
+            assert page.locator('#download').is_hidden()
+            assert jobs == [('soap_dish_assembly', 'stl'), ('soap_dish_assembly', 'cad')]
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            assert jobs[-2:] == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+
+        def cached_preview_verification_respects_stop_edits_deadlines_and_navigation(page):
+            jobs = setup(page)
+            open_tray(page, customized=True)
+            filename = download(page, custom[0])
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            open_tray(page)
+            page.clock.install()
+            page.evaluate("""() => {
+              const digest = crypto.subtle.digest.bind(crypto.subtle);
+              window.cachedHashes = [];
+              crypto.subtle.digest = async (...args) => {
+                const value = await digest(...args);
+                if (!window.holdCachedHash) return value;
+                return new Promise(resolve => { window.cachedHashes.push(() => resolve(value)); });
+              };
+            }""")
+
+            def hold(count):
+                page.evaluate('window.holdCachedHash = true')
+                page.locator('#rebuild').focus()
+                page.keyboard.press('Space')
+                page.wait_for_function('count => window.cachedHashes.length === count', arg=count)
+                assert page.locator('#stop-build').evaluate('element => element === document.activeElement')
+                assert 'Restoring' in page.locator('#form-message').inner_text()
+                assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')]
+
+            def release(index):
+                page.evaluate('index => { window.holdCachedHash = false; window.cachedHashes[index](); }', index)
+                page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+
+            page.locator('[data-parameter="length"]').fill('180.5')
+            hold(1)
+            page.keyboard.press('Space')
+            assert 'Stopped waiting.' in page.locator('#form-message').inner_text()
+            assert 'service' not in page.locator('#form-message').inner_text()
+            release(0)
+            assert page.locator('#model-size').inner_text() == '150 × 100 × 24'
+            hold(2)
+            page.locator('[data-parameter="length"]').fill('190.55')
+            release(1)
+            page.wait_for_function("() => !document.querySelector('#rebuild').disabled")
+            assert page.locator('[data-parameter="length"]').input_value() == '190.55'
+            assert page.locator('[data-parameter="length"]').evaluate('element => element === document.activeElement')
+            assert page.locator('#model-size').inner_text() == '180.5 × 100 × 24'
+            assert page.locator('#download-cad').is_disabled()
+            page.locator('#revert-parameters').click()
+            assert download(page, custom[0]) == filename
+            hold(3)
+            page.clock.fast_forward(15 * 60 * 1000)
+            assert 'exceeded 15 minutes' in page.locator('#form-message').inner_text()
+            assert 'service' not in page.locator('#form-message').inner_text()
+            release(2)
+            assert download(page, custom[0]) == filename
+            hold(4)
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            page.evaluate('window.holdCachedHash = false')
+            open_tray(page)
+            release(3)
+            assert page.locator('#model-size').inner_text() == '150 × 100 × 24'
+            assert download(page, original[0]) == 'parts_tray-cad.zip'
+            assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 2
+
         def archive_budget_evicts_old_zips_without_discarding_verified_previews(page):
-            jobs = setup(page, large=True)
+            variants = {}
+            for index in range(6):
+                if not index:
+                    body, metadata, mesh = custom
+                    variants[180.5] = (large_zip, metadata, mesh)
+                    continue
+                else:
+                    status, body, response_headers = native_request({'model': 'parts_tray',
+                        'parameters': {**custom[1]['parameters'], 'length': 180.5 + index}, 'format': 'cad'})
+                    assert status == 200, (status, body[:250])
+                    metadata = json.loads(unquote(response_headers['X-Model-Metadata']))
+                    with ZipFile(io.BytesIO(body)) as archive:
+                        mesh = archive.read('parts_tray.stl')
+                padded = io.BytesIO(body)
+                with ZipFile(padded, 'a', compression=ZIP_STORED) as archive:
+                    archive.writestr('cache-budget-padding.bin', bytes(6 * 1024 * 1024 - len(body)))
+                padded_body = padded.getvalue()
+                with ZipFile(io.BytesIO(padded_body)) as archive:
+                    assert archive.testzip() is None and archive.read('parts_tray.stl') == mesh
+                assert len(padded_body) < 8 * 1024 * 1024
+                variants[180.5 + index] = (padded_body, metadata, mesh)
+            jobs = setup(page, large=variants)
             static_requests = []
             page.route('**/models/parts_tray.stl', lambda route: (static_requests.append(route.request.url), route.fallback()))
             open_tray(page, customized=True)
@@ -240,12 +400,14 @@ def main():
                     'mimeType': 'application/json', 'buffer': json.dumps(record).encode('utf-8')})
                 wait_model(page, record['model'])
 
-            for _ in range(5):
+            for index in range(1, 6):
                 load_file({'model': cable['name'], 'parameters': cable['defaults'], 'units': 'mm'})
-                load_file(custom[1])
+                selected = variants[180.5 + index]
+                load_file(selected[1])
                 page.locator('#rebuild').click()
                 ready(page)
-                assert download(page, large_zip) == filename
+                newest_filename = download(page, selected[0])
+                assert f'{180.5 + index}x100x24mm-' in newest_filename
             newest_id = page.evaluate('history.state.everydayPrints.id')
             assert jobs == [('parts_tray', 'stl'), ('parts_tray', 'cad')] * 6
             original_reads = len(static_requests)
@@ -261,7 +423,7 @@ def main():
             page.wait_for_function('id => history.state.everydayPrints.id === id', arg=newest_id)
             wait_model(page)
             ready(page)
-            assert download(page, large_zip) == filename
+            assert download(page, variants[185.5][0]) == newest_filename
             assert len(jobs) == 13, 'The newest retained ZIP was rebuilt'
 
         for test in (custom_history_keeps_exact_files_and_mobile_keyboard_downloads,
@@ -269,6 +431,10 @@ def main():
                      invalid_and_dirty_history_keeps_gates_and_new_previews_discard_old_cad,
                      assembly_kit_history_keeps_reference_and_component_navigation,
                      superseded_cached_verification_cannot_restore_old_cad,
+                     reopened_library_cards_reuse_original_files_without_requests,
+                     reopened_named_versions_reuse_custom_files_but_changed_parameters_build,
+                     reopened_assembly_files_reuse_exact_kit_and_keep_model_boundaries,
+                     cached_preview_verification_respects_stop_edits_deadlines_and_navigation,
                      archive_budget_evicts_old_zips_without_discarding_verified_previews):
             context = browser.new_context(viewport={'width': 1440, 'height': 1080}, accept_downloads=True)
             context.set_default_timeout(20000)
