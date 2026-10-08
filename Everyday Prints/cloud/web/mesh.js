@@ -23,4 +23,5 @@ export function verifyMesh(buffer, bounds) {
   if (size.some((value, axis) => Math.abs(value - bounds[axis]) > .05 + value * 1e-6)) {
     throw new Error('The mesh dimensions do not match the model details. Update the preview to try again.');
   }
+  return size;
 }

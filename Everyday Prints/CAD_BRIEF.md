@@ -347,3 +347,12 @@ marking valid current inputs as invalid. Clear obsolete feedback through edits,
 Reset/Revert, successful imports, new actions and navigation. Late file reads
 must not restore dismissed errors. Preserve active CAD progress when sharing
 invalid edits, and bound/wrap unknown-field diagnostics on small screens.
+Allow a printer build-volume check using X, Y and Z extents measured from the
+verified STL. Compare in the saved print orientation, allowing only a 90-degree
+turn on the bed, and identify results that apply to the last preview while edits
+remain unbuilt. Never infer a fit from an unverified mesh or reference assembly;
+direct assemblies to their printable components. Keep finite positive printer
+settings separate from model parameters, CAD progress, history and downloads.
+Remember valid settings when browser storage allows it, and keep the check usable
+when storage is malformed or unavailable. Provide an accessible Clear action
+and explain that slicer brims and printer clearances require room.

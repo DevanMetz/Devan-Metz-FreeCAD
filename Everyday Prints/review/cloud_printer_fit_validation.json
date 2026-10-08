@@ -1,0 +1,18 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "exact_axes_rotation_height_and_clear_keep_original_downloads",
+    "drafts_builds_and_cached_cad_use_the_last_verified_mesh",
+    "measured_stl_extents_take_precedence_over_rounded_cad_bounds",
+    "unavailable_and_rejected_previews_never_claim_a_fit",
+    "graphics_failure_keeps_fit_and_exact_custom_files_available",
+    "assemblies_direct_checks_to_printable_components",
+    "printer_settings_survive_history_refresh_and_keep_drafts_separate",
+    "malformed_records_and_denied_storage_keep_checks_usable",
+    "profile_edits_preserve_pending_build_progress_and_stop_controls",
+    "mobile_and_desktop_controls_are_accessible_without_overflow"
+  ],
+  "failures": [],
+  "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "transport": "compiled assets and real CAD fixtures"
+}

@@ -28,3 +28,16 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .original-recovery{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 20px}
 .original-recovery .secondary{width:auto;min-height:44px}
 .original-recovery p{flex:1 1 180px;margin:0;font-size:11px;line-height:1.6;color:var(--muted)}
+
+.printer-check{margin-top:20px;border-top:1px solid var(--line);font-size:12px}
+.printer-check summary{padding:14px 0;min-height:44px;color:var(--green);cursor:pointer;font-weight:600}
+.printer-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.printer-fields .parameter{margin:0}
+.printer-fields label{font-size:11px}
+.printer-fields input{min-height:44px;width:100%;min-width:0}
+.printer-check p{line-height:1.6;margin:10px 0;overflow-wrap:anywhere}
+.printer-check .printer-note{font-size:11px;color:var(--muted)}
+.printer-fit-result{font-weight:600}
+.printer-fit-result[data-fit=fits],.printer-fit-result[data-fit=rotate]{color:var(--green)}
+.printer-fit-result[data-fit=large]{color:#b03d25}
+.printer-check .text-button{min-height:44px;font-size:12px}

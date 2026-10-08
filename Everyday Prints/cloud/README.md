@@ -39,6 +39,22 @@ have not been deployed to the public library; see `../THREAD_SUMMARY.md`.
   cannot overwrite a newer model or build. No visitor CAD code executes.
 
 Original previews and STL downloads are static and do not wake the CAD service.
+The preview panel's Check printer fit uses dimensions measured from the verified
+STL, comparing them with a visitor's usable build volume in millimeters. It
+allows a 90° turn on the bed while keeping the saved Z orientation. Results
+describe the last verified preview and identify unbuilt or invalid edits.
+Reference assemblies direct visitors to check each printable component.
+Printer dimensions persist in this browser when storage is available; Clear
+build volume removes them. These settings do not edit model parameters or
+trigger CAD requests. Brims and printer clearances remain slicer considerations.
+
+`verify_printer_fit_ui.py --offline` checks original and custom meshes, exact
+boundaries, bed rotation and height, measured STL extents versus CAD rounding,
+dirty fields, failed previews, missing graphics, cached CAD files, component
+navigation, history and refresh, malformed or denied storage, pending builds,
+and keyboard/mobile controls. Results and reviewed layouts are saved under
+`../review/cloud_printer_fit_*`.
+
 Unavailable model links show a library notice after the catalog has been
 validated. Their model and dimensions query parameters are removed with a
 history replacement; unrelated query data and the URL fragment are preserved.
@@ -123,6 +139,7 @@ python verify_transfer_progress_ui.py
 python verify_revert_ui.py
 python verify_dimensions_ui.py
 python verify_import_actions_ui.py
+python verify_printer_fit_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py

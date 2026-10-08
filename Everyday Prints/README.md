@@ -59,6 +59,11 @@ These additions are included in the collection's cloud source and are not yet
 deployed to the public library.
 Customized STL and CAD/kit filenames include the verified preview dimensions
 and a short file fingerprint, so variants remain recognizable after downloading.
+Check printer fit compares the verified STL with your printer’s usable width,
+depth and height. It identifies a possible 90° turn on the bed and keeps the last
+verified preview distinct from unbuilt edits. Build volume is saved in this
+browser; reference assemblies direct checks to their printable components.
+Account for brims and printer clearances in your slicer.
 Keyboard focus moves to Stop waiting when a focused build control is disabled,
 then returns after the request ends. Editing another field keeps its focus.
 Unavailable model links explain the problem and recover to the library, where

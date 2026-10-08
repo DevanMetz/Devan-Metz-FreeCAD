@@ -10,7 +10,7 @@ const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const sizeText = values => values.map(value => Number(value.toFixed(2))).join(' × ');
 const dialog = $('editor');
-const state = { models: [], kind: '', item: null, parameters: null, previewParameters: null, blob: null, buffer: null, metadata: null, cad: null, busy: false, catalogLoading: false, epoch: 0 };
+const state = { models: [], kind: '', item: null, parameters: null, previewParameters: null, blob: null, buffer: null, meshSize: null, metadata: null, cad: null, busy: false, catalogLoading: false, epoch: 0 };
 let searchIndex, viewer, viewerPromise, abort;
 let activeEntry;
 let dimensionsRead = 0;
@@ -24,6 +24,77 @@ const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
 const BUILD_WAIT_MS = 15 * 60 * 1000;
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
+const PRINTER_STORAGE = 'everydayPrints.printerVolume';
+const printerInputs = ['printer-width', 'printer-depth', 'printer-height'].map($);
+
+function printerVolume() {
+  const volume = printerInputs.map(input => input.valueAsNumber);
+  return volume.every(value => Number.isFinite(value) && value > 0) ? volume : null;
+}
+
+function updatePrinterFit() {
+  const result = $('printer-fit-result');
+  result.dataset.fit = '';
+  $('printer-mesh-size').hidden = !state.meshSize || state.item?.kind !== 'print';
+  $('printer-preview-note').hidden = true;
+  const volume = printerVolume();
+  const started = printerInputs.some(input => input.value);
+  for (const input of printerInputs) input.setAttribute('aria-invalid', String(started && (!Number.isFinite(input.valueAsNumber) || input.valueAsNumber <= 0)));
+  if (state.item?.kind === 'assembly') {
+    result.textContent = 'Reference assembly. Open the printable parts below to check each part.';
+    return;
+  }
+  if (state.meshSize) {
+    $('printer-mesh-size').textContent = `Verified STL: ${sizeText(state.meshSize)} mm (X × Y × Z).`;
+    let current = false;
+    try { current = sameParameters(readParameters(), state.previewParameters); } catch { /* The check still describes the verified mesh. */ }
+    $('printer-preview-note').hidden = current;
+  }
+  if (!volume) {
+    result.textContent = 'Enter a positive width, depth and height in millimeters.';
+    return;
+  }
+  if (!state.meshSize) {
+    result.textContent = 'Waiting for a verified STL to check its size.';
+    return;
+  }
+  const [x, y, z] = state.meshSize;
+  const [width, depth, height] = volume;
+  if (x <= width && y <= depth && z <= height) {
+    result.dataset.fit = 'fits';
+    result.textContent = 'Fits this build volume in the saved print orientation.';
+  } else if (y <= width && x <= depth && z <= height) {
+    result.dataset.fit = 'rotate';
+    result.textContent = 'Fits after a 90° turn on the bed in your slicer.';
+  } else {
+    result.dataset.fit = 'large';
+    result.textContent = 'Too large for this build volume, including a 90° turn on the bed.';
+  }
+}
+
+function savePrinterVolume() {
+  try {
+    const volume = printerVolume();
+    if (volume) localStorage.setItem(PRINTER_STORAGE, JSON.stringify(volume));
+    else localStorage.removeItem(PRINTER_STORAGE);
+    $('printer-profile-note').textContent = volume ? 'Build volume saved in this browser.' : 'Use your printer’s usable build volume.';
+  } catch {
+    $('printer-profile-note').textContent = 'Build volume stays here while this page is open.';
+  }
+  updatePrinterFit();
+}
+
+function restorePrinterVolume() {
+  try {
+    const raw = localStorage.getItem(PRINTER_STORAGE);
+    const volume = raw && raw.length <= 256 ? JSON.parse(raw) : null;
+    if (Array.isArray(volume) && volume.length === 3 && volume.every(value => typeof value === 'number' && Number.isFinite(value) && value > 0)) {
+      printerInputs.forEach((input, axis) => { input.value = volume[axis]; });
+      $('printer-profile-note').textContent = 'Build volume saved in this browser.';
+    }
+  } catch { /* Printer checks remain available when saved settings cannot be read. */ }
+  updatePrinterFit();
+}
 
 function historyEntry() {
   const model = new URL(location.href).searchParams.get('model');
@@ -328,6 +399,8 @@ function markDirty(report = true) {
     $('mesh-status').textContent = 'Fix invalid dimensions';
     invalidParameters(error, false, report);
     return false;
+  } finally {
+    updatePrinterFit();
   }
 }
 
@@ -403,9 +476,10 @@ async function displayMesh(buffer, metadata, parameters, epoch, preserveFileErro
   const digest = await sha256(buffer);
   if (epoch !== state.epoch) return;
   if (digest !== metadata.mesh_sha256) throw new Error('The mesh transfer could not be verified. Update the preview to try again.');
-  verifyMesh(buffer, metadata.bounds_mm);
+  const meshSize = verifyMesh(buffer, metadata.bounds_mm);
   state.blob = new Blob([buffer], { type: 'model/stl' });
   state.buffer = buffer;
+  state.meshSize = meshSize;
   state.metadata = metadata;
   state.cad = null;
   state.previewParameters = structuredClone(parameters);
@@ -434,7 +508,7 @@ async function openModel(name, suppliedParameters, { navigation = true, saved, p
   const epoch = ++state.epoch;
   clearTransfer();
   state.item = item;
-  state.blob = state.buffer = state.previewParameters = state.metadata = state.cad = null;
+  state.blob = state.buffer = state.meshSize = state.previewParameters = state.metadata = state.cad = null;
   state.parameters = structuredClone(item.defaults);
   let sharedError = parameterError;
   if (suppliedParameters !== undefined) {
@@ -814,7 +888,7 @@ dialog.addEventListener('close', () => {
   abort?.abort();
   ++state.epoch;
   clearTransfer();
-  state.blob = state.buffer = state.metadata = state.previewParameters = state.cad = null;
+  state.blob = state.buffer = state.meshSize = state.metadata = state.previewParameters = state.cad = null;
   setBusy(false);
   $('viewer').setAttribute('aria-busy', 'false');
   viewer?.clear();
@@ -822,6 +896,12 @@ dialog.addEventListener('close', () => {
 dialog.addEventListener('click', event => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeEditor(); } });
 $('parameters').addEventListener('input', () => { ++dimensionsRead; clearShare(); clearDimensionsError(); markDirty(); });
 $('parameters').addEventListener('submit', rebuild);
+printerInputs.forEach(input => input.addEventListener('input', savePrinterVolume));
+$('clear-printer').addEventListener('click', () => {
+  printerInputs.forEach(input => { input.value = ''; });
+  savePrinterVolume();
+  printerInputs[0].focus();
+});
 $('stop-build').addEventListener('click', () => stopWaiting());
 $('retry-original').addEventListener('click', retryOriginal);
 $('reset-parameters').addEventListener('click', () => { ++dimensionsRead; fields(state.item.defaults); markDirty(); });
@@ -987,4 +1067,5 @@ async function start() {
 }
 window.addEventListener('popstate', restoreLocation);
 $('retry-catalog').addEventListener('click', start);
+restorePrinterVolume();
 start();

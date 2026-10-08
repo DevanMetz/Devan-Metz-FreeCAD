@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **246 focused browser
-checks across twenty-one suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **256 focused browser
+checks across twenty-two suites**, the **53-model catalog and image smoke test**,
 **56 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -58,6 +58,17 @@ seconds without discarding verified files. Seven checks cover these cases,
 completed import error recovery, newer selections and build progress, cached
 STL/CAD downloads, and mobile keyboard use. Evidence and the reviewed mobile
 timeout state are under `review/cloud_import_actions_*`.
+Check printer fit now compares the actual verified STL extents with a visitor's
+usable X, Y and Z build volume, allowing a 90-degree bed turn while keeping the
+saved print orientation. Results distinguish the last preview from unbuilt or
+invalid edits, and assemblies direct visitors to their printable components.
+Valid printer settings persist in this browser, with a keyboard-accessible Clear
+action and recovery from malformed or denied storage. Profile edits preserve
+model fields, pending builds and cached downloads. Ten browser checks cover
+exact dimensions, rotation and height limits, measured mesh versus CAD rounding,
+preview failures, unavailable graphics, CAD reuse, components, history, refresh,
+storage failures, pending work and mobile keyboard downloads. Desktop and mobile
+layouts were visually reviewed. Evidence is under `review/cloud_printer_fit_*`.
 
 ## Complete design inventory
 

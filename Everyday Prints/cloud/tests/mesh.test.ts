@@ -45,7 +45,7 @@ test('negative coordinates, a solid header, attributes and small tessellation di
   const buffer = triangle();
   new Uint8Array(buffer).set(new TextEncoder().encode('solid binary mesh'));
   new DataView(buffer).setUint16(132, 65535, true);
-  assert.doesNotThrow(() => verifyMesh(buffer, [2.04, 3, 4]));
+  assert.deepEqual(verifyMesh(buffer, [2.04, 3, 4]), [2, 3, 4]);
 });
 
 test('empty, truncated, trailing and mismatched facet records cannot become a verified mesh', () => {
