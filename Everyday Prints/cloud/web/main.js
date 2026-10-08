@@ -1,8 +1,9 @@
 import MiniSearch from 'minisearch';
-import { MAX_FILE_BYTES, readFile, readWithSignal } from './transfer.js';
+import { MAX_FILE_BYTES, readFile } from './transfer.js';
 import { responseProblem } from './problems.js';
 import { dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
 import { checkDimensionsFile, isDimensionsZip, readDimensionsFile } from './dimension-files.js';
+import { readJsonFile } from './json-files.js';
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
@@ -985,9 +986,9 @@ async function loadDroppedJson(file) {
     let text, timer;
     const timedOut = new Error('Reading the dropped JSON took too long. Drop it again or use a file chooser.');
     const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
-    try { text = await Promise.race([readWithSignal(() => file.text(), controller.signal), timeout]); }
+    try { text = await Promise.race([readJsonFile(file, controller.signal, MAX_VERSIONS_BYTES), timeout]); }
     catch (error) {
-      if (error === timedOut) throw error;
+      if (error === timedOut || error.jsonFile) throw error;
       throw new Error('The dropped JSON could not be read. Drop it again or use a file chooser.');
     } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;
@@ -1033,9 +1034,9 @@ async function loadVersionBackup(file) {
     let text, timer;
     const timedOut = new Error('Reading the version backup took too long. Choose it again.');
     const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
-    try { text = await Promise.race([readWithSignal(() => file.text(), controller.signal), timeout]); }
+    try { text = await Promise.race([readJsonFile(file, controller.signal, MAX_VERSIONS_BYTES), timeout]); }
     catch (error) {
-      if (error === timedOut) throw error;
+      if (error === timedOut || error.jsonFile) throw error;
       throw new Error('The version backup could not be read. Choose it again.');
     } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;
@@ -1105,7 +1106,7 @@ async function loadDimensions(file) {
     const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
     try { text = await Promise.race([readDimensionsFile(file, controller.signal), timeout]); }
     catch (error) {
-      if (error === timedOut || error.dimensionsFile) throw error;
+      if (error === timedOut || error.dimensionsFile || error.jsonFile) throw error;
       throw new Error('The saved dimensions file could not be read. Choose it again.');
     } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;

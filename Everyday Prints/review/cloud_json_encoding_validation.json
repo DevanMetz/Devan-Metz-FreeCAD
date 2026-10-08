@@ -1,0 +1,291 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "damaged_dimensions_chooser_keeps_invalid_draft_and_cached_files",
+    "damaged_backup_chooser_keeps_names_and_recovers_unicode_list_version",
+    "native_malformed_drops_reject_then_restore_a_real_export",
+    "unicode_replacement_and_six_canonical_kits_remain_portable",
+    "exact_bom_byte_limits_accept_and_oversize_files_never_read",
+    "superseded_malformed_bytes_cannot_replace_newer_actions",
+    "unreadable_and_stalled_byte_reads_recover_without_late_errors",
+    "busy_and_closed_editor_reject_without_byte_reads",
+    "short_phone_keyboard_chooser_recovers_without_graphics"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "dimensions_chooser",
+      "invalid_byte": "ff",
+      "draft_library_history_kept": true,
+      "raw_reads": 2,
+      "bom_recovery": true,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "backup_chooser",
+      "invalid_byte": "ff",
+      "invalid_draft_and_names_kept": true,
+      "unicode_list_and_literal_replacement_preserved": true,
+      "bom_recovery": true,
+      "undo_restored_library": true,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "native_rejection",
+      "channel": "dimensions_drop",
+      "target": "#viewer",
+      "native_drop": [
+        {
+          "trusted": true,
+          "files": [
+            "dimensions_drop-invalid-encoding.json"
+          ]
+        }
+      ],
+      "draft_library_history_kept": true
+    },
+    {
+      "check": "native_rejection",
+      "channel": "backup_drop",
+      "target": "#param-length",
+      "native_drop": [
+        {
+          "trusted": true,
+          "files": [
+            "backup_drop-invalid-encoding.json"
+          ]
+        }
+      ],
+      "draft_library_history_kept": true
+    },
+    {
+      "check": "native_recovery",
+      "exported_file": "everyday-prints-version.json",
+      "native_drop": [
+        {
+          "trusted": true,
+          "files": [
+            "everyday-prints-version.json"
+          ]
+        }
+      ],
+      "raw_reads": 3,
+      "exact_cached_files_and_dimension_names": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "unicode_kits",
+      "invalid_surrogate_bytes_rejected": true,
+      "literal_replacement_preserved": true,
+      "canonical_kits": 6,
+      "undo_restored_empty_library": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "byte_limits",
+      "channel": "dimensions_chooser",
+      "accepted_bytes": 16384,
+      "bom_included_in_limit": true,
+      "raw_reads": 1,
+      "oversize_reads": 0,
+      "state_kept": true
+    },
+    {
+      "check": "byte_limits",
+      "channel": "backup_chooser",
+      "accepted_bytes": 65536,
+      "bom_included_in_limit": true,
+      "raw_reads": 1,
+      "oversize_reads": 0,
+      "state_kept": true
+    },
+    {
+      "check": "byte_limits",
+      "channel": "dimensions_drop",
+      "accepted_bytes": 16384,
+      "bom_included_in_limit": true,
+      "raw_reads": 1,
+      "oversize_reads": 0,
+      "state_kept": true
+    },
+    {
+      "check": "byte_limits",
+      "channel": "backup_drop",
+      "accepted_bytes": 65536,
+      "bom_included_in_limit": true,
+      "raw_reads": 1,
+      "oversize_reads": 0,
+      "state_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_chooser",
+      "action": "new_file",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_chooser",
+      "action": "build",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_chooser",
+      "action": "close",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_chooser",
+      "action": "new_file",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_chooser",
+      "action": "build",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_chooser",
+      "action": "close",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_drop",
+      "action": "new_file",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_drop",
+      "action": "build",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_drop",
+      "action": "close",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_drop",
+      "action": "new_file",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_drop",
+      "action": "build",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_drop",
+      "action": "close",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_chooser",
+      "action": "field",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "dimensions_drop",
+      "action": "field",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "discarded_bytes",
+      "channel": "backup_drop",
+      "action": "field",
+      "deadlines_after_action": 0,
+      "late_state_and_feedback_kept": true
+    },
+    {
+      "check": "read_recovery",
+      "channel": "dimensions_chooser",
+      "unreadable_state_kept": true,
+      "timeout_state_kept": true,
+      "deadline_cleared": true,
+      "new_file_recovered": true,
+      "late_malformed_bytes_ignored": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "read_recovery",
+      "channel": "backup_chooser",
+      "unreadable_state_kept": true,
+      "timeout_state_kept": true,
+      "deadline_cleared": true,
+      "new_file_recovered": true,
+      "late_malformed_bytes_ignored": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "read_recovery",
+      "channel": "dimensions_drop",
+      "unreadable_state_kept": true,
+      "timeout_state_kept": true,
+      "deadline_cleared": true,
+      "new_file_recovered": true,
+      "late_malformed_bytes_ignored": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "read_recovery",
+      "channel": "backup_drop",
+      "unreadable_state_kept": true,
+      "timeout_state_kept": true,
+      "deadline_cleared": true,
+      "new_file_recovered": true,
+      "late_malformed_bytes_ignored": true,
+      "native_jobs": 0
+    },
+    {
+      "check": "inactive",
+      "busy_and_closed_raw_reads": 0,
+      "stop_focus_kept": true,
+      "exact_pending_cad": true,
+      "library_kept": true,
+      "native_jobs": 2
+    },
+    {
+      "check": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "keyboard_chooser": true,
+      "encoding_feedback_visible": true,
+      "invalid_draft_kept": true,
+      "unicode_export_preserved": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "native_jobs": 0
+    }
+  ],
+  "transport": "Compiled production CSP/assets, actual malformed UTF-8 files, trusted Chromium disk drops, native downloads and CAD fixtures, bounded raw-byte reads and controlled deadlines."
+}

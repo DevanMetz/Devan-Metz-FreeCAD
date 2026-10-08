@@ -1,0 +1,40 @@
+{
+  "head": "b763cfa36173cd72b2149630a93ecd9bc54a9eaf",
+  "invalid_bytes": [
+    "ff"
+  ],
+  "observed": [
+    {
+      "channel": "dimensions_chooser",
+      "length_before": "190.55",
+      "length_after": "180.5",
+      "stored_versions": 0,
+      "stored_names": [],
+      "dimensions_error_visible": false,
+      "backup_message": "Export selected saves the chosen version. Export versions saves all. Import restores names and measurements; conflicting names get a number."
+    },
+    {
+      "channel": "backup_chooser",
+      "length_before": "190.55",
+      "length_after": "190.55",
+      "stored_versions": 1,
+      "stored_names": [
+        "Broken \ufffd"
+      ],
+      "dimensions_error_visible": false,
+      "backup_message": "Imported 1 version. Current measurements are kept."
+    },
+    {
+      "channel": "backup_drop",
+      "length_before": "190.55",
+      "length_after": "190.55",
+      "stored_versions": 1,
+      "stored_names": [
+        "Broken \ufffd"
+      ],
+      "dimensions_error_visible": false,
+      "backup_message": "Imported 1 version. Current measurements are kept."
+    }
+  ],
+  "transport": "compiled production assets and real malformed UTF-8 file bytes"
+}

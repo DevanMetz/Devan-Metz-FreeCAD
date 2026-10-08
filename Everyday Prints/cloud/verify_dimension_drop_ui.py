@@ -48,8 +48,8 @@ def main():
 
         def setup(page):
             page.add_init_script(READS + """window.jsonReads=0;
-              const readText=File.prototype.text;
-              File.prototype.text=function(){window.jsonReads++;return readText.call(this);};""")
+              const readBytes=File.prototype.arrayBuffer;
+              File.prototype.arrayBuffer=function(){window.jsonReads++;return readBytes.call(this);};""")
             jobs = []
             pending_routes[page] = []
 

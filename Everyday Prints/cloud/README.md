@@ -201,6 +201,21 @@ canonical measurements, merges conflicts and retains Undo. Current fields,
 validation feedback, history and verified STL/CAD files are kept; no build
 starts. Saved dimensions opens and the backup result is brought into view.
 
+Load dimensions, Import versions and editor JSON drops read bounded raw
+bytes and decode strict UTF-8. Malformed encoding is rejected before any
+measurements or versions are applied, with guidance to save the file as
+UTF-8 JSON. Fields, field errors, names, history, browser storage and verified
+STL/CAD files are kept. Valid Unicode, UTF-8 BOMs and literal replacement
+characters are accepted. The dimensions chooser checks both declared and
+actual bytes against 16 KiB; backups and unresolved drops use 64 KiB.
+Dimensions records still use their existing 16 KiB validation limit.
+
+Nine browser checks cover 31 cases with real malformed files, trusted disk
+drops, native exports, Unicode lists and canonical kits, exact byte/BOM
+boundaries, raw-read counts, cancelled/late bytes, unreadable/stalled reads,
+cached downloads and short-phone keyboard recovery without graphics.
+Evidence and reviewed layouts are under `../review/cloud_json_encoding_*`.
+
 Dropped JSON has a 64 KiB read limit and a 15-second deadline. Dimensions
 records still require at most 16 KiB after classification. New edits, version
 actions, files, builds, retry or closing cancel an unresolved drop and clear
@@ -343,6 +358,7 @@ python verify_versions_ui.py
 python verify_version_backups_ui.py
 python verify_selected_version_ui.py --offline
 python verify_version_drop_ui.py --offline
+python verify_json_encoding_ui.py --offline
 python verify_version_edits_ui.py
 python verify_versions_sync_ui.py
 python verify_versions_undo_ui.py
@@ -1054,7 +1070,11 @@ Three selected-backup checks restore one named entry across all 53 models,
 preserve exact decimals/lists and canonical inventories, read fresh replacements
 and names, reject missing selections without exporting all entries, and keep
 corrupt/denied storage unchanged. Export does not require storage writes.
-All 107 unit tests pass.
+Four raw JSON reader checks preserve Unicode, literal replacement characters
+and exact BOM boundaries, reject eight malformed UTF-8 sequences inside valid
+JSON strings, enforce declared and actual byte limits, and release abort
+listeners while ignoring late malformed bytes or read failures.
+All 111 unit tests pass.
 
 ## API
 

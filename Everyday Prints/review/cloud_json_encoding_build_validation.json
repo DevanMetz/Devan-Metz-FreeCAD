@@ -1,0 +1,137 @@
+{
+  "baseline_head": "b763cfa36173cd72b2149630a93ecd9bc54a9eaf",
+  "unit_tests": {
+    "passed": 111,
+    "failed": 0
+  },
+  "typecheck": {
+    "workers_types": true,
+    "tsc": true
+  },
+  "production_build": {
+    "command": "cf build",
+    "passed": true,
+    "tested_assets": {
+      "assets\\catalog.json": "5442c6b108886ca03adfdd4c8d81de3e3092130a03b19793944500aa5698c326",
+      "assets\\assets\\viewer-CWzzIyeB.js": "3eaa2ea364eaf609213782e5061823e739dea8b0d4de62d443011efb76cd066b",
+      "bundle\\index.js": "29b36a0cf4debc67cd91399b76e11ea8ce93efde356fa5ac08f7b1b23dfbee76",
+      "assets\\assets\\index-DqRIMiRv.css": "f027965f7ab7b34357af7a2dd3a16d73eba109c30b0e245199a971e6f1566181",
+      "assets\\assets\\zip-YHHXTpaf.js": "8641c768f8317a685969e2150676a2269890dd336ca4fce38426c4af79a2c895",
+      "assets\\assets\\index-rOKDpkB9.js": "6fec2ddc280df58efafcf8b13b753891245e878452f9077dd358a11fecac860a",
+      "assets\\index.html": "ab5cfe3087b1b3558d513d751050348bb7aacff58f66c718e76f79eb38e7e102"
+    },
+    "final_assets_match_tested": true
+  },
+  "browser_validation": {
+    "focused_checks_current_build": 288,
+    "suites_current_build": 22,
+    "fresh_reports_current_build": 23,
+    "reports": {
+      "cloud_version_backups_validation.json": 17,
+      "cloud_versions_validation.json": 12,
+      "cloud_version_edits_validation.json": 14,
+      "cloud_versions_undo_validation.json": 13,
+      "cloud_versions_sync_validation.json": 12,
+      "cloud_field_revert_validation.json": 13,
+      "cloud_history_downloads_validation.json": 16,
+      "cloud_dimensions_validation.json": 11,
+      "cloud_zip_dimensions_validation.json": 13,
+      "cloud_dimension_drop_validation.json": 12,
+      "cloud_dimensions_preview_validation.json": 15,
+      "cloud_import_actions_validation.json": 7,
+      "cloud_field_feedback_validation.json": 11,
+      "cloud_original_retry_ui_validation.json": 23,
+      "cloud_original_idle_validation.json": 11,
+      "cloud_transfer_progress_validation.json": 15,
+      "cloud_build_focus_validation.json": 14,
+      "cloud_viewer_loading_validation.json": 23,
+      "cloud_build_recovery_validation.json": 10,
+      "cloud_selected_version_validation.json": 8,
+      "cloud_version_drop_validation.json": 9,
+      "cloud_json_encoding_validation.json": 9
+    },
+    "catalog_models": 53,
+    "catalog_images": 53,
+    "transport": "Compiled production assets and CSP, real malformed UTF-8 files and trusted disk drops, native exports and exact CAD fixtures, bounded byte reads and controlled deadlines, cross-tab storage and keyboard use with and without graphics."
+  },
+  "previous_focused_browser_checkpoint": {
+    "head": "b763cfa36173cd72b2149630a93ecd9bc54a9eaf",
+    "focused_checks": 279,
+    "suites": 21
+  },
+  "previous_full_browser_checkpoint": {
+    "head": "f9207c7b1a21c833bb310e55af10e29ce3f1b854",
+    "focused_checks": 429,
+    "suites": 34
+  },
+  "retained_browser_evidence": {
+    "checks_mixed_builds": 462,
+    "suites_mixed_builds": 37
+  },
+  "json_encoding": {
+    "baseline_silently_modified_dimensions_channels": [
+      "dimensions_chooser"
+    ],
+    "baseline_imported_damaged_names_channels": [
+      "backup_chooser",
+      "backup_drop"
+    ],
+    "verified_browser_checks": 9,
+    "measured_cases": 31,
+    "strict_fatal_utf8_decoder": true,
+    "raw_byte_read_per_json_file": 1,
+    "dimensions_chooser_limit_bytes": 16384,
+    "version_and_unclassified_drop_limit_bytes": 65536,
+    "dimensions_record_validation_limit_bytes": 16384,
+    "declared_and_actual_byte_caps_checked": true,
+    "malformed_bytes_reject_before_apply_or_storage_write": true,
+    "field_values_field_errors_names_raw_storage_and_history_kept": true,
+    "exact_cached_stl_cad_and_dimensional_names_kept": true,
+    "valid_unicode_lists_boms_and_literal_replacement_characters_preserved": true,
+    "canonical_assembly_inventories": 6,
+    "native_trusted_rejected_files": 2,
+    "native_export_restored_after_rejection": true,
+    "exact_byte_bom_boundaries_checked_channels": 4,
+    "oversize_pre_read_rejection_channels": 4,
+    "superseded_malformed_reads": 15,
+    "deadlines_cleared_before_late_bytes": true,
+    "unreadable_and_stalled_read_recovery_channels": 4,
+    "late_malformed_bytes_do_not_replace_new_files_or_feedback": true,
+    "busy_and_closed_editor_reads": 0,
+    "exact_pending_cad_and_stop_focus_kept": true,
+    "short_phone": {
+      "width": 390,
+      "height": 600,
+      "keyboard_chooser": true,
+      "encoding_feedback_visible": true,
+      "invalid_draft_kept": true,
+      "unicode_export_preserved": true,
+      "exact_original_stl": true,
+      "graphics_required": false,
+      "horizontal_overflow": false
+    },
+    "unit_malformed_sequences": 8,
+    "unit_declared_actual_byte_caps_and_abort_listener_cleanup": true,
+    "report": "cloud_json_encoding_validation.json",
+    "baseline": "cloud_json_encoding_baseline.json"
+  },
+  "verification_adjustments": [
+    {
+      "files": [
+        "cloud/verify_dimensions_ui.py",
+        "cloud/verify_dimension_drop_ui.py",
+        "cloud/verify_version_drop_ui.py"
+      ],
+      "change": "Controlled local JSON reads now intercept File.arrayBuffer, preserving raw read counts, deferred bytes, deadline and cancellation assertions after replacing File.text."
+    }
+  ],
+  "geometry": {
+    "unchanged_files": 206,
+    "cad_inspection_records": 44,
+    "unchanged_reviewed_steps": 22
+  },
+  "reviewed_layouts": [
+    "cloud_json_encoding_desktop.png",
+    "cloud_json_encoding_mobile.png"
+  ]
+}

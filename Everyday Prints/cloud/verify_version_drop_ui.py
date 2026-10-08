@@ -49,7 +49,7 @@ def main():
             return result
 
         def setup(page, records=None):
-            page.add_init_script(FILES + TIMERS + '''window.droppedTextReads=0;
+            page.add_init_script(FILES + TIMERS + '''window.droppedJsonReads=0;
               const scheduleDroppedDeadline=window.setTimeout.bind(window);
               window.setTimeout=(callback,delay,...args)=>{
                 const watched=delay===15000&&window.watchVersionReadTimer;
@@ -57,8 +57,8 @@ def main():
                 if(watched)window.fireDroppedDeadline=()=>{window.clearTimeout(id);callback(...args);};
                 return id;
               };
-              const droppedText=File.prototype.text;
-              File.prototype.text=function(){window.droppedTextReads++;return droppedText.call(this);};''')
+              const droppedBytes=File.prototype.arrayBuffer;
+              File.prototype.arrayBuffer=function(){window.droppedJsonReads++;return droppedBytes.call(this);};''')
             if records is not None:
                 page.add_init_script('localStorage.setItem(' + json.dumps(KEY) + ',' + json.dumps(json.dumps(records)) + ');')
             control = {'jobs': [], 'hold': False, 'waiting': []}
@@ -157,7 +157,7 @@ def main():
                     rows = json.loads(stored(other))
                     assert len(rows) == number and snapshot(other) == before
                     assert other.locator('.saved-dimensions').evaluate('node=>node.open')
-                    assert other.evaluate('window.droppedTextReads') == 1
+                    assert other.evaluate('window.droppedJsonReads') == 1
                     expect(other.locator('#undo-version')).to_be_enabled()
                     if number == 2:
                         other.screenshot(path=str(ROOT / 'review/cloud_version_drop_desktop.png'))
@@ -181,18 +181,18 @@ def main():
             drop(page, body, 'renamed-without-extension')
             expect(page.locator('#version-backup-message')).to_contain_text('Imported 1')
             assert snapshot(page) == before and len(json.loads(stored(page))) == 1
-            reads = page.evaluate('window.droppedTextReads')
+            reads = page.evaluate('window.droppedJsonReads')
             drop(page, size=65537)
             expect(page.locator('#dimensions-error')).to_contain_text('exceeds 64 KiB')
-            assert page.evaluate('window.droppedTextReads') == reads
+            assert page.evaluate('window.droppedJsonReads') == reads
             dim = json.dumps({'model': 'parts_tray', 'units': 'mm', 'parameters': {'length': 180.5}}).encode()
             drop(page, dim + b' ' * (16385 - len(dim)))
             expect(page.locator('#dimensions-error')).to_contain_text('exceeds 16 KiB')
-            assert page.evaluate('window.droppedTextReads') == reads + 1
+            assert page.evaluate('window.droppedJsonReads') == reads + 1
             assert page.locator('#param-length').input_value() == '190.55' and not control['jobs']
             page.locator('#dimensions-file').set_input_files({'name': 'dimensions.json', 'mimeType': 'application/json', 'buffer': dim + b' ' * 16384})
             expect(page.locator('#dimensions-error')).to_contain_text('exceeds 16 KiB')
-            assert page.evaluate('window.droppedTextReads') == reads + 1
+            assert page.evaluate('window.droppedJsonReads') == reads + 1
             cases.append({'check': 'bounds', 'backup_bytes': len(body), 'backup_reads': 1,
                 'oversize_drop_reads': 0, 'oversize_dimensions_drop_reads': 1, 'dimensions_chooser_oversize_reads': 0,
                 'draft_kept': True, 'native_jobs': 0})
@@ -342,7 +342,7 @@ def main():
             assert len(control['waiting']) == 1
             expect(page.locator('#stop-build')).to_be_focused()
             drop(page)
-            assert page.evaluate('window.droppedTextReads') == 0 and stored(page) is None
+            assert page.evaluate('window.droppedJsonReads') == 0 and stored(page) is None
             expect(page.locator('#stop-build')).to_be_focused()
             with page.expect_download() as event:
                 control['waiting'].pop().fulfill(body=fixtures['parts_tray'][0], headers=headers(fixtures['parts_tray'][1]))
@@ -352,7 +352,7 @@ def main():
             page.locator('#close-editor').click()
             result = page.evaluate(DROP, {'files': [{'name': 'versions.json', 'mime': 'application/json', 'body': base64.b64encode(backup([cable])).decode()}],
                 'event': 'drop', 'target': '#editor', 'text': None, 'related': None})
-            assert not result['prevented'] and page.evaluate('window.droppedTextReads') == 0 and stored(page) is None
+            assert not result['prevented'] and page.evaluate('window.droppedJsonReads') == 0 and stored(page) is None
             cases.append({'check': 'inactive', 'backup_reads': 0, 'stop_focus_kept': True, 'exact_pending_cad': True, 'native_jobs': 2})
 
         def short_phone_backup_feedback_and_keyboard_download_work_without_graphics(page):

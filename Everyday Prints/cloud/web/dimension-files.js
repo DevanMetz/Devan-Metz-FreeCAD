@@ -1,5 +1,6 @@
 import { MAX_DIMENSIONS_BYTES } from './dimensions.js';
 import { MAX_FILE_BYTES, readWithSignal } from './transfer.js';
+import { readJsonFile } from './json-files.js';
 
 export const MAX_DIMENSIONS_ZIP_BYTES = MAX_FILE_BYTES;
 export const isDimensionsZip = file => /\.zip$/i.test(file.name) || ['application/zip', 'application/x-zip-compressed'].includes(file.type);
@@ -16,7 +17,7 @@ export function checkDimensionsFile(file) {
 export async function readDimensionsFile(file, signal) {
   signal?.throwIfAborted();
   checkDimensionsFile(file);
-  if (!isDimensionsZip(file)) return readWithSignal(() => file.text(), signal);
+  if (!isDimensionsZip(file)) return readJsonFile(file, signal, MAX_DIMENSIONS_BYTES);
   let ZipReader, BlobReader;
   try { ({ ZipReader, BlobReader } = await readWithSignal(() => import('./zip.js'), signal)); }
   catch { signal?.throwIfAborted(); throw archiveError('ZIP reading is unavailable. Extract parameters.json from the ZIP and choose that file instead.'); }

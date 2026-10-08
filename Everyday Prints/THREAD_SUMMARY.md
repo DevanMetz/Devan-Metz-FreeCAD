@@ -10,12 +10,30 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest version backup drop build passes **279 focused browser checks across
-twenty-one affected suites**, the **53-model catalog and image smoke test**,
-**107 unit tests**, TypeScript checks and the production build. The preceding
+The latest JSON encoding build passes **288 focused browser checks across
+twenty-two affected suites**, the **53-model catalog and image smoke test**,
+**111 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
+Local JSON imports now decode bounded raw bytes as strict UTF-8. Previously,
+a damaged byte inside a JSON string changed a tray measurement through Load
+dimensions and imported a version named “Broken �” through Import versions
+or an editor drop. All three readers now reject malformed encoding with
+guidance to save UTF-8 JSON, keeping measurements, field errors, names,
+browser storage, history and verified STL/CAD files. Valid Unicode, BOMs
+and intentional replacement characters remain supported. Existing byte
+limits, read deadlines and cancellation guards remain in place.
+
+Nine browser checks cover 31 measured cases: native malformed disk drops
+and exported backup recovery, exact cached downloads and dimensional names,
+Unicode lists and all six canonical kits, BOM boundaries, oversize pre-read
+rejection, fifteen superseded reads, unreadable/stalled files, busy/closed
+editors and phone keyboard use without graphics. Four unit checks cover
+Unicode/BOM boundaries, eight malformed byte sequences, declared and actual
+byte caps, cancellation and listener cleanup. Desktop and phone layouts
+were visually reviewed. Evidence is under `review/cloud_json_encoding_*`.
+
 Original preview requests now recover after 15 seconds without response headers
 or new file bytes. Positive receipts reset inactivity, while empty chunks do
 not. Expired or superseded transfers cancel unused bodies or release readers,

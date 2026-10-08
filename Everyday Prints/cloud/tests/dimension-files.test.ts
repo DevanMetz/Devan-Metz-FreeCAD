@@ -64,7 +64,7 @@ test('ZIP and JSON byte caps reject files before reading their contents', async 
     ['dimensions.json', 'application/json', MAX_DIMENSIONS_BYTES + 1, /exceeds 16 KiB/],
   ]) {
     let reads = 0;
-    const oversized = { name, type, size, text: () => { reads++; return record; } };
+    const oversized = { name, type, size, arrayBuffer: () => { reads++; return encode(record).buffer; } };
     assert.throws(() => checkDimensionsFile(oversized), pattern);
     await assert.rejects(readDimensionsFile(oversized), pattern);
     assert.equal(reads, 0);
@@ -163,7 +163,7 @@ test('cancelling a pending ZIP directory read rejects before late bytes and star
 test('cancelled JSON reads ignore late failure, remove listeners and leave new files readable', { timeout: 2000 }, async () => {
   const source = file(encode(record), 'parameters.json', 'application/json');
   let rejectLate, reads = 0;
-  source.text = () => { reads++; return new Promise((_, reject) => { rejectLate = reject; }); };
+  source.arrayBuffer = () => { reads++; return new Promise((_, reject) => { rejectLate = reject; }); };
   const controller = new AbortController(), reason = new Error('Discarded JSON');
   const pending = readDimensionsFile(source, controller.signal);
   controller.abort(reason);

@@ -20,12 +20,12 @@ os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", str(ROOT.parent / ".cad-cache/
 
 FILES = """window.fileReads = 0;
 window.pendingDimensionReads = [];
-const fileText = File.prototype.text;
-File.prototype.text = function() {
+const fileBytes = File.prototype.arrayBuffer;
+File.prototype.arrayBuffer = function() {
   window.fileReads++;
   if (this.name === 'unreadable.json') return Promise.reject(new DOMException('Controlled unreadable file', 'NotReadableError'));
-  if (!this.name.startsWith('slow')) return fileText.call(this);
-  return new Promise(resolve => window.pendingDimensionReads.push(async () => resolve(await fileText.call(this))));
+  if (!this.name.startsWith('slow')) return fileBytes.call(this);
+  return new Promise(resolve => window.pendingDimensionReads.push(async () => resolve(await fileBytes.call(this))));
 };"""
 
 HOLD = DEFERRED_BODY + """window.holdDimensionBuild = false;
