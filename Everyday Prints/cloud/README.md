@@ -736,6 +736,23 @@ mesh hash. Without a retained ZIP, the first CAD download builds and verifies on
 against the current preview. Catalog meshes still receive the usual native refresh.
 Changed parameters use the normal service build when no matching preview exists.
 
+A CAD response reporting a different valid mesh hash marks that preview for a
+fresh service build. Update preview skips affected mesh-only cache records,
+including views sharing the same metadata, while retaining the verified STL.
+Complete verified ZIPs remain reusable. Stop, timeouts and failed refreshes keep
+the old STL and the need for a fresh build; late CAD replies from superseded
+views cannot mark a newer preview. Successful native replies can be reused again.
+
+`verify_cad_cache_recovery_ui.py --offline` has five checks for mismatch recovery,
+exact new STL/CAD files and dimension-bearing filenames, history aliases, imported
+dimensions, Revert, stopped and expired replies, service and mesh verification
+failures, delayed CAD headers, unrelated complete downloads and mobile keyboard
+use. Its alternative native STL encoding changes only the 80-byte header and
+retains every facet; the ZIP contains that exact STL and updated metadata. The
+baseline restored the rejected cached mesh and failed CAD twice without a fresh
+preview request. Evidence and reviewed desktop/phone layouts are under
+`../review/cloud_cad_cache_recovery_*`.
+
 Four preview-only browser checks cover STL-only named versions, exact files and
 dimension-bearing names, native default previews, reference assemblies, first CAD
 and kit exports, failed CAD requests, dimensions files, invalid drafts, changed

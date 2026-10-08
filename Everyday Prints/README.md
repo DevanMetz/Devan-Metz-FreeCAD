@@ -117,7 +117,9 @@ and center; opening another model or reopening the editor starts the usual 3D vi
 Reopening a library model or updating a previously downloaded version can reuse
 its retained preview when the model and measurements match, including STL-only
 downloads. Matching CAD/kit files are also reused when retained. The preview is
-verified again, with Stop waiting available during restoration.
+verified again, with Stop waiting available during restoration. When CAD reports
+a different mesh, Update preview builds a fresh version and keeps your previous
+verified STL available during recovery.
 
 Back and Forward also reuse retained CAD and parts-kit downloads with their
 verified preview dimensions and filenames. History shares a 32 MiB file cache;

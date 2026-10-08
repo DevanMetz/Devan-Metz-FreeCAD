@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **389 focused browser
-checks across thirty-one suites**, the **53-model catalog and image smoke test**,
+The latest local customizer and download build passes **394 focused browser
+checks across thirty-two suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
@@ -27,6 +27,17 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+CAD mismatches now make Update preview bypass affected retained mesh-only
+previews and request a fresh native build. The previously verified STL remains
+available during recovery, including Stop, expired requests, service failures
+and rejected refresh meshes. Complete matching downloads remain reusable, and
+late CAD headers cannot mark another view. Five new browser checks cover exact
+refreshed STL/CAD files, names, shared history metadata, dimensions files, Revert,
+retry failures, deadlines, navigation and mobile keyboard downloads. The baseline
+reused its rejected preview and failed CAD twice without another preview request.
+A valid alternative STL header leaves all facets unchanged and updates the ZIP
+metadata. Evidence and reviewed layouts are under `review/cloud_cad_cache_recovery_*`.
 
 Verified native previews now reuse matching retained meshes before any CAD or
 kit download. The STL-only baseline rebuilt an identical named version twice.

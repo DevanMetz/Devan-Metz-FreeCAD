@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "cached_mismatch_forces_fresh_preview_and_exact_mobile_cad",
+    "aliases_files_and_revert_cannot_restore_the_rejected_cached_mesh",
+    "stopped_failed_and_expired_refreshes_keep_old_stl_and_allow_retry",
+    "superseded_cad_headers_cannot_invalidate_other_verified_previews",
+    "other_complete_downloads_stay_reusable_while_rejected_version_refreshes"
+  ],
+  "failures": [],
+  "old_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "updated_mesh_sha256": "f5e44b06328a051d14bc023fbaff9ddfcbf03b49c3b6d8b91a0a83331bb314a3",
+  "updated_zip_sha256": "875a49c38421f9888c117774e633cb5a6d1c6f3915119908f3450fc7931e2143",
+  "facets_unchanged": true,
+  "transport": "compiled assets; native CAD fixtures with a valid alternative STL header, matching ZIP metadata and unchanged facets; held headers and virtual deadlines"
+}

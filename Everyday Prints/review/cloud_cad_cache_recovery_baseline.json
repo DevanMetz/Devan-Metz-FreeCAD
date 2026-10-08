@@ -1,0 +1,14 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "native_requests": [
+    "stl",
+    "cad",
+    "cad"
+  ],
+  "recovery_error": "The CAD files do not match the preview. Update the preview and try again.",
+  "old_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "available_mesh_sha256": "f5e44b06328a051d14bc023fbaff9ddfcbf03b49c3b6d8b91a0a83331bb314a3",
+  "facets_unchanged": true,
+  "observed": "Update preview restored the rejected cached mesh and CAD failed again without a fresh preview request.",
+  "transport": "compiled application; native CAD fixtures with a different valid STL header and matching ZIP metadata"
+}

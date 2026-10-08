@@ -28,6 +28,7 @@ let versionsLoading = false;
 let versionUndo = null;
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
+const cadMismatches = new WeakSet();
 const HISTORY_CACHE_BYTES = 32 * 1024 * 1024;
 const BUILD_WAIT_MS = 15 * 60 * 1000;
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
@@ -726,6 +727,7 @@ function retryOriginal() {
 function cachedFiles(parameters, meshHash) {
   const saved = [...savedPages.values()].reverse().find(page => page.buffer &&
     page.metadata?.format === 'stl' && page.metadata.model === state.item.name &&
+    (page.cad || !cadMismatches.has(page.metadata)) &&
     sameParameters(page.previewParameters, parameters) && (!meshHash || page.cad && page.metadata.mesh_sha256 === meshHash));
   return saved && { buffer: saved.buffer, metadata: saved.metadata, cad: saved.cad || null };
 }
@@ -1083,7 +1085,11 @@ async function downloadCad() {
         state.item.kit.some(part => !metadata.kit.some(saved => saved && saved.model === part.model && saved.quantity === part.quantity && saved.role === part.role)))) {
       throw new Error('The parts kit does not match this assembly. Try again.');
     }
-    if (metadata.format !== 'cad' || metadata.mesh_sha256 !== previewHash) throw new Error('The CAD files do not match the preview. Update the preview and try again.');
+    if (metadata.format !== 'cad' || metadata.mesh_sha256 !== previewHash) {
+      if (metadata.format === 'cad' && validHash(metadata.mesh_sha256) && metadata.mesh_sha256 !== previewHash)
+        cadMismatches.add(state.metadata);
+      throw new Error('The CAD files do not match the preview. Update the preview and try again.');
+    }
     verifyMesh(state.buffer, metadata.bounds_mm);
     if (!validHash(metadata.file_sha256)) throw new Error('The CAD download transfer could not be verified. Try again.');
     if (mediaType(response) !== 'application/zip') throw new Error('The CAD service returned an unreadable download. Try again.');
