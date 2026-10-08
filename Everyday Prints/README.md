@@ -19,7 +19,7 @@ Changed measurements now show their last verified preview value. Revert value
 restores just that measurement while keeping the other edits. Downloads become
 available when all fields match the verified preview again.
 Saved dimensions can be exported as JSON and loaded back into the customizer,
-including parameters.json from CAD downloads, without starting a build.
+including CAD and kit ZIPs or their parameters.json, without starting a build.
 Saved dimensions also keeps up to 20 named versions in this browser. Save valid
 measurements before building, reopen a part or assembly version, or remove a
 version while keeping current fields and files. Changed versions require Update

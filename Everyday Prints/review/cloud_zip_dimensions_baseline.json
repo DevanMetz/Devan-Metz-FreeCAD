@@ -1,0 +1,18 @@
+{
+  "accept": ".json,application/json",
+  "zip_bytes": 214046,
+  "zip_parameters": {
+    "columns": 3,
+    "floor": 2.0,
+    "height": 24.0,
+    "length": 180.5,
+    "outer_radius": 4.4,
+    "pocket_radius": 2.0,
+    "rows": 2,
+    "wall": 2.4,
+    "width": 100.0
+  },
+  "length_after": "150",
+  "error": "Saved dimensions could not be loaded. The saved dimensions file exceeds 16 KiB. Choose a parameters.json file.",
+  "native_jobs": []
+}

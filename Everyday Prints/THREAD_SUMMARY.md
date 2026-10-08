@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **405 focused browser
-checks across thirty-two suites**, the **53-model catalog and image smoke test**,
-**93 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **417 focused browser
+checks across thirty-three suites**, the **53-model catalog and image smoke test**,
+**102 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 Original preview requests now recover after 15 seconds without response headers
@@ -27,6 +27,20 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Load dimensions now accepts downloaded CAD and kit ZIPs directly, alongside
+JSON files. The baseline rejected a real 214,046-byte CAD ZIP under the JSON
+limit. ZIP loading reads its top-level parameters.json within bounded archive
+and record sizes, verifies CRC/UTF-8, and applies the existing parameter and
+canonical kit validation. It starts no CAD work; stale customized downloads
+remain gated until a verified preview matches. Matching imports reuse retained
+STL/CAD files. Twelve browser checks cover real CAD and all six kits, ordered
+lists, history, invalid archives, limits, stale reads, deadlines, newer actions,
+busy CAD, unavailable graphics/ZIP reading and mobile keyboard focus. Nine new
+unit checks cover real fixtures and corruption/expansion boundaries. Browser
+checks use the production content security policy, and the ZIP reader loads
+only when needed. Evidence and reviewed layouts are under
+`review/cloud_zip_dimensions_*`; the dependency notice is included in the archive.
 
 The 3D preview now supports keyboard inspection: arrows pan, Shift + arrows
 orbit, + / - zoom and Home fits the model. A visible focus outline, accessible

@@ -21,6 +21,7 @@
 		"vite": "^8.3.0"
 	},
 	"dependencies": {
+		"@zip.js/zip.js": "2.23.0",
 		"minisearch": "^7.2.0",
 		"three": "^0.186.1"
 	}

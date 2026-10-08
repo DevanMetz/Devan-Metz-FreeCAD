@@ -1,7 +1,8 @@
 import MiniSearch from 'minisearch';
 import { MAX_FILE_BYTES, readFile } from './transfer.js';
 import { responseProblem } from './problems.js';
-import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
+import { dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
+import { checkDimensionsFile, readDimensionsFile } from './dimension-files.js';
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
@@ -1011,17 +1012,18 @@ async function loadDimensions(file) {
   const draft = JSON.stringify(formValues());
   const current = () => dialog.open && state.epoch === epoch && dimensionsRead === read && !state.busy && JSON.stringify(formValues()) === draft;
   try {
-    if (file.size > MAX_DIMENSIONS_BYTES) throw new Error('The saved dimensions file exceeds 16 KiB. Choose a parameters.json file.');
+    checkDimensionsFile(file);
     message('Loading saved dimensions…');
     let text;
     let timer;
     const timedOut = new Error('Reading the saved dimensions file took too long. Choose it again.');
-    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(timedOut), 15000); });
-    try { text = await Promise.race([file.text(), timeout]); }
+    const controller = new AbortController();
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
+    try { text = await Promise.race([readDimensionsFile(file, controller.signal), timeout]); }
     catch (error) {
-      if (error === timedOut) throw error;
+      if (error === timedOut || error.dimensionsFile) throw error;
       throw new Error('The saved dimensions file could not be read. Choose it again.');
-    } finally { clearTimeout(timer); }
+    } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;
     const { item, parameters } = savedDimensions(text, state.models);
     await applyDimensions(item, parameters, { read });

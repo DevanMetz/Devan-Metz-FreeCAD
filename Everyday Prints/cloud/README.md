@@ -501,14 +501,34 @@ under `../review/cloud_field_revert_*`.
 Open Saved dimensions above the parameter form to save or load measurements.
 Save dimensions downloads `<model>-dimensions.json` with the current inputs,
 millimeter units and canonical assembly kit quantities. It works before building
-a preview. Extract a CAD ZIP to access its `parameters.json` file.
-Load dimensions accepts that file or a saved dimensions file,
+a preview. Load dimensions accepts a downloaded CAD or kit ZIP directly,
+its extracted `parameters.json`, or a saved dimensions JSON file. It
 opens its model and fills the fields without starting CAD work. Partial parameter
 objects use the model's defaults for omitted fields. Update preview is required
 for changed dimensions; matching inputs retain the verified STL and cached ZIP.
 
-Files are limited to 16 KiB. Model and parameter names, units, numeric types,
+JSON files are limited to 16 KiB. Model and parameter names, units, numeric types,
 counts, list lengths and numeric bounds are validated before the form changes.
+Direct ZIP imports read only the top-level `parameters.json` record. Archives
+are limited to 8 MiB, 128 entries and 24 MiB of declared uncompressed contents;
+the dimensions record stays within the existing 16 KiB limit, including actual
+decompressed bytes. Stored and deflated records have their CRC and UTF-8 checked.
+Duplicate, missing or nested records and unsupported/encrypted ZIPs are rejected
+without changing the current model, fields or retained STL/CAD files. Imported
+geometry metadata and kit inventories never replace the verified preview or
+canonical catalog data. Update preview still verifies a mesh before downloading
+customized files. The optional [zip.js reader](https://gildas-lormeau.github.io/zip.js/)
+loads only for ZIP selection and uses browser decompression; JSON imports stay
+available when ZIP reading is unavailable. Its BSD notice is in
+`THIRD_PARTY_NOTICES.md`.
+
+`verify_zip_dimensions_ui.py --offline` records twelve checks for real CAD and
+all six kit ZIPs, exact decimal/list parameters, chooser labels, cached STL/CAD
+bytes and names, history, malformed archives, caps, late reads, deadlines,
+newer actions, busy downloads, unavailable graphics and ZIP reading, and phone
+keyboard focus. These run under the production content security policy.
+Evidence and reviewed layouts are under `../review/cloud_zip_dimensions_*`.
+
 Local file reads also have a 15-second deadline. A stalled read shows retry
 guidance beside Load dimensions and preserves the current fields and verified
 downloads. Late file results and older deadlines cannot replace newer selections
@@ -934,7 +954,11 @@ fresh records, invalid fields, model mismatches, corrupt data and unchanged
 actions during quota failures. Five Undo checks cover restoration for all 53
 models, exact values/order through every mutation, guards against newer entries,
 invalid snapshots, corrupt storage, failed writes/retries and canonical inventory.
-All seventy-nine unit tests pass.
+Nine ZIP dimensions checks cover all real exported CAD/kit fixtures, stored
+and deflated records, UTF-8/BOM boundaries, ZIP/JSON caps, missing/nested/duplicate
+and contradictory records, CRC corruption, archive/record expansion, falsely
+small size fields, encryption/compression recovery, cancellation and unavailable decompression with JSON recovery.
+All 102 unit tests pass.
 
 ## API
 

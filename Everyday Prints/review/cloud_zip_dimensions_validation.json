@@ -1,0 +1,78 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "real_zip_chooser_builds_exact_custom_files",
+    "matching_zip_repairs_invalid_drafts_and_keeps_cached_files",
+    "list_zip_switches_models_and_restores_history",
+    "all_six_kit_zips_load_canonical_inventories_without_building",
+    "malformed_zips_preserve_current_model_and_exact_cached_files",
+    "zip_limits_preserve_measurements_and_json_recovery",
+    "newer_edit_save_copy_reset_and_revert_supersede_held_zip_reads",
+    "zip_read_deadline_and_newer_json_discard_late_metadata",
+    "pending_cad_ignores_zip_selection_and_keeps_its_exact_download",
+    "zip_loading_and_verified_downloads_work_without_graphics",
+    "unavailable_or_delayed_zip_reader_keeps_json_and_newer_actions",
+    "mobile_keyboard_zip_chooser_keeps_visible_focus_and_exact_files"
+  ],
+  "failures": [],
+  "cases": [
+    {
+      "check": "real_zip",
+      "zip_bytes": 214046,
+      "mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "kits",
+      "models": [
+        "soap_dish_assembly",
+        "sanding_assembly",
+        "sliding_box_assembly",
+        "ruler_stop_assembly",
+        "strap_clamp_assembly",
+        "divider_joint_assembly"
+      ],
+      "native_jobs": 0
+    },
+    {
+      "check": "malformed",
+      "rejected": [
+        "not-zip.zip",
+        "truncated.zip",
+        "crc.zip",
+        "nested.zip",
+        "duplicate.zip",
+        "unknown.zip",
+        "range.zip",
+        "encoding.zip",
+        "unreadable.zip"
+      ],
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "check": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "focused_input": {
+        "x": 34,
+        "y": 453.71875,
+        "width": 154.5,
+        "height": 44
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    }
+  ],
+  "archive_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+  "transport": "compiled assets and real exported CAD ZIP fixtures"
+}

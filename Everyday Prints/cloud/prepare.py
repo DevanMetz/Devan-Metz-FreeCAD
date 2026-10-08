@@ -158,6 +158,7 @@ def main():
     (public / "catalog.json").write_text(json.dumps(dict(version=version, models=items)), encoding="utf-8")
     for filename in ("LICENSE", "NOTICE", "README.md"):
         shutil.copy2(ROOT / filename, public / filename)
+    shutil.copy2(CLOUD / "THIRD_PARTY_NOTICES.md", public / "THIRD_PARTY_NOTICES.md")
     print(f"Prepared {len(items)} models, {len(bundle)} source files; runtime {version}.")
 
 
