@@ -13,10 +13,94 @@
     "active_build_cancels_import_and_keeps_backup_controls_guarded",
     "field_edits_and_dimension_file_reads_stay_independent_of_library_imports",
     "model_navigation_and_close_discard_late_backup_reads",
+    "original_retry_stops_backup_wait_and_new_imports_keep_exact_downloads",
+    "closed_native_chooser_ignores_backup_before_cached_history_restores",
+    "newer_backup_releases_old_deadline_while_its_own_read_stays_active",
     "quota_denial_and_fresh_export_reads_preserve_existing_records",
     "mobile_keyboard_backup_and_file_chooser_keep_verified_downloads"
   ],
   "failures": [],
+  "read_lifecycle": [
+    {
+      "action": "deadline",
+      "pending_timers_after_action": 0
+    },
+    {
+      "action": "save",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "remove",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "open",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "export",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "rename",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "replace",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "undo",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true
+    },
+    {
+      "action": "build",
+      "pending_timers_after_action": 0
+    },
+    {
+      "action": "independent_dimensions",
+      "pending_timers_before_release": 1,
+      "pending_timers_after_release": 0
+    },
+    {
+      "action": "navigation",
+      "pending_timers_after_action": 0
+    },
+    {
+      "action": "close",
+      "pending_timers_after_action": 0
+    },
+    {
+      "action": "retry",
+      "pending_timers_after_action": 0,
+      "late_records_ignored": true,
+      "new_backup_imported": true,
+      "native_jobs": 2,
+      "exact_stl_and_cad": true
+    },
+    {
+      "action": "closed_chooser",
+      "reads_after_close": 0,
+      "feedback_unchanged": true,
+      "native_jobs": 2,
+      "exact_cached_stl_and_cad": true
+    },
+    {
+      "action": "new_file",
+      "pending_timers_after_action": 1,
+      "only_current_deadline_retained": true,
+      "pending_timers_after_release": 0,
+      "late_records_ignored": true,
+      "native_jobs": 2
+    }
+  ],
   "max_file_bytes": 65536,
   "read_deadline_ms": 15000,
   "transport": "compiled assets and real CAD fixtures"

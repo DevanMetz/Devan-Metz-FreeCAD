@@ -207,11 +207,19 @@ Imports save versions for later opening and preserve editor fields, verified
 previews, CAD caches and model-file feedback. Stalled local reads recover after
 15 seconds. A newer named action or file selection supersedes older reads;
 model navigation, closing the editor and CAD work also discard late imports.
-Backup controls are disabled during CAD work. Fourteen browser checks cover
+Discarded imports release their pending wait and clear their read deadline.
+Retry original also stops a pending backup import and tells you to choose the
+file again. Chooser results received after the editor closes are ignored and
+preserve feedback. Newer backups keep their own deadline; field edits and
+same-model dimensions imports remain independent.
+Backup controls are disabled during CAD work. Seventeen browser checks cover
 portable exports, a second browser, exact list/STL and cached CAD correspondence,
 conflict/repeat handling, atomic rejection, limits, stalled reads, overlapping
-actions, storage failures and desktop/mobile keyboard use. Evidence and reviewed
-layouts are under `../review/cloud_version_backups_*`.
+actions, storage failures and desktop/mobile keyboard use. Fifteen measured
+cases also check deadline cleanup, retry recovery, native chooser results after
+close, cached history and exact STL/CAD files. Evidence and reviewed layouts are
+under `../review/cloud_version_backups_*` and
+`../review/cloud_version_read_lifecycle_*`.
 
 CAD and kit downloads run the builder with the saved dimensions. A first build
 after inactivity includes Container startup time. The first installation

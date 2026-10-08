@@ -1,5 +1,5 @@
 import MiniSearch from 'minisearch';
-import { MAX_FILE_BYTES, readFile } from './transfer.js';
+import { MAX_FILE_BYTES, readFile, readWithSignal } from './transfer.js';
 import { responseProblem } from './problems.js';
 import { dimensionParameters, dimensionRecord, parameterError, savedDimensions } from './dimensions.js';
 import { checkDimensionsFile, readDimensionsFile } from './dimension-files.js';
@@ -26,7 +26,7 @@ let shareRequest = 0;
 let buildFocus;
 let versions = [];
 let versionsRead = 0;
-let versionsLoading = false;
+let versionsLoading;
 let versionUndo = null;
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
@@ -718,6 +718,7 @@ async function loadOriginal(item, controller, epoch, { saved, feedback, reload =
 function retryOriginal() {
   if (!dialog.open || state.busy || state.blob) return;
   cancelDimensionsRead();
+  supersedeVersionRead();
   clearShare();
   const fromFile = loadedFileIsCurrent();
   abort?.abort();
@@ -950,26 +951,31 @@ function versionBackupMessage(text, error = false) {
 
 function supersedeVersionRead() {
   ++versionsRead;
-  if (versionsLoading) versionBackupMessage('Backup import stopped. Choose the file again to import its versions.');
-  versionsLoading = false;
+  if (versionsLoading) {
+    versionsLoading.controller.abort();
+    versionBackupMessage('Backup import stopped. Choose the file again to import its versions.');
+  }
+  versionsLoading = null;
 }
 
 async function loadVersionBackup(file) {
-  if (!file || state.busy) return;
+  if (!file || !dialog.open || state.busy) return;
+  versionsLoading?.controller.abort();
   const epoch = state.epoch, read = ++versionsRead;
+  const controller = new AbortController();
   const current = () => dialog.open && state.epoch === epoch && read === versionsRead && !state.busy;
-  versionsLoading = true;
+  versionsLoading = { read, controller };
   versionBackupMessage('Reading the version backup…');
   try {
     if (file.size > MAX_VERSIONS_BYTES) throw new Error('The version backup exceeds 64 KiB. Choose an Everyday Prints versions backup.');
     let text, timer;
     const timedOut = new Error('Reading the version backup took too long. Choose it again.');
-    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(timedOut), 15000); });
-    try { text = await Promise.race([file.text(), timeout]); }
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(timedOut); reject(timedOut); }, 15000); });
+    try { text = await Promise.race([readWithSignal(() => file.text(), controller.signal), timeout]); }
     catch (error) {
       if (error === timedOut) throw error;
       throw new Error('The version backup could not be read. Choose it again.');
-    } finally { clearTimeout(timer); }
+    } finally { clearTimeout(timer); controller.abort(); }
     if (!current()) return;
     const result = editVersions(storage => importVersionBackup(storage, state.models, text));
     versions = result.records;
@@ -978,7 +984,7 @@ async function loadVersionBackup(file) {
   } catch (error) {
     if (current()) versionBackupMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The backup could not be imported. Browser storage is unavailable. Existing versions and measurements are kept.' : error.message, true);
   } finally {
-    if (read === versionsRead) versionsLoading = false;
+    if (versionsLoading?.read === read) versionsLoading = null;
   }
 }
 

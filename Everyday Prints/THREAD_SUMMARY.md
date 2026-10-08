@@ -10,8 +10,8 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest import cancellation build passes **220 focused browser checks across
-fifteen affected suites**, the **53-model catalog and image smoke test**,
+The latest version-backup recovery build passes **262 focused browser checks across
+nineteen affected suites**, the **53-model catalog and image smoke test**,
 **104 unit tests**, TypeScript checks and the production build. The preceding
 full browser run passed **429 checks across thirty-four suites**. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -28,6 +28,24 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Version-backup imports now stop their pending wait and deadline when a newer
+version action, file, original-preview retry, build or navigation discards them.
+The baseline kept an obsolete deadline until late bytes arrived, and an original
+retry left “Reading the version backup…” visible after the import was discarded.
+Retry now shows the existing stopped-import guidance and allows a fresh import.
+A native backup chooser completing after the editor closes reads no file and
+keeps feedback through cached history restoration. The baseline read that file
+and left the loading message visible after reopening.
+
+Seventeen backup checks pass, with fifteen measured cases for named actions,
+deadlines, independent measurements, navigation, closing, retry and newer files.
+Only the current read retains its deadline, and field edits or same-model
+dimensions imports can still proceed independently. Exact original and rebuilt
+STL/CAD files and retained CAD downloads are verified. Desktop and short phone
+feedback were visually reviewed. Evidence is under
+`review/cloud_version_read_lifecycle_*` and
+`review/cloud_version_backups_validation.json`.
 
 Discarded dimensions imports now release their pending wait and start no more
 ZIP byte reads. The baseline completed five reads for an obsolete CAD ZIP after

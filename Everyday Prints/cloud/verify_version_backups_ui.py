@@ -7,7 +7,7 @@ import sys
 import traceback
 
 from playwright.sync_api import expect, sync_playwright
-from browser_assets import OFFLINE_BASE, attach_assets
+from browser_assets import ASSETS, OFFLINE_BASE, attach_assets
 from verify_dimensions_ui import FILES
 from verify_export_ui import fixture, headers
 
@@ -18,11 +18,23 @@ BASE = OFFLINE_BASE if OFFLINE else (sys.argv[1] if len(sys.argv) > 1 else 'http
 KEY = 'everyday-prints-versions'
 os.environ.setdefault('PLAYWRIGHT_BROWSERS_PATH', str(ROOT.parent / '.cad-cache/browsers'))
 
+TIMERS = """window.versionReadTimers=new Set(); window.watchVersionReadTimer=false;
+const scheduleVersionTimeout=window.setTimeout.bind(window), clearVersionTimeout=window.clearTimeout.bind(window);
+window.setTimeout=(callback, delay, ...args)=>{
+  const watched=delay===15000 && window.watchVersionReadTimer;
+  if(watched) window.watchVersionReadTimer=false;
+  let id;
+  id=scheduleVersionTimeout(watched?(...values)=>{window.versionReadTimers.delete(id);callback(...values);}:callback,delay,...args);
+  if(watched) window.versionReadTimers.add(id);
+  return id;
+};
+window.clearTimeout=id=>{window.versionReadTimers.delete(id);return clearVersionTimeout(id);};"""
+
 
 def main():
     fixtures = {name: fixture(name) for name in ('parts_tray', 'cable_comb')}
     catalog = {item['name']: item for item in json.loads((CLOUD / 'public/catalog.json').read_text(encoding='utf-8'))['models']}
-    passed, failures = [], []
+    passed, failures, read_lifecycle = [], [], []
 
     def record(model, name, number=1, parameters=None):
         return dict(id=f'00000000-0000-4000-8000-{number:012x}', name=name,
@@ -35,8 +47,8 @@ def main():
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
 
-        def setup(page, records=None, waiting=None):
-            page.add_init_script(FILES)
+        def setup(page, records=None, waiting=None, original_failed=False):
+            page.add_init_script(FILES + TIMERS)
             if records is not None:
                 page.add_init_script('localStorage.setItem(' + json.dumps(KEY) + ',' + json.dumps(json.dumps(records)) + ');')
             jobs = []
@@ -55,10 +67,15 @@ def main():
                     route.fulfill(body=mesh, headers=headers({**metadata, 'format': 'stl', 'file_sha256': metadata['mesh_sha256']}, 'model/stl'))
 
             page.route('**/api/generate', generate)
+            if original_failed:
+                page.route('**/models/parts_tray.stl', lambda route: route.fulfill(status=503, body='Controlled unavailable original'))
             page.goto(BASE)
             page.wait_for_function("() => document.querySelectorAll('.card').length === 53")
             page.locator('[data-model="parts_tray"]').click()
-            expect(page.locator('#download')).to_be_enabled()
+            if original_failed:
+                expect(page.locator('#retry-original')).to_be_visible()
+            else:
+                expect(page.locator('#download')).to_be_enabled()
             page.locator('.saved-dimensions summary').click()
             return jobs
 
@@ -66,7 +83,12 @@ def main():
             return page.evaluate('key => JSON.parse(localStorage.getItem(key) || "[]")', KEY)
 
         def select(page, body, name='versions.json'):
+            if name.startswith('slow'):
+                page.evaluate('window.watchVersionReadTimer=true')
             page.locator('#versions-file').set_input_files({'name': name, 'mimeType': 'application/json', 'buffer': body})
+
+        def timers(page, count=0):
+            page.wait_for_function('count=>window.versionReadTimers.size===count', arg=count)
 
         def imported(page):
             expect(page.locator('#version-backup-message')).to_contain_text('Imported')
@@ -217,6 +239,8 @@ def main():
                 page.wait_for_function('() => window.pendingDimensionReads.length === 1')
                 page.clock.fast_forward(15001)
                 expect(page.locator('#version-backup-message')).to_contain_text('took too long')
+                timers(page)
+                read_lifecycle.append({'action':'deadline','pending_timers_after_action':0})
                 assert not stored(page) and page.locator('#download').is_enabled()
                 select(page, backup([record('parts_tray', 'Newer version')]))
                 imported(page)
@@ -229,7 +253,7 @@ def main():
         def newer_named_actions_supersede_a_pending_backup(page):
             rows = [record('parts_tray', 'Original'), record('parts_tray', 'Keep', 2)]
             setup(page, rows)
-            for number, action in enumerate(('save', 'remove', 'open', 'export')):
+            for number, action in enumerate(('save', 'remove', 'open', 'export', 'rename', 'replace', 'undo')):
                 select(page, backup([record('cable_comb', 'Late routing')]), f'slow-{number}.json')
                 page.wait_for_function('n => window.pendingDimensionReads.length === n', arg=number + 1)
                 if action == 'save':
@@ -241,12 +265,22 @@ def main():
                     page.locator('#remove-version').click()
                 elif action == 'open':
                     open_version(page, 'Original')
-                else:
+                elif action=='export':
                     download(page)
+                elif action=='rename':
+                    page.locator('#version-name').fill('Renamed tray')
+                    page.locator('#rename-version').click()
+                elif action=='replace':
+                    page.locator('#param-length').fill('190.55')
+                    page.locator('#replace-version').click()
+                else:
+                    page.locator('#undo-version').click()
                 expected = stored(page)
                 message = page.locator('#version-backup-message').inner_text()
+                timers(page)
                 page.evaluate('n => window.pendingDimensionReads[n]()', number)
                 assert stored(page) == expected and page.locator('#version-backup-message').inner_text() == message
+                read_lifecycle.append({'action':action,'pending_timers_after_action':0,'late_records_ignored':True})
 
         def active_build_cancels_import_and_keeps_backup_controls_guarded(page):
             waiting = []
@@ -256,6 +290,8 @@ def main():
             page.locator('#param-length').fill('180.5')
             page.locator('#rebuild').click()
             expect(page.locator('#stop-build')).to_be_visible()
+            timers(page)
+            read_lifecycle.append({'action':'build','pending_timers_after_action':0})
             for action in ('export-versions', 'import-versions'):
                 expect(page.locator('#' + action)).to_be_disabled()
                 page.locator('#' + action).dispatch_event('click')
@@ -277,11 +313,14 @@ def main():
             dimensions = {'model': 'parts_tray', 'units': 'mm', 'parameters': fixtures['parts_tray'][1]['parameters']}
             page.locator('#dimensions-file').set_input_files({'name': 'dimensions.json', 'mimeType': 'application/json', 'buffer': json.dumps(dimensions).encode()})
             expect(page.locator('#param-length')).to_have_value('180.5')
+            timers(page,1)
             before = page.locator('#form-message').inner_text()
             page.evaluate('() => window.pendingDimensionReads[0]()')
             imported(page)
+            timers(page)
             assert page.locator('#param-length').input_value() == '180.5'
             assert page.locator('#form-message').inner_text() == before and page.locator('#download').is_disabled()
+            read_lifecycle.append({'action':'independent_dimensions','pending_timers_before_release':1,'pending_timers_after_release':0})
 
         def model_navigation_and_close_discard_late_backup_reads(page):
             setup(page, [record('cable_comb', 'Routing')])
@@ -290,14 +329,129 @@ def main():
             page.wait_for_function('() => window.pendingDimensionReads.length === 1')
             open_version(page, 'Routing')
             expect(page.locator('#download')).to_be_enabled()
+            timers(page)
             page.evaluate('() => window.pendingDimensionReads[0]()')
             assert len(stored(page)) == 1
+            read_lifecycle.append({'action':'navigation','pending_timers_after_action':0})
             select(page, body, 'slow-close.json')
             page.wait_for_function('() => window.pendingDimensionReads.length === 2')
             page.locator('#close-editor').click()
             expect(page.locator('#editor')).not_to_be_visible()
+            timers(page)
             page.evaluate('() => window.pendingDimensionReads[1]()')
             assert len(stored(page)) == 1
+            read_lifecycle.append({'action':'close','pending_timers_after_action':0})
+
+        def original_retry_stops_backup_wait_and_new_imports_keep_exact_downloads(page):
+            original=record('parts_tray','Original')
+            jobs=setup(page,[original],original_failed=True)
+            page.locator('#param-length').fill('190.55')
+            page.locator('#version-name').fill('Unfinished name')
+            body=backup([record('cable_comb','Incoming')])
+            select(page,body,'slow-retry.json')
+            page.wait_for_function('()=>window.pendingDimensionReads.length===1')
+            timers(page,1)
+            page.locator('#retry-original').click()
+            expect(page.locator('#version-backup-message')).to_contain_text('import stopped')
+            timers(page)
+            stopped=page.locator('#version-backup-message').inner_text()
+            page.evaluate('()=>window.pendingDimensionReads[0]()')
+            expect(page.locator('#retry-original')).to_be_visible()
+            assert stored(page)==[original] and page.locator('#version-backup-message').inner_text()==stopped
+            assert page.locator('#param-length').input_value()=='190.55'
+            assert page.locator('#version-name').input_value()=='Unfinished name'
+            page.screenshot(path=str(ROOT/'review/cloud_version_read_lifecycle_desktop.png'))
+            page.set_viewport_size({'width':390,'height':600})
+            page.locator('#version-backup-message').scroll_into_view_if_needed()
+            assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+            page.screenshot(path=str(ROOT/'review/cloud_version_read_lifecycle_mobile.png'))
+            select(page,body)
+            imported(page)
+            assert len(stored(page))==2 and page.locator('#param-length').input_value()=='190.55'
+            page.unroute('**/models/parts_tray.stl')
+            page.locator('#retry-original').click()
+            expect(page.locator('#retry-original')).to_be_hidden()
+            assert page.locator('#download').is_disabled()
+            page.locator('#revert-parameters').click()
+            assert download(page,'download')[1]==(ASSETS/'models/parts_tray.stl').read_bytes()
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').click()
+            expect(page.locator('#download-cad')).to_be_enabled()
+            assert download(page,'download')[1]==fixtures['parts_tray'][2]
+            assert download(page,'download-cad')[1]==fixtures['parts_tray'][0]
+            assert download(page,'download-cad')[1]==fixtures['parts_tray'][0] and len(jobs)==2
+            read_lifecycle.append({'action':'retry','pending_timers_after_action':0,'late_records_ignored':True,
+                                   'new_backup_imported':True,'native_jobs':len(jobs),'exact_stl_and_cad':True})
+
+        def closed_native_chooser_ignores_backup_before_cached_history_restores(page):
+            original=record('parts_tray','Original')
+            jobs=setup(page,[original])
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').click()
+            expect(page.locator('#download-cad')).to_be_enabled()
+            assert download(page,'download-cad')[1]==fixtures['parts_tray'][0]
+            page.locator('#param-length').fill('190.55')
+            before=page.locator('#version-backup-message').inner_text()
+            reads=page.evaluate('window.fileReads')
+            session=page.context.new_cdp_session(page)
+            try:
+                with page.expect_file_chooser() as event:
+                    session.send('Page.setInterceptFileChooserDialog',{'enabled':True})
+                    page.locator('#import-versions').click()
+                page.locator('#close-editor').click()
+                expect(page.locator('#editor')).not_to_be_visible()
+                event.value.set_files({'name':'late-backup.json','mimeType':'application/json',
+                                      'buffer':backup([record('cable_comb','Ignored')])})
+            finally:
+                session.detach()
+            assert page.evaluate('window.fileReads')==reads and stored(page)==[original]
+            assert page.locator('#version-backup-message').inner_text()==before
+            page.evaluate('history.forward()')
+            expect(page.locator('#editor')).to_be_visible()
+            expect(page.locator('#param-length')).to_have_value('190.55')
+            assert page.locator('#download-cad').is_disabled()
+            page.locator('#revert-parameters').click()
+            expect(page.locator('#download-cad')).to_be_enabled()
+            assert page.locator('#version-backup-message').inner_text()==before
+            assert download(page,'download')[1]==fixtures['parts_tray'][2]
+            assert download(page,'download-cad')[1]==fixtures['parts_tray'][0] and len(jobs)==2
+            read_lifecycle.append({'action':'closed_chooser','reads_after_close':0,'feedback_unchanged':True,
+                                   'native_jobs':len(jobs),'exact_cached_stl_and_cad':True})
+
+        def newer_backup_releases_old_deadline_while_its_own_read_stays_active(page):
+            page.clock.install()
+            original=record('parts_tray','Original')
+            jobs=setup(page,[original])
+            try:
+                page.clock.pause_at(page.evaluate('Date.now()')+100)
+                page.locator('#param-length').fill('180.5')
+                select(page,backup([record('cable_comb','Obsolete')]),'slow-old.json')
+                page.wait_for_function('()=>window.pendingDimensionReads.length===1')
+                timers(page,1)
+                page.clock.fast_forward(10000)
+                select(page,backup([record('cable_comb','Current')]),'slow-current.json')
+                page.wait_for_function('()=>window.pendingDimensionReads.length===2')
+                timers(page,1)
+                page.clock.fast_forward(5001)
+                expect(page.locator('#version-backup-message')).to_have_text('Reading the version backup…')
+                page.evaluate('()=>window.pendingDimensionReads[0]()')
+                assert stored(page)==[original]
+                timers(page,1)
+                page.clock.fast_forward(9997)
+                expect(page.locator('#version-backup-message')).to_have_text('Reading the version backup…')
+                page.evaluate('()=>window.pendingDimensionReads[1]()')
+                imported(page)
+                timers(page)
+                assert len(stored(page))==2 and stored(page)[0]['name']=='Current'
+                expect(page.locator('#param-length')).to_have_value('180.5')
+            finally:
+                page.clock.resume()
+            page.locator('#rebuild').click()
+            expect(page.locator('#download-cad')).to_be_enabled()
+            assert download(page,'download')[1]==fixtures['parts_tray'][2]
+            assert download(page,'download-cad')[1]==fixtures['parts_tray'][0] and len(jobs)==2
+            read_lifecycle.append({'action':'new_file','pending_timers_after_action':1,'only_current_deadline_retained':True,
+                                   'pending_timers_after_release':0,'late_records_ignored':True,'native_jobs':len(jobs)})
 
         def quota_denial_and_fresh_export_reads_preserve_existing_records(page):
             setup(page, [record('parts_tray', 'Original')])
@@ -364,6 +518,9 @@ def main():
                      active_build_cancels_import_and_keeps_backup_controls_guarded,
                      field_edits_and_dimension_file_reads_stay_independent_of_library_imports,
                      model_navigation_and_close_discard_late_backup_reads,
+                     original_retry_stops_backup_wait_and_new_imports_keep_exact_downloads,
+                     closed_native_chooser_ignores_backup_before_cached_history_restores,
+                     newer_backup_releases_old_deadline_while_its_own_read_stays_active,
                      quota_denial_and_fresh_export_reads_preserve_existing_records,
                      mobile_keyboard_backup_and_file_chooser_keep_verified_downloads):
             context = browser.new_context(viewport={'width': 1440, 'height': 1080}, accept_downloads=True)
@@ -385,7 +542,7 @@ def main():
             finally:
                 context.close()
         browser.close()
-    report = dict(endpoint=BASE, passed=passed, failures=failures, max_file_bytes=65536, read_deadline_ms=15000,
+    report = dict(endpoint=BASE, passed=passed, failures=failures, read_lifecycle=read_lifecycle, max_file_bytes=65536, read_deadline_ms=15000,
                   transport='compiled assets and real CAD fixtures' if OFFLINE else 'local HTTP')
     (ROOT / 'review/cloud_version_backups_validation.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     assert not failures, report

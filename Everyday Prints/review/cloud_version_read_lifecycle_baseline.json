@@ -1,0 +1,33 @@
+{
+  "head": "c35fd122ee67f41364f15c6dd2223dec8572f621",
+  "observed": [
+    {
+      "action": "retry",
+      "pending_timers_before": 1,
+      "pending_timers_after_action": 1,
+      "pending_timers_after_late_bytes": 0,
+      "message_after_action": "Reading the version backup\u2026",
+      "message_after_late_bytes": "Reading the version backup\u2026",
+      "length": "190.55",
+      "records": 0
+    },
+    {
+      "action": "closed_chooser",
+      "message_before": "Export all names and measurements. Import merges a backup into this browser; conflicting names get a number.",
+      "reads_after_close": 1,
+      "message_after": "Reading the version backup\u2026",
+      "message_after_reopen": "Reading the version backup\u2026"
+    },
+    {
+      "action": "export",
+      "pending_timers_before": 1,
+      "pending_timers_after_action": 1,
+      "pending_timers_after_late_bytes": 0,
+      "message_after_action": "Version backup exported. Keep this file to restore names and measurements in another browser.",
+      "message_after_late_bytes": "Version backup exported. Keep this file to restore names and measurements in another browser.",
+      "length": "190.55",
+      "records": 1
+    }
+  ],
+  "transport": "compiled production assets, intercepted native file chooser, held JSON bytes and controlled original preview failures"
+}
