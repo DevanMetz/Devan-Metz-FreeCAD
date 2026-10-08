@@ -367,3 +367,13 @@ each action, and preserve saved data on corrupt reads or failed writes. Offer th
 portable Save dimensions flow for storage failures. Named actions must supersede
 older file imports, keep late preview feedback current, and stay disabled during
 CAD work. Review desktop/mobile controls and keyboard focus.
+Provide a portable JSON backup for the complete named-version library, including
+names, millimeter parameters and canonical assembly quantities. Validate its
+format version, all model schemas and UTF-8 byte size before merging. Preserve
+current entries and identities, assign new local identities to imported entries,
+number conflicting names and skip repeated imports. Capacity, malformed records
+and storage failures must reject atomically. Importing a library must keep editor
+fields, preview correspondence, cached CAD and dimensions-file feedback. Bound
+local reads to fifteen seconds, supersede them through newer named actions and
+file selections, and discard late results after navigation, close or CAD work.
+Keep backup controls disabled during CAD work and review keyboard/mobile use.

@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **268 focused browser
-checks across twenty-three suites**, the **53-model catalog and image smoke test**,
-**63 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **282 focused browser
+checks across twenty-four suites**, the **53-model catalog and image smoke test**,
+**69 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -82,6 +82,20 @@ refresh/history, late previews, and keyboard/mobile use. Seven unit tests cover
 all fifty-three defaults, real exported decimals/lists, canonical kit quantities,
 duplicate names, caps, corrupt data, failed writes and actions from another view.
 Desktop and mobile layouts were reviewed. Evidence is under `review/cloud_versions_*`.
+Named versions can now be exported together and restored in another browser with
+a versioned JSON backup. Imports validate every entry before saving, preserve
+existing entries, number conflicting names and skip identical repeats, including
+previously numbered conflicts. Identities are local, canonical assembly quantities
+are restored, and stored geometry details cannot replace verified meshes. Backups
+enforce the 64 KiB UTF-8 and twenty-version limits. Failed reads or writes preserve
+data; slow reads recover after fifteen seconds, with late results discarded after
+newer actions, model navigation, close or CAD work. Editor measurements, preview,
+cached CAD and dimensions-file feedback stay independent. Fourteen browser checks
+and six additional unit checks cover these paths, exact exports and rebuilt list
+meshes, all fifty-three defaults, storage failures and Unicode/BOM boundaries.
+The malformed-file test now clones its records, preventing contaminated defaults
+from reaching later checks. Desktop and mobile backup controls were visually
+reviewed. Evidence is under `review/cloud_version_backups_*`.
 
 ## Complete design inventory
 

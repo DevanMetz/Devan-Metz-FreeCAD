@@ -1,0 +1,23 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "export_preserves_names_exact_values_and_canonical_inventory",
+    "imports_keep_dirty_fields_preview_and_cached_cad",
+    "exported_file_restores_in_another_browser_and_builds_exact_list_mesh",
+    "conflicting_names_are_numbered_and_repeated_imports_do_not_write",
+    "malformed_or_mixed_backups_reject_atomically",
+    "capacity_failure_keeps_all_records_then_removal_allows_import",
+    "exact_byte_boundary_bom_and_oversize_keep_the_reader_bounded",
+    "unreadable_and_stalled_reads_recover_without_late_storage_changes",
+    "newer_named_actions_supersede_a_pending_backup",
+    "active_build_cancels_import_and_keeps_backup_controls_guarded",
+    "field_edits_and_dimension_file_reads_stay_independent_of_library_imports",
+    "model_navigation_and_close_discard_late_backup_reads",
+    "quota_denial_and_fresh_export_reads_preserve_existing_records",
+    "mobile_keyboard_backup_and_file_chooser_keep_verified_downloads"
+  ],
+  "failures": [],
+  "max_file_bytes": 65536,
+  "read_deadline_ms": 15000,
+  "transport": "compiled assets and real CAD fixtures"
+}

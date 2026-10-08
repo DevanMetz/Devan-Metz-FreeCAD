@@ -52,3 +52,5 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .version-actions .text-button{min-height:44px;font-size:12px}
 .version-save input[aria-invalid=true]{border-color:#b03d25}
 #version-message{overflow-wrap:anywhere}
+.version-backups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+#version-backup-message{overflow-wrap:anywhere}

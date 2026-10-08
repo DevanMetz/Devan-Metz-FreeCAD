@@ -5,7 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
-import { readVersions, removeVersion, saveVersion, versionName } from './versions.js';
+import { MAX_VERSIONS_BYTES, importVersionBackup, readVersions, removeVersion, saveVersion, versionBackup, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -21,6 +21,8 @@ let originalFeedback;
 let shareRequest = 0;
 let buildFocus;
 let versions = [];
+let versionsRead = 0;
+let versionsLoading = false;
 const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
@@ -346,7 +348,7 @@ function setBusy(busy) {
   const focused = document.activeElement;
   const restoreFocus = !busy && focused === $('stop-build') && buildFocus?.item === state.item;
   if (busy) buildFocus = { element: focused, item: state.item };
-  if (busy) { clearShare(); clearDimensionsError(); clearTransfer(); }
+  if (busy) { clearShare(); clearDimensionsError(); clearTransfer(); supersedeVersionRead(); }
   state.busy = busy;
   $('rebuild').disabled = busy;
   $('stop-build').hidden = !busy;
@@ -505,6 +507,7 @@ async function displayMesh(buffer, metadata, parameters, epoch, preserveFileErro
 async function openModel(name, suppliedParameters, { navigation = true, saved, parameterError, fromFile = false } = {}) {
   const item = state.models.find(model => model.name === name);
   if (!item) return;
+  supersedeVersionRead();
   $('link-notice').hidden = true;
   if (navigation) rememberPage(true);
   abort?.abort();
@@ -734,6 +737,8 @@ function versionControls() {
   const selected = versions.some(version => version.id === $('version-choice').value);
   $('load-version').disabled = state.busy || !selected;
   $('remove-version').disabled = state.busy || !selected;
+  $('export-versions').disabled = state.busy || !versions.length;
+  $('import-versions').disabled = state.busy;
 }
 
 function renderVersions(selected = $('version-choice').value) {
@@ -761,6 +766,7 @@ function refreshVersions() {
 
 function saveCurrentVersion() {
   if (state.busy || !state.item) return;
+  supersedeVersionRead();
   let name, parameters;
   try { name = versionName($('version-name').value); }
   catch (error) {
@@ -781,6 +787,45 @@ function saveCurrentVersion() {
     message('Current dimensions saved as a named version.');
   } catch (error) {
     versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'This version could not be saved in this browser. Use Save dimensions to keep a file.' : error.message, true);
+  }
+}
+
+function versionBackupMessage(text, error = false) {
+  $('version-backup-message').textContent = text;
+  $('version-backup-message').classList.toggle('error', error);
+}
+
+function supersedeVersionRead() {
+  ++versionsRead;
+  if (versionsLoading) versionBackupMessage('Backup import stopped. Choose the file again to import its versions.');
+  versionsLoading = false;
+}
+
+async function loadVersionBackup(file) {
+  if (!file || state.busy) return;
+  const epoch = state.epoch, read = ++versionsRead;
+  const current = () => dialog.open && state.epoch === epoch && read === versionsRead && !state.busy;
+  versionsLoading = true;
+  versionBackupMessage('Reading the version backup…');
+  try {
+    if (file.size > MAX_VERSIONS_BYTES) throw new Error('The version backup exceeds 64 KiB. Choose an Everyday Prints versions backup.');
+    let text, timer;
+    const timedOut = new Error('Reading the version backup took too long. Choose it again.');
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(timedOut), 15000); });
+    try { text = await Promise.race([file.text(), timeout]); }
+    catch (error) {
+      if (error === timedOut) throw error;
+      throw new Error('The version backup could not be read. Choose it again.');
+    } finally { clearTimeout(timer); }
+    if (!current()) return;
+    const result = importVersionBackup(localStorage, state.models, text);
+    versions = result.records;
+    renderVersions();
+    versionBackupMessage(result.added ? `Imported ${result.added} ${result.added === 1 ? 'version' : 'versions'}.${result.skipped ? ` ${result.skipped} already saved.` : ''} Current measurements are kept.` : 'These versions are already saved. Current measurements are kept.');
+  } catch (error) {
+    if (current()) versionBackupMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The backup could not be imported. Browser storage is unavailable. Existing versions and measurements are kept.' : error.message, true);
+  } finally {
+    if (read === versionsRead) versionsLoading = false;
   }
 }
 
@@ -950,6 +995,7 @@ $('close-editor').addEventListener('click', closeEditor);
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeEditor(); });
 dialog.addEventListener('close', () => {
   if (dialog.open) return;
+  supersedeVersionRead();
   clearShare();
   abort?.abort();
   ++state.epoch;
@@ -1017,6 +1063,7 @@ $('version-name').addEventListener('keydown', event => { if (event.key === 'Ente
 $('version-choice').addEventListener('change', versionControls);
 $('load-version').addEventListener('click', async () => {
   if (state.busy) return;
+  supersedeVersionRead();
   const id = $('version-choice').value;
   try {
     versions = readVersions(localStorage, state.models);
@@ -1033,6 +1080,7 @@ $('load-version').addEventListener('click', async () => {
 });
 $('remove-version').addEventListener('click', () => {
   if (state.busy) return;
+  supersedeVersionRead();
   try {
     versions = removeVersion(localStorage, state.models, $('version-choice').value);
     renderVersions('');
@@ -1041,6 +1089,23 @@ $('remove-version').addEventListener('click', () => {
   } catch (error) {
     versionMessage(['SecurityError', 'QuotaExceededError'].includes(error.name) ? 'The version could not be removed. Browser storage is unavailable.' : error.message, true);
   }
+});
+$('export-versions').addEventListener('click', () => {
+  if (state.busy) return;
+  supersedeVersionRead();
+  try {
+    const text = versionBackup(localStorage, state.models);
+    saveDownload(new Blob([text], { type: 'application/json' }), 'everyday-prints-versions.json');
+    versionBackupMessage('Version backup exported. Keep this file to restore names and measurements in another browser.');
+  } catch (error) {
+    versionBackupMessage(error.name === 'SecurityError' ? 'Saved versions are unavailable in this browser.' : error.message, true);
+  }
+});
+$('import-versions').addEventListener('click', () => { if (!state.busy) $('versions-file').click(); });
+$('versions-file').addEventListener('change', event => {
+  const file = event.target.files[0];
+  event.target.value = '';
+  loadVersionBackup(file);
 });
 $('share').addEventListener('click', async () => {
   if (supersedeDimensionsRead() && !state.busy) markDirty();

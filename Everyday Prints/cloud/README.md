@@ -89,6 +89,25 @@ persistence, fine decimals, lists, assemblies, history, exact STL/CAD reuse,
 validation, limits, storage failures, late previews/imports and mobile keyboard
 controls. Evidence and reviewed layouts are under `../review/cloud_versions_*`.
 
+Export versions downloads `everyday-prints-versions.json`, containing all names
+and canonical dimensions with format `everyday-prints-versions` and version 1.
+Import versions validates the whole backup before merging it into current browser
+storage. Entries get fresh local identities; existing entries retain theirs.
+Conflicting names within a model receive a numeric suffix, and repeated imports
+skip identical entries, including previously numbered conflicts. A failed read,
+invalid record, storage error or 20-version capacity failure keeps existing data.
+All backup transfers are bounded to 64 KiB of UTF-8, with BOM files supported.
+
+Imports save versions for later opening and preserve editor fields, verified
+previews, CAD caches and model-file feedback. Stalled local reads recover after
+15 seconds. A newer named action or file selection supersedes older reads;
+model navigation, closing the editor and CAD work also discard late imports.
+Backup controls are disabled during CAD work. Fourteen browser checks cover
+portable exports, a second browser, exact list/STL and cached CAD correspondence,
+conflict/repeat handling, atomic rejection, limits, stalled reads, overlapping
+actions, storage failures and desktop/mobile keyboard use. Evidence and reviewed
+layouts are under `../review/cloud_version_backups_*`.
+
 CAD and kit downloads run the builder with the saved dimensions. A first build
 after inactivity includes Container startup time. The first installation
 after changing the runtime bundle may take several minutes. Container usage is
@@ -160,6 +179,7 @@ python verify_dimensions_ui.py
 python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
 python verify_versions_ui.py
+python verify_version_backups_ui.py
 python verify_dimensions_preview_ui.py
 python verify_original_retry_ui.py
 python verify_share_ui.py
@@ -649,8 +669,10 @@ real custom/kit files, binary facet layout, finite values, positive extents,
 dimension agreement, tessellation tolerance, and valid binary headers and
 attribute bytes. Seven named-version checks cover all 53 defaults, exact exported
 decimals and lists, canonical assembly inventory, duplicate names, storage caps,
-corrupt records, failed writes and changes saved by another view. All sixty-three
-unit tests pass.
+corrupt records, failed writes and changes saved by another view. Six more checks
+cover portable backups for all 53 models, conflict numbering and repeated imports,
+Unicode names, exact decimals/lists, canonical inventory, atomic rejection,
+UTF-8/BOM boundaries, capacity and failed writes. All sixty-nine unit tests pass.
 
 ## API
 

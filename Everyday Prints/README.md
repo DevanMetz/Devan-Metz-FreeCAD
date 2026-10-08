@@ -22,6 +22,10 @@ measurements before building, reopen a part or assembly version, or remove a
 version while keeping current fields and files. Changed versions require Update
 preview; matching versions can reuse verified STL and cached CAD downloads.
 Save dimensions keeps a portable backup outside browser storage.
+Export versions saves all version names and measurements in one JSON backup.
+Import versions merges that file into another browser, keeps existing entries,
+numbers conflicting names and skips already saved versions. Imports leave the
+current measurements and verified files in the editor.
 Unfinished measurements can recover after refreshing the same view in this tab,
 including blank fields and invalid lists. Recovered custom dimensions still need
 Update preview. Save dimensions keeps a portable file.
