@@ -48,6 +48,19 @@ Printer dimensions persist in this browser when storage is available; Clear
 build volume removes them. These settings do not edit model parameters or
 trigger CAD requests. Brims and printer clearances remain slicer considerations.
 
+Saved printer settings also update other open tabs. Idle fields follow the latest
+valid settings or clearing; focused, incomplete or unsaved entries stay in place.
+Use saved build volume reads the current settings afresh and focuses Width.
+Malformed, oversized or unavailable storage keeps the current check available
+with retry guidance. External updates never write back or change model fields,
+version Undo, build progress, preview files or cached CAD downloads.
+
+`verify_printer_sync_ui.py --offline` exercises twelve real two-tab scenarios,
+including queued events, corrupt and denied reads, failed writes, active builds,
+late previews, saved versions, early catalog loading, history and refresh,
+assembly components and mobile keyboard use. Evidence and reviewed layouts are
+under `../review/cloud_printer_sync_*`.
+
 `verify_printer_fit_ui.py --offline` checks original and custom meshes, exact
 boundaries, bed rotation and height, measured STL extents versus CAD rounding,
 dirty fields, failed previews, missing graphics, cached CAD files, component
@@ -241,6 +254,7 @@ python verify_field_revert_ui.py
 python verify_dimensions_ui.py
 python verify_import_actions_ui.py
 python verify_printer_fit_ui.py
+python verify_printer_sync_ui.py
 python verify_versions_ui.py
 python verify_version_backups_ui.py
 python verify_version_edits_ui.py

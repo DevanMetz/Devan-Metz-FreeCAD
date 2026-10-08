@@ -10,9 +10,9 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **334 focused browser
-checks across twenty-eight suites**, the **53-model catalog and image smoke test**,
-**79 unit tests**, TypeScript checks and the production build. File chunks are
+The latest local customizer and download build passes **346 focused browser
+checks across twenty-nine suites**, the **53-model catalog and image smoke test**,
+**84 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
 reuses its buffers. These changes are included in the collection archive.
 The latest measurements can recover after a refresh in the same tab, including
@@ -69,6 +69,19 @@ exact dimensions, rotation and height limits, measured mesh versus CAD rounding,
 preview failures, unavailable graphics, CAD reuse, components, history, refresh,
 storage failures, pending work and mobile keyboard downloads. Desktop and mobile
 layouts were visually reviewed. Evidence is under `review/cloud_printer_fit_*`.
+Saved printer build volumes now follow changes from real browser tabs. Idle
+entries update or clear automatically; focused, incomplete or unsaved entries
+stay in place with Use saved build volume to apply the latest stored settings.
+Events reread bounded, validated storage and never echo a write. Malformed or
+unavailable storage keeps the current volume and offers an accessible retry.
+Local saves resolve deferred changes; failed writes keep the saved profile.
+Twelve browser checks cover queued and unrelated events, raw formatting, active
+builds, late previews and Stop, exact custom STL/CAD filenames and bytes, version
+Undo, early loading, closed editors, history, refresh and assemblies. Desktop
+and mobile layouts were visually reviewed. Five unit checks cover exact numeric
+values, record limits, bad reads and fresh storage. Evidence is under
+`review/cloud_printer_sync_*`.
+
 Saved dimensions now offers up to twenty named versions in this browser. Valid
 unbuilt measurements can be saved and reopened across models, including ordered
 lists and assembly parameters. Changed versions require a new verified preview;

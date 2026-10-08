@@ -5,6 +5,7 @@ import { MAX_DIMENSIONS_BYTES, dimensionParameters, dimensionRecord, parameterEr
 import { clipboardQueue } from './clipboard.js';
 import { loadDraft, saveDraft } from './drafts.js';
 import { verifyMesh } from './mesh.js';
+import { PRINTER_STORAGE, readPrinterVolume, validPrinterVolume } from './printer.js';
 import { MAX_VERSIONS_BYTES, VERSIONS_KEY, importVersionBackup, readVersions, removeVersion, renameVersion, replaceVersion, saveVersion, undoVersionChange, versionBackup, versionName } from './versions.js';
 
 const $ = id => document.getElementById(id);
@@ -29,12 +30,12 @@ const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
 const BUILD_WAIT_MS = 15 * 60 * 1000;
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
-const PRINTER_STORAGE = 'everydayPrints.printerVolume';
 const printerInputs = ['printer-width', 'printer-depth', 'printer-height'].map($);
+let printerStored = null;
 
 function printerVolume() {
   const volume = printerInputs.map(input => input.valueAsNumber);
-  return volume.every(value => Number.isFinite(value) && value > 0) ? volume : null;
+  return validPrinterVolume(volume) ? volume : null;
 }
 
 function updatePrinterFit() {
@@ -77,11 +78,33 @@ function updatePrinterFit() {
   }
 }
 
+function printerSyncMessage(text = '', error = false, apply = false) {
+  const note = $('printer-sync-message');
+  note.textContent = text;
+  note.hidden = !text;
+  note.classList.toggle('error', error);
+  $('apply-printer-volume').hidden = !apply;
+}
+
+function samePrinterForm(volume) {
+  return volume ? JSON.stringify(printerVolume()) === JSON.stringify(volume)
+    : printerInputs.every(input => input.value === '' && !input.validity.badInput);
+}
+
+function applyPrinterVolume(volume) {
+  printerStored = volume;
+  printerInputs.forEach((input, axis) => { input.value = volume?.[axis] ?? ''; });
+  $('printer-profile-note').textContent = volume ? 'Build volume saved in this browser.' : 'Use your printer’s usable build volume.';
+  updatePrinterFit();
+}
+
 function savePrinterVolume() {
   try {
     const volume = printerVolume();
     if (volume) localStorage.setItem(PRINTER_STORAGE, JSON.stringify(volume));
     else localStorage.removeItem(PRINTER_STORAGE);
+    printerStored = volume;
+    printerSyncMessage();
     $('printer-profile-note').textContent = volume ? 'Build volume saved in this browser.' : 'Use your printer’s usable build volume.';
   } catch {
     $('printer-profile-note').textContent = 'Build volume stays here while this page is open.';
@@ -90,15 +113,30 @@ function savePrinterVolume() {
 }
 
 function restorePrinterVolume() {
-  try {
-    const raw = localStorage.getItem(PRINTER_STORAGE);
-    const volume = raw && raw.length <= 256 ? JSON.parse(raw) : null;
-    if (Array.isArray(volume) && volume.length === 3 && volume.every(value => typeof value === 'number' && Number.isFinite(value) && value > 0)) {
-      printerInputs.forEach((input, axis) => { input.value = volume[axis]; });
-      $('printer-profile-note').textContent = 'Build volume saved in this browser.';
-    }
-  } catch { /* Printer checks remain available when saved settings cannot be read. */ }
+  try { applyPrinterVolume(readPrinterVolume(localStorage)); }
+  catch { /* Printer checks remain available when saved settings cannot be read. */ }
   updatePrinterFit();
+}
+
+function syncPrinterVolume(event) {
+  if (event.key !== PRINTER_STORAGE && event.key !== null) return;
+  try {
+    if (event.storageArea !== localStorage) return;
+    const volume = readPrinterVolume(localStorage);
+    const recovering = $('printer-sync-message').classList.contains('error');
+    if (JSON.stringify(volume) === JSON.stringify(printerStored) && !recovering) return;
+    const editing = printerInputs.includes(document.activeElement) || !samePrinterForm(printerStored);
+    if (editing) {
+      printerStored = volume;
+      $('printer-profile-note').textContent = 'Current entries are kept in this tab.';
+      printerSyncMessage('Saved build volume changed in another tab. Current entries are kept. Use saved build volume to apply the latest settings.', false, true);
+    } else {
+      applyPrinterVolume(volume);
+      printerSyncMessage(recovering ? 'Saved printer settings are available again.' : 'Build volume updated from another tab. Model measurements and files are kept.');
+    }
+  } catch (error) {
+    printerSyncMessage(error.name === 'SecurityError' ? 'Saved printer settings are unavailable in this browser. Current build volume is kept. Try Use saved build volume again.' : error.message, true, true);
+  }
 }
 
 function historyEntry() {
@@ -1077,6 +1115,15 @@ $('parameter-fields').addEventListener('click', event => {
 });
 $('parameters').addEventListener('submit', rebuild);
 printerInputs.forEach(input => input.addEventListener('input', savePrinterVolume));
+$('apply-printer-volume').addEventListener('click', () => {
+  try {
+    applyPrinterVolume(readPrinterVolume(localStorage));
+    printerSyncMessage('Saved build volume applied. Model measurements and files are kept.');
+    printerInputs[0].focus();
+  } catch (error) {
+    printerSyncMessage(error.name === 'SecurityError' ? 'Saved printer settings are unavailable in this browser. Current build volume is kept. Try again.' : error.message, true, true);
+  }
+});
 $('clear-printer').addEventListener('click', () => {
   printerInputs.forEach(input => { input.value = ''; });
   savePrinterVolume();
@@ -1357,6 +1404,7 @@ async function start() {
   await restoreLocation();
 }
 window.addEventListener('popstate', restoreLocation);
+window.addEventListener('storage', syncPrinterVolume);
 window.addEventListener('storage', event => {
   if (!state.models.length || (event.key !== VERSIONS_KEY && event.key !== null)) return;
   const focused = document.activeElement;

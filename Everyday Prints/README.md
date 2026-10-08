@@ -85,6 +85,10 @@ depth and height. It identifies a possible 90° turn on the bed and keeps the la
 verified preview distinct from unbuilt edits. Build volume is saved in this
 browser; reference assemblies direct checks to their printable components.
 Account for brims and printer clearances in your slicer.
+Saved build volumes follow changes from other open tabs. Active or incomplete
+printer entries are kept until Use saved build volume applies the latest values.
+Unreadable saved settings preserve the current check and offer retry guidance.
+
 Keyboard focus moves to Stop waiting when a focused build control is disabled,
 then returns after the request ends. Editing another field keeps its focus.
 Unavailable model links explain the problem and recover to the library, where

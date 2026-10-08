@@ -1,0 +1,17 @@
+{
+  "saved_volume": [
+    80,
+    80,
+    20
+  ],
+  "displayed_volume": [
+    200,
+    200,
+    30
+  ],
+  "fit": "fits",
+  "storage_events": [
+    "[80,80,20]"
+  ],
+  "stale_profile": true
+}

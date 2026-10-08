@@ -275,7 +275,7 @@ def main():
                 control = page.locator('#printer-' + axis)
                 box = control.bounding_box()
                 assert box and box['height'] >= 44 and box['width'] >= 44, box
-                assert control.get_attribute('aria-describedby') == 'printer-profile-note printer-fit-result'
+                assert control.get_attribute('aria-describedby') == 'printer-profile-note printer-fit-result printer-sync-message'
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
             assert page.locator('#editor').evaluate('(el) => el.scrollWidth <= el.clientWidth')
             page.screenshot(path=str(ROOT / 'review/cloud_printer_fit_mobile.png'))

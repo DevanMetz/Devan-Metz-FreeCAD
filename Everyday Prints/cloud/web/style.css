@@ -61,3 +61,6 @@ dialog[open]{display:flex;flex-direction:column;overflow:hidden}
 .parameter-preview{display:flex;align-items:center;flex-wrap:wrap;gap:0 8px;margin-top:4px}
 .parameter-preview small{flex:1 1 75px;min-width:0;overflow-wrap:anywhere;color:var(--muted);font-size:11px}
 .parameter-preview .text-button{min-width:44px;min-height:44px;font-size:11px;text-align:left}
+
+.printer-check .secondary{min-height:44px;margin:10px 0}
+#printer-sync-message.error{color:#b03d25}

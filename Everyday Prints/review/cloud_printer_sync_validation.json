@@ -1,0 +1,20 @@
+{
+  "endpoint": "https://everyday-prints.test",
+  "passed": [
+    "idle_tabs_follow_real_ui_edits_clear_and_exact_original_files",
+    "focused_entries_keep_raw_text_and_manual_apply_reads_fresh_settings",
+    "incomplete_invalid_drafts_survive_then_local_save_or_clear_resolves_notice",
+    "unrelated_session_and_canonical_noop_events_preserve_feedback_and_formatting",
+    "queued_events_and_obsolete_payloads_use_current_storage",
+    "corrupt_oversized_denied_reads_keep_data_and_recover_without_writes",
+    "failed_local_saves_keep_deferred_notice_and_saved_profile_apply_needs_no_write",
+    "active_preview_and_cached_cad_keep_progress_focus_mesh_and_filenames",
+    "late_original_preview_and_stopped_build_follow_latest_profile_only",
+    "version_undo_typed_names_and_model_errors_stay_independent",
+    "early_catalog_closed_editor_history_refresh_and_assemblies_use_current_profile",
+    "mobile_desktop_keyboard_apply_is_bounded_accessible_and_keeps_files"
+  ],
+  "failures": [],
+  "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+  "transport": "real shared-context browser tabs, compiled assets and real CAD fixtures"
+}
