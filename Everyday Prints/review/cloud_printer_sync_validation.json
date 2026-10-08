@@ -12,7 +12,11 @@
     "late_original_preview_and_stopped_build_follow_latest_profile_only",
     "version_undo_typed_names_and_model_errors_stay_independent",
     "early_catalog_closed_editor_history_refresh_and_assemblies_use_current_profile",
-    "mobile_desktop_keyboard_apply_is_bounded_accessible_and_keeps_files"
+    "mobile_desktop_keyboard_apply_is_bounded_accessible_and_keeps_files",
+    "incomplete_edits_keep_saved_volume_other_tab_and_refresh",
+    "complete_edits_publish_once_and_all_empty_fields_clear",
+    "native_bad_input_keeps_saved_settings_until_explicit_clear",
+    "partial_edits_keep_deferred_settings_build_progress_and_cached_cad"
   ],
   "failures": [],
   "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",

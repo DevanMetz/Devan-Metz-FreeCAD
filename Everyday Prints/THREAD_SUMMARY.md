@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **361 focused browser
+The latest local customizer and download build passes **365 focused browser
 checks across thirty suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -106,6 +106,17 @@ Undo, early loading, closed editors, history, refresh and assemblies. Desktop
 and mobile layouts were visually reviewed. Five unit checks cover exact numeric
 values, record limits, bad reads and fresh storage. Evidence is under
 `review/cloud_printer_sync_*`.
+
+Incomplete or invalid printer edits now keep the last saved build volume. The
+before-fix two-tab probe showed a temporarily empty width deleting the profile
+and clearing the other tab. Complete positive measurements still publish, and
+Clear build volume or emptying all three fields still removes saved settings.
+Native bad input such as 1e keeps the profile and exposes its invalid state.
+Four additional real-tab checks cover refresh recovery, exact write counts,
+manual and explicit clearing, deferred external choices, pending builds and
+cached CAD downloads. The synchronization report now has sixteen passing
+checks; model measurements, history and verified files are preserved. Baseline
+evidence and reviewed layouts are under `review/cloud_printer_edit_*`.
 
 Saved dimensions now offers up to twenty named versions in this browser. Valid
 unbuilt measurements can be saved and reopened across models, including ordered

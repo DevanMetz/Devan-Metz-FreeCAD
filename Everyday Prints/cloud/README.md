@@ -64,6 +64,11 @@ Printer dimensions persist in this browser when storage is available; Clear
 build volume removes them. These settings do not edit model parameters or
 trigger CAD requests. Brims and printer clearances remain slicer considerations.
 
+Incomplete or invalid printer entries keep the last complete saved build volume,
+including in other tabs and after refresh. Complete three positive measurements
+to save changes. Clear build volume or empty all three fields to remove them;
+a partly typed number such as 1e still counts as an invalid entry.
+
 Saved printer settings also update other open tabs. Idle fields follow the latest
 valid settings or clearing; focused, incomplete or unsaved entries stay in place.
 Use saved build volume reads the current settings afresh and focuses Width.
@@ -71,11 +76,14 @@ Malformed, oversized or unavailable storage keeps the current check available
 with retry guidance. External updates never write back or change model fields,
 version Undo, build progress, preview files or cached CAD downloads.
 
-`verify_printer_sync_ui.py --offline` exercises twelve real two-tab scenarios,
+`verify_printer_sync_ui.py --offline` exercises sixteen real two-tab scenarios,
 including queued events, corrupt and denied reads, failed writes, active builds,
 late previews, saved versions, early catalog loading, history and refresh,
 assembly components and mobile keyboard use. Evidence and reviewed layouts are
-under `../review/cloud_printer_sync_*`.
+under `../review/cloud_printer_sync_*`. Four additional checks cover incomplete
+and native invalid entries, valid saves and clearing, refresh, deferred external
+settings, pending builds and exact cached CAD files. The before-fix probe and
+reviewed layouts are under `../review/cloud_printer_edit_*`.
 
 `verify_printer_fit_ui.py --offline` checks original and custom meshes, exact
 boundaries, bed rotation and height, measured STL extents versus CAD rounding,

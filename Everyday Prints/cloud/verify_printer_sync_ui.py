@@ -446,6 +446,153 @@ def main():
             fit(page, 'rotate')
             assert download(page) == original and not jobs
 
+        def peer_barrier(page, peer):
+            peer.evaluate("""() => {
+              if (window.printerEditCheckpoints !== undefined) return;
+              window.printerEditCheckpoints = 0;
+              addEventListener('storage', event => {
+                if (event.key === 'everydayPrints.printerEditCheckpoint') window.printerEditCheckpoints++;
+              });
+            }""")
+            count = peer.evaluate('window.printerEditCheckpoints')
+            page.evaluate("localStorage.setItem('everydayPrints.printerEditCheckpoint', crypto.randomUUID())")
+            peer.wait_for_function('count => window.printerEditCheckpoints > count', arg=count)
+            peer.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+
+        def incomplete_edits_keep_saved_volume_other_tab_and_refresh(page):
+            peer, jobs = setup(page)
+            original = download(page)
+            page.locator('#param-length').fill('')
+            before = snapshot(page)
+            for value in ('', '0', '-1'):
+                page.locator('#printer-width').fill(value)
+                peer_barrier(page, peer)
+                volume(peer, [200, 200, 30])
+                assert json.loads(page.evaluate('key => localStorage.getItem(key)', KEY)) == [200, 200, 30]
+                assert page.evaluate('window.printerWrites') == 0 and snapshot(page) == before
+                expect(page.locator('#printer-width')).to_have_attribute('aria-invalid', 'true')
+                expect(page.locator('#printer-profile-note')).to_contain_text('Complete a positive')
+                fit(page, '')
+            page.locator('#printer-width').fill('')
+            page.locator('#printer-check').scroll_into_view_if_needed()
+            page.screenshot(path=str(ROOT / 'review/cloud_printer_edit_desktop.png'))
+            page.reload()
+            expect(page.locator('#param-length')).to_have_value('')
+            page.locator('#printer-check summary').click()
+            volume(page, [200, 200, 30])
+            fit(page, 'fits')
+            expect(page.locator('#download')).to_be_disabled()
+            page.locator('#revert-parameters').click()
+            expect(page.locator('#download')).to_be_enabled()
+            assert download(page) == original and not jobs
+
+        def complete_edits_publish_once_and_all_empty_fields_clear(page):
+            peer, jobs = setup(page)
+            original = download(page)
+            before = snapshot(page)
+            for axis, value in (('height', ''), ('depth', ''), ('width', '185'), ('depth', '110')):
+                page.locator('#printer-' + axis).fill(value)
+            peer_barrier(page, peer)
+            volume(peer, [200, 200, 30])
+            assert page.evaluate('window.printerWrites') == 0
+            page.locator('#printer-height').fill('30')
+            peer_barrier(page, peer)
+            volume(peer, [185, 110, 30])
+            assert page.evaluate('window.printerWrites') == 1
+            expect(page.locator('#printer-profile-note')).to_contain_text('Build volume saved')
+            for axis in ('width', 'depth'):
+                page.locator('#printer-' + axis).fill('')
+            peer_barrier(page, peer)
+            volume(peer, [185, 110, 30])
+            assert page.evaluate('window.printerWrites') == 1
+            page.locator('#printer-height').fill('')
+            peer_barrier(page, peer)
+            assert values(page) == values(peer) == ['', '', '']
+            assert page.evaluate('key => localStorage.getItem(key)', KEY) is None
+            assert page.evaluate('window.printerWrites') == 2
+            fit(peer, '')
+            for axis, value in zip(AXES, (190, 120, 35)):
+                page.locator('#printer-' + axis).fill(str(value))
+            peer_barrier(page, peer)
+            volume(peer, [190, 120, 35])
+            assert page.evaluate('window.printerWrites') == 3 and snapshot(page) == before
+            assert download(page) == original and not jobs
+
+        def native_bad_input_keeps_saved_settings_until_explicit_clear(page):
+            peer, jobs = setup(page)
+            original = download(page)
+            page.set_viewport_size(dict(width=390, height=844))
+            page.locator('#printer-height').fill('')
+            page.locator('#printer-depth').fill('')
+            field = page.locator('#printer-width')
+            field.press('Control+A')
+            field.press_sequentially('1e')
+            assert field.evaluate('(el) => el.validity.badInput') and field.input_value() == ''
+            peer_barrier(page, peer)
+            volume(peer, [200, 200, 30])
+            assert json.loads(page.evaluate('key => localStorage.getItem(key)', KEY)) == [200, 200, 30]
+            assert page.evaluate('window.printerWrites') == 0
+            expect(field).to_have_attribute('aria-invalid', 'true')
+            fit(page, '')
+            field.scroll_into_view_if_needed()
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            page.screenshot(path=str(ROOT / 'review/cloud_printer_edit_mobile.png'))
+            page.locator('#clear-printer').focus()
+            page.keyboard.press('Enter')
+            peer_barrier(page, peer)
+            assert values(page) == values(peer) == ['', '', '']
+            assert not field.evaluate('(el) => el.validity.badInput')
+            expect(field).to_have_attribute('aria-invalid', 'false')
+            expect(field).to_be_focused()
+            assert page.evaluate('key => localStorage.getItem(key)', KEY) is None
+            assert page.evaluate('window.printerWrites') == 1
+            assert download(page) == original and not jobs
+
+        def partial_edits_keep_deferred_settings_build_progress_and_cached_cad(page):
+            page.add_init_script(HOLD)
+            peer, jobs = setup(page)
+            page.locator('#printer-width').fill('')
+            page.locator('#param-length').focus()
+            count = page.evaluate('window.printerEvents')
+            for axis, value in zip(AXES, (160, 110, 30)):
+                peer.locator('#printer-' + axis).fill(str(value))
+            settle(page, count + 2)
+            page.locator('#printer-depth').fill('0')
+            peer_barrier(page, peer)
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            expect(page.locator('#printer-sync-message')).to_contain_text('Current entries are kept')
+            volume(peer, [160, 110, 30])
+            assert page.evaluate('window.printerWrites') == 0
+            page.locator('#apply-printer-volume').focus()
+            page.keyboard.press('Enter')
+            volume(page, [160, 110, 30])
+            expect(page.locator('#apply-printer-volume')).to_be_hidden()
+            page.evaluate('window.holdPrinterBuild = true')
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').click()
+            page.wait_for_function("() => typeof window.releasePrinterBuild === 'function'")
+            before = snapshot(page)
+            page.locator('#printer-height').fill('')
+            count = page.evaluate('window.printerEvents')
+            peer.locator('#printer-width').fill('185')
+            settle(page, count + 1)
+            assert values(page) == ['160', '110', '']
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            page.locator('#apply-printer-volume').click()
+            assert snapshot(page) == before and page.evaluate('window.printerWrites') == 0
+            expect(page.locator('#stop-build')).to_be_visible()
+            page.evaluate('window.holdPrinterBuild = false; window.releasePrinterBuild()')
+            expect(page.locator('#rebuild')).to_be_enabled()
+            assert download(page)[1] == mesh
+            cached = download(page, 'download-cad')
+            assert cached[1] == archive and len(jobs) == 2
+            before = snapshot(page)
+            page.locator('#printer-height').fill('0')
+            peer_barrier(page, peer)
+            volume(peer, [185, 110, 30])
+            assert snapshot(page) == before and page.evaluate('window.printerWrites') == 0
+            assert download(page, 'download-cad') == cached and len(jobs) == 2
+
         tests = (idle_tabs_follow_real_ui_edits_clear_and_exact_original_files,
                  focused_entries_keep_raw_text_and_manual_apply_reads_fresh_settings,
                  incomplete_invalid_drafts_survive_then_local_save_or_clear_resolves_notice,
@@ -457,7 +604,11 @@ def main():
                  late_original_preview_and_stopped_build_follow_latest_profile_only,
                  version_undo_typed_names_and_model_errors_stay_independent,
                  early_catalog_closed_editor_history_refresh_and_assemblies_use_current_profile,
-                 mobile_desktop_keyboard_apply_is_bounded_accessible_and_keeps_files)
+                 mobile_desktop_keyboard_apply_is_bounded_accessible_and_keeps_files,
+                 incomplete_edits_keep_saved_volume_other_tab_and_refresh,
+                 complete_edits_publish_once_and_all_empty_fields_clear,
+                 native_bad_input_keeps_saved_settings_until_explicit_clear,
+                 partial_edits_keep_deferred_settings_build_progress_and_cached_cad)
         for test in tests:
             context = browser.new_context(viewport=dict(width=1440, height=1080), accept_downloads=True)
             context.set_default_timeout(20000)

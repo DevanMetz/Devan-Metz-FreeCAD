@@ -45,7 +45,7 @@ function updatePrinterFit() {
   $('printer-mesh-size').hidden = !state.meshSize || state.item?.kind !== 'print';
   $('printer-preview-note').hidden = true;
   const volume = printerVolume();
-  const started = printerInputs.some(input => input.value);
+  const started = printerInputs.some(input => input.value || input.validity.badInput);
   for (const input of printerInputs) input.setAttribute('aria-invalid', String(started && (!Number.isFinite(input.valueAsNumber) || input.valueAsNumber <= 0)));
   if (state.item?.kind === 'assembly') {
     result.textContent = 'Reference assembly. Open the printable parts below to check each part.';
@@ -100,8 +100,13 @@ function applyPrinterVolume(volume) {
 }
 
 function savePrinterVolume() {
+  const volume = printerVolume();
+  if (!volume && !samePrinterForm(null)) {
+    $('printer-profile-note').textContent = 'Complete a positive width, depth and height to save changes.';
+    updatePrinterFit();
+    return;
+  }
   try {
-    const volume = printerVolume();
     if (volume) localStorage.setItem(PRINTER_STORAGE, JSON.stringify(volume));
     else localStorage.removeItem(PRINTER_STORAGE);
     printerStored = volume;

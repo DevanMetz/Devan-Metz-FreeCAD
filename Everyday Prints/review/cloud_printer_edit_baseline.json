@@ -1,0 +1,29 @@
+{
+  "action": "Temporarily empty width while editing an existing saved printer profile",
+  "before": {
+    "editing_tab": [
+      "200",
+      "220",
+      "250"
+    ],
+    "other_tab": [
+      "200",
+      "220",
+      "250"
+    ],
+    "saved": "[200,220,250]"
+  },
+  "after": {
+    "editing_tab": [
+      "",
+      "220",
+      "250"
+    ],
+    "other_tab": [
+      "",
+      "",
+      ""
+    ],
+    "saved": null
+  }
+}

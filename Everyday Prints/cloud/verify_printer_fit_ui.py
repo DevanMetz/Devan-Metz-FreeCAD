@@ -203,10 +203,15 @@ def main():
             page.go_back()
             expect(page.locator('#param-length')).to_have_value('180.5')
             page.locator('#printer-height').fill('')
+            expect(page.locator('#printer-profile-note')).to_contain_text('Complete a positive')
+            assert json.loads(page.evaluate('(key) => localStorage.getItem(key)', KEY)) == [160.25, 110.5, 30]
             page.reload()
             page.locator('#printer-check summary').click()
-            expect(page.locator('#printer-width')).to_have_value('')
-            fit(page, '')
+            for axis, value in zip(('width', 'depth', 'height'), ('160.25', '110.5', '30')):
+                expect(page.locator('#printer-' + axis)).to_have_value(value)
+            fit(page, 'fits')
+            expect(page.locator('#param-length')).to_have_value('180.5')
+            assert page.locator('#download').is_disabled() and not jobs
 
         def malformed_records_and_denied_storage_keep_checks_usable(page):
             setup(page)
