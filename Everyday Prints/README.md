@@ -65,6 +65,9 @@ limit before editing, and are included in each input's accessible description.
 If browser graphics are interrupted, the editor shows the original image while
 keeping verified files and dimensions. Graphics recovery redraws the current
 mesh and retains its camera view, edge display, edits and pending downloads.
+Library transfers recover with Try again after stalled headers or bodies,
+oversized responses, or invalid text. Retry preserves searches, filters and
+shared dimensions, and late responses cannot replace a newer attempt.
 
 ![CAD previews of the collection](preview.png)
 

@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **227 focused browser
+The latest local customizer and download build passes **233 focused browser
 checks across nineteen suites**, the **53-model catalog and image smoke test**,
 **50 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -34,6 +34,14 @@ redraws the current mesh with the same camera and edge display, including after
 model navigation or builds completed during the interruption. Five additional
 checks use real WebGL loss and restoration with exported CAD fixtures; mobile
 fallback and restored previews were visually reviewed.
+Catalog loading now bounds actual received bytes to 2 MiB and enforces the
+15-second deadline across headers and body reads, even when cancellation stalls.
+Expired replies cannot publish cards or unlock a newer retry; searches, filters
+and shared dimensions remain available for recovery. Six additional browser
+checks cover stalled bodies, late headers, oversized transfers, the exact size
+boundary with a UTF-8 BOM, split Unicode in reused buffers, and invalid UTF-8.
+The catalog report records fourteen passing checks, with before-fix evidence
+and a reviewed mobile retry layout under `review/cloud_catalog_transfer_*`.
 
 ## Complete design inventory
 
@@ -197,9 +205,10 @@ metadata, unique names, and component references before publishing the library.
 Print/assembly counts come from the loaded catalog, and the result count,
 loading state, and errors have accessible announcements.
 
-The [catalog report](review/cloud_catalog_validation.json) records eight passing
+The [catalog report](review/cloud_catalog_validation.json) records fourteen passing
 browser checks for delayed loading, failure/retry, broken connections, malformed
-responses, shared links, mobile layout, dynamic counts, and stalled requests.
+responses, shared links, mobile layout, dynamic counts, stalled requests, late
+responses, byte limits, split Unicode, and invalid UTF-8.
 The existing nine preview-state checks and the full browser smoke test continue
 to pass. The production build and refreshed collection archive include these
 local changes.
@@ -372,7 +381,7 @@ stale edits, model switches, transfer corruption, incorrect metadata, service
 recovery, reference assemblies, kit quantities and fit coupons, malformed kit
 inventories and catalogs, mobile layout, no WebGL, and a reachable close control
 after scrolling long forms. The editor keeps its header visible while the preview
-and parameter form scroll beneath it. The compiled app passes 222 focused browser
+and parameter form scroll beneath it. The compiled app passes 233 focused browser
 checks across nineteen suites, plus the full 53-model catalog and image smoke test.
 The TypeScript check, fifty request/transfer/dimension/clipboard/error tests,
 and production build pass. The native

@@ -8,7 +8,13 @@
     "shared_link_recovery",
     "mobile_failure_and_recovery",
     "dynamic_counts",
-    "stalled_request_timeout"
+    "stalled_request_timeout",
+    "stalled_body_deadline_keeps_filters_and_new_retry",
+    "late_headers_release_body_without_unlocking_retry",
+    "oversized_body_keeps_shared_link_for_mobile_retry",
+    "exact_limit_and_bom_catalog_load_completely",
+    "borrowed_chunks_keep_split_utf8_catalog_text",
+    "invalid_utf8_cannot_publish_partial_catalog"
   ],
   "failures": [],
   "catalog_models": 53,

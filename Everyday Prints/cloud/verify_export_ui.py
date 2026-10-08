@@ -53,7 +53,7 @@ def main():
         if OFFLINE:
             attach_assets(context)
             status, assembly_mesh, response_headers = native_request({"model": "soap_dish_assembly", "parameters": assembly_meta["parameters"]})
-            assert status == 200
+            assert status == 200, (status, assembly_mesh.decode('utf-8', errors='replace'))
             assembly_preview = json.loads(unquote(response_headers["X-Model-Metadata"]))
         else:
             response = context.request.post(BASE + "/api/generate",

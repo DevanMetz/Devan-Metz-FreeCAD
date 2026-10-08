@@ -162,14 +162,23 @@ denial recovery, invalid fields and mobile keyboard use. It also checks sharing
 during a CAD build without replacing progress or unlocking downloads.
 Results are in `../review/cloud_share_validation.json`.
 
-`verify_catalog.py` checks delayed searches, HTTP and connection failures,
-malformed catalogs, retrying shared model links, mobile recovery, dynamic model
-counts, and a stalled request. Catalog loading has a 15-second deadline and a
-Try again action. Searches and filters entered during loading survive recovery;
-model metadata and component references are validated before any cards appear.
-The loading/result count and error states are announced to assistive technology.
-Eight passing checks and mobile/desktop screenshots are saved under
-`../review/cloud_catalog_validation.json` and `../review/cloud_catalog_*.png`.
+Catalog loading has a 15-second deadline covering both headers and body reads,
+including transports that ignore cancellation. Try again becomes available when
+the deadline expires; old responses cannot publish cards or unlock a newer retry.
+Unused bodies are cancelled without waiting for cancellation to finish.
+The library accepts at most 2 MiB of actual received bytes, independently of
+Content-Length, and rejects invalid UTF-8. Complete metadata and component
+references are validated before any cards appear. Searches, filters and shared
+model dimensions survive recovery, with accessible loading and error announcements.
+
+`verify_catalog.py` records fourteen passing checks for delayed searches, HTTP
+and connection failures, malformed catalogs, shared links, mobile recovery,
+dynamic counts, stalled headers and bodies, late replies during retries,
+oversized responses, the exact size boundary with a UTF-8 BOM, split Unicode
+in reused chunk buffers, and invalid UTF-8. Results and before-fix evidence are
+`../review/cloud_catalog_validation.json` and
+`../review/cloud_catalog_transfer_baseline.json`; the reviewed mobile failure
+state is `../review/cloud_catalog_transfer_mobile.png`.
 
 `verify_navigation.py` checks Back and Forward through the library, assemblies,
 and printable components, including unfinished and invalid dimension edits,

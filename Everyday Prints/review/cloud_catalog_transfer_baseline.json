@@ -1,0 +1,57 @@
+{
+  "tested_commit": "15ac94d2d73749c066f82ed99e642e2ea5e21c86",
+  "pre_fix_main_sha256": "bf0b7ccb09ed42ea9c94a511c741eae0567d29e3b2a60012626d5ea5454111c6",
+  "observed_failures": [
+    {
+      "test": "stalled_body_deadline_keeps_filters_and_new_retry",
+      "state": {
+        "url": "https://everyday-prints.test/",
+        "cards": 0,
+        "count": "Loading\u2026",
+        "search": "phone",
+        "busy": "true",
+        "failure": ""
+      },
+      "browser_errors": []
+    },
+    {
+      "test": "late_headers_release_body_without_unlocking_retry",
+      "state": {
+        "url": "https://everyday-prints.test/",
+        "cards": 0,
+        "count": "Loading\u2026",
+        "search": "",
+        "busy": "true",
+        "failure": ""
+      },
+      "browser_errors": []
+    },
+    {
+      "test": "oversized_body_keeps_shared_link_for_mobile_retry",
+      "state": {
+        "url": "https://everyday-prints.test/?model=parts_tray&p=%7B%22length%22%3A+180.5%7D&from=saved#library",
+        "cards": 53,
+        "count": "53 models",
+        "search": "",
+        "busy": "false",
+        "failure": ""
+      },
+      "browser_errors": []
+    },
+    {
+      "test": "invalid_utf8_cannot_publish_partial_catalog",
+      "state": {
+        "url": "https://everyday-prints.test/",
+        "cards": 53,
+        "count": "53 models",
+        "search": "",
+        "busy": "false",
+        "failure": ""
+      },
+      "browser_errors": []
+    }
+  ],
+  "catalog_bytes": 103392,
+  "proposed_catalog_limit_bytes": 2097152,
+  "fixture_note": "The initial seven-byte timed-chunk fixture exceeded its wait; the completed verifier uses an 8 KiB borrowed buffer with an explicit UTF-8 split."
+}

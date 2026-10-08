@@ -21,6 +21,7 @@ const copyLink = clipboardQueue(text => navigator.clipboard.writeText(text));
 const savedPages = new Map();
 const PREVIEW_CACHE_BYTES = 32 * 1024 * 1024;
 const BUILD_WAIT_MS = 15 * 60 * 1000;
+const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
 
 function historyEntry() {
   const model = new URL(location.href).searchParams.get('model');
@@ -897,6 +898,27 @@ function catalogModels(data) {
   return models;
 }
 
+async function catalogResponse(signal) {
+  signal.throwIfAborted();
+  let stop;
+  const interrupted = new Promise((_, reject) => {
+    stop = () => reject(signal.reason);
+    signal.addEventListener('abort', stop, { once: true });
+  });
+  try {
+    const pending = fetch('/catalog.json', { signal, cache: 'no-cache' }).then(response => {
+      if (signal.aborted) {
+        discardResponse(response);
+        signal.throwIfAborted();
+      }
+      return response;
+    });
+    return await Promise.race([pending, interrupted]);
+  } finally {
+    signal.removeEventListener('abort', stop);
+  }
+}
+
 async function start() {
   if (state.catalogLoading) return;
   state.catalogLoading = true;
@@ -908,10 +930,12 @@ async function start() {
   $('retry-catalog').disabled = true;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
+  let response;
   try {
-    const response = await fetch('/catalog.json', { signal: controller.signal, cache: 'no-cache' });
+    response = await catalogResponse(controller.signal);
     if (!response.ok) throw new Error('Catalog unavailable.');
-    const models = catalogModels(await response.json());
+    const buffer = await readFile(response, controller.signal, MAX_CATALOG_BYTES);
+    const models = catalogModels(JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(buffer)));
     // Use stable file basenames as IDs, but index their words separately.
     const index = new MiniSearch({ idField: 'name', fields: ['title', 'words', 'tags', 'category', 'spec'] });
     index.addAll(models.map(model => ({ ...model, words: model.name.replaceAll('_', ' ') })));
@@ -929,6 +953,7 @@ async function start() {
     $('catalog-error').textContent = 'The library could not be loaded. Try again.';
     return;
   } finally {
+    discardResponse(response);
     clearTimeout(timer);
     state.catalogLoading = false;
     $('catalog-loading').hidden = true;
