@@ -71,19 +71,25 @@ a partly typed number such as 1e still counts as an invalid entry.
 
 Saved printer settings also update other open tabs. Idle fields follow the latest
 valid settings or clearing; focused, incomplete or unsaved entries stay in place.
-Use saved build volume reads the current settings afresh and focuses Width.
+Use saved build volume also appears for local incomplete edits or failed saves
+when a saved profile is known. It reads the latest settings afresh, focuses
+Width, and keeps the model, verified files and saved versions.
 Malformed, oversized or unavailable storage keeps the current check available
 with retry guidance. External updates never write back or change model fields,
 version Undo, build progress, preview files or cached CAD downloads.
 
-`verify_printer_sync_ui.py --offline` exercises sixteen real two-tab scenarios,
+`verify_printer_sync_ui.py --offline` exercises twenty real two-tab scenarios,
 including queued events, corrupt and denied reads, failed writes, active builds,
 late previews, saved versions, early catalog loading, history and refresh,
 assembly components and mobile keyboard use. Evidence and reviewed layouts are
 under `../review/cloud_printer_sync_*`. Four additional checks cover incomplete
 and native invalid entries, valid saves and clearing, refresh, deferred external
 settings, pending builds and exact cached CAD files. The before-fix probe and
-reviewed layouts are under `../review/cloud_printer_edit_*`.
+reviewed layouts are under `../review/cloud_printer_edit_*`. Four local recovery
+checks cover failed saves and clearing, fresh and unreadable settings, an absent
+saved profile, invalid model drafts, version Undo, cached CAD reuse, pending
+builds and mobile focus. Their baseline and reviewed layouts are under
+`../review/cloud_printer_restore_*`.
 
 `verify_printer_fit_ui.py --offline` checks original and custom meshes, exact
 boundaries, bed rotation and height, measured STL extents versus CAD rounding,

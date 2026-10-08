@@ -593,6 +593,154 @@ def main():
             assert snapshot(page) == before and page.evaluate('window.printerWrites') == 0
             assert download(page, 'download-cad') == cached and len(jobs) == 2
 
+        def local_restore_keeps_invalid_model_drafts_versions_and_cached_files(page):
+            peer, jobs = setup(page)
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').click()
+            expect(page.locator('#rebuild')).to_be_enabled()
+            cached = download(page, 'download-cad')
+            assert cached[1] == archive and len(jobs) == 2
+            page.locator('.saved-dimensions summary').click()
+            page.locator('#version-name').fill('Saved tray')
+            page.locator('#save-version').click()
+            expect(page.locator('#undo-version')).to_be_visible()
+            selected = page.locator('#version-choice').input_value()
+            page.locator('#param-length').fill('')
+            before = snapshot(page)
+            page.locator('#printer-width').fill('')
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            expect(page.locator('#printer-sync-message')).to_contain_text('saved build volume is kept')
+            page.locator('#apply-printer-volume').focus()
+            page.keyboard.press('Enter')
+            volume(page, [200, 200, 30])
+            expect(page.locator('#printer-width')).to_be_focused()
+            expect(page.locator('#printer-width')).to_have_attribute('aria-invalid', 'false')
+            expect(page.locator('#apply-printer-volume')).to_be_hidden()
+            assert snapshot(page) == before and page.locator('#version-choice').input_value() == selected
+            assert page.evaluate('window.printerWrites') == 0
+            peer_barrier(page, peer)
+            volume(peer, [200, 200, 30])
+            page.locator('#revert-parameters').click()
+            assert download(page)[1] == mesh
+            assert download(page, 'download-cad') == cached and len(jobs) == 2
+
+        def failed_saves_and_failed_clear_restore_without_a_write(page):
+            peer, jobs = setup(page)
+            original = download(page)
+            before = snapshot(page)
+            page.evaluate("""key => {
+              window.failedPrinterWrites = 0;
+              for (const name of ['setItem', 'removeItem']) {
+                const real = Storage.prototype[name];
+                Storage.prototype[name] = function(item, ...args) {
+                  if (this === localStorage && item === key) {
+                    window.failedPrinterWrites++;
+                    throw new DOMException('Full', 'QuotaExceededError');
+                  }
+                  return real.call(this, item, ...args);
+                };
+              }
+            }""", KEY)
+            page.locator('#printer-width').fill('210')
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            expect(page.locator('#printer-sync-message')).to_contain_text('Changes could not be saved')
+            peer_barrier(page, peer)
+            volume(peer, [200, 200, 30])
+            page.locator('#printer-check').scroll_into_view_if_needed()
+            page.screenshot(path=str(ROOT / 'review/cloud_printer_restore_desktop.png'))
+            page.locator('#apply-printer-volume').focus()
+            page.keyboard.press('Enter')
+            volume(page, [200, 200, 30])
+            assert page.evaluate('window.failedPrinterWrites') == 1 and snapshot(page) == before
+            expect(page.locator('#apply-printer-volume')).to_be_hidden()
+            page.locator('#clear-printer').click()
+            assert values(page) == ['', '', '']
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            page.locator('#apply-printer-volume').click()
+            volume(page, [200, 200, 30])
+            assert page.evaluate('window.failedPrinterWrites') == 2 and snapshot(page) == before
+            assert json.loads(page.evaluate('key => localStorage.getItem(key)', KEY)) == [200, 200, 30]
+            assert download(page) == original and not jobs
+
+        def local_restore_reads_fresh_settings_preserves_read_errors_and_requires_a_saved_profile(page):
+            peer, jobs = setup(page)
+            original = download(page)
+            before = snapshot(page)
+            page.locator('#printer-width').fill('0')
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            page.evaluate('args => localStorage.setItem(...args)', [KEY, '[100,185,24]'])
+            peer_barrier(page, peer)
+            volume(peer, [100, 185, 24])
+            page.locator('#apply-printer-volume').click()
+            volume(page, [100, 185, 24])
+            fit(page, 'rotate')
+            assert page.evaluate('window.printerWrites') == 1 and snapshot(page) == before
+            page.locator('#printer-height').fill('')
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            page.evaluate('args => localStorage.setItem(...args)', [KEY, 'broken'])
+            kept = values(page)
+            page.locator('#apply-printer-volume').click()
+            expect(page.locator('#printer-sync-message')).to_contain_text('could not be read')
+            expect(page.locator('#apply-printer-volume')).to_be_focused()
+            assert values(page) == kept
+            error = page.locator('#printer-sync-message').inner_text()
+            page.locator('#printer-width').fill('0')
+            assert page.locator('#printer-sync-message').inner_text() == error
+            page.evaluate("""key => {
+              window.realPrinterGet = Storage.prototype.getItem;
+              Storage.prototype.getItem = function(item) {
+                if (this === localStorage && item === key) throw new DOMException('Blocked', 'SecurityError');
+                return window.realPrinterGet.call(this, item);
+              };
+            }""", KEY)
+            kept = values(page)
+            page.locator('#apply-printer-volume').click()
+            expect(page.locator('#printer-sync-message')).to_contain_text('unavailable')
+            assert values(page) == kept
+            page.evaluate('() => { Storage.prototype.getItem = window.realPrinterGet; }')
+            page.evaluate('args => localStorage.setItem(...args)', [KEY, '[185,110,30]'])
+            page.locator('#apply-printer-volume').click()
+            volume(page, [185, 110, 30])
+            assert page.evaluate('window.printerWrites') == 3 and snapshot(page) == before
+            expect(page.locator('#apply-printer-volume')).to_be_hidden()
+            page.locator('#clear-printer').click()
+            page.locator('#printer-width').fill('180')
+            expect(page.locator('#apply-printer-volume')).to_be_hidden()
+            assert page.evaluate('key => localStorage.getItem(key)', KEY) is None
+            assert download(page) == original and not jobs
+
+        def mobile_restore_preserves_pending_work_and_keeps_width_in_view(page):
+            page.add_init_script(HOLD)
+            peer, jobs = setup(page)
+            page.set_viewport_size(dict(width=390, height=844))
+            page.evaluate('window.holdPrinterBuild = true')
+            page.locator('#param-length').fill('180.5')
+            page.locator('#rebuild').click()
+            page.wait_for_function("() => typeof window.releasePrinterBuild === 'function'")
+            before = snapshot(page)
+            page.locator('#printer-height').fill('')
+            expect(page.locator('#apply-printer-volume')).to_be_visible()
+            expect(page.locator('.view-tools')).to_be_visible()
+            page.locator('#printer-check').scroll_into_view_if_needed()
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            page.screenshot(path=str(ROOT / 'review/cloud_printer_restore_mobile.png'))
+            page.locator('#apply-printer-volume').focus()
+            page.keyboard.press('Enter')
+            volume(page, [200, 200, 30])
+            expect(page.locator('#printer-width')).to_be_focused()
+            page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+            field = page.locator('#printer-width').bounding_box()
+            clip = page.locator('.editor-layout').bounding_box()
+            assert field and clip and field['y'] >= clip['y'] and field['y'] + field['height'] <= clip['y'] + clip['height'], (field, clip)
+            assert snapshot(page) == before and page.evaluate('window.printerWrites') == 0
+            expect(page.locator('#stop-build')).to_be_visible()
+            peer_barrier(page, peer)
+            volume(peer, [200, 200, 30])
+            page.evaluate('window.holdPrinterBuild = false; window.releasePrinterBuild()')
+            expect(page.locator('#rebuild')).to_be_enabled()
+            expect(page.locator('#printer-width')).to_be_focused()
+            assert download(page)[1] == mesh and len(jobs) == 1
+
         tests = (idle_tabs_follow_real_ui_edits_clear_and_exact_original_files,
                  focused_entries_keep_raw_text_and_manual_apply_reads_fresh_settings,
                  incomplete_invalid_drafts_survive_then_local_save_or_clear_resolves_notice,
@@ -608,7 +756,11 @@ def main():
                  incomplete_edits_keep_saved_volume_other_tab_and_refresh,
                  complete_edits_publish_once_and_all_empty_fields_clear,
                  native_bad_input_keeps_saved_settings_until_explicit_clear,
-                 partial_edits_keep_deferred_settings_build_progress_and_cached_cad)
+                 partial_edits_keep_deferred_settings_build_progress_and_cached_cad,
+                 local_restore_keeps_invalid_model_drafts_versions_and_cached_files,
+                 failed_saves_and_failed_clear_restore_without_a_write,
+                 local_restore_reads_fresh_settings_preserves_read_errors_and_requires_a_saved_profile,
+                 mobile_restore_preserves_pending_work_and_keeps_width_in_view)
         for test in tests:
             context = browser.new_context(viewport=dict(width=1440, height=1080), accept_downloads=True)
             context.set_default_timeout(20000)

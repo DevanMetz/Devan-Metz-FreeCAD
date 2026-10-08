@@ -1,0 +1,32 @@
+[
+  {
+    "action": "incomplete_local_edit",
+    "current": [
+      "",
+      "200",
+      "30"
+    ],
+    "saved": [
+      200,
+      200,
+      30
+    ],
+    "restore_visible": false,
+    "note": "Complete a positive width, depth and height to save changes."
+  },
+  {
+    "action": "failed_local_save",
+    "current": [
+      "210",
+      "200",
+      "30"
+    ],
+    "saved": [
+      200,
+      200,
+      30
+    ],
+    "restore_visible": false,
+    "note": "Build volume stays here while this page is open."
+  }
+]

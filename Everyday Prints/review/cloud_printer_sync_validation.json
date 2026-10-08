@@ -16,7 +16,11 @@
     "incomplete_edits_keep_saved_volume_other_tab_and_refresh",
     "complete_edits_publish_once_and_all_empty_fields_clear",
     "native_bad_input_keeps_saved_settings_until_explicit_clear",
-    "partial_edits_keep_deferred_settings_build_progress_and_cached_cad"
+    "partial_edits_keep_deferred_settings_build_progress_and_cached_cad",
+    "local_restore_keeps_invalid_model_drafts_versions_and_cached_files",
+    "failed_saves_and_failed_clear_restore_without_a_write",
+    "local_restore_reads_fresh_settings_preserves_read_errors_and_requires_a_saved_profile",
+    "mobile_restore_preserves_pending_work_and_keeps_width_in_view"
   ],
   "failures": [],
   "fixture_mesh_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",

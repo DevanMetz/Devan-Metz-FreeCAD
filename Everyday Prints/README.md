@@ -98,6 +98,8 @@ Unreadable saved settings preserve the current check and offer retry guidance.
 Incomplete or invalid printer edits keep the last saved build volume through
 refresh and in other tabs. Complete three positive values to save changes;
 Clear build volume or empty all three fields to remove them.
+Use saved build volume can also restore incomplete edits or a failed save when
+saved settings are available, keeping your preview and downloads.
 
 Keyboard focus moves to Stop waiting when a focused build control is disabled,
 then returns after the request ends. Editing another field keeps its focus.

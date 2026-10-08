@@ -103,6 +103,8 @@ function savePrinterVolume() {
   const volume = printerVolume();
   if (!volume && !samePrinterForm(null)) {
     $('printer-profile-note').textContent = 'Complete a positive width, depth and height to save changes.';
+    if (printerStored && $('apply-printer-volume').hidden)
+      printerSyncMessage('Your saved build volume is kept. Use saved build volume to restore it.', false, true);
     updatePrinterFit();
     return;
   }
@@ -114,6 +116,8 @@ function savePrinterVolume() {
     $('printer-profile-note').textContent = volume ? 'Build volume saved in this browser.' : 'Use your printer’s usable build volume.';
   } catch {
     $('printer-profile-note').textContent = 'Build volume stays here while this page is open.';
+    if (printerStored && !samePrinterForm(printerStored) && $('apply-printer-volume').hidden)
+      printerSyncMessage('Changes could not be saved. Use saved build volume to restore your printer settings.', true, true);
   }
   updatePrinterFit();
 }
