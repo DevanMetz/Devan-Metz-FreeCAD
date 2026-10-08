@@ -434,11 +434,20 @@ field or leaving the editor preserves that newer focus; late replies cannot
 restore focus to an old control. The original-preview refresh and subsequent
 CAD export follow the same behavior.
 
-`verify_build_focus_ui.py` records nine keyboard checks for completion and exact
-files, Stop, field submission, cached CAD reuse, the two-request original CAD
-path, service failures, deadlines, preserved field focus and mobile navigation.
-Results are in `../review/cloud_build_focus_validation.json`; the mobile review
-is `../review/cloud_build_focus_mobile.png`.
+Measurement inputs have a minimum height of 44 px, matching the main actions.
+
+`verify_build_focus_ui.py` records fourteen keyboard checks for completion and
+exact files, Stop, field submission, cached CAD reuse, the two-request original
+CAD path, service failures, deadlines, preserved field focus and mobile
+navigation. Delayed 3D loading also checks visible Stop and download controls
+at four phone/desktop sizes, exact cached ZIPs and dimension-bearing STL/CAD
+filenames. Choosing a measurement during the request preserves its focus and
+visible bounds through viewer loading and CAD completion. The report includes
+measured rectangles before/after loading and download.
+Results are in `../review/cloud_build_focus_validation.json`; reviewed layouts
+are `../review/cloud_build_focus_mobile.png` and
+`../review/cloud_build_focus_delayed_desktop.png`, with the short phone view in
+`../review/cloud_build_focus_delayed_mobile.png`.
 
 Customized browser STL and CAD/kit filenames include the verified preview's
 outer dimensions in millimeters, rounded to two decimals, and the first twelve

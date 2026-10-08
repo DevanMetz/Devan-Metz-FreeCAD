@@ -107,6 +107,9 @@ Unavailable model links explain the problem and recover to the library, where
 visitors can choose another part without carrying over the unavailable model's measurements.
 Parameter hints show declared ranges, whole-number rules and the numeric-list
 limit before editing, and are included in each input's accessible description.
+Measurement inputs have a minimum height of 44 px, matching the main actions.
+Keyboard Stop and download controls stay visible through delayed 3D loading,
+including short phone and desktop windows.
 If browser graphics are interrupted, the editor shows the original image while
 keeping verified files and dimensions. Graphics recovery redraws the current
 mesh and retains its camera view, edge display, edits and pending downloads.

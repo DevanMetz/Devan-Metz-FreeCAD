@@ -1,12 +1,14 @@
 """Verify keyboard focus through preview/CAD builds, Stop, failure and navigation."""
+import hashlib
 import json
 import os
 from pathlib import Path
 import sys
 import traceback
+from urllib.parse import urlparse
 
 from playwright.sync_api import expect, sync_playwright
-from browser_assets import OFFLINE_BASE, attach_assets
+from browser_assets import ASSETS, OFFLINE_BASE, attach_assets
 from browser_transfers import DEFERRED_BODY
 from verify_export_ui import fixture, headers
 
@@ -20,7 +22,8 @@ os.environ.setdefault('PLAYWRIGHT_BROWSERS_PATH', str(ROOT.parent / '.cad-cache/
 
 def main():
     original, custom = fixture('parts_tray_original'), fixture('parts_tray')
-    passed, failures = [], []
+    passed, failures, delayed_viewer_cases = [], [], []
+    pending_viewers = {}
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
         context = browser.new_context(viewport={'width': 1440, 'height': 1080}, accept_downloads=True)
@@ -28,7 +31,7 @@ def main():
         if OFFLINE:
             attach_assets(context)
 
-        def setup(page, customized=False):
+        def setup(page, customized=False, hold_viewer=False):
             page.clock.install()
             page.add_init_script(DEFERRED_BODY + """
               window.holdFocusJobs = false;
@@ -43,7 +46,11 @@ def main():
                 return response;
               };
             """)
-            control = {'jobs': [], 'failed': False}
+            control = {'jobs': [], 'failed': False, 'modules': []}
+            if hold_viewer:
+                pending_viewers[page] = control['modules']
+                page.route('**/assets/viewer-*.js' if OFFLINE else '**/web/viewer.js*',
+                           lambda route: control['modules'].append(route))
 
             def generate(route):
                 payload = route.request.post_data_json
@@ -202,6 +209,94 @@ def main():
             page.clock.fast_forward(WAIT_MS + 1)
             expect(page.locator('[data-model="parts_tray"]')).to_be_focused()
 
+        def visible_focus(page, selector):
+            control = page.locator(selector)
+            expect(control).to_be_focused()
+            rect = control.bounding_box()
+            layout = page.locator('.editor-layout').bounding_box()
+            viewport = page.viewport_size
+            assert rect and layout and viewport
+            assert rect['height'] >= 44, rect
+            assert max(0, layout['y']) <= rect['y'] <= rect['y'] + rect['height'] <= min(viewport['height'], layout['y'] + layout['height']), (rect, layout, viewport)
+            assert 0 <= rect['x'] <= rect['x'] + rect['width'] <= viewport['width'], (rect, viewport)
+            return {key: round(value, 3) for key, value in rect.items()}
+
+        def release_viewer(page, control):
+            assert len(control['modules']) == 1, 'Pending previews loaded duplicate 3D modules'
+            route = control['modules'].pop()
+            body = (ASSETS / urlparse(route.request.url).path.lstrip('/')).read_bytes() if OFFLINE else route.fetch().body()
+            route.fulfill(body=body, content_type='text/javascript')
+            page.wait_for_function("() => document.querySelector('#viewer canvas') && document.querySelector('#viewer').getAttribute('aria-busy') === 'false'")
+            page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
+            expect(page.locator('.view-tools')).to_be_visible()
+            expect(page.locator('#fallback-image')).to_be_hidden()
+
+        def delayed_viewer_download(page, width, height, screenshot=None):
+            page.set_viewport_size({'width': width, 'height': height})
+            control = setup(page, customized=True, hold_viewer=True)
+            expect(page.locator('#fallback-image')).to_be_visible()
+            expect(page.locator('.view-tools')).to_be_hidden()
+            start(page, 'download-cad')
+            before = visible_focus(page, '#stop-build')
+            release_viewer(page, control)
+            after = visible_focus(page, '#stop-build')
+            expect(page.locator('#download-cad')).to_be_disabled()
+            expect(page.locator('#transfer-status')).to_be_hidden()
+            if screenshot:
+                page.screenshot(path=str(ROOT / f'review/cloud_build_focus_delayed_{screenshot}.png'))
+            with page.expect_download() as event:
+                release(page)
+            archive = Path(event.value.path()).read_bytes()
+            assert archive == custom[0]
+            filename = f"parts_tray-custom-180.5x100x24mm-{hashlib.sha256(archive).hexdigest()[:12]}-cad.zip"
+            assert event.value.suggested_filename == filename
+            completed = visible_focus(page, '#download-cad')
+            with page.expect_download() as cached:
+                page.keyboard.press('Space')
+            assert Path(cached.value.path()).read_bytes() == archive
+            assert cached.value.suggested_filename == filename
+            page.locator('#download').focus()
+            with page.expect_download() as mesh:
+                page.keyboard.press('Enter')
+            assert Path(mesh.value.path()).read_bytes() == custom[2]
+            assert mesh.value.suggested_filename == f"parts_tray-custom-180.5x100x24mm-{custom[1]['mesh_sha256'][:12]}.stl"
+            assert control['jobs'] == ['stl', 'cad'], control['jobs']
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+            delayed_viewer_cases.append({'viewport': page.viewport_size, 'before_loading': before,
+                'after_loading': after, 'after_download': completed, 'cad_filename': filename,
+                'cad_sha256': hashlib.sha256(archive).hexdigest(), 'stl_sha256': custom[1]['mesh_sha256'],
+                'jobs': control['jobs']})
+
+        def delayed_viewer_keeps_stop_and_download_visible_on_phone(page):
+            delayed_viewer_download(page, 390, 844)
+
+        def delayed_viewer_keeps_stop_and_download_visible_on_short_phone(page):
+            delayed_viewer_download(page, 390, 600, 'mobile')
+
+        def delayed_viewer_keeps_stop_and_download_visible_on_small_phone(page):
+            delayed_viewer_download(page, 320, 568)
+
+        def delayed_viewer_keeps_stop_and_download_visible_on_short_desktop(page):
+            delayed_viewer_download(page, 1440, 600, 'desktop')
+
+        def delayed_viewer_and_cad_preserve_focus_moved_to_measurement(page):
+            page.set_viewport_size({'width': 390, 'height': 600})
+            control = setup(page, customized=True, hold_viewer=True)
+            start(page, 'download-cad')
+            page.locator('#param-width').focus()
+            before = visible_focus(page, '#param-width')
+            release_viewer(page, control)
+            after = visible_focus(page, '#param-width')
+            with page.expect_download() as event:
+                release(page)
+            assert Path(event.value.path()).read_bytes() == custom[0]
+            completed = visible_focus(page, '#param-width')
+            assert page.locator('#param-width').input_value() == '100'
+            assert control['jobs'] == ['stl', 'cad']
+            delayed_viewer_cases.append({'viewport': page.viewport_size, 'chosen_measurement': 'width',
+                'before_loading': before, 'after_loading': after, 'after_download': completed,
+                'jobs': control['jobs']})
+
         for check in (preview_keyboard_completion_returns_to_update_and_exact_stl,
                       stop_preview_returns_to_update_before_late_reply,
                       input_submission_keeps_field_and_stop_returns_to_it,
@@ -210,7 +305,12 @@ def main():
                       failed_requests_restore_keyboard_retry_controls,
                       completion_preserves_focus_moved_to_a_field,
                       deadlines_restore_keyboard_focus,
-                      mobile_stop_is_visible_and_navigation_keeps_library_focus):
+                      mobile_stop_is_visible_and_navigation_keeps_library_focus,
+                      delayed_viewer_keeps_stop_and_download_visible_on_phone,
+                      delayed_viewer_keeps_stop_and_download_visible_on_short_phone,
+                      delayed_viewer_keeps_stop_and_download_visible_on_small_phone,
+                      delayed_viewer_keeps_stop_and_download_visible_on_short_desktop,
+                      delayed_viewer_and_cad_preserve_focus_moved_to_measurement):
             page = context.new_page()
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
@@ -223,10 +323,13 @@ def main():
                 failures.append({'check': check.__name__, 'error': traceback.format_exc(), 'browser_errors': errors})
                 print('FAIL', check.__name__, failures[-1]['error'], flush=True)
             finally:
+                for route in pending_viewers.pop(page, []):
+                    route.abort()
                 page.close()
         browser.close()
     report = {'base': BASE, 'passed': passed, 'failures': failures, 'wait_deadline_ms': WAIT_MS,
-              'transport': 'compiled assets, keyboard events and real CAD fixtures'}
+              'transport': 'compiled assets, keyboard events and real CAD fixtures',
+              'delayed_viewer_cases': delayed_viewer_cases}
     (ROOT / 'review/cloud_build_focus_validation.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     sys.exit(bool(failures))
 

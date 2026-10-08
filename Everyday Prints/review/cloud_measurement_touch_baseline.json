@@ -1,0 +1,22 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 600
+  },
+  "measurement": "width",
+  "measured_input": {
+    "x": 201.5,
+    "y": 326.375,
+    "width": 154.5,
+    "height": 39
+  },
+  "action_min_height": 44,
+  "state": "focused width input during a held native CAD download and delayed 3D module",
+  "other_delayed_loading_cases_passed": [
+    "delayed_viewer_keeps_stop_and_download_visible_on_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_short_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_small_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_short_desktop"
+  ],
+  "transport": "compiled assets, keyboard events and real CAD fixtures"
+}

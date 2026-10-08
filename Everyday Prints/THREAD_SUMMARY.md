@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **394 focused browser
+The latest local customizer and download build passes **399 focused browser
 checks across thirty-two suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,17 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Customizer measurement inputs now have a minimum height of 44 px, matching
+the main actions. The baseline width field measured 39 px. Five additional
+browser checks keep focused Stop and download controls inside the visible
+editor through delayed 3D loading at four phone/desktop sizes, then verify exact
+STL/CAD bytes, dimension-bearing filenames and cached downloads without another
+native request. Moving to a measurement keeps its visible 44 px rectangle and
+focus through viewer loading and CAD completion. All fourteen keyboard checks
+pass. Desktop and short phone layouts were visually reviewed. Evidence is under
+`review/cloud_build_focus_delayed_*`, `review/cloud_build_focus_validation.json`
+and `review/cloud_measurement_touch_baseline.json`.
 
 CAD mismatches now make Update preview bypass affected retained mesh-only
 previews and request a fresh native build. The previously verified STL remains

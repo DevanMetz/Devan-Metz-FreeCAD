@@ -9,9 +9,169 @@
     "failed_requests_restore_keyboard_retry_controls",
     "completion_preserves_focus_moved_to_a_field",
     "deadlines_restore_keyboard_focus",
-    "mobile_stop_is_visible_and_navigation_keeps_library_focus"
+    "mobile_stop_is_visible_and_navigation_keeps_library_focus",
+    "delayed_viewer_keeps_stop_and_download_visible_on_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_short_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_small_phone",
+    "delayed_viewer_keeps_stop_and_download_visible_on_short_desktop",
+    "delayed_viewer_and_cad_preserve_focus_moved_to_measurement"
   ],
   "failures": [],
   "wait_deadline_ms": 900000,
-  "transport": "compiled assets, keyboard events and real CAD fixtures"
+  "transport": "compiled assets, keyboard events and real CAD fixtures",
+  "delayed_viewer_cases": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "before_loading": {
+        "x": 34,
+        "y": 557.375,
+        "width": 322,
+        "height": 44
+      },
+      "after_loading": {
+        "x": 34,
+        "y": 557.375,
+        "width": 322,
+        "height": 44
+      },
+      "after_download": {
+        "x": 34,
+        "y": 629.375,
+        "width": 322,
+        "height": 44
+      },
+      "cad_filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "cad_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "stl_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "before_loading": {
+        "x": 34,
+        "y": 378.375,
+        "width": 322,
+        "height": 44
+      },
+      "after_loading": {
+        "x": 34,
+        "y": 378.375,
+        "width": 322,
+        "height": 44
+      },
+      "after_download": {
+        "x": 34,
+        "y": 434.375,
+        "width": 322,
+        "height": 44
+      },
+      "cad_filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "cad_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "stl_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "before_loading": {
+        "x": 34,
+        "y": 363.062,
+        "width": 252,
+        "height": 44
+      },
+      "after_loading": {
+        "x": 34,
+        "y": 363.062,
+        "width": 252,
+        "height": 44
+      },
+      "after_download": {
+        "x": 34,
+        "y": 401.875,
+        "width": 252,
+        "height": 44
+      },
+      "cad_filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "cad_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "stl_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 600
+      },
+      "before_loading": {
+        "x": 831.25,
+        "y": 386.875,
+        "width": 420.75,
+        "height": 44
+      },
+      "after_loading": {
+        "x": 831.25,
+        "y": 386.875,
+        "width": 420.75,
+        "height": 44
+      },
+      "after_download": {
+        "x": 831.25,
+        "y": 442.875,
+        "width": 420.734,
+        "height": 44
+      },
+      "cad_filename": "parts_tray-custom-180.5x100x24mm-a6187c51d6cb-cad.zip",
+      "cad_sha256": "a6187c51d6cbfb3054682a325a4037d83d0409007ea0e21c620f370d173cae38",
+      "stl_sha256": "6f7e6198de7a47d02c7416c821755cb7601c796f9f8b320b206db72c81f6d95f",
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 600
+      },
+      "chosen_measurement": "width",
+      "before_loading": {
+        "x": 201.5,
+        "y": 324.375,
+        "width": 154.5,
+        "height": 44
+      },
+      "after_loading": {
+        "x": 201.5,
+        "y": 324.375,
+        "width": 154.5,
+        "height": 44
+      },
+      "after_download": {
+        "x": 201.5,
+        "y": 324.375,
+        "width": 154.5,
+        "height": 44
+      },
+      "jobs": [
+        "stl",
+        "cad"
+      ]
+    }
+  ]
 }
