@@ -548,6 +548,7 @@ function updateViewer(buffer, module) {
     viewer = null;
     viewerPromise = Promise.resolve(null);
   }
+  $('wireframe').setAttribute('aria-pressed', String(viewer?.wireframe || false));
   previewDisplay(!!viewer && viewer.available);
 }
 

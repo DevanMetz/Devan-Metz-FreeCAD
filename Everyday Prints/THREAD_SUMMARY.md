@@ -10,7 +10,7 @@ geometry-only 3MF. All dimensions are millimeters, and the supplied print
 orientations put the bed face at Z=0. Sources validate supported inputs and
 calculate derived dimensions. Six shared helpers keep matching parts consistent.
 
-The latest local customizer and download build passes **369 focused browser
+The latest local customizer and download build passes **373 focused browser
 checks across thirty suites**, the **53-model catalog and image smoke test**,
 **93 unit tests**, TypeScript checks and the production build. File chunks are
 copied immediately, preserving exact STL and CAD downloads when a transport
@@ -27,6 +27,17 @@ The baseline kept stalled headers and bodies loading after sixteen simulated
 minutes. Nine unit checks cover boundaries, cancellation, cleanup and file
 limits. Desktop and mobile layouts were visually reviewed. Evidence is under
 `review/cloud_original_idle_*`.
+
+Preview updates now retain the camera angle, zoom, pan and Edges setting in
+the same open model, including the original-mesh refresh for CAD downloads.
+Framing scales around the new mesh center; another model or reopened editor
+starts the usual 3D view with Edges off. Four additional real-browser checks
+cover named views, real mouse orbit/zoom/pan, larger and smaller meshes with a
+changed height, choices during pending builds, CAD refreshes, exact cached files
+and mobile keyboard controls. Graphics-loss recovery now also checks retained
+framing after a changed mesh. The baseline reset Top to 3D and turned Edges off;
+desktop and phone layouts were visually reviewed. Evidence is under
+`review/cloud_camera_update_*`, with seventeen passing viewer checks.
 
 Keyboard Retry original preview now places the first measurement in the center
 of the visible editor when its focused action disappears. The baseline focused

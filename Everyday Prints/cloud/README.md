@@ -733,6 +733,13 @@ current verified mesh, including after a CAD download. Script or graphics
 failures retain the files and image fallback; failed renderers release their
 canvas and resources.
 
+Replacing a mesh in the same open model preserves the chosen camera angle,
+zoom, pan and Edges setting, including the original-mesh refresh for CAD downloads.
+Camera and pan offsets and clipping distances scale with the new mesh radius
+around its updated center. Choices made while a build is pending take effect
+when its mesh arrives. Closing the editor or opening another model resets the
+view to 3D with Edges off.
+
 If graphics are interrupted after loading, the editor shows the original catalog
 image while keeping verified mesh dimensions and files. When graphics return, it
 redraws the current mesh with the same camera and edge display. Builds and CAD
@@ -740,7 +747,7 @@ downloads can continue during the interruption; invalid drafts, keyboard focus,
 pending requests and cached CAD files are preserved. Recovery also follows model
 navigation and does not open a closed editor or start another CAD build.
 
-`verify_viewer_loading.py` has thirteen browser checks for delayed viewer loading,
+`verify_viewer_loading.py` has seventeen browser checks for delayed viewer loading,
 original and customized STL/CAD downloads, late 3D upgrades, model switches,
 closed editors, module failures, missing WebGL, rendering failures, and blocked
 corrupt meshes, plus graphics loss and restoration during editing, builds,
@@ -751,6 +758,13 @@ with exported CAD fixtures and compiled viewer code. Its report is
 `../review/cloud_viewer_context_baseline.json`. Reviewed mobile images are
 `../review/cloud_viewer_context_mobile.png` and
 `../review/cloud_viewer_context_mobile_restored.png`.
+
+Four additional viewer checks use real pointer orbit, wheel zoom and right-drag
+pan, named views, keyboard controls on a phone, a native-generated taller tray,
+larger and smaller meshes, pending view choices, CAD refreshes and cached exact
+files. Graphics recovery also checks framing after a changed mesh arrives.
+The camera reset baseline and reviewed desktop and phone layouts are under
+`../review/cloud_camera_update_*`.
 
 `verify_transfer_ui.py` checks oversized original previews, custom previews and
 CAD ZIPs, interrupted and empty transfers, cancellation during a pending read,

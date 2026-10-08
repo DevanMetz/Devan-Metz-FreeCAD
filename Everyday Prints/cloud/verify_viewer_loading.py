@@ -5,16 +5,18 @@ delays and failures. Run verify_exports.py first; use --offline without a server
 """
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import sys
 import traceback
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 from zipfile import ZipFile
 
 from playwright.sync_api import sync_playwright
 from browser_assets import ASSETS, OFFLINE_BASE, attach_assets
 from verify_export_ui import fixture, headers
+from validation_job import native_request
 
 CLOUD = Path(__file__).resolve().parent
 ROOT = CLOUD.parent
@@ -132,12 +134,190 @@ def main():
                   window.renderedPreview = {
                     size: ['x', 'y', 'z'].map(axis => Math.round((box.max[axis] - box.min[axis]) * 100) / 100),
                     camera: this.camera.position.toArray(), target: this.controls.target.toArray(),
+                    center: this.target.toArray(), radius: this.radius,
+                    near: this.camera.near, far: this.camera.far,
                     edges: this.mesh.material.wireframe,
                   };
                 }
                 return result;
               };
             }""", url)
+
+        def same_framing(page, before):
+            after = page.evaluate('window.renderedPreview')
+            for key in ('camera', 'target'):
+                expected = [(value - center) / before['radius']
+                            for value, center in zip(before[key], before['center'])]
+                actual = [(value - center) / after['radius']
+                          for value, center in zip(after[key], after['center'])]
+                assert all(math.isclose(a, b, rel_tol=1e-8, abs_tol=1e-8)
+                           for a, b in zip(expected, actual)), (key, before, after)
+            for key in ('near', 'far'):
+                assert math.isclose(before[key] / before['radius'], after[key] / after['radius'],
+                                    rel_tol=1e-8, abs_tol=1e-8), (key, before, after)
+            assert before['edges'] == after['edges'], (before, after)
+            assert page.locator('#wireframe').get_attribute('aria-pressed') == str(after['edges']).lower()
+            return after
+
+        def named_views_survive_original_cad_refresh_and_rebuild(page):
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="top"]').click()
+            page.locator('#wireframe').click()
+            top = page.evaluate('window.renderedPreview')
+            assert abs(top['camera'][0]) < 1e-8 and top['edges']
+            assert download(page, 'download-cad') == original[0]
+            ready(page)
+            same_framing(page, top)
+            assert download(page) == original[2]
+            assert download(page, 'download-cad') == original[0]
+            assert jobs == ['stl', 'cad'], 'Original CAD refresh discarded its files'
+            page.locator('[data-view="front"]').click()
+            front = page.evaluate('window.renderedPreview')
+            assert abs(front['camera'][0]) < 1e-8 and front['camera'][1] < -1
+            open_custom(page)
+            same_framing(page, front)
+            assert page.evaluate('window.renderedPreview.size') == [180.5, 100, 24]
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            same_framing(page, front)
+            assert jobs == ['stl', 'cad', 'stl', 'cad']
+
+        def manual_orbit_zoom_and_pan_survive_larger_and_smaller_meshes(page):
+            taller_parameters = {**custom[1]['parameters'], 'height': 48}
+            status, taller_mesh, response_headers = native_request({
+                'model': 'parts_tray', 'parameters': taller_parameters})
+            assert status == 200, (status, taller_mesh[:250])
+            taller_metadata = json.loads(unquote(response_headers['X-Model-Metadata']))
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').click()
+            initial = page.evaluate('window.renderedPreview')
+            canvas = page.locator('#viewer canvas')
+            canvas.scroll_into_view_if_needed()
+            box = canvas.bounding_box()
+            x, y = box['x'] + box['width'] / 2, box['y'] + box['height'] / 2
+            page.mouse.move(x, y)
+            page.mouse.down()
+            page.mouse.move(x + 65, y - 45, steps=6)
+            page.mouse.up()
+            orbited = page.evaluate('window.renderedPreview')
+            assert orbited['camera'] != initial['camera'], 'Real pointer orbit did not change the camera'
+            renders = page.evaluate('window.graphicsRenders')
+            page.mouse.wheel(0, -240)
+            page.wait_for_function('before => window.graphicsRenders > before', arg=renders)
+            zoomed = page.evaluate('window.renderedPreview')
+            distance = lambda pose: math.dist(pose['camera'], pose['target'])
+            assert distance(zoomed) < distance(orbited), 'Real wheel zoom did not move closer'
+            page.mouse.move(x, y)
+            page.mouse.down(button='right')
+            page.mouse.move(x + 40, y + 25, steps=6)
+            page.mouse.up(button='right')
+            page.locator('#wireframe').click()
+            before = page.evaluate('window.renderedPreview')
+            assert math.dist(before['target'], before['center']) > 1, 'Real right-drag did not pan'
+
+            def taller(route):
+                payload = route.request.post_data_json
+                assert payload['parameters'] == taller_parameters and payload.get('format', 'stl') == 'stl'
+                jobs.append('stl')
+                route.fulfill(body=taller_mesh, headers=headers(taller_metadata, 'model/stl'))
+
+            page.route('**/api/generate', taller)
+            page.locator('[data-parameter="length"]').fill('180.5')
+            page.locator('[data-parameter="height"]').fill('48')
+            page.locator('#rebuild').click()
+            ready(page)
+            larger = same_framing(page, before)
+            assert larger['size'] == [180.5, 100, 48] and larger['center'] == [0, 0, 24]
+            assert larger['radius'] > before['radius']
+            assert download(page) == taller_mesh
+            page.screenshot(path=str(ROOT / 'review/cloud_camera_update_desktop.png'))
+            page.unroute('**/api/generate', taller)
+            page.locator('[data-parameter="length"]').fill('150')
+            page.locator('[data-parameter="height"]').fill('24')
+            page.locator('#rebuild').click()
+            ready(page)
+            smaller = same_framing(page, before)
+            assert smaller['size'] == [150, 100, 24] and smaller['center'] == [0, 0, 12]
+            assert download(page) == original[2]
+            assert download(page, 'download-cad') == original[0]
+            same_framing(page, before)
+            assert jobs == ['stl', 'stl', 'cad']
+
+        def pending_preview_uses_latest_view_and_edges_choice(page):
+            waiting, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="top"]').click()
+            page.locator('#wireframe').click()
+
+            def hold_preview(route):
+                assert route.request.post_data_json['parameters']['length'] == 180.5
+                jobs.append('stl')
+                waiting.append(route)
+
+            page.route('**/api/generate', hold_preview)
+            page.locator('[data-parameter="length"]').fill('180.5')
+            page.locator('#rebuild').click()
+            page.wait_for_function("() => !document.querySelector('#stop-build').hidden")
+            assert len(waiting) == 1
+            page.locator('[data-view="front"]').click()
+            page.locator('#wireframe').click()
+            latest = page.evaluate('window.renderedPreview')
+            assert not latest['edges'] and latest['camera'][1] < -1
+            metadata = {**custom[1], 'format': 'stl', 'file_sha256': custom[1]['mesh_sha256']}
+            waiting.pop().fulfill(body=custom[2], headers=headers(metadata, 'model/stl'))
+            ready(page)
+            same_framing(page, latest)
+            assert download(page) == custom[2]
+            assert jobs == ['stl']
+
+        def mobile_updates_keep_view_and_new_models_reset_it(page):
+            page.set_viewport_size({'width': 390, 'height': 844})
+            _, modules, jobs = setup(page, hold_viewer=False)
+            ready(page)
+            viewer_ready(page)
+            observe_rendered_model(page, modules[0])
+            page.locator('[data-view="iso"]').focus()
+            page.keyboard.press('Space')
+            initial = page.evaluate('window.renderedPreview')
+            page.locator('[data-view="top"]').focus()
+            page.keyboard.press('Space')
+            page.locator('#wireframe').focus()
+            page.keyboard.press('Space')
+            before = page.evaluate('window.renderedPreview')
+            open_custom(page)
+            same_framing(page, before)
+            assert download(page) == custom[2]
+            assert download(page, 'download-cad') == custom[0]
+            same_framing(page, before)
+            assert jobs == ['stl', 'cad']
+            page.locator('.editor-layout').evaluate('element => { element.scrollTop = 0; }')
+            page.screenshot(path=str(ROOT / 'review/cloud_camera_update_mobile.png'))
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            page.locator('[data-model="cable_comb"]').click()
+            ready(page)
+            viewer_ready(page)
+            reset = same_framing(page, initial)
+            assert reset['size'] == [59, 32, 4] and not reset['edges']
+            page.locator('[data-view="top"]').click()
+            page.locator('#wireframe').click()
+            page.locator('#close-editor').click()
+            page.wait_for_function("() => !document.querySelector('#editor').open")
+            page.locator('[data-model="parts_tray"]').click()
+            ready(page)
+            viewer_ready(page)
+            reopened = same_framing(page, initial)
+            assert reopened['size'] == [150, 100, 24] and not reopened['edges']
+            assert download(page) == (CLOUD / 'public/models/parts_tray.stl').read_bytes()
+            assert jobs == ['stl', 'cad']
 
         def held_original_download_and_export(page):
             waiting, _, jobs = setup(page)
@@ -307,6 +487,9 @@ def main():
             ready(page)
             viewer_ready(page)
             observe_rendered_model(page, modules[0])
+            page.locator('[data-view="top"]').click()
+            page.locator('#wireframe').click()
+            before = page.evaluate('window.renderedPreview')
             graphics(page, True)
             fallback(page)
             open_custom(page)
@@ -318,6 +501,7 @@ def main():
             graphics(page, False)
             viewer_ready(page)
             assert page.evaluate('window.renderedPreview.size') == [180.5, 100, 24]
+            same_framing(page, before)
             assert download(page) == custom[2]
             assert download(page, 'download-cad') == custom[0]
             assert jobs == ['stl', 'cad']
@@ -412,7 +596,11 @@ def main():
                      graphics_recovery_keeps_invalid_draft_and_cached_cad,
                      builds_while_graphics_lost_restore_latest_mesh,
                      graphics_recovery_after_close_and_navigation,
-                     mobile_graphics_changes_keep_pending_cad_and_focus):
+                     mobile_graphics_changes_keep_pending_cad_and_focus,
+                     named_views_survive_original_cad_refresh_and_rebuild,
+                     manual_orbit_zoom_and_pan_survive_larger_and_smaller_meshes,
+                     pending_preview_uses_latest_view_and_edges_choice,
+                     mobile_updates_keep_view_and_new_models_reset_it):
             page = context.new_page()
             errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))

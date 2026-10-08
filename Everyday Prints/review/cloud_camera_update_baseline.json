@@ -1,0 +1,43 @@
+{
+  "action": "Rebuild a larger tray after choosing Top and Edges",
+  "before": {
+    "camera": [
+      0,
+      -0.3384088835091461,
+      350.40888349695257
+    ],
+    "target": [
+      0,
+      0,
+      12
+    ],
+    "center": [
+      0,
+      0,
+      12
+    ],
+    "radius": 90.93404203047393,
+    "edges": true
+  },
+  "after": {
+    "camera": [
+      201.23065816929318,
+      -261.59985562008103,
+      213.23065816929318
+    ],
+    "target": [
+      0,
+      0,
+      12
+    ],
+    "center": [
+      0,
+      0,
+      12
+    ],
+    "radius": 103.87041205271115,
+    "edges": false
+  },
+  "edges_pressed_after": "false",
+  "build_requests": 1
+}

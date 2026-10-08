@@ -45,6 +45,12 @@ export class ModelViewer {
   }
 
   load(buffer, reference = false) {
+    const previous = this.mesh && {
+      camera: this.camera.position.clone().sub(this.target),
+      pan: this.controls.target.clone().sub(this.target),
+      radius: this.radius, near: this.camera.near, far: this.camera.far,
+      wireframe: this.wireframe,
+    };
     this.clear();
     const geometry = this.loader.parse(buffer);
     geometry.computeBoundingBox();
@@ -55,7 +61,7 @@ export class ModelViewer {
     const size = geometry.boundingBox.getSize(new THREE.Vector3());
     this.target = new THREE.Vector3(0, 0, size.z / 2);
     this.radius = size.length() / 2;
-    const material = new THREE.MeshStandardMaterial({ color: reference ? 0x80917c : 0x287468, roughness: .7, metalness: .07 });
+    const material = new THREE.MeshStandardMaterial({ color: reference ? 0x80917c : 0x287468, roughness: .7, metalness: .07, wireframe: previous?.wireframe || false });
     this.mesh = new THREE.Mesh(geometry, material);
     this.scene.add(this.mesh);
     const gridSize = Math.ceil(Math.max(size.x, size.y, 30) * 1.7 / 10) * 10;
@@ -63,8 +69,17 @@ export class ModelViewer {
     this.grid.rotation.x = Math.PI / 2;
     this.grid.position.z = -.1;
     this.scene.add(this.grid);
-    this.wireframe = false;
-    this.view('iso');
+    this.wireframe = material.wireframe;
+    if (previous) {
+      const scale = this.radius / previous.radius;
+      this.camera.position.copy(this.target).addScaledVector(previous.camera, scale);
+      this.controls.target.copy(this.target).addScaledVector(previous.pan, scale);
+      this.camera.near = previous.near * scale;
+      this.camera.far = previous.far * scale;
+      this.camera.updateProjectionMatrix();
+      this.controls.update();
+      this.render();
+    } else this.view('iso');
     return { size: size.toArray(), triangles: geometry.attributes.position.count / 3 };
   }
 
